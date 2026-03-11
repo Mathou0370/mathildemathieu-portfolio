@@ -1,0 +1,2515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Mathilde Mathieu | Portfolio MMI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio de Mathilde Mathieu, étudiante en BUT MMI — Création numérique, design et développement web." />
+    <meta name="author" content="Mathilde Mathieu" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/png" href="ressources/iconemathilde.png">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <style>
+        @font-face {
+            font-family: 'Fixedsys';
+            src: url('https://fonts.cdnfonts.com/s/14873/Fixedsys500c.woff') format('woff');
+        }
+
+        :root {
+            --win-blue: #000080;
+            --win-gray: #c0c0c0;
+            --sidebar-width: 280px; 
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url("ressources/fond.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: "MS Sans Serif", Tahoma, Geneva, sans-serif !important;
+            display: flex;
+            min-height: 100vh;
+            padding-bottom: 45px;
+            font-size: 14px;
+            color: #000;
+            -webkit-font-smoothing: none;
+        }
+
+        h2, h3, h4, p, a, button, div, li, .title-bar-text { font-family: "MS Sans Serif", Tahoma, Geneva, sans-serif !important; }
+        h2 { font-size: 28px; font-weight: bold; letter-spacing: -1px; margin-bottom: 20px; line-height: 1.1; }
+        .title-bar-text { font-weight: bold; letter-spacing: 0.5px; font-size: 12px; }
+        .window-body { background: #fff; padding: 30px !important; line-height: 1.6; }
+        strong { font-weight: bold; color: #000; }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--win-gray);
+            border-right: 2px solid #000;
+            position: fixed;
+            height: 100vh;
+            padding: 20px;
+            z-index: 5000;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+        }
+        .profile-card { background: #fff; border: 2px inset #fff; padding: 15px; text-align: center; margin-bottom: 25px; box-shadow: 1px 1px 0 #000;}
+        .profile-card img { width: 140px; height: 140px; border: 1px solid #000; object-fit: cover; background: #eee; }
+        .sidebar nav a { 
+            display: block; padding: 12px; color: #000; text-decoration: none; 
+            font-weight: bold; margin-bottom: 10px; border: 2px solid transparent;
+            font-size: 15px;
+        }
+        .sidebar nav a:hover { background: var(--win-blue); color: white; border: 2px solid; border-color: #fff #808080 #808080 #fff; }
+
+        /* --- CONTENT --- */
+        .content-wrapper {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 25px;
+        }
+        main { width: 100%; max-width: 950px; display: flex; flex-direction: column; gap: 50px; }
+        .window { width: 100%; box-shadow: 6px 6px 0 rgba(0,0,0,0.5); margin-bottom: 20px;}
+        section { scroll-margin-top: 60px; }
+
+        /* --- EXPLORER --- */
+        .explorer-wrapper { display: flex; flex-direction: column; border: 2px inset #808080; background: #fff; }
+        .explorer-toolbar {
+            background: var(--win-gray);
+            border-bottom: 2px solid #808080;
+            padding: 5px 10px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .filter-group {
+            display: flex;
+            gap: 2px;
+            border: 1px inset #fff;
+            padding: 2px;
+            background: #d0d0d0;
+        }
+        .filter-btn { min-width: 50px; height: 22px; font-size: 11px !important; }
+        .active-filter {
+            border-color: #808080 #fff #fff #808080 !important;
+            background: #b8b8b8 !important;
+            font-weight: bold !important;
+        }
+        .explorer-container { display: flex; height: 500px; }
+        .tree-sidebar { width: 200px; border-right: 2px solid #808080; overflow-y: auto; padding: 10px; flex-shrink: 0; background: #f1f1f1; }
+        .file-display { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; padding: 20px; overflow-y: auto; align-content: start; }
+        .item { cursor: pointer; text-align: center; padding: 10px; border: 1px solid transparent; }
+        .item-label { font-size:11px; font-weight:bold; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:break-all; line-height:1.3; max-height:2.6em; }
+        .item:hover { background: var(--win-blue); color: white; }
+        .item:hover .item-label { color: white; }
+        .item img.thumb { width: 80px; height: 80px; object-fit: cover; border: 1px solid #808080; background: #fff; margin-bottom: 5px; }
+        .icon-folder-large { width: 60px; height: 60px; margin: 10px auto; background-image: url('https://win98icons.alexmeub.com/icons/png/directory_closed-4.png'); background-size: contain; background-repeat: no-repeat;}
+
+        .apps-bar { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; padding: 10px; background: #eee; border: 1px inset #fff; }
+        .app-icon-skill { width: 32px; height: 32px; filter: drop-shadow(1px 1px 0 #fff); }
+        /* Taille dans la section skills uniquement - surchargée inline */
+        .soft-icon-wrap img.app-icon-skill {
+            width: 64px;
+            height: 64px;
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .app-icon-skill:hover { transform: scale(1.15); }
+        .logo-box { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .logo-circle { width: 50px; height: 50px; background: #eee; border: 2px inset #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .logo-circle img { max-width: 100%; }
+
+        /* --- MODALS --- */
+        #project-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 95%; max-width: 600px; z-index: 6000; display: none; }
+        #details-panel { position: fixed; right: -100%; top: 0; width: 400px; height: 100vh; background: var(--win-gray); border-left: 2px solid #000; transition: 0.3s; z-index: 7000; padding: 20px; overflow-y: auto; box-shadow: -5px 0 15px rgba(0,0,0,0.3); }
+        #details-panel.open { right: 0; }
+        #p-content-full p { margin-bottom: 15px; font-size: 14px; }
+
+        /* --- DESKTOP ICONS --- */
+        .desktop-footer { margin-top: 60px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; width: 100%; padding: 40px 0; border-top: 2px dashed rgba(255,255,255,0.3); }
+        .desktop-icon { width: 80px; text-align: center; cursor: pointer; text-decoration: none; color: white; text-shadow: 1px 1px 2px #000; }
+        .desktop-icon img { width: 48px; height: 48px; margin-bottom: 8px; display: block; margin-left: auto; margin-right: auto; }
+        .desktop-icon span { display: block; font-size: 11px; line-height: 1.2; padding: 2px; }
+        .desktop-icon:hover span { background: var(--win-blue); }
+
+        /* --- TASKBAR --- */
+        .taskbar { position: fixed; bottom: 0; left: 0; right: 0; height: 40px; background: var(--win-gray); border-top: 2px solid #fff; display: flex; align-items: center; padding: 0 10px; z-index: 8000; }
+        .taskbar-time { border: 2px inset #fff; padding: 4px 12px; font-size: 13px; font-weight: bold; }
+        .pin { width: 30px; height: 30px; border: 2px solid; border-color: #fff #808080 #808080 #fff; display: flex; align-items: center; justify-content: center; background: var(--win-gray); cursor: pointer; margin-left: 5px;}
+
+        /* --- BURGER OVERLAY --- */
+        #menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 4500; display: none;
+        }
+        #menu-overlay.active { display: block; }
+
+        /* --- RESPONSIVE --- */
+
+        /* Burger button visible uniquement mobile */
+        .burger-btn {
+            display: none;
+            position: fixed;
+            bottom: 48px;
+            left: 10px;
+            z-index: 5100;
+            width: 44px;
+            height: 44px;
+            background: var(--win-gray);
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            font-size: 20px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Scroll margin : sections ne se cachent pas sous la taskbar */
+        section { scroll-margin-top: 20px; }
+
+        /* Overlay panneau détail */
+        #panel-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 6999;
+        }
+        #panel-overlay.active { display: block; }
+
+        @media (max-width: 1100px) {
+            main { max-width: 100%; }
+        }
+
+        @media (max-width: 900px) {
+            /* Sidebar cachée par défaut, glisse depuis la gauche */
+            .sidebar { transform: translateX(-100%); width: 260px; }
+            .sidebar.active { transform: translateX(0); box-shadow: 5px 0 20px rgba(0,0,0,0.6); }
+
+            /* Content prend toute la largeur */
+            .content-wrapper { margin-left: 0; width: 100%; padding: 15px 10px; }
+
+            /* Burger visible */
+            .burger-btn { display: flex; }
+
+            /* Taskbar : cacher les pins, garder start + horloge */
+            .taskbar-pins { display: none; }
+
+            /* Explorer vertical */
+            .explorer-container { flex-direction: column; height: auto; min-height: 400px; }
+            .tree-sidebar { width: 100%; border-right: none; border-bottom: 2px solid #808080; height: auto; max-height: 160px; overflow-y: auto; }
+            .file-display { grid-template-columns: repeat(2, 1fr); min-height: 250px; }
+
+            /* Toolbar TOUT_VOIR en colonne sur mobile */
+            .explorer-toolbar { flex-direction: column; align-items: flex-start; gap: 6px; }
+            .explorer-toolbar > div { flex-wrap: wrap; }
+
+            /* Panneau détail plein écran */
+            #details-panel { width: 100%; right: -100%; }
+
+            /* Skills grid 1 colonne */
+            .skills-grid { grid-template-columns: 1fr !important; }
+
+            /* Paint et WMP empilés, pas besoin de règle grid ici */
+
+            /* Paint toolbar gauche cachée sur mobile */
+            .paint-toolbar-left { display: none; }
+
+            /* WMP cover plus petit */
+            #wmp-cover { width: 90px !important; height: 90px !important; }
+
+            /* IE missions 1 colonne */
+            .ie-missions-grid { grid-template-columns: 1fr !important; }
+
+            /* Engagement cards 1 colonne */
+            .engage-card { width: 100%; }
+
+            /* MSP layout 1 colonne */
+            .msp-layout { grid-template-columns: 1fr !important; }
+            .msp-left { border-right: none; border-bottom: 2px solid #b0c4de; }
+
+            /* Icônes logiciels un peu plus petites */
+            .soft-icon-wrap img.app-icon-skill { width: 48px; height: 48px; }
+
+            /* Modale projet plein écran */
+            #project-modal { width: 96%; max-width: 100%; }
+
+            /* Footer icônes desktop plus serré */
+            .desktop-footer { gap: 20px; padding: 25px 0; }
+            .desktop-icon { width: 65px; }
+
+            h2 { font-size: 22px; }
+        }
+
+        @media (max-width: 480px) {
+            .content-wrapper { padding: 10px 8px; }
+            .window-body { padding: 15px !important; }
+            .file-display { grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 10px; }
+            .soft-icon-wrap img.app-icon-skill { width: 40px; height: 40px; }
+            .taskbar { padding: 0 6px; }
+            .start-button span { display: none; } /* Cacher le texte sur très petit écran */
+            h2 { font-size: 18px; }
+        }
+
+        .tree-item {
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 0;
+            user-select: none;
+        }
+        .tree-item:hover { background: #c0c0ff; }
+        .tree-item.active {
+            background: var(--win-blue);
+            color: white;
+        }
+
+        .toutvoir-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 5px 8px;
+            font-size: 12px !important;
+            font-family: "MS Sans Serif", Tahoma, sans-serif !important;
+            font-weight: bold;
+            background: var(--win-gray);
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            cursor: pointer;
+            color: #000;
+        }
+        .toutvoir-btn:hover {
+            background: #d8d8d8;
+        }
+        .toutvoir-btn:active, .toutvoir-btn.active {
+            border-color: #808080 #fff #fff #808080;
+            background: #b0b0b0;
+            color: #000;
+        }
+        .app-icon-skill:hover { transform: scale(1.2); }
+
+        .msn-btn {
+            font-size: 11px !important;
+            padding: 3px 8px !important;
+            cursor: pointer;
+            background: #e8f0fb;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            transition: background 0.1s;
+        }
+        .msn-btn:hover { background: #c5d8f8; }
+        .msn-btn:active { border-color: #808080 #fff #fff #808080; }
+
+        .msn-bubble { margin-bottom: 10px; padding: 6px 10px; max-width: 92%; display: block; }
+        .msn-bubble-them { background: #e8f0fb; border-left: 3px solid #316ac5; }
+        .msn-bubble-me { background: #fff8dc; border-left: 3px solid #c8a000; margin-left: 8%; }
+        .msn-name-them { color: #316ac5; font-weight: bold; display: block; margin-bottom: 2px; font-size:11px; }
+        .msn-name-me { color: #9a7a00; font-weight: bold; display: block; margin-bottom: 2px; font-size:11px; }
+
+        /* --- INTERNET EXPLORER SECTION --- */
+        .ie-nav-btn {
+            height: 22px; min-width: 26px; font-size: 11px; padding: 0 5px;
+            border: 2px solid; border-color: #fff #808080 #808080 #fff;
+            background: var(--win-gray); cursor: pointer;
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+        }
+        .ie-nav-btn:active { border-color: #808080 #fff #fff #808080; }
+        .ie-tab {
+            padding: 4px 12px; font-size: 11px;
+            font-family: "MS Sans Serif", Tahoma, sans-serif !important;
+            background: #b0b0b0; border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            border-bottom: none; cursor: pointer;
+            margin-right: 3px; position: relative; top: 2px;
+        }
+        .ie-tab:hover { background: #c8c8c8; }
+        .active-tab { background: #fff !important; font-weight: bold; border-bottom: 2px solid #fff !important; z-index: 1; }
+        .ie-page { animation: ieFadeIn 0.15s ease; }
+        @keyframes ieFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .ie-header { background: linear-gradient(135deg, #e8f0fb 0%, #f5f5ff 100%); border-bottom: 2px solid #c0c0c0; padding: 16px 20px; }
+        .ie-body { padding: 20px; }
+        .ie-logo-box { width: 50px; height: 50px; background: var(--win-gray); border: 2px inset #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+        .ie-badge { display: inline-block; background: var(--win-blue); color: white; font-size:11px; padding: 2px 7px; margin-left: 4px; border: 1px solid #000033; }
+        .ie-badge-green { background: #2a7a2a !important; }
+        .ie-missions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .ie-mission-card { background: #f8f8f8; border: 2px solid; border-color: #fff #808080 #808080 #fff; padding: 12px; }
+        .ie-mission-card h4 { font-size: 12px; margin-bottom: 5px; color: var(--win-blue); }
+        .ie-mission-card p { font-size: 11px; color: #333; line-height: 1.5; }
+        .ie-mission-icon { font-size: 22px; margin-bottom: 6px; }
+        .ie-skills-list { display: flex; flex-direction: column; gap: 10px; }
+        .ie-skill-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: #f8f8f8; border: 1px solid #d0d0d0; font-size: 12px; }
+        .ie-skill-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+        @media (max-width: 600px) {
+            .ie-missions-grid { grid-template-columns: 1fr; }
+            .ie-tab { padding: 4px 7px; font-size:11px; }
+            .ie-header { padding: 12px; }
+            .ie-body { padding: 12px; }
+        }
+
+        .bde-tab { font-size:11px; padding:3px 10px; background:#d0d0d0; border:1px solid #808080; border-bottom:none; cursor:pointer; font-family:"MS Sans Serif",Tahoma,sans-serif; }
+        .bde-tab:hover { background:#e0e0e0; }
+        .active-bde-tab { background:#fff !important; font-weight:bold; border-bottom:1px solid #fff !important; }
+        .fedet-item { font-size:11px; color:#333; line-height:1.5; padding:4px 8px; background:#f8f8f8; border-left:3px solid #8a4db2; }
+
+        /* --- ENGAGEMENT CARDS --- */
+        .engage-card { border: 2px solid; border-color: #fff #808080 #808080 #fff; overflow:hidden; }
+        .engage-header { padding: 12px 14px; display:flex; align-items:center; gap:12px; color:white; }
+        .engage-logo-wrap { width:42px; height:42px; background:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow: 0 1px 4px rgba(0,0,0,0.25); }
+        .engage-logo { width:34px; height:34px; object-fit:contain; }
+        .engage-title { font-size:14px; font-weight:bold; }
+        .engage-role { font-size:11px; opacity:0.85; margin-top:2px; }
+        .engage-badge { margin-left:auto; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.4); font-size:11px; padding:2px 6px; font-weight:bold; letter-spacing:1px; flex-shrink:0; }
+        .engage-body { background:#fff; padding:12px 14px; }
+        .engage-body p { font-size:12px; color:#333; line-height:1.5; margin-bottom:10px; }
+        .engage-tags { display:flex; flex-wrap:wrap; gap:4px; }
+        .etag { background:#e8f0fb; border:1px solid #b0c4de; font-size:11px; padding:2px 7px; color:var(--win-blue); }
+
+        /* --- PASSIONS --- */
+        .passion-grid { display:flex; flex-wrap:wrap; gap:4px; padding:16px; background:#008080; min-height:200px; }
+        .passion-icon { width:90px; text-align:center; padding:8px 4px; cursor:pointer; color:white; text-shadow:1px 1px 2px #000; border:1px solid transparent; }
+        .passion-icon:hover { background:rgba(255,255,255,0.15); border:1px dotted rgba(255,255,255,0.5); }
+        .passion-icon.selected { background:rgba(0,0,128,0.5); border:1px dotted #fff; }
+        .passion-img { font-size:36px; margin-bottom:5px; line-height:1; }
+        .passion-icon span { font-size:11px; display:block; line-height:1.2; }
+
+        @media (max-width: 480px) {
+            .passion-icon { width: 75px; }
+            .passion-img { font-size: 28px; }
+        }
+
+        /* --- OUTLOOK EXPRESS --- */
+        .oe-menubar { background:#d0d0d0; border-bottom:1px solid #808080; padding:2px 8px; display:flex; gap:16px; }
+        .oe-menubar span { font-size:12px; cursor:pointer; padding:2px 4px; }
+        .oe-menubar span:hover { background:#000080; color:#fff; }
+        .oe-toolbar { background:#d0d0d0; border-bottom:2px solid #808080; padding:4px 8px; display:flex; gap:2px; align-items:center; flex-wrap:wrap; }
+        .oe-toolbtn { display:flex; flex-direction:column; align-items:center; gap:1px; background:none; border:1px solid transparent; padding:3px 6px; cursor:pointer; font-size:11px; min-width:44px; font-family:'MS Sans Serif',Tahoma,sans-serif; }
+        .oe-toolbtn:hover { border:1px solid #808080; background:#e8e8e8; }
+        .oe-toolbtn:active { border-color:#fff #808080 #808080 #fff; }
+        .oe-sep { width:1px; background:#808080; height:36px; margin:0 4px; flex-shrink:0; }
+        .oe-headers { background:#fff; border-bottom:2px solid #808080; }
+        .oe-field { display:flex; align-items:center; border-bottom:1px solid #e0e0e0; min-height:26px; }
+        .oe-label { width:100px; padding:5px 10px; font-size:12px; font-weight:bold; color:#333; flex-shrink:0; background:#f0f0f0; border-right:1px solid #c0c0c0; align-self:stretch; display:flex; align-items:center; }
+        .oe-value { padding:5px 10px; font-size:12px; color:#555; }
+        .oe-input { flex:1; border:none; outline:none; padding:5px 10px; font-size:13px; font-family:'MS Sans Serif',Tahoma,sans-serif; background:#fff; }
+        .oe-formatbar { background:#d0d0d0; border-bottom:1px solid #808080; padding:3px 8px; display:flex; gap:4px; align-items:center; flex-wrap:wrap; }
+        .oe-fmtbtn { width:22px; height:20px; border:1px solid transparent; background:none; cursor:pointer; font-size:12px; font-family:'MS Sans Serif',Tahoma,sans-serif; }
+        .oe-fmtbtn:hover { border:1px solid #808080; background:#e8e8e8; }
+        .oe-body { width:100%; min-height:200px; border:none; outline:none; resize:vertical; padding:12px 14px; font-family:'MS Sans Serif',Tahoma,sans-serif; font-size:13px; line-height:1.7; box-sizing:border-box; display:block; border-top: 1px solid #e0e0e0; }
+        .oe-statusbar { background:#d0d0d0; border-top:2px solid #808080; padding:4px 10px; font-size:11px; color:#333; display:flex; align-items:center; }
+
+        /* --- PAINT STYLE MS PAINT --- */
+        .passions-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch; }
+        .paint-tab-text { padding:8px 12px; font-size:12px; line-height:1.6; color:#333; background:#fffef8; border-top:1px solid #d0d0d0; }
+        @media (max-width: 800px) { .passions-wrapper { grid-template-columns:1fr; } }
+        .paint-menubar { background:#d4d0c8; border-bottom:1px solid #808080; padding:2px 6px; display:flex; gap:16px; }
+        .paint-menubar span { font-size:12px; cursor:pointer; padding:2px 5px; }
+        .paint-menubar span:hover { background:#000080; color:#fff; }
+        .paint-toolbar-left { width:52px; flex-shrink:0; background:#d4d0c8; border-right:1px solid #808080; padding:4px; display:grid; grid-template-columns:1fr 1fr; gap:2px; align-content:start; }
+        .pt-tool { width:22px; height:22px; display:flex; align-items:center; justify-content:center; font-size:12px; border:1px solid transparent; cursor:pointer; user-select:none; }
+        .pt-tool:hover { border:1px solid #808080; background:#e8e8e8; }
+        .pt-tool.selected { border:2px inset #808080; background:#c0c0c0; }
+        .pt-color-preview { grid-column:1/-1; margin-top:6px; height:32px; position:relative; }
+        .paint-palette { background:#d4d0c8; border-top:2px solid #808080; padding:4px 8px; display:flex; align-items:center; gap:4px; }
+        .paint-palette-colors { display:flex; flex-wrap:wrap; gap:1px; flex-shrink:0; }
+        .pal-cell { width:14px; height:14px; border:1px solid #808080; cursor:pointer; flex-shrink:0; }
+        .pal-cell:hover { outline:1px solid #000; }
+        .paint-tab { font-size:11px; padding:3px 10px; background:#d0d0d0; border:1px solid #808080; border-bottom:none; cursor:pointer; font-family:'MS Sans Serif',Tahoma,sans-serif; margin-right:2px; }
+        .paint-tab:hover { background:#e8e8e8; }
+        .active-paint-tab { background:#c0c0c0 !important; font-weight:bold; position:relative; top:1px; border-bottom:1px solid #c0c0c0; }
+        .paint-carousel { position:relative; height:220px; background:#fff; overflow:hidden; }
+        /* Carousel Instagram : hauteur augmentée + navigation manuelle */
+        .paint-carousel.insta-mode { height:500px; overflow-y:auto; overflow-x:hidden; background:#fafafa; }
+        .insta-slide { display:none; width:100%; padding:10px; box-sizing:border-box; }
+        .insta-slide.active { display:block; }
+        .insta-nav { display:flex; justify-content:center; align-items:center; gap:8px; padding:5px 8px; background:#d4d0c8; border-top:1px solid #808080; flex-shrink:0; }
+        .insta-nav-btn { font-size:12px; padding:2px 10px; border:2px solid; border-color:#fff #808080 #808080 #fff; background:var(--win-gray); cursor:pointer; font-family:"MS Sans Serif",Tahoma,sans-serif; }
+        .insta-nav-btn:active { border-color:#808080 #fff #fff #808080; }
+        .insta-counter { font-size:11px; color:#333; min-width:50px; text-align:center; }
+        .carousel-track { display:flex; height:100%; transition:transform 0.35s ease; }
+        .carousel-slide { width:100%; height:100%; object-fit:cover; flex-shrink:0; }
+        .carousel-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.45); color:#fff; border:none; font-size:16px; padding:4px 8px; cursor:pointer; z-index:2; }
+        .carousel-btn:hover { background:rgba(0,0,0,0.7); }
+        .carousel-prev { left:4px; }
+        .carousel-next { right:4px; }
+        .carousel-dots { position:absolute; bottom:6px; left:50%; transform:translateX(-50%); display:flex; gap:5px; }
+        .carousel-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.5); cursor:pointer; border:1px solid rgba(0,0,0,0.3); }
+        .carousel-dot.active { background:#fff; }
+
+        /* --- WINDOWS MEDIA PLAYER --- */
+        .wmp-btn { background:#2a2a4a; color:#7ec8e3; border:1px solid #444; padding:4px 10px; font-size:14px; cursor:pointer; font-family:'MS Sans Serif',Tahoma,sans-serif; }
+        .wmp-btn:hover { background:#3a3a6a; }
+        .wmp-play { background:#003366; color:#fff; font-size:16px; padding:4px 14px; }
+        .wmp-track { display:flex; align-items:center; gap:8px; padding:5px 10px; cursor:pointer; border-bottom:1px solid #1a1a2e; color:#aaa; font-size:11px; }
+        .wmp-track:hover { background:#1a1a3a; color:#fff; }
+        .wmp-track.playing { background:#003366; color:#7ec8e3; font-weight:bold; }
+        .wmp-tracknum { color:#555; width:18px; flex-shrink:0; }
+        .wmp-trackname { flex:1; }
+        .wmp-trackdur { color:#555; flex-shrink:0; }
+        .viz-bar { width:6px; background:#7ec8e3; border-radius:2px 2px 0 0; animation:vizAnim 0.6s ease-in-out infinite alternate; }
+        .viz-bar:nth-child(2) { animation-delay:.1s; }
+        .viz-bar:nth-child(3) { animation-delay:.2s; }
+        .viz-bar:nth-child(4) { animation-delay:.05s; }
+        .viz-bar:nth-child(5) { animation-delay:.15s; }
+        .viz-bar:nth-child(6) { animation-delay:.25s; }
+        .viz-bar:nth-child(7) { animation-delay:.08s; }
+        .viz-bar:nth-child(8) { animation-delay:.18s; }
+        @keyframes vizAnim { from { height:4px; } to { height:30px; } }
+        .viz-bar { height:4px; animation-play-state:paused; }
+        .wmp-playing .viz-bar { animation-play-state:running; }
+
+        @media (max-width: 700px) {
+            #passions .window-body > div { grid-template-columns: 1fr !important; }
+        }
+
+        /* --- MYSPACE --- */
+        .msp-header {
+            background: linear-gradient(90deg, #003399, #0066cc);
+            padding: 6px 14px;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+        }
+        .msp-logo { font-size: 20px; font-weight: bold; color: #fff; font-family: Georgia, serif; letter-spacing: -1px; }
+        .msp-logo span { color: #99ccff; }
+        .msp-nav { display: flex; gap: 14px; }
+        .msp-nav span { color: #cce4ff; font-size: 11px; cursor: pointer; text-decoration: underline; }
+        .msp-nav span:hover { color: #fff; }
+
+        .msp-layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 0;
+            background: #e8eef7;
+            min-height: 400px;
+        }
+
+        /* Colonne gauche */
+        .msp-left { background: #dce6f5; border-right: 2px solid #b0c4de; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+        .msp-photo-block { background: #fff; border: 2px inset #aaa; padding: 10px; text-align: center; }
+        .msp-photo { width: 130px; height: 130px; object-fit: cover; border: 3px solid #003399; display: block; margin: 0 auto 8px; }
+        .msp-name { font-size: 14px; font-weight: bold; color: #003399; margin-bottom: 3px; }
+        .msp-online { color: #00aa00; font-size:11px; }
+        .msp-status { font-size: 11px; color: #333; margin-bottom: 5px; }
+        .msp-tagline { font-size:11px; color: #555; font-style: italic; line-height: 1.4; border-top: 1px dotted #aaa; padding-top: 6px; margin-top: 4px; }
+
+        .msp-infobox { background: #fff; border: 1px solid #b0c4de; }
+        .msp-infobox-title { background: #003399; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 8px; }
+        .msp-inforow { font-size: 11px; padding: 3px 8px; border-bottom: 1px dotted #ddd; }
+        .msp-label { color: #003399; font-weight: bold; }
+        .msp-interest { background: #e8f0fb; border: 1px solid #b0c4de; font-size:11px; padding: 2px 6px; color: #003399; }
+
+        /* Colonne droite */
+        .msp-right { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+        .msp-comment-bar { background: #fff3cd; border: 1px solid #f0c040; padding: 5px 10px; font-size: 11px; }
+        .msp-section { background: #fff; border: 1px solid #b0c4de; }
+        .msp-section-title { background: #336699; color: #fff; font-size: 12px; font-weight: bold; padding: 4px 10px; }
+        .msp-section-body { padding: 10px 12px; font-size: 12px; line-height: 1.6; color: #222; }
+        .msp-section-body p { margin-bottom: 8px; }
+        .msp-section-body p:last-child { margin-bottom: 0; }
+        .msp-cta { background: #003399; color: #fff !important; font-size: 11px; padding: 3px 8px; text-decoration: none; border: 2px solid; border-color: #fff #808080 #808080 #fff; display: inline-block; }
+        .msp-cta:hover { background: #0055cc; }
+
+        .msp-footer { background: #003399; color: #99ccff; font-size:11px; padding: 4px 12px; display: flex; align-items: center; }
+
+        @media (max-width: 700px) {
+            .msp-layout { grid-template-columns: 1fr; }
+            .msp-left { border-right: none; border-bottom: 2px solid #b0c4de; flex-direction: row; flex-wrap: wrap; }
+            .msp-photo-block { flex: 0 0 auto; }
+            .msp-nav { display: none; }
+        }
+
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 9999;
+            pointer-events: none;
+            background-size: 100% 2px, 3px 100%;
+        }
+    
+
+        </style>
+</head>
+<body>
+
+    <!-- FIX 1 : handleGlobalClick supprimé du body, menu-overlay gère son propre clic -->
+    <div id="menu-overlay" onclick="toggleMenu()"></div>
+    <div id="panel-overlay" onclick="closePanel()"></div>
+
+    <!-- Burger mobile -->
+    <button class="burger-btn" onclick="toggleMenu()" title="Menu">☰</button>
+
+    <div class="taskbar">
+        <div class="start-button" style="padding: 4px 10px; border: 2px solid; border-color: #fff #808080 #808080 #fff; font-weight: bold; cursor: pointer; display: flex; align-items: center;" onclick="toggleMenu()">
+            <img src="ressources/iconemathilde.png" alt="Logo Mathilde" style="width:18px; margin-right:8px;">
+            Mathilde MATHIEU
+        </div>
+        <div class="taskbar-pins" style="display: flex; margin-left: 10px; padding-left: 10px; border-left: 1px solid #808080;">
+            <div class="pin" title="Photoshop"><img src="ressources/app/ps.png" alt="Photoshop" width="22"></div>
+            <div class="pin" title="Illustrator"><img src="ressources/app/ai.png" alt="Illustrator" width="22"></div>
+            <div class="pin" title="Premiere Pro"><img src="ressources/app/pr.png" alt="Premiere Pro" width="22"></div>
+            <div class="pin" title="Figma"><img src="ressources/app/figma.png" alt="Figma" width="22"></div>
+            <div class="pin" title="Canva"><img src="ressources/app/c.png" alt="Canva" width="22"></div>
+            <div class="pin" title="CapCut"><img src="ressources/app/cc.png" alt="CapCut" width="22"></div>
+            <div class="pin" title="Blender"><img src="ressources/app/bl.png" alt="Blender" width="22"></div>
+            <div class="pin" title="Affinity"><img src="ressources/app/a.png" alt="Affinity" width="22"></div>
+            <div class="pin" title="Shopify"><img src="ressources/app/sh.png" alt="Shopify" width="22"></div>
+            <div class="pin" title="InDesign"><img src="ressources/app/in.png" alt="InDesign" width="22"></div>
+            <div class="pin" title="VS Code"><img src="ressources/app/vsc.png" alt="VS Code" width="22"></div>
+            <div class="pin" title="WordPress"><img src="ressources/app/wp.png" alt="WordPress" width="22"></div>
+        </div>
+        <div style="display:flex; align-items:center; margin-left:auto; border-left:1px solid #808080; padding-left:6px; gap:4px;">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png"
+                 alt="Mentions légales"
+                 title="Mentions légales"
+                 width="16" height="16"
+                 onclick="openLegals()"
+                 style="cursor:pointer; image-rendering:pixelated;"
+                 onerror="this.style.display='none'">
+            <div class="taskbar-time" id="clock">12:00</div>
+        </div>
+    </div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="profile-card">
+            <img src="ressources/iconemathilde.png" alt="Mathilde">
+            <h3 style="margin-top:15px; font-size: 18px;">Mathilde Mathieu</h3>
+            <p style="font-size:12px; color: #444; margin-top: 5px;">Création Numérique & Stratégie</p>
+        </div>
+        <!-- FIX 2 : closeMenuMobile() définie dans le JS -->
+        <nav>
+            <a href="#intro" onclick="closeMenuMobile()" data-i18n="sidebar-intro">👤 Profil</a>
+            <a href="#projets" onclick="closeMenuMobile()" data-i18n="sidebar-projets">📁 Projets</a>
+            <a href="#xp" onclick="closeMenuMobile()" data-i18n="sidebar-xp">💼 Expériences</a>
+            <a href="#skills" onclick="closeMenuMobile()" data-i18n="sidebar-skills">🛠️ Compétences</a>
+            <a href="#engagement" onclick="closeMenuMobile()" data-i18n="sidebar-engagement">🤝 Engagement</a>
+            <a href="#passions" onclick="closeMenuMobile()" data-i18n="sidebar-passions1">🎨 Créations visuelles</a>
+            <a href="#passions-wmp" onclick="closeMenuMobile()" data-i18n="sidebar-passions2">🎵 Passions</a>
+            <a href="#contact" onclick="closeMenuMobile()" data-i18n="sidebar-contact">📩 Contact</a>
+        </nav>
+    </aside>
+
+    <div class="content-wrapper">
+        <main>
+            <section id="intro" class="window">
+                <div class="title-bar"><div class="title-bar-text" data-i18n="title-intro">👤 Profil — Mathilde Mathieu</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div>
+
+                <!-- Bandeau MySpace header -->
+                <div class="msp-header">
+                    <div class="msp-logo">My<span>Space</span></div>
+                    <div class="msp-nav">
+                        <span>Accueil</span>
+                        <span>Profil</span>
+                        <span>Amis</span>
+                        <span>Messages</span>
+                    </div>
+                </div>
+
+                <div class="msp-layout">
+
+                    <!-- COLONNE GAUCHE : photo + infos rapides -->
+                    <div class="msp-left">
+                        <div class="msp-photo-block">
+                            <img src="ressources/photomathilde.jpg" alt="Photo de Mathilde Mathieu" class="msp-photo">
+                            <div class="msp-name">Mathilde Mathieu</div>
+                            <div class="msp-status">
+                                <span class="msp-online">●</span> En ligne
+                            </div>
+                            <div class="msp-tagline">"Curieuse. Créative. Toujours en train de bidouiller quelque chose ✨"</div>
+                        </div>
+
+                        <!-- Infos rapides -->
+                        <div class="msp-infobox">
+                            <div class="msp-infobox-title">Infos</div>
+                            <div class="msp-inforow"><span class="msp-label">Formation :</span> BUT MMI</div>
+                            <div class="msp-inforow"><span class="msp-label">Ville :</span> Toulon</div>
+                            <div class="msp-inforow"><span class="msp-label">Profil :</span> Création & Com.</div>
+                            <div class="msp-inforow"><span class="msp-label">Humeur :</span> 🎨 Inspirée</div>
+                        </div>
+
+                        <!-- Mes top 4 intérêts -->
+                        <div class="msp-infobox" style="margin-top:10px;">
+                            <div class="msp-infobox-title">Top Intérêts</div>
+                            <div style="display:flex; flex-wrap:wrap; gap:4px; padding:6px;">
+                                <span class="msp-interest">🎭 Cosplay</span>
+                                <span class="msp-interest">🖌️ Design</span>
+                                <span class="msp-interest">🎬 Vidéo</span>
+                                <span class="msp-interest">⛩️ Japon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COLONNE DROITE : about + blurbs -->
+                    <div class="msp-right">
+
+                        <!-- Barre de commentaires fictive -->
+                        <div class="msp-comment-bar" id="msp-comment-text">
+                            💬 <strong>Recruteur_Pro</strong> t'a laissé un commentaire · <a href="#contact" style="color:#003399;" onclick="openLivret()">Voir le livret d'or</a>
+                        </div>
+
+                        <!-- About me -->
+                        <div class="msp-section">
+                            <div class="msp-section-title">✏️ About me</div>
+                            <div class="msp-section-body">
+                                <p>Étudiante en <strong>BUT Métiers du Multimédia et de l'Internet</strong> à l'IUT de Toulon, passionnée par la création visuelle, la communication digitale et la production de contenus multimédias.</p>
+                                <p>J'ai développé un profil polyvalent mêlant <strong>design graphique, vidéo, communication digitale et création de contenu</strong>. J'aime imaginer des univers visuels, raconter des histoires à travers l'image et concevoir des expériences créatives qui donnent vie aux projets.</p>
+                                <p>Curieuse et créative, j'explore différents formats : design, vidéo, illustration, web, storytelling visuel. Chaque projet est l'occasion d'expérimenter et d'apprendre.</p>
+                            </div>
+                        </div>
+
+                        <!-- Who I'd like to meet -->
+                        <div class="msp-section">
+                            <div class="msp-section-title">🤝 Who I'd like to meet</div>
+                            <div class="msp-section-body">
+                                <p>Des recruteurs, directeurs artistiques, studios créatifs ou agences de communication à la recherche d'un profil polyvalent et investi. Je porte un intérêt particulier aux univers des <strong>communautés en ligne, de la pop culture et du cosplay</strong> — ce qui m'a amenée à collaborer avec <strong>Cosplay Smart</strong> pour la création de contenus, la communication réseaux et la production visuelle événementielle.</p>
+                            </div>
+                        </div>
+
+                        <!-- Ce portfolio -->
+                        <div class="msp-section">
+                            <div class="msp-section-title">📁 Ce portfolio</div>
+                            <div class="msp-section-body">
+                                <p>Une sélection de projets universitaires, professionnels et personnels qui témoignent de mon évolution et de ma façon d'aborder la création multimédia. Explore les fenêtres, tout est interactif 😊</p>
+                                <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+                                    <a href="#projets" class="msp-cta">🗂️ Voir mes projets</a>
+                                    <a href="#xp" class="msp-cta">💼 Mes expériences</a>
+                                    <a href="#contact" class="msp-cta">📩 Me contacter</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Footer MySpace -->
+                <div class="msp-footer">
+                    <span>© 2026 Mathilde Mathieu · MySpace</span>
+                    <span style="margin-left:auto;">Profil vu par <strong>∞</strong> visiteurs</span>
+                </div>
+            </section>
+
+            <section id="projets" class="window">
+                <div class="title-bar"><div class="title-bar-text" id="path-display" data-i18n="title-projets">📁 Mes Projets — Explorateur</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div>
+                <div class="window-body" style="padding: 0 !important;">
+                    <!-- FIX 7 : toolbar sortie de la grille, dans un wrapper dédié -->
+                    <div class="explorer-wrapper">
+                        <div id="explorer-toolbar-container"></div>
+                        <div class="explorer-container">
+                            <div class="tree-sidebar">
+                                <ul class="tree-view">
+                                    <li id="tree-root" class="tree-item" onclick="renderExplorer('root')">📂 Mes Documents</li>
+                                    <ul style="padding-left: 15px;">
+                                        <li id="tree-but" class="tree-item" onclick="renderExplorer('but')">📂 Projets BUT</li>
+                                        <ul style="padding-left: 15px;">
+                                            <li id="tree-mmi1" class="tree-item" onclick="renderExplorer('mmi1')">📁 MMI 1</li>
+                                            <li id="tree-mmi2" class="tree-item" onclick="renderExplorer('mmi2')">📁 MMI 2</li>
+                                            <li id="tree-mmi3" class="tree-item" onclick="renderExplorer('mmi3')">📁 MMI 3</li>
+                                        </ul>
+                                        <li id="tree-cosplay" class="tree-item" onclick="renderExplorer('cosplay')">📁 Alternance</li>
+                                        <li id="tree-perso" class="tree-item" onclick="renderExplorer('perso')">📁 Associatif</li>
+                                    </ul>
+                                </ul>
+                                <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid #aaa;">
+                                    <button id="btn-tout-voir" class="toutvoir-btn" onclick="renderExplorer('all')">
+                                        🔍 TOUT_VOIR.EXE
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="file-display" id="explorer-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="xp" class="window">
+                <div class="title-bar">
+                    <div class="title-bar-text" data-i18n="title-xp">💼 Mes Expériences Professionnelles</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+
+                <!-- Barre d'adresse IE -->
+                <div style="background: var(--win-gray); border-bottom: 2px solid #808080; padding: 4px 8px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                    <button class="ie-nav-btn" onclick="ieBack()" title="Précédent">◀</button>
+                    <button class="ie-nav-btn" onclick="ieForward()" title="Suivant">▶</button>
+                    <button class="ie-nav-btn" title="Actualiser">🔄</button>
+                    <div style="flex:1; min-width: 150px; display:flex; align-items:center; gap:4px;">
+                        <span style="font-size:11px; white-space:nowrap;">Adresse :</span>
+                        <div id="ie-url" style="flex:1; background:#fff; border:2px inset #808080; padding:2px 6px; font-size:11px; font-family:'MS Sans Serif',Tahoma,sans-serif;">
+                            http://mathilde.mmi/experiences/stage-perle.htm
+                        </div>
+                    </div>
+                    <button class="ie-nav-btn" style="font-size:11px; padding:2px 10px; min-width:40px;">OK</button>
+                </div>
+
+                <!-- Onglets — stage perlé en premier car en cours -->
+                <div style="background: #d0d0d0; border-bottom: 2px solid #808080; display: flex; gap: 0; padding: 4px 8px 0;">
+                    <button class="ie-tab active-tab" id="tab-stage2" onclick="switchTab('stage2')">
+                        📄 Stage perlé (en cours)
+                    </button>
+                    <button class="ie-tab" id="tab-stage1" onclick="switchTab('stage1')">
+                        📄 Stage 2ème année
+                    </button>
+                    <button class="ie-tab" id="tab-skills" onclick="switchTab('xp-skills')">
+                        🛠️ Compétences
+                    </button>
+                </div>
+
+                <!-- Contenu IE -->
+                <div style="background:#fff; padding: 0; min-height: 340px;">
+
+                    <!-- PAGE STAGE PERLÉ (affiché en premier) -->
+                    <div id="page-stage2" class="ie-page">
+                        <div class="ie-header">
+                            <div style="display:flex; align-items:center; gap:15px; flex-wrap:wrap;">
+                                <div class="ie-logo-box" style="background:#fff; overflow:hidden; padding:2px;">
+                                    <img src="ressources/logos/cosplaysmart.png" alt="Logo cosplaysmart"
+                                         alt="Logo Cosplay Smart"
+                                         style="width:44px; height:44px; object-fit:contain;"
+                                         onerror="this.parentElement.innerHTML='🎭'">
+                                </div>
+                                <div>
+                                    <h2 style="font-size:20px; margin-bottom:4px;">Cosplay Smart</h2>
+                                    <p style="font-size:12px; color:#555;">Six-Fours-les-Plages · Stage perlé · Sept. 2025 → Mai 2026</p>
+                                    <p style="font-size:11px; color:#777; margin-top:2px;">18 semaines · 30h/semaine</p>
+                                </div>
+                                <div style="margin-left:auto; display:flex; flex-wrap:wrap; gap:4px;">
+                                    <span class="ie-badge ie-badge-green">En cours 🟢</span>
+                                    <span class="ie-badge">Comm. digitale</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ie-body">
+                            <p style="margin-bottom:16px; font-style:italic; color:#333; border-left:3px solid #2a7a2a; padding-left:10px;">
+                                Stage au format perlé, alternant périodes en entreprise et formation. Autonomie et organisation indispensables pour assurer la continuité des projets.
+                            </p>
+                            <div class="ie-missions-grid">
+                                <div class="ie-mission-card">
+                                    <div class="ie-mission-icon">📱</div>
+                                    <h4>Réseaux sociaux</h4>
+                                    <p>Visuels Instagram, stories, Reels et TikTok pour animer la communauté et valoriser les produits.</p>
+                                </div>
+                                <div class="ie-mission-card">
+                                    <div class="ie-mission-icon">🖼️</div>
+                                    <h4>Supports événementiels</h4>
+                                    <p>Conception et amélioration continue des supports print (affiches, bâches, kakemonos, nappes de stand). Gestion complète de la chaîne graphique jusqu'au prêt-à-imprimer.</p>
+                                </div>
+                                <div class="ie-mission-card">
+                                    <div class="ie-mission-icon">✏️</div>
+                                    <h4>Identité visuelle</h4>
+                                    <p>Évolution de la charte graphique, personnages "chibi" de l'équipe, Calendrier de l'Avent, fonds d'écran promotionnels.</p>
+                                </div>
+                                <div class="ie-mission-card">
+                                    <div class="ie-mission-icon">🎬</div>
+                                    <h4>Contenus vidéo</h4>
+                                    <p>Tutoriels produits, Reels Instagram, vlogs YouTube — conçus selon les tendances identifiées via veille TikTok.</p>
+                                </div>
+                                <div class="ie-mission-card">
+                                    <div class="ie-mission-icon">📝</div>
+                                    <h4>Rédaction web & SEO</h4>
+                                    <p>Articles de blog et fiches produits optimisées pour le référencement naturel du catalogue e-commerce.</p>
+                                </div>
+                                <div class="ie-mission-card">
+                                    <div class="ie-mission-icon">🎪</div>
+                                    <h4>Événementiel</h4>
+                                    <p>Captation photo/vidéo en conventions, contenus live pour les réseaux, gestion du stand et soutien aux ventes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PAGE STAGE 2ÈME ANNÉE -->
+                    <div id="page-stage1" class="ie-page" style="display:none;">
+                        <div class="ie-header">
+                            <div style="display:flex; align-items:center; gap:15px; flex-wrap:wrap;">
+                                <img src="ressources/logos/cosplaysmart.png" alt="Logo cosplaysmart"
+                                         alt="Logo Cosplay Smart"
+                                         style="width:44px; height:44px; object-fit:contain;"
+                                         onerror="this.parentElement.innerHTML='🎭'">
+                                <div>
+                                    <h2 style="font-size:20px; margin-bottom:4px;">Cosplay Smart</h2>
+                                    <p style="font-size:12px; color:#555;">Six-Fours-les-Plages · Stage 2ème année · Fév. 2025 → Mars 2025</p>
+                                    <p style="font-size:11px; color:#777; margin-top:2px;">8 semaines · 35h/semaine</p>
+                                </div>
+                                <div style="margin-left:auto; display:flex; flex-wrap:wrap; gap:4px;">
+                                    <span class="ie-badge">Communication</span>
+                                    <span class="ie-badge">Création multimédia</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ie-body">
+                            <p style="margin-bottom:16px; font-style:italic; color:#333; border-left:3px solid var(--win-blue); padding-left:10px;">
+                                Stage réalisé dans le cadre du BUT MMI, au sein d'une entreprise spécialisée dans les produits et accessoires dédiés à la communauté cosplay.
+                            </p>
+                            <div class="ie-missions-grid">
+                                <div class="ie-mission-card">
+                                    <div class="ie-mission-icon">📱</div>
+                                    <h4>Réseaux sociaux</h4>
+                                    <p>Visuels Instagram, stories, Reels et TikTok pour animer la communauté et valoriser les produits.</p>
+                                </div>
+                                <div class="ie-mission-card">
+                                    <div class="ie-mission-icon">🎨</div>
+                                    <h4>Supports événementiels</h4>
+                                    <p>Affiches, bâches, kakemonos et nappes de stand pour les conventions. Chaîne complète jusqu'au prêt-à-imprimer.</p>
+                                </div>
+                                <div class="ie-mission-card">
+                                    <div class="ie-mission-icon">🎬</div>
+                                    <h4>Production vidéo</h4>
+                                    <p>Captation lors d'événements, montage de formats courts pour les réseaux, réalisation d'un vlog YouTube.</p>
+                                </div>
+                                <div class="ie-mission-card">
+                                    <div class="ie-mission-icon">🔍</div>
+                                    <h4>Veille & analyse</h4>
+                                    <p>Veille concurrentielle et analyse des tendances visuelles et éditoriales dans l'univers cosplay.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PAGE COMPÉTENCES -->
+                    <div id="page-xp-skills" class="ie-page" style="display:none;">
+                        <div class="ie-header">
+                            <h2 style="font-size:18px; margin-bottom:0;">🛠️ Compétences développées en stage</h2>
+                        </div>
+                        <div class="ie-body">
+                            <div class="ie-skills-list">
+                                <div class="ie-skill-row"><span class="ie-skill-dot" style="background:#316ac5;"></span><strong>Design graphique</strong> — identité visuelle, supports print et web</div>
+                                <div class="ie-skill-row"><span class="ie-skill-dot" style="background:#c83232;"></span><strong>Production vidéo</strong> — captation, montage, formats courts</div>
+                                <div class="ie-skill-row"><span class="ie-skill-dot" style="background:#2a7a2a;"></span><strong>Réseaux sociaux</strong> — stratégie de contenu, community management</div>
+                                <div class="ie-skill-row"><span class="ie-skill-dot" style="background:#c87832;"></span><strong>Rédaction web & SEO</strong> — articles de blog, fiches produits</div>
+                                <div class="ie-skill-row"><span class="ie-skill-dot" style="background:#7a2a7a;"></span><strong>Print & événementiel</strong> — affiches, bâches, gestion de stand</div>
+                                <div class="ie-skill-row"><span class="ie-skill-dot" style="background:#2a7a7a;"></span><strong>Autonomie & organisation</strong> — gestion de projets en parallèle</div>
+                            </div>
+                            <div style="margin-top:20px; background:#f1f1f1; border:1px inset #fff; padding:12px;">
+                                <p style="font-size:12px; color:#444;">
+                                    💡 <em>Ces deux expériences m'ont permis de passer de la découverte d'une petite structure créative à une vraie autonomie sur des missions stratégiques — un tremplin solide pour la suite.</em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Barre de statut IE -->
+                <div style="background:var(--win-gray); border-top:1px solid #808080; padding:2px 8px; display:flex; justify-content:space-between; align-items:center;">
+                    <span id="ie-status" style="font-size:11px;">✅ Page chargée</span>
+                    <span style="font-size:11px;">🔒 mathilde.mmi</span>
+                </div>
+            </section>
+
+            <section id="skills" class="window">
+                <div class="title-bar">
+                    <div class="title-bar-text" data-i18n="title-skills">🛠️ Compétences & Logiciels</div>
+                </div>
+                <div class="window-body">
+                    <div class="skills-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 35px;">
+                        
+                        <!-- LOGICIELS -->
+                        <div>
+                            <h4 style="margin-bottom: 16px; font-size: 16px; color: var(--win-blue); border-bottom: 2px solid var(--win-blue); padding-bottom: 6px;">🎨 Logiciels maîtrisés</h4>
+                            <div style="background: #f1f1f1; border: 2px inset #fff; padding: 20px; display: flex; flex-wrap: wrap; gap: 22px; align-items: center;">
+                                <div class="soft-icon-wrap" data-name="Photoshop" data-level="⭐⭐⭐⭐⭐" data-desc="Retouche, montage, visuels complexes"><img src="ressources/app/ps.png" alt="Photoshop" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="Illustrator" data-level="⭐⭐⭐⭐" data-desc="Vectoriel, logos, illustrations"><img src="ressources/app/ai.png" alt="Illustrator" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="Premiere Pro" data-level="⭐⭐⭐⭐" data-desc="Montage vidéo, étalonnage"><img src="ressources/app/pr.png" alt="Premiere Pro" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="Figma" data-level="⭐⭐⭐⭐" data-desc="UI/UX, prototypage, wireframes"><img src="ressources/app/figma.png" alt="Figma" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="Canva" data-level="⭐⭐⭐⭐⭐" data-desc="Contenus réseaux, supports print"><img src="ressources/app/c.png" alt="Canva" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="CapCut" data-level="⭐⭐⭐⭐⭐" data-desc="Vidéos courtes, Reels, TikTok"><img src="ressources/app/cc.png" alt="CapCut" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="Blender" data-level="⭐⭐⭐" data-desc="Modélisation 3D, rendu"><img src="ressources/app/bl.png" alt="Blender" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="Affinity" data-level="⭐⭐⭐⭐" data-desc="Retouche et design, alternative Adobe"><img src="ressources/app/a.png" alt="Affinity" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="Shopify" data-level="⭐⭐⭐⭐" data-desc="CMS e-commerce, thèmes, SEO"><img src="ressources/app/sh.png" alt="Shopify" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="InDesign" data-level="⭐⭐⭐" data-desc="Mise en page, print, édition"><img src="ressources/app/in.png" alt="InDesign" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="VS Code" data-level="⭐⭐⭐" data-desc="HTML, CSS, JS, PHP"><img src="ressources/app/vsc.png" alt="VS Code" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="WordPress" data-level="⭐⭐⭐⭐" data-desc="Sites vitrines, blog, plugins"><img src="ressources/app/wp.png" alt="WordPress" class="app-icon-skill"></div>
+                            </div>
+                        </div>
+
+                        <!-- TOOLTIP global -->
+                        <div id="skill-tooltip" style="
+                            position: fixed;
+                            display: none;
+                            z-index: 9998;
+                            background: #ffffcc;
+                            border: 1px solid #000;
+                            padding: 6px 10px;
+                            font-size: 11px;
+                            font-family: 'MS Sans Serif', Tahoma, sans-serif;
+                            box-shadow: 2px 2px 0 #808080;
+                            pointer-events: none;
+                            max-width: 180px;
+                            line-height: 1.5;
+                        ">
+                            <div id="tooltip-name" style="font-weight:bold; margin-bottom:2px;"></div>
+                            <div id="tooltip-level" style="margin-bottom:2px;"></div>
+                            <div id="tooltip-desc" style="color:#444;"></div>
+                        </div>
+
+                        <!-- MSN SOFT SKILLS -->
+                        <div>
+                            <h4 style="margin-bottom: 16px; font-size: 16px; color: var(--win-blue); border-bottom: 2px solid var(--win-blue); padding-bottom: 6px;">🤝 Soft Skills</h4>
+
+                            <!-- Fenêtre MSN -->
+                            <div style="border: 2px solid; border-color: #fff #808080 #808080 #fff; box-shadow: 2px 2px 0 #000;">
+
+                                <!-- Barre de titre MSN bleue dégradée -->
+                                <div style="background: linear-gradient(90deg, #1e5799, #316ac5, #72aade); padding: 4px 8px; display: flex; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 6px;">
+                                        <img src="https://win98icons.alexmeub.com/icons/png/msn2-0.png" alt="MSN Messenger" style="width:16px; height:16px;" onerror="this.style.display='none'">
+                                        <span style="color:white; font-size:11px; font-weight:bold; font-family:'MS Sans Serif',Tahoma,sans-serif;">MSN Messenger — Mathilde (En ligne) 🟢</span>
+                                    </div>
+                                    <div style="display:flex; gap:2px;">
+                                        <button style="width:16px;height:14px;font-size:11px;padding:0;line-height:1;">_</button>
+                                        <button style="width:16px;height:14px;font-size:11px;padding:0;line-height:1;">□</button>
+                                        <button style="width:16px;height:14px;font-size:11px;padding:0;line-height:1;">✕</button>
+                                    </div>
+                                </div>
+
+                                <!-- Barre de contact -->
+                                <div style="background: #e8f0fb; border-bottom: 1px solid #aac; padding: 6px 10px; display:flex; align-items:center; gap:8px;">
+                                    <div style="width:32px;height:32px;background:#c0c0c0;border:1px solid #808080;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👩‍🎨</div>
+                                    <div>
+                                        <div style="font-size:11px;font-weight:bold;">Mathilde Mathieu</div>
+                                        <div style="font-size:11px;color:#555;">« Créativité, curiosité et pixel-perfect ✨ »</div>
+                                    </div>
+                                </div>
+
+                                <!-- Zone de chat -->
+                                <div id="msn-chat" style="height:200px; overflow-y:auto; background:#fff; padding:10px; font-size:11px; border-bottom:1px solid #aaa; line-height:1.6;">
+                                    <div style="color:#808080; font-style:italic; text-align:center; margin-bottom:12px; font-size:11px;">
+                                        ── Mathilde a rejoint la conversation ──
+                                    </div>
+                                    <div class="msn-bubble msn-bubble-them">
+                                        <span class="msn-name-them">Recruteur :</span> Salut Mathilde ! Pour mieux te connaître, clique sur une de tes qualités 👇
+                                    </div>
+                                </div>
+
+                                <!-- Boutons soft skills -->
+                                <div style="background:#f0f4ff; border-bottom:1px solid #aaa; padding:8px 10px;">
+                                    <div style="font-size:11px; color:#555; margin-bottom:5px;">Clique sur une qualité pour en savoir plus :</div>
+                                    <div style="display:flex; flex-wrap:wrap; gap:4px;">
+                                        <button class="msn-btn" onclick="sendSkill('Créativité', '✏️ Je cherche toujours l\'angle inattendu, que ce soit en design, en code ou en communication.')">✏️ Créativité</button>
+                                        <button class="msn-btn" onclick="sendSkill('Curiosité', '🔍 Je suis constamment en veille sur les nouveaux outils, tendances UX et cultures visuelles.')">🔍 Curiosité</button>
+                                        <button class="msn-btn" onclick="sendSkill('Empathie', '💬 Je me mets facilement à la place des utilisateurs pour concevoir des expériences qui leur parlent vraiment.')">💬 Empathie</button>
+                                        <button class="msn-btn" onclick="sendSkill('Intelligence émotionnelle', '🧠 Je sais lire les dynamiques de groupe et adapter ma communication pour que tout le monde se sente entendu.')">🧠 Intel. émotionnelle</button>
+                                        <button class="msn-btn" onclick="sendSkill('Travail d\'équipe', '🤝 J\'adore co-créer ! Les meilleures idées naissent de l\'échange et de la confiance mutuelle.')">🤝 Équipe</button>
+                                        <button class="msn-btn" onclick="sendSkill('Adaptabilité', '🔄 Nouveaux outils, nouveaux contextes, nouvelles contraintes — je m\'ajuste vite et sans stress.')">🔄 Adaptabilité</button>
+                                    </div>
+                                </div>
+
+                                <!-- Zone de saisie factice -->
+                                <div style="background:#f9f9f9; padding:6px 10px; display:flex; gap:6px; align-items:center;">
+                                    <div style="flex:1; border:1px inset #808080; background:#fff; height:26px; padding:4px 6px; font-size:11px; color:#aaa; overflow:hidden;">Écris un message...</div>
+                                    <button style="font-size:11px; padding:2px 8px;">Envoyer</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="engagement" class="window">
+                <div class="title-bar"><div class="title-bar-text" data-i18n="title-engagement">🤝 Engagement Associatif</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div>
+                <div class="window-body">
+                    <p style="font-size:12px; color:#555; margin-bottom:20px; font-style:italic;">// Engagements associatifs — rôles actifs en dehors des cours</p>
+                    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+
+                        <div class="engage-card">
+                            <div class="engage-header" style="background: linear-gradient(90deg, #c45e9e, #e8934a);">
+                                <div class="engage-logo-wrap"><img src="ressources/logos/bde.png" alt="BDE" class="engage-logo"></div>
+                                <div>
+                                    <div class="engage-title">BDE MM'In</div>
+                                    <div class="engage-role">VP Pôle Audiovisuel <span style="opacity:0.7; font-size:11px;">· 2025–2026</span></div>
+                                </div>
+                                <div class="engage-badge">ACTIVE</div>
+                            </div>
+                            <div class="engage-body">
+                                <!-- Onglets internes BDE -->
+                                <div style="display:flex; gap:0; margin-bottom:10px; border-bottom:2px solid #c0c0c0;">
+                                    <button class="bde-tab active-bde-tab" onclick="switchBde('bde-now', this)">2025–26</button>
+                                    <button class="bde-tab" onclick="switchBde('bde-prev', this)">2024–25</button>
+                                </div>
+                                <div id="bde-now">
+                                    <p>Je dirige le pôle audiovisuel avec mon Chargé de Mission : couverture photo & vidéo des événements, vlogs mensuels, coordination avec le pôle communication pour tous les aspects visuels du BDE.</p>
+                                    <p style="margin-top:6px;">Je missionne et encadre mon CM, et je maintiens une cohésion forte avec l'ensemble du bureau.</p>
+                                    <div class="engage-tags">
+                                        <span class="etag">Direction audiovisuelle</span>
+                                        <span class="etag">Management</span>
+                                        <span class="etag">Photo & Vidéo</span>
+                                        <span class="etag">Coordination</span>
+                                    </div>
+                                </div>
+                                <div id="bde-prev" style="display:none;">
+                                    <p>Vice-Présidente chargée de la communication interne : coordination de l'ensemble des pôles, vérification des échanges d'informations et remontées régulières au bureau.</p>
+                                    <div class="engage-tags">
+                                        <span class="etag">Communication interne</span>
+                                        <span class="etag">Coordination</span>
+                                        <span class="etag">VP Bureau</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="engage-card">
+                            <div class="engage-header" style="background: linear-gradient(90deg, #1a3a6b, #2e6aad);">
+                                <div class="engage-logo-wrap"><img src="ressources/logos/fedet.webp" alt="FEDET" class="engage-logo"></div>
+                                <div>
+                                    <div class="engage-title">FEDET</div>
+                                    <div class="engage-role">Membre active & bénévole</div>
+                                </div>
+                                <div class="engage-badge">BÉNÉVOLE</div>
+                            </div>
+                            <div class="engage-body">
+                                <p>Fédération des Étudiants Toulonnais — le BDE MM'In est association adhérante. J'y participe activement à plusieurs niveaux :</p>
+                                <div style="margin: 10px 0; display:flex; flex-direction:column; gap:7px;">
+                                    <div class="fedet-item">🎓 <strong>Formations :</strong> 2 week-ends de formation (Oct. 2025, Avr. 2025) + journées Nov. 2024</div>
+                                    <div class="fedet-item">🛒 <strong>Distribution alimentaire :</strong> chaque jeudi — réception des denrées, rangement, puis ouverture aux étudiants (3€ pour ~40–50€ de courses)</div>
+                                    <div class="fedet-item">🏦 <strong>Collecte Banque Alimentaire :</strong> 2 week-ends par an de récolte alimentaire</div>
+                                </div>
+                                <div class="engage-tags">
+                                    <span class="etag">Solidarité étudiante</span>
+                                    <span class="etag">Logistique</span>
+                                    <span class="etag">Formation associative</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <div class="passions-wrapper">
+
+            <section id="passions" class="window" style="min-width:0;">
+                <div class="title-bar"><div class="title-bar-text">🎨 untitled — Paint</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div>
+
+                <!-- Menubar Paint -->
+                <div class="paint-menubar">
+                    <span>File</span><span>Edit</span><span>View</span><span>Image</span><span>Options</span><span>Help</span>
+                </div>
+
+                <!-- Corps Paint : toolbar gauche + canvas -->
+                <div style="display:flex; background:#c0c0c0; border-top:1px solid #808080;">
+
+                    <!-- Barre d'outils gauche -->
+                    <div class="paint-toolbar-left">
+                        <div class="pt-tool selected">⬚</div>
+                        <div class="pt-tool">⬜</div>
+                        <div class="pt-tool">✏️</div>
+                        <div class="pt-tool">🔍</div>
+                        <div class="pt-tool">🪣</div>
+                        <div class="pt-tool">🔤</div>
+                        <div class="pt-tool">✂️</div>
+                        <div class="pt-tool">💧</div>
+                        <div class="pt-tool">📐</div>
+                        <div class="pt-tool">🖊️</div>
+                        <div class="pt-tool">▭</div>
+                        <div class="pt-tool">⬡</div>
+                        <div class="pt-tool">◯</div>
+                        <div class="pt-tool">◔</div>
+                        <!-- Sélecteur couleur actif -->
+                        <div class="pt-color-preview">
+                            <div style="width:18px;height:18px;background:#000;border:1px solid #808080;"></div>
+                            <div style="width:14px;height:14px;background:#fff;border:1px solid #808080;margin-top:-8px;margin-left:6px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Zone centrale : onglets + canvas -->
+                    <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+
+                        <!-- Onglets -->
+                        <div style="display:flex; background:#d0d0d0; border-bottom:1px solid #808080; padding:4px 6px 0; flex-wrap:wrap;">
+                            <button class="paint-tab active-paint-tab" id="ptab-dessin"  onclick="switchPaintTab('dessin')">🖌️ Dessin</button>
+                            <button class="paint-tab" id="ptab-photo"   onclick="switchPaintTab('photo')">📷 Photo</button>
+                            <button class="paint-tab" id="ptab-cosplay" onclick="switchPaintTab('cosplay')">🎭 Cosplay</button>
+                            <button class="paint-tab" id="ptab-mode"    onclick="switchPaintTab('mode')">👗 Mode</button>
+                        </div>
+
+                        <!-- Canvas blanc avec carousel -->
+                        <div style="background:#808080; padding:6px; flex:1;">
+                            <div style="background:#fff; border:2px inset #808080; position:relative; overflow:hidden;">
+
+                                <div class="paint-carousel insta-mode" id="carousel-cosplay" style="display:none;">
+                                    <div class="insta-nav">
+                                        <button class="insta-nav-btn" onclick="instaNav('cosplay',-1)">◀ Préc.</button>
+                                        <span class="insta-counter" id="insta-cosplay-counter">1 / 3</span>
+                                        <button class="insta-nav-btn" onclick="instaNav('cosplay',1)">Suiv. ▶</button>
+                                    </div>
+                                    <!-- Slide 1 -->
+                                    <div class="insta-slide active" id="insta-cosplay-0">
+                                        <blockquote class="instagram-media"
+                                            data-instgrm-permalink="https://www.instagram.com/p/CsbniRxrJcy/"
+                                            data-instgrm-version="14"
+                                            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:320px; width:100%;">
+                                        </blockquote>
+                                    </div>
+                                    <!-- Slide 2 -->
+                                    <div class="insta-slide" id="insta-cosplay-1">
+                                        <blockquote class="instagram-media"
+                                            data-instgrm-permalink="https://www.instagram.com/p/CiffdK3rwKr/"
+                                            data-instgrm-version="14"
+                                            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:320px; width:100%;">
+                                        </blockquote>
+                                    </div>
+                                    <!-- Slide 3 -->
+                                    <div class="insta-slide" id="insta-cosplay-2">
+                                        <blockquote class="instagram-media"
+                                            data-instgrm-permalink="https://www.instagram.com/p/CMhjskMrN3H/"
+                                            data-instgrm-version="14"
+                                            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:320px; width:100%;">
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <div class="paint-carousel insta-mode" id="carousel-dessin">
+                                    <div class="insta-nav">
+                                        <button class="insta-nav-btn" onclick="instaNav('dessin',-1)">◀ Préc.</button>
+                                        <span class="insta-counter" id="insta-dessin-counter">1 / 3</span>
+                                        <button class="insta-nav-btn" onclick="instaNav('dessin',1)">Suiv. ▶</button>
+                                    </div>
+                                    <!-- Slide 1 -->
+                                    <div class="insta-slide active" id="insta-dessin-0">
+                                        <blockquote class="instagram-media"
+                                            data-instgrm-permalink="https://www.instagram.com/p/CjQuyriIwHJ/"
+                                            data-instgrm-version="14"
+                                            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:320px; width:100%;">
+                                        </blockquote>
+                                    </div>
+                                    <!-- Slide 2 -->
+                                    <div class="insta-slide" id="insta-dessin-1">
+                                        <blockquote class="instagram-media"
+                                            data-instgrm-permalink="https://www.instagram.com/p/CAaKoYEnoP0/"
+                                            data-instgrm-version="14"
+                                            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:320px; width:100%;">
+                                        </blockquote>
+                                    </div>
+                                    <!-- Slide 3 -->
+                                    <div class="insta-slide" id="insta-dessin-2">
+                                        <blockquote class="instagram-media"
+                                            data-instgrm-permalink="https://www.instagram.com/p/CyY-zaxI129/"
+                                            data-instgrm-version="14"
+                                            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:320px; width:100%;">
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <div class="paint-carousel" id="carousel-mode" style="display:none;">
+                                    <div class="carousel-track" style="touch-action:pan-y;" id="track-mode">
+                                        <img src="ressources/passions/mode_1.jpg" alt="Mode 1" class="carousel-slide">
+                                        <img src="ressources/passions/mode_2.jpg" alt="Mode 2" class="carousel-slide">
+                                        <img src="ressources/passions/mode_3.jpg" alt="Mode 3" class="carousel-slide">
+                                    </div>
+                                    <button class="carousel-btn carousel-prev" onclick="prevSlide('mode')">&#9664;</button>
+                                    <button class="carousel-btn carousel-next" onclick="nextSlide('mode')">&#9654;</button>
+                                    <div class="carousel-dots" id="dots-mode"></div>
+                                </div>
+                                <div class="paint-carousel" id="carousel-photo" style="display:none;">
+                                    <div class="carousel-track" style="touch-action:pan-y;" id="track-photo">
+                                        <img src="ressources/passions/photo_1.jpg" alt="Photo 1" class="carousel-slide">
+                                        <img src="ressources/passions/photo_2.jpg" alt="Photo 2" class="carousel-slide">
+                                        <img src="ressources/passions/photo_3.jpg" alt="Photo 3" class="carousel-slide">
+                                    </div>
+                                    <button class="carousel-btn carousel-prev" onclick="prevSlide('photo')">&#9664;</button>
+                                    <button class="carousel-btn carousel-next" onclick="nextSlide('photo')">&#9654;</button>
+                                    <div class="carousel-dots" id="dots-photo"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Texte par onglet -->
+                        <div id="paint-text-cosplay" class="paint-tab-text" style="display:none;">🎭 <strong>Cosplay</strong> — Confectionner un costume de A à Z, c'est à la fois du design, de la couture, de la sculpture et de la scénographie. J'adore le défi technique autant que l'aspect créatif.</div>
+                        <div id="paint-text-dessin"  class="paint-tab-text">🖌️ <strong>Dessin & Illustration</strong> — Le dessin est mon outil de réflexion visuelle. Esquisser une idée, créer un personnage… une pratique quotidienne qui nourrit mon sens du design.</div>
+                        <div id="paint-text-mode"    class="paint-tab-text" style="display:none;">👗 <strong>Mode & Style</strong> — La mode, c'est de la communication non-verbale. J'aime décoder les codes vestimentaires et comprendre comment une tenue raconte une histoire.</div>
+                        <div id="paint-text-photo"   class="paint-tab-text" style="display:none;">📷 <strong>Photographie</strong> — Capturer un instant, choisir son cadrage, jouer avec la lumière — la photo m'a appris à voir avant de créer.</div>
+
+                    </div>
+                </div>
+
+                <!-- Palette couleurs bas -->
+                <div class="paint-palette">
+                    <div class="paint-palette-colors">
+                        <div class="pal-cell" style="background:#000"></div>
+                        <div class="pal-cell" style="background:#fff"></div>
+                        <div class="pal-cell" style="background:#7f7f7f"></div>
+                        <div class="pal-cell" style="background:#c3c3c3"></div>
+                        <div class="pal-cell" style="background:#880015"></div>
+                        <div class="pal-cell" style="background:#ed1c24"></div>
+                        <div class="pal-cell" style="background:#ff7f27"></div>
+                        <div class="pal-cell" style="background:#fff200"></div>
+                        <div class="pal-cell" style="background:#22b14c"></div>
+                        <div class="pal-cell" style="background:#00a2e8"></div>
+                        <div class="pal-cell" style="background:#3f48cc"></div>
+                        <div class="pal-cell" style="background:#a349a4"></div>
+                        <div class="pal-cell" style="background:#b97a57"></div>
+                        <div class="pal-cell" style="background:#ffaec9"></div>
+                        <div class="pal-cell" style="background:#ffc90e"></div>
+                        <div class="pal-cell" style="background:#efe4b0"></div>
+                        <div class="pal-cell" style="background:#b5e61d"></div>
+                        <div class="pal-cell" style="background:#99d9ea"></div>
+                        <div class="pal-cell" style="background:#7092be"></div>
+                        <div class="pal-cell" style="background:#c8bfe7"></div>
+                    </div>
+                    <span id="paint-status-label" style="font-size:11px; color:#333; margin-left:10px;">🖌️ Dessin</span>
+                    <span style="margin-left:auto; font-size:11px; color:#333; margin-right:8px;" id="paint-counter">100%</span>
+                </div>
+
+            </section>
+
+            <!-- WMP adapté à la hauteur de Paint -->
+            <section id="passions-wmp" class="window" style="min-width:0; display:flex; flex-direction:column;">
+                <div class="title-bar"><div class="title-bar-text">🎵 Windows Media Player — Mes Passions</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div>
+                <div class="window-body" style="padding:0 !important; flex:1; display:flex; flex-direction:column;">
+
+                    <!-- Pochette + paroles -->
+                    <div style="display:flex; gap:0; background:#1a1a2e; flex:1;">
+                        <!-- Pochette + visualiseur -->
+                        <div style="width:160px; flex-shrink:0; display:flex; flex-direction:column;">
+                            <img id="wmp-cover" src="ressources/passions/japon.jpg" alt="Pochette"
+                                 style="width:160px; height:160px; object-fit:cover; display:block;"
+                                 onerror="this.style.background='#333'">
+                            <div id="wmp-visualizer" style="flex:1; min-height:30px; background:#0d0d1a; display:flex; align-items:flex-end; justify-content:center; gap:2px; padding:4px;">
+                                <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+                                <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+                                <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+                            </div>
+                        </div>
+                        <!-- Paroles -->
+                        <div style="flex:1; padding:12px 14px; overflow-y:auto;">
+                            <div id="wmp-track-title" style="color:#7ec8e3; font-size:13px; font-weight:bold; margin-bottom:8px;">⛩️ Culture Japonaise</div>
+                            <div id="wmp-lyrics" style="color:#ccc; font-size:11px; line-height:1.9; font-style:italic; white-space:pre-line;">
+Appuie sur ▶ Play pour découvrir...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Playlist -->
+                    <div style="background:#0f0f1f; border-top:1px solid #333; flex:1; overflow-y:auto; min-height:0;">
+                        <div style="color:#555; font-size:10px; padding:4px 10px; border-bottom:1px solid #1a1a2e; letter-spacing:2px;">— PLAYLIST —</div>
+                        <div class="wmp-track" id="wtrack-0" onclick="wmpLoadTrack(0)">
+                            <span class="wmp-tracknum">01</span>
+                            <span class="wmp-trackname">⛩️ Culture Japonaise</span>
+                            <span class="wmp-trackdur">0:30</span>
+                        </div>
+                        <div class="wmp-track" id="wtrack-1" onclick="wmpLoadTrack(1)">
+                            <span class="wmp-tracknum">02</span>
+                            <span class="wmp-trackname">🎵 Musique</span>
+                            <span class="wmp-trackdur">0:30</span>
+                        </div>
+                        <div class="wmp-track" id="wtrack-2" onclick="wmpLoadTrack(2)">
+                            <span class="wmp-tracknum">03</span>
+                            <span class="wmp-trackname">🎬 Cinéma & Vidéo</span>
+                            <span class="wmp-trackdur">0:30</span>
+                        </div>
+                        <div class="wmp-track" id="wtrack-3" onclick="wmpLoadTrack(3)">
+                            <span class="wmp-tracknum">04</span>
+                            <span class="wmp-trackname">🎮 Gaming Narratif</span>
+                            <span class="wmp-trackdur">0:30</span>
+                        </div>
+                    </div>
+
+                    <!-- Barre progression -->
+                    <div style="background:#0d0d1a; padding:6px 10px;">
+                        <div style="background:#333; height:4px; border-radius:2px;">
+                            <div id="wmp-progress" style="background:#7ec8e3; height:4px; border-radius:2px; width:0%; transition:width 0.3s;"></div>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; color:#555; font-size:11px; margin-top:2px;">
+                            <span id="wmp-time">0:00</span><span id="wmp-duration">0:30</span>
+                        </div>
+                    </div>
+
+                    <!-- Contrôles -->
+                    <div style="background:#1a1a2e; padding:6px 10px; display:flex; align-items:center; gap:6px; border-top:1px solid #333;">
+                        <button class="wmp-btn" onclick="wmpPrev()">⏮</button>
+                        <button class="wmp-btn wmp-play" id="wmp-playbtn" onclick="wmpPlay()">▶</button>
+                        <button class="wmp-btn" onclick="wmpNext()">⏭</button>
+                        <div style="flex:1; margin-left:8px; color:#7ec8e3; font-size:11px;" id="wmp-status">Prêt</div>
+                        <span style="color:#444; font-size:13px;">🔊</span>
+                    </div>
+
+                </div>
+            </section>
+
+            </div> <!-- fin passions-wrapper -->
+
+            <section id="contact" class="desktop-footer">
+                <a href="https://www.linkedin.com/in/mathilde-mathieu/" target="_blank" class="desktop-icon">
+                    <img src="https://win98icons.alexmeub.com/icons/png/network_normal_two_pcs-2.png" alt="Linkedin">
+                    <span>Mon LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/mathou.crea" target="_blank" class="desktop-icon">
+                    <img src="https://win98icons.alexmeub.com/icons/png/camera-0.png" alt="Insta">
+                    <span>Insta Créatif</span>
+                </a>
+                <a href="ressources/CV_Mathilde_Mathieu.pdf" target="_blank" class="desktop-icon">
+                    <img src="https://win98icons.alexmeub.com/icons/png/write_wordpad-1.png" alt="CV">
+                    <span>Mon CV (PDF)</span>
+                </a>
+                <a href="#" class="desktop-icon" onclick="openMail(); return false;">
+                    <img src="https://win98icons.alexmeub.com/icons/png/outlook_express-2.png" alt="Mail" onerror="this.src='https://win98icons.alexmeub.com/icons/png/envelope_closed-0.png'">
+                    <span>Me contacter</span>
+                </a>
+                <a href="#" class="desktop-icon" onclick="openLivret(); return false;">
+                    <img src="https://win98icons.alexmeub.com/icons/png/book_main-0.png" alt="Livret d'or">
+                    <span>Livret d'or</span>
+                </a>
+                <a href="#" class="desktop-icon" onclick="openLegals()">
+                    <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="Legals">
+                    <span>Mentions_Legales.txt</span>
+                </a>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODALE PROJET -->
+    <div id="project-modal" class="window">
+        <div class="title-bar">
+            <div class="title-bar-text" id="m-title" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:calc(100% - 60px);">Résumé du fichier</div>
+            <div class="title-bar-controls"><button aria-label="Close" onclick="closeModal()"></button></div>
+        </div>
+        <div class="window-body" style="padding:16px !important; display:flex; flex-direction:column; max-height:80vh; overflow:hidden;">
+            <img id="m-img" src="" alt="Aperçu du projet"
+                 style="width:100%; max-height:280px; object-fit:contain; border:2px inset #fff; margin-bottom:12px; background:#f0f0f0; flex-shrink:0;">
+            <div id="m-desc" style="padding:10px; background:#eee; border:1px inset #fff; font-size:12px; line-height:1.6; overflow-y:auto; flex:1;"></div>
+            <div style="display:flex; justify-content:space-between; margin-top:12px; flex-shrink:0;">
+                <button onclick="openPanel()" style="font-weight:bold;">En savoir plus &gt;&gt;</button>
+                <button onclick="closeModal()">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANNEAU DÉTAIL -->
+    <div id="details-panel">
+        <div class="title-bar">
+            <div class="title-bar-text" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:calc(100% - 60px);">Details_Projet.doc</div>
+            <div class="title-bar-controls"><button aria-label="Close" onclick="closePanel()"></button></div>
+        </div>
+        <div class="window-body" style="overflow-y:auto; height:calc(100vh - 50px);">
+            <h2 id="p-name" style="font-size:16px; word-break:break-word; margin-bottom:10px;"></h2>
+            <hr><br>
+            <div id="p-content-full"></div>
+            <br><button onclick="closePanel()" style="width:100%;">Quitter</button>
+        </div>
+    </div>
+
+    <!-- MODALE MENTIONS LÉGALES -->
+    <div id="legals-modal" class="window" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 500px; z-index: 9000; display: none;">
+        <div class="title-bar">
+            <div class="title-bar-text">Mentions_Legales.txt - Bloc-notes</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="closeLegals()"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div style="background:#fff; border:1px inset #808080; padding:16px 18px; height:380px; overflow-y:auto; font-family:'Fixedsys',monospace !important; font-size:12px; line-height:1.7;">
+
+                <h4 style="margin-bottom:6px; text-decoration:underline; font-size:12px;">1. ÉDITRICE DU SITE</h4>
+                <p>
+                    Ce site est un portfolio personnel édité par :<br>
+                    <strong>Mathilde Mathieu</strong>, particulière majeure<br>
+                    Étudiante en BUT Métiers du Multimédia et de l'Internet (MMI)<br>
+                    Email : <a href="mailto:mathilde.mathieu24@gmail.com">mathilde.mathieu24@gmail.com</a>
+                </p>
+                <p style="margin-top:6px; color:#555; font-size:11px;">
+                    Conformément à l'art. 6-III-2 de la loi LCEN du 21 juin 2004, l'éditrice étant une personne physique, 
+                    seuls son nom, prénom et commune de résidence sont requis. Ces informations sont disponibles sur demande 
+                    à l'adresse email ci-dessus.
+                </p>
+                <br>
+
+                <h4 style="margin-bottom:6px; text-decoration:underline; font-size:12px;">2. HÉBERGEMENT</h4>
+                <p id="legal-host">
+                    Hébergeur : <em>à renseigner avant mise en ligne</em><br>
+                    <span style="color:#888; font-size:11px;">
+                        → Netlify : Netlify Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA<br>
+                        → GitHub Pages : GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA
+                    </span>
+                </p>
+                <br>
+
+                <h4 style="margin-bottom:6px; text-decoration:underline; font-size:12px;">3. PROPRIÉTÉ INTELLECTUELLE</h4>
+                <p>
+                    L'ensemble des contenus de ce site (textes, visuels, maquettes, projets personnels) 
+                    est la propriété exclusive de <strong>Mathilde Mathieu</strong>, sauf mention contraire.<br><br>
+                    Les projets réalisés dans le cadre du BUT MMI ou en stage sont la propriété des commanditaires 
+                    concernés et sont présentés ici à titre de démonstration pédagogique uniquement.<br><br>
+                    Toute reproduction, même partielle, est soumise à autorisation préalable.
+                </p>
+                <br>
+
+                <h4 style="margin-bottom:6px; text-decoration:underline; font-size:12px;">4. DONNÉES PERSONNELLES</h4>
+                <p>
+                    Ce site ne collecte aucune donnée personnelle via cookies de tracking ou analytique.<br>
+                    Le formulaire de contact transmet les messages via <strong>Formspree</strong> 
+                    (<a href="https://formspree.io" target="_blank">formspree.io</a>) — leur politique de 
+                    confidentialité s'applique aux données transmises.<br>
+                    Le livret d'or est stocké localement dans votre navigateur (localStorage) 
+                    et n'est pas envoyé à un serveur.
+                </p>
+                <br>
+
+                <h4 style="margin-bottom:6px; text-decoration:underline; font-size:12px;">5. CRÉDITS & RESSOURCES TIERCES</h4>
+                <ul style="margin-left:18px; line-height:1.9;">
+                    <li>Interface rétro : <a href="https://jdan.github.io/98.css/" target="_blank">98.css</a> — Jordan Scales (MIT License)</li>
+                    <li>Icônes Windows 98 : <a href="https://win98icons.alexmeub.com/" target="_blank">win98icons.alexmeub.com</a> — Alex Meub</li>
+                    <li>Police : Fixedsys 500c — C. Katelaar (freeware)</li>
+                    <li>Envoi formulaire : <a href="https://formspree.io" target="_blank">Formspree</a></li>
+                    <li>Modèle d'IA générative (génération d'icônes) : ChatGPT / DALL·E — OpenAI</li>
+                </ul>
+                <br>
+
+                <h4 style="margin-bottom:6px; text-decoration:underline; font-size:12px;">6. LIENS EXTERNES</h4>
+                <p>
+                    Ce site contient des liens vers des sites tiers (LinkedIn, Instagram, Cosplay Smart…). 
+                    Mathilde Mathieu ne peut être tenue responsable du contenu de ces sites externes.
+                </p>
+                <br>
+
+                <p style="color:#888; font-size:11px; border-top:1px solid #ccc; padding-top:8px;">
+                    Dernière mise à jour : mars 2026 · Fait avec ❤️ et beaucoup de nostalgie Windows 98
+                </p>
+            </div>
+            <div style="text-align:center; margin-top:12px;">
+                <button onclick="closeLegals()" style="width:80px;">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FENÊTRE OUTLOOK EXPRESS CONTACT -->
+    <div id="mail-modal" class="window" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:95%; max-width:580px; z-index:9100; display:none; box-shadow: 4px 4px 0 #000;">
+
+        <div class="title-bar">
+            <div class="title-bar-text">📧 Nouveau message — Outlook Express</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close" onclick="closeMail()"></button>
+            </div>
+        </div>
+
+        <!-- Champs en-tête -->
+        <div class="oe-headers">
+            <div class="oe-field">
+                <span class="oe-label">À :</span>
+                <span class="oe-value" style="color:#000080; font-weight:bold;"><a href="mailto:mathilde.mathieu24@gmail.com">mathilde.mathieu24@gmail.com</a></span>
+            </div>
+            <div class="oe-field">
+                <span class="oe-label">Votre e-mail :</span>
+                <input id="mail-from" type="email" placeholder="votre@email.com" class="oe-input" required>
+            </div>
+            <div class="oe-field">
+                <span class="oe-label">Prénom :</span>
+                <input id="mail-name" type="text" placeholder="Votre prénom" class="oe-input">
+            </div>
+            <div class="oe-field">
+                <span class="oe-label">Raison :</span>
+                <select id="mail-reason" class="oe-input">
+                    <option value="">-- Choisissez --</option>
+                    <option value="Proposition de stage / alternance">💼 Proposition de stage / alternance</option>
+                    <option value="Opportunité freelance">🎨 Opportunité freelance</option>
+                    <option value="Collaboration créative">🤝 Collaboration créative</option>
+                    <option value="Question sur un projet">📁 Question sur un projet</option>
+                    <option value="Prise de contact professionnelle">📩 Prise de contact</option>
+                    <option value="Autre">✉️ Autre</option>
+                </select>
+            </div>
+            <div class="oe-field">
+                <span class="oe-label">Objet :</span>
+                <input id="mail-subject" type="text" placeholder="Objet du message..." data-i18n="mail-placeholder-subject" class="oe-input">
+            </div>
+        </div>
+
+        <!-- Zone de texte -->
+        <textarea id="mail-body" placeholder="Votre message..." data-i18n="mail-placeholder-body" class="oe-body"></textarea>
+
+        <!-- Bas de fenêtre : statut + boutons -->
+        <div class="oe-statusbar">
+            <span id="mail-status">✏️ Prêt</span>
+            <div style="margin-left:auto; display:flex; gap:6px;">
+                <button onclick="closeMail()" style="padding:3px 14px; font-size:12px;">Annuler</button>
+                <button onclick="sendMail()" style="display:flex; align-items:center; gap:6px; padding:3px 16px; font-size:12px;">
+                    <img src="https://win98icons.alexmeub.com/icons/png/mail_send-0.png" width="16" alt="" onerror="this.style.display='none'">
+                    Envoyer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE LIVRET D'OR -->
+    <div id="livret-modal" class="window" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:92%; max-width:520px; z-index:9100; display:none;">
+        <div class="title-bar">
+            <div class="title-bar-text">📖 Livret d'or — Laissez un message !</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close" onclick="closeLivret()"></button>
+            </div>
+        </div>
+        <!-- Formulaire -->
+        <div class="window-body" style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; gap:8px;">
+                <div style="flex:1;">
+                    <label style="font-size:11px; display:block; margin-bottom:3px;">Votre prénom *</label>
+                    <input id="livret-name" type="text" placeholder="Ex : Sophie" style="width:100%; box-sizing:border-box; border:2px inset #aaa; padding:3px 6px; font-size:12px; font-family:'MS Sans Serif',Tahoma,sans-serif;">
+                </div>
+                <div style="flex:1;">
+                    <label style="font-size:11px; display:block; margin-bottom:3px;">Votre rôle / contexte</label>
+                    <input id="livret-role" type="text" placeholder="Ex : Recruteur chez Studio X" style="width:100%; box-sizing:border-box; border:2px inset #aaa; padding:3px 6px; font-size:12px; font-family:'MS Sans Serif',Tahoma,sans-serif;">
+                </div>
+            </div>
+            <div>
+                <label style="font-size:11px; display:block; margin-bottom:3px;">Votre message *</label>
+                <textarea id="livret-msg" rows="4" placeholder="Laissez un commentaire..." style="width:100%; box-sizing:border-box; border:2px inset #aaa; padding:6px; font-size:12px; font-family:'MS Sans Serif',Tahoma,sans-serif; resize:vertical;"></textarea>
+            </div>
+            <div style="display:flex; justify-content:flex-end; gap:8px; align-items:center;">
+                <span id="livret-status" style="font-size:11px; color:#006600; flex:1;"></span>
+                <button onclick="submitLivret()">✉️ Signer le livret</button>
+                <button onclick="closeLivret()">Fermer</button>
+            </div>
+
+            <!-- Affichage des messages -->
+            <div style="border-top:1px solid #c0c0c0; padding-top:10px;">
+                <div style="font-size:11px; font-weight:bold; margin-bottom:6px; color:#555;">— Messages précédents —</div>
+                <div id="livret-entries" style="max-height:180px; overflow-y:auto; display:flex; flex-direction:column; gap:6px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX IMAGE -->
+    <div id="lightbox" onclick="closeLightbox()" style="
+        display:none; position:fixed; inset:0; z-index:9500;
+        background:rgba(0,0,0,0.85); cursor:zoom-out;
+        align-items:center; justify-content:center; padding:20px;
+    ">
+        <div class="window" style="max-width:90vw; max-height:90vh; display:flex; flex-direction:column;" onclick="event.stopPropagation()">
+            <div class="title-bar">
+                <div class="title-bar-text" id="lightbox-title">Aperçu</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeLightbox()"></button>
+                </div>
+            </div>
+            <div style="overflow:auto; background:#1a1a1a; display:flex; align-items:center; justify-content:center; padding:10px;">
+                <img id="lightbox-img" src="" alt="Aperçu agrandi"
+                     style="max-width:85vw; max-height:78vh; object-fit:contain; display:block;">
+            </div>
+            <div style="background:var(--win-gray); border-top:1px solid #808080; padding:4px 10px; font-size:11px; color:#555; display:flex; justify-content:space-between; align-items:center;">
+                <span>🔍 Cliquer en dehors pour fermer</span>
+                <button onclick="closeLightbox()" style="font-size:11px;">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const projects = {
+        root: [
+            { id: 'but', name: 'Projets BUT', isFolder: true },
+            { id: 'cosplay', name: 'Alternance', isFolder: true }
+        ],
+        but: [
+            { id: 'mmi1', name: 'MMI 1', isFolder: true },
+            { id: 'mmi2', name: 'MMI 2', isFolder: true },
+            { id: 'mmi3', name: 'MMI 3', isFolder: true }
+        ],
+        mmi1: [
+            {
+                id: 'sidewaves',
+                name: 'SideWaves_Backend_BDD.php',
+                date: '2024-04',
+                img: 'ressources/projets/sidewaves2.png',
+                screenshots: [
+                    'ressources/projets/sidewaves2.png',
+                    'ressources/projets/sidewaves3.png',
+                    'ressources/projets/sidewaves4.png',
+                    'ressources/projets/sidewaves6.png',
+                    'ressources/projets/sidewaves7.png'
+                ],
+                outils: ['vsc','html','css','php','sql'],
+                desc: "Création d'un site vitrine avec base de données pour une agence d'infographie. Un projet complet alliant développement backend, modélisation SQL et mise en ligne.",
+                quoi: "Réalisation d'un site web vitrine pour une agence fictive d'infographie, incluant un outil de gestion de projet intégré. Le site permet de recenser et d'afficher des éléments dynamiquement grâce à une base de données et bénéficie d'un hébergement en ligne fonctionnel.",
+                pourquoi: "La problématique était de permettre à une agence de gérer ses projets via une interface web. J'ai résolu cela en modélisant une base de données SQL robuste et en développant le backend en PHP pour automatiser l'affichage des contenus.",
+                ou: "Projet réalisé en équipe de trois au cours du deuxième semestre (BUT1) dans le cadre de la SAE 203.",
+                qui: "Travail de groupe (3 personnes). J'ai pris en charge la partie Backend et la structure de la base de données.",
+                ac: "AC14.01 - Environnement de développement | AC14.02 - Pages Web fluides | AC14.03 - Données structurées | AC14.04 - Mise en ligne | AC14.05 - Modélisation des données.",
+                evaluation: "Bien que ce projet soit perfectible et qu'il ait nécessité plus de temps de travail, je suis fière d'avoir réussi à rendre le site fonctionnel. J'ai énormément appris sur l'intégration BDD avec PHP/MySQL ainsi que l'hébergement, des bases solides sur lesquelles je continue de m'améliorer."
+            },
+            {
+                id: 'bicycle',
+                name: 'Cartes_Bicycle.psd',
+                date: '2024-03',
+                img: 'ressources/projets/deckcartesBurton.jpg',
+                screenshots: [
+                    'ressources/projets/deckcartesBurton.jpg',
+                    'ressources/projets/deckcartesBurton2.jpg',
+                    'ressources/projets/deckcartesBurton3.jpg'
+                ],
+                outils: ['ai','ps'],
+                link: 'https://www.behance.net/gallery/198196667/Cartes-Bicycle-Les-Noces-Funebres',
+                desc: "Conception d'un deck complet de 13 cartes et de son packaging inspirés de l'univers de Tim Burton.",
+                quoi: "Dans le cadre de notre ressource de production graphique, il nous a été demandé de réaliser les 13 cartes d'une couleur d'un deck de cartes Bicycle ainsi que la boîte et une planche Behance. J'ai choisi le thème des Noces Funèbres.",
+                pourquoi: "Comment réinterpréter un objet classique avec une DA cinématographique forte ? J'ai choisi de redessiner chaque figure à la plume (Illustrator) pour obtenir ce trait tremblé et mélancolique propre au film. J'ai résolu le problème de la lisibilité en équilibrant les détails ornementaux et les symboles de jeu classiques.",
+                ou: "IUT, ressource de production graphique, Semestre 2.",
+                qui: "Travail personnel (conception complète des cartes, de la boîte et de la présentation Behance).",
+                ac: "AC13.02 | Produire des pistes graphiques et des planches d'inspiration | AC13.03 | Créer, composer et retoucher des visuels.",
+                evaluation: "Fière d'avoir géré toute la chaîne graphique, du moodboard au produit fini. Cela démontre ma capacité à m'approprier un univers artistique complexe."
+            },
+            {
+                id: 'batbee',
+                name: 'BatBee_Post.psd',
+                date: '2023-12',
+                img: 'ressources/projets/batbee.png',
+                outils: ['ps'],
+                desc: "Création d'une créature hybride surréaliste mêlant abeille et chauve-souris pour un post Instagram.",
+                quoi: "Réalisation d'un photomontage hybride mêlant une chauve-souris et une abeille sous la forme d'un post Instagram. Ce projet imposait de fusionner un mammifère avec un insecte tout en respectant des contraintes de réalisme visuel.",
+                pourquoi: "La problématique était de rendre \"réelle\" une créature impossible. J'ai résolu cela par un travail minutieux sur Photoshop : utilisation de masques de fusion pour mêler les poils et le duvet, et harmonisation colorimétrique pour simuler une source de lumière unique. L'idée était de créer un visuel intrigant qui arrête le scroll sur Instagram.",
+                ou: "Projet réalisé à l'IUT de Toulon lors du premier semestre (BUT1) dans le cadre de la ressource de production graphique, sur une durée de trois semaines.",
+                qui: "Travail personnel.",
+                ac: "AC13.03 – Créer, composer et retoucher des visuels.",
+                evaluation: "C'était mon premier photomontage. Bien que satisfaite du résultat, ce projet a marqué le début de ma détermination à progresser sur les outils de création numérique pour produire des œuvres toujours plus marquantes."
+            }
+        ],
+        mmi2: [
+            {
+                id: 'jean-honore',
+                name: 'JeanHonore_Parallax3D.blend',
+                date: '2025-03',
+                img: 'ressources/projets/jeanhonore.webp',
+                outils: ['bl'],
+                link: 'https://drive.google.com/file/d/1UgaxSM1HFjbSRzSJuvNap2fwVkKqphZr/view?usp=sharing',
+                desc: "Animation narrative en 3D sur Blender utilisant la technique du parallax pour donner vie à l'univers de Jean Honoré.",
+                quoi: "Modélisation d'une scène sur Blender où j'ai décomposé les plans pour créer une profondeur immersive (parallax) avec des légers mouvements sur chaque élément décrit.",
+                pourquoi: "Comment transformer une illustration statique en une scène vivante sans perdre son style d'origine ? J'ai résolu cela en séparant les éléments par couches de profondeur dans Blender. Mon idée était d'ajouter des micro-mouvements (vent, flottement) pour renforcer l'aspect onirique tout en guidant le regard du spectateur à travers les différents plans.",
+                ou: "Semestre 4.",
+                qui: "Travail personnel.",
+                ac: "AC23.06 | Élaborer et produire des animations et de la 3D.",
+                evaluation: "Maîtriser le parallax en 3D m'a permis de comprendre l'importance des détails d'ambiance. C'est un projet qui lie parfaitement ma sensibilité au dessin et mes compétences techniques sur Blender."
+            },
+            {
+                id: 'weatherie',
+                name: 'Weatherie_AppMeteo.fig',
+                date: '2025-01',
+                img: 'ressources/projets/weatherie.png',
+                outils: ['figma','js'],
+                link: 'https://drive.google.com/file/d/1TOxy4EBU79dnWejISlkxEwmoq6UirCzx/view?usp=sharing',
+                desc: "Application mobile météo immersive alliant art post-impressionniste et visualisation de données.",
+                quoi: "Dashboard interactif et tableau comparatif de statistiques historiques pour Toulon. Chaque icône est conçue comme une petite peinture pour maintenir une cohérence totale avec la DA.",
+                pourquoi: "Comment rendre la météo contemplative ? Ma solution : une UI style Van Gogh et une interaction innovante avec un \"slider papillon\". J'ai transformé l'utilitaire en esthétique, rendant les données météo à la fois belles et lisibles.",
+                ou: "Semestre 3, SAÉ 3.Crea.01 et 3.Crea.03.",
+                qui: "Travail personnel (DA, UX/UI et JS).",
+                ac: "AC23.06 | Élaborer et produire des visuels et de la visualisation de données | AC24.01.",
+                evaluation: "Ma plus grande réussite est d'avoir rendu des données historiques (2000-2020) accessibles et belles sans perdre l'utilisateur dans la complexité technique."
+            },
+            {
+                id: 'lan-esport',
+                name: 'LAN_OrganisationEvent.indd',
+                date: '2024-12',
+                img: 'ressources/projets/mmilan1.png',
+                screenshots: [
+                    'ressources/projets/mmilan1.png',
+                    'ressources/projets/mmilan2.png',
+                    'ressources/projets/mmilan3.png'
+                ],
+                outils: ['in','ps','ai'],
+                desc: "Pilotage logistique d'un événement e-sport à l'IUT et création de l'identité visuelle promotionnelle complète.",
+                quoi: "Pilotage logistique de l'événement e-sport de l'IUT et création de l'identité visuelle promotionnelle (affiches, réseaux sociaux, signalétique).",
+                pourquoi: "Le défi était de gérer un événement complexe tout en lui donnant une image de marque forte. J'ai résolu la partie logistique en modélisant des plans de salle optimisant les flux et la sécurité. Côté création, j'ai conçu une affiche dynamique basée sur une hiérarchie visuelle stricte pour que l'excitation de l'événement n'efface pas la clarté des informations pratiques.",
+                ou: "Semestre 3, IUT de Toulon — SAÉ Entreprendre.",
+                qui: "Binôme logistique avec Zahia / Solo sur la direction artistique.",
+                ac: "AC25.01 – Piloter un projet | AC25.04 – Collaborer en équipe | AC23.03 – Créer une identité visuelle.",
+                evaluation: "J'ai découvert que la création s'étend au-delà du graphisme : organiser l'espace d'une salle est un exercice de design d'expérience (UX) en soi. Ma couverture média (vlog) a prouvé l'efficacité de cette organisation sur le terrain."
+            }
+        ],
+        mmi3: [
+            {
+                id: 'danse-opera',
+                name: 'DanseOpera_FaceAuMur.blend',
+                date: '2026-03',
+                img: 'ressources/projets/dansealopera.png',
+                outils: ['bl','ae'],
+                desc: "Création d'un décor numérique immersif et évolutif pour un spectacle de danse classique à l'Opéra de Toulon.",
+                quoi: "Conception d'un tableau visuel intitulé \"Face au mur\" : un environnement 3D réactif composé de cubes bleu électrique qui se construisent et s'empilent en fonction de la tension chorégraphique. Le projet inclut une affiche générale et un Explainer vidéo d'une minute.",
+                pourquoi: "La problématique était de représenter le mur non pas comme un décor fixe, mais comme un obstacle abstrait qui naît des actions des danseurs. J'ai choisi une esthétique minimaliste (cubes vides, arêtes lumineuses) pour ne pas étouffer le mouvement. L'idée forte est la progression : d'abord des éléments rares et fluides (frame 0-500), puis une accélération et un empilement oppressant (frame 700+). J'ai résolu le besoin de vie du décor en créant un effet de vague permanent (frame 1200), donnant au mur une allure organique et instable.",
+                ou: "Semestre 5, Mars 2026 — Opéra de Toulon.",
+                qui: "Travail de groupe (binôme sur le tableau), évaluation individuelle sur la production et le pilotage.",
+                ac: "AC33.04 | Produire les éléments pour une expérience sophistiquée et immersive | AC33.05 | Appréhender les enjeux liés à la direction artistique | AC35.01 | Piloter un produit, un service ou une équipe.",
+                evaluation: "Ce projet m'a appris à faire du décor un \"partenaire de jeu\". La difficulté a été de synchroniser l'évolution visuelle (l'empilement des cubes) avec le rythme de la musique et la montée en tension des danseurs pour que l'explosion finale soit réellement libératrice."
+            }
+        ],
+        cosplay: [
+            {
+                id: 'seo',
+                name: 'Shopify_Audit.doc',
+                date: '2024-09',
+                img: 'ressources/projets/design.jpg',
+                outils: ['sh'],
+                desc: "Audit SEO & UX pour la boutique e-commerce Cosplay Smart.",
+                quoi: "Analyse complète du référencement naturel et de l'expérience utilisateur de la boutique Shopify Cosplay Smart. Production de recommandations concrètes et mise en œuvre des optimisations.",
+                pourquoi: "Approfondir les techniques SEO on-page et comprendre les leviers de visibilité d'un e-commerce spécialisé dans un marché de niche.",
+                ou: "Cosplay Smart, Six-Fours-les-Plages — Stage perlé.",
+                qui: "Mission individuelle.",
+                ac: "AC25.01 – Piloter et optimiser un projet web.",
+                evaluation: "Bonne montée en compétences SEO. J'ai appris à lier les enjeux techniques (structure du site, balises) aux enjeux éditoriaux (rédaction optimisée) pour un impact réel sur la visibilité."
+            }
+        ]
+    };
+
+    let currentActiveProject = null;
+
+    function setActiveTree(fid) {
+        // Retirer tous les actifs
+        document.querySelectorAll('.tree-item').forEach(el => el.classList.remove('active'));
+        document.getElementById('btn-tout-voir').classList.remove('active');
+
+        if (fid === 'all') {
+            document.getElementById('btn-tout-voir').classList.add('active');
+        } else {
+            const el = document.getElementById('tree-' + fid);
+            if (el) el.classList.add('active');
+        }
+    }
+
+    // --- EXPLORATEUR ---
+    function renderExplorer(fid) {
+        const grid = document.getElementById('explorer-grid');
+        const pathDisplay = document.getElementById('path-display');
+        const toolbarContainer = document.getElementById('explorer-toolbar-container');
+        grid.innerHTML = '';
+        toolbarContainer.innerHTML = '';
+        setActiveTree(fid);
+
+        if (fid === 'all') {
+            pathDisplay.innerText = `C:\\Projets\\TOUT_VOIR.EXE`;
+
+            toolbarContainer.innerHTML = `
+                <div class="explorer-toolbar" style="flex-wrap: wrap; gap: 8px;">
+                    <div style="display:flex; align-items:center; gap:4px;">
+                        <span style="font-size:11px; font-weight:bold;">Filtre :</span>
+                        <button class="filter-btn active-filter" id="fbtn-all"    onclick="setFilter('all')">Tous</button>
+                        <button class="filter-btn" id="fbtn-design"  onclick="setFilter('design')">Design</button>
+                        <button class="filter-btn" id="fbtn-dev"     onclick="setFilter('dev')">Dév</button>
+                        <button class="filter-btn" id="fbtn-alternance" onclick="setFilter('alternance')">Alternance</button>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:4px; border-left:1px solid #aaa; padding-left:8px;">
+                        <span style="font-size:11px; font-weight:bold;">Tri :</span>
+                        <button class="filter-btn active-filter" id="sbtn-recent" onclick="setSort('recent')">⬇ Récent</button>
+                        <button class="filter-btn" id="sbtn-old"    onclick="setSort('old')">⬆ Ancien</button>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:4px; border-left:1px solid #aaa; padding-left:8px; flex:1; min-width:140px;">
+                        <span style="font-size:11px; font-weight:bold;">🔍</span>
+                        <input 
+                            id="search-input"
+                            type="text" 
+                            placeholder="Rechercher un projet..." 
+                            oninput="applyAll()"
+                            style="flex:1; height:22px; border:2px inset #fff; font-size:11px; padding:0 4px; font-family:'MS Sans Serif',Tahoma,sans-serif; background:#fff;"
+                        >
+                        <button class="filter-btn" onclick="clearSearch()" style="min-width:20px; padding:0 5px;">✕</button>
+                    </div>
+                </div>
+            `;
+
+            applyAll();
+        } else {
+            pathDisplay.innerText = `C:\\Projets\\${fid.toUpperCase()}`;
+            const items = projects[fid] || [];
+
+            if (items.length === 0) {
+                grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:20px; color:#808080;">Dossier vide.</p>';
+                return;
+            }
+
+            items.forEach(item => {
+                const d = document.createElement('div');
+                d.className = 'item';
+                if (item.isFolder) {
+                    d.innerHTML = `<div class="icon-folder-large"></div><div class="item-label">${item.name}</div>`;
+                    d.onclick = () => renderExplorer(item.id);
+                } else {
+                    d.innerHTML = `<img src="${item.img}" alt="${item.name}" class="thumb" onerror="this.src='https://win98icons.alexmeub.com/icons/png/image_old-0.png'"><div class="item-label">${item.name}</div>`;
+                    d.onclick = () => openModal(item);
+                }
+                grid.appendChild(d);
+            });
+        }
+    }
+
+    // --- ÉTAT TOUT_VOIR ---
+    let currentFilter = 'all';
+    let currentSort   = 'recent';
+
+    function setFilter(f) {
+        currentFilter = f;
+        document.querySelectorAll('[id^="fbtn-"]').forEach(b => b.classList.remove('active-filter'));
+        const btn = document.getElementById('fbtn-' + f);
+        if (btn) btn.classList.add('active-filter');
+        applyAll();
+    }
+
+    function setSort(s) {
+        currentSort = s;
+        document.querySelectorAll('[id^="sbtn-"]').forEach(b => b.classList.remove('active-filter'));
+        const btn = document.getElementById('sbtn-' + s);
+        if (btn) btn.classList.add('active-filter');
+        applyAll();
+    }
+
+    function clearSearch() {
+        const input = document.getElementById('search-input');
+        if (input) { input.value = ''; applyAll(); }
+    }
+
+    function applyAll() {
+        const grid = document.getElementById('explorer-grid');
+        grid.innerHTML = '';
+
+        const query = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
+        let items = [...projects.mmi1, ...projects.mmi2, ...projects.cosplay];
+
+        // Filtre catégorie
+        items = items.filter(item => {
+            if (currentFilter === 'all') return true;
+            if (currentFilter === 'dev')       return item.outils?.includes('vsc');
+            if (currentFilter === 'design')    return item.outils?.some(o => ['ai','ps','figma','in'].includes(o));
+            if (currentFilter === 'alternance') return projects.cosplay.some(p => p.id === item.id);
+            return true;
+        });
+
+        // Recherche texte (nom, desc, outils, ac)
+        if (query) {
+            items = items.filter(item =>
+                item.name.toLowerCase().includes(query) ||
+                (item.desc  || '').toLowerCase().includes(query) ||
+                (item.quoi  || '').toLowerCase().includes(query) ||
+                (item.ac    || '').toLowerCase().includes(query) ||
+                (item.outils || []).join(' ').toLowerCase().includes(query)
+            );
+        }
+
+        // Tri par date
+        items.sort((a, b) => {
+            const da = a.date || '0000-00';
+            const db = b.date || '0000-00';
+            return currentSort === 'recent' ? db.localeCompare(da) : da.localeCompare(db);
+        });
+
+        if (items.length === 0) {
+            grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:30px; color:#808080; font-style:italic;">Aucun fichier trouvé.</p>';
+            return;
+        }
+
+        items.forEach(item => {
+            const d = document.createElement('div');
+            d.className = 'item';
+            const dateLabel = item.date ? `<div style="font-size:11px; color:#808080; margin-top:2px;">${formatDate(item.date)}</div>` : '';
+            d.innerHTML = `<img src="${item.img}" alt="${item.name}" class="thumb" onerror="this.src='https://win98icons.alexmeub.com/icons/png/image_old-0.png'"><div class="item-label">${item.name}</div>${dateLabel}`;
+            d.onclick = () => openModal(item);
+            grid.appendChild(d);
+        });
+    }
+
+    function formatDate(d) {
+        if (!d) return '';
+        const [y, m] = d.split('-');
+        const months = ['Jan','Fév','Mar','Avr','Mai','Juin','Juil','Aoû','Sep','Oct','Nov','Déc'];
+        return `${months[parseInt(m)-1]} ${y}`;
+    }
+
+
+    // --- FENÊTRES ---
+    function openModal(p) {
+        currentActiveProject = p;
+        document.getElementById('m-title').innerText = p.name;
+        document.getElementById('m-img').src = p.img;
+        document.getElementById('m-desc').innerHTML = p.desc;
+        document.getElementById('project-modal').style.display = 'block';
+    }
+
+    function closeModal() { document.getElementById('project-modal').style.display = 'none'; }
+
+    function openPanel() {
+        closeModal();
+        const p = currentActiveProject;
+        if (!p) return;
+
+        // Outils
+        let outilsHtml = '';
+        if (p.outils && p.outils.length) {
+            outilsHtml = '<div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; background:#f1f1f1; padding:8px; border:1px inset #fff; align-items:center;">';
+            outilsHtml += '<span style="font-size:11px; color:#555; margin-right:4px;">Outils :</span>';
+            p.outils.forEach(outil => {
+                outilsHtml += `<img src="ressources/app/${outil}.png" alt="${outil}" title="${outil.toUpperCase()}" style="width:22px; height:22px;" onerror="this.style.display='none'">`;
+            });
+            outilsHtml += '</div>';
+        }
+
+        // Image(s) — cliquable pour agrandir
+        let imgHtml = '';
+        const shots = p.screenshots && p.screenshots.length ? p.screenshots : [p.img];
+        const clickStyle = 'cursor:zoom-in; transition:opacity 0.15s;';
+        if (shots.length === 1) {
+            imgHtml = `<img src="${shots[0]}" alt="${p.name}" onclick="openLightbox('${shots[0]}')" style="width:100%; max-height:220px; object-fit:contain; border:2px inset #fff; margin-bottom:14px; display:block; background:#f0f0f0; ${clickStyle}" onerror="this.src='https://win98icons.alexmeub.com/icons/png/image_old-0.png'" title="Cliquer pour agrandir">`;
+        } else {
+            const thumbs = shots.map((s, i) => `<img src="${s}" data-full="${s}" onclick="panelShowFull(this)" style="width:60px; height:45px; object-fit:cover; border:2px solid ${i===0?'#000080':'#808080'}; cursor:pointer;" onerror="this.style.display='none'">`).join('');
+            imgHtml = `
+                <div style="margin-bottom:14px;">
+                    <img id="panel-main-img" src="${shots[0]}" alt="${p.name}" onclick="openLightbox(this.src)" style="width:100%; max-height:220px; object-fit:contain; border:2px inset #fff; background:#f0f0f0; display:block; margin-bottom:6px; ${clickStyle}" onerror="this.src='https://win98icons.alexmeub.com/icons/png/image_old-0.png'" title="Cliquer pour agrandir">
+                    <div style="display:flex; gap:4px; flex-wrap:wrap;">${thumbs}</div>
+                </div>`;
+        }
+
+        // Lien externe
+        let linkLabel = '🔗 Voir le projet';
+        if (p.link) {
+            if (p.link.includes('behance')) linkLabel = '🔗 Voir sur Behance';
+            else if (p.link.includes('drive.google')) linkLabel = '📁 Voir sur Google Drive';
+        }
+        const linkHtml = p.link
+            ? `<div style="text-align:center; margin-bottom:14px;">
+                <a href="${p.link}" target="_blank" style="color:#000080; font-weight:bold; font-size:12px;">${linkLabel}</a>
+               </div>` : '';
+
+        // Contenu textuel
+        const rows = [
+            { label: 'QUOI', val: p.quoi },
+            { label: 'POURQUOI', val: p.pourquoi },
+            { label: 'CONTEXTE', val: p.ou },
+            { label: 'QUI', val: p.qui },
+            { label: 'AC', val: p.ac, blue: true }
+        ].filter(r => r.val);
+
+        const textHtml = rows.map(r => `
+            <div style="margin-bottom:12px; padding:8px 10px; background:#f8f8f8; border-left:3px solid ${r.blue ? 'var(--win-blue)' : '#c0c0c0'};">
+                <div style="font-size:10px; font-weight:bold; color:#888; letter-spacing:1px; margin-bottom:3px;">${r.label}</div>
+                <div style="font-size:12px; line-height:1.6; color:${r.blue ? 'var(--win-blue)' : '#222'};">${r.val}</div>
+            </div>`).join('');
+
+        const evalHtml = p.evaluation ? `
+            <div style="background:#fffef0; padding:10px 12px; border:1px inset #fff; border-left:3px solid #c8a000; margin-top:4px;">
+                <div style="font-size:10px; font-weight:bold; color:#888; letter-spacing:1px; margin-bottom:4px;">AUTO-ÉVALUATION</div>
+                <p style="font-size:12px; font-style:italic; color:#444; line-height:1.6;">"${p.evaluation}"</p>
+            </div>` : '';
+
+        document.getElementById('p-content-full').innerHTML = imgHtml + linkHtml + outilsHtml + textHtml + evalHtml;
+        document.getElementById('p-name').innerText = p.name;
+        document.getElementById('details-panel').classList.add('open');
+        document.getElementById('panel-overlay').classList.add('active');
+    }
+
+    function panelShowFull(thumb) {
+        document.getElementById('panel-main-img').src = thumb.dataset.full;
+        // Bordure active sur la miniature cliquée
+        thumb.closest('div').querySelectorAll('img').forEach(t => t.style.borderColor = '#808080');
+        thumb.style.borderColor = '#000080';
+    }
+
+    function closePanel() {
+        document.getElementById('details-panel').classList.remove('open');
+        document.getElementById('panel-overlay').classList.remove('active');
+    }
+
+    function openLightbox(src) {
+        const lb = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        const title = document.getElementById('lightbox-title');
+        img.src = src;
+        // Extraire le nom de fichier pour le titre
+        const filename = src.split('/').pop();
+        title.textContent = '🔍 ' + filename;
+        lb.style.display = 'flex';
+        // Fermer avec Échap
+        document.addEventListener('keydown', _lbEsc);
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lightbox-img').src = '';
+        document.removeEventListener('keydown', _lbEsc);
+    }
+
+    function _lbEsc(e) { if (e.key === 'Escape') closeLightbox(); }
+
+    // FIX 2 : closeMenuMobile définie
+    function closeMenuMobile() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('menu-overlay');
+        if (window.innerWidth <= 900) {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+    }
+
+    function toggleMenu() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('menu-overlay');
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    // FIX 3 : openLegals / closeLegals définies
+    function openLegals() { document.getElementById('legals-modal').style.display = 'block'; }
+    function closeLegals() { document.getElementById('legals-modal').style.display = 'none'; }
+
+    // --- OUTLOOK EXPRESS ---
+    const FORMSPREE_ID = 'mqeyqkgy';
+
+    function openMail() {
+        document.getElementById('mail-from').value    = '';
+        document.getElementById('mail-name').value    = '';
+        document.getElementById('mail-reason').value  = '';
+        document.getElementById('mail-subject').value = '';
+        document.getElementById('mail-body').value    = '';
+        document.getElementById('mail-status').textContent = '✏️ Prêt';
+        document.getElementById('mail-status').style.color = '#333';
+        document.getElementById('mail-modal').style.display = 'block';
+    }
+    function closeMail() { document.getElementById('mail-modal').style.display = 'none'; }
+
+    async function sendMail() {
+        const from    = document.getElementById('mail-from').value.trim();
+        const name    = document.getElementById('mail-name').value.trim();
+        const reason  = document.getElementById('mail-reason').value;
+        const subject = document.getElementById('mail-subject').value.trim();
+        const body    = document.getElementById('mail-body').value.trim();
+        const status  = document.getElementById('mail-status');
+
+        if (!from || !subject || !body) {
+            status.style.color = '#aa0000';
+            status.textContent = '⚠ Veuillez remplir au moins : e-mail, objet et message.';
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(from)) {
+            status.style.color = '#aa0000';
+            status.textContent = '⚠ Adresse e-mail invalide.';
+            return;
+        }
+
+        status.style.color = '#333';
+        status.textContent = '📤 Envoi en cours...';
+
+        try {
+            const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ name, email: from, raison: reason, subject, message: body })
+            });
+            if (res.ok) {
+                status.style.color = '#006600';
+                status.textContent = '✅ Message envoyé ! Mathilde vous répondra rapidement.';
+                setTimeout(closeMail, 3000);
+            } else {
+                throw new Error();
+            }
+        } catch {
+            status.style.color = '#aa0000';
+            status.textContent = '❌ Erreur d\'envoi. Vérifie ta connexion ou contacte directement mathilde.mathieu24@gmail.com';
+        }
+    }
+
+    // --- LIVRET D'OR ---
+    const LIVRET_KEY = 'livret_entries';
+
+    function getLivretEntries() {
+        try { return JSON.parse(localStorage.getItem(LIVRET_KEY)) || []; }
+        catch { return []; }
+    }
+    function saveLivretEntries(arr) {
+        localStorage.setItem(LIVRET_KEY, JSON.stringify(arr));
+    }
+
+    function renderLivretEntries() {
+        const entries = getLivretEntries();
+        const container = document.getElementById('livret-entries');
+        if (!container) return;
+        if (entries.length === 0) {
+            container.innerHTML = '<p style="font-size:11px; color:#888; font-style:italic;">Soyez le premier à signer ✨</p>';
+        } else {
+            container.innerHTML = entries.slice().reverse().map(e => `
+                <div style="background:#f8f8f8; border:1px solid #d0d0d0; padding:7px 10px; border-left:3px solid var(--win-blue);">
+                    <div style="font-size:11px; font-weight:bold; color:var(--win-blue);">${escHtml(e.name)}${e.role ? ' <span style="color:#777;font-weight:normal;">· '+escHtml(e.role)+'</span>' : ''}</div>
+                    <div style="font-size:12px; margin-top:4px; color:#333;">${escHtml(e.msg)}</div>
+                    <div style="font-size:11px; color:#999; margin-top:4px;">${e.date}</div>
+                </div>`).join('');
+        }
+        updateMySpaceComment();
+    }
+
+    function escHtml(s) {
+        return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function submitLivret() {
+        const name = document.getElementById('livret-name').value.trim();
+        const role = document.getElementById('livret-role').value.trim();
+        const msg  = document.getElementById('livret-msg').value.trim();
+        const status = document.getElementById('livret-status');
+        if (!name || !msg) {
+            status.style.color = '#aa0000';
+            status.textContent = '⚠ Prénom et message requis.';
+            return;
+        }
+        const entries = getLivretEntries();
+        const now = new Date();
+        entries.push({
+            name, role, msg,
+            date: now.toLocaleDateString('fr-FR', { day:'2-digit', month:'long', year:'numeric' })
+        });
+        saveLivretEntries(entries);
+        document.getElementById('livret-name').value = '';
+        document.getElementById('livret-role').value = '';
+        document.getElementById('livret-msg').value  = '';
+        status.style.color = '#006600';
+        status.textContent = '✅ Message ajouté, merci !';
+        setTimeout(() => { status.textContent = ''; }, 3000);
+        renderLivretEntries();
+    }
+
+    function openLivret() {
+        renderLivretEntries();
+        document.getElementById('livret-modal').style.display = 'block';
+    }
+    function closeLivret() { document.getElementById('livret-modal').style.display = 'none'; }
+
+    // --- MYSPACE : message dynamique depuis le livret ---
+    function updateMySpaceComment() {
+        const el = document.getElementById('msp-comment-text');
+        if (!el) return;
+        const entries = getLivretEntries();
+        if (entries.length === 0) {
+            el.innerHTML = '💬 <strong>Recruteur_Pro</strong> t\'a laissé un commentaire · <a href="#contact" style="color:#003399;" onclick="openLivret()">Voir le livret d\'or</a>';
+        } else {
+            const last = entries[entries.length - 1];
+            el.innerHTML = `💬 <strong>${escHtml(last.name)}</strong>${last.role ? ' <span style="color:#666;">· ${escHtml(last.role)}</span>' : ''} : "${escHtml(last.msg.slice(0, 60))}${last.msg.length > 60 ? '…' : ''}" · <a href="#contact" style="color:#003399;" onclick="openLivret()">Livret d'or (${entries.length})</a>`;
+        }
+    }
+
+    // Init livret au chargement
+    document.addEventListener('DOMContentLoaded', () => {
+        // Ouvrir l'explorateur directement sur les dossiers Projets BUT
+        renderExplorer('but');
+        updateMySpaceComment();
+    });
+
+    // Soft skills : questions du recruteur pour chaque skill
+    const skillQuestions = {
+        'Créativité': 'Tu te décris comme créative, c\'est-à-dire ?',
+        'Curiosité': 'Et la curiosité, ça se manifeste comment chez toi ?',
+        'Empathie': 'L\'empathie dans un contexte pro, c\'est quoi pour toi ?',
+        'Intelligence émotionnelle': 'Intelligence émotionnelle, c\'est un grand mot ! Tu peux développer ?',
+        'Travail d\'équipe': 'Tu es une bosseuse en équipe alors ?',
+        'Adaptabilité': 'Et l\'adaptabilité, tu l\'as déjà mise à l\'épreuve ?'
+    };
+
+    function sendSkill(name, message) {
+        const chat = document.getElementById('msn-chat');
+
+        // Message du recruteur (question)
+        const question = skillQuestions[name] || `Parle-moi de ta ${name}.`;
+        const bubbleThem = document.createElement('div');
+        bubbleThem.className = 'msn-bubble msn-bubble-them';
+        bubbleThem.innerHTML = `<span class="msn-name-them">Recruteur :</span>${question}`;
+        chat.appendChild(bubbleThem);
+
+        // Petit délai avant la réponse de Mathilde (effet naturel)
+        setTimeout(() => {
+            const typing = document.createElement('div');
+            typing.style = "color:#aaa; font-size:11px; font-style:italic; margin-bottom:6px;";
+            typing.id = 'msn-typing';
+            typing.innerText = 'Mathilde est en train d\'écrire...';
+            chat.appendChild(typing);
+            chat.scrollTop = chat.scrollHeight;
+
+            setTimeout(() => {
+                const t = document.getElementById('msn-typing');
+                if (t) t.remove();
+
+                const bubbleMe = document.createElement('div');
+                bubbleMe.className = 'msn-bubble msn-bubble-me';
+                bubbleMe.innerHTML = `<span class="msn-name-me">Mathilde :</span>${message}`;
+                chat.appendChild(bubbleMe);
+                chat.scrollTop = chat.scrollHeight;
+            }, 900);
+
+        }, 300);
+
+        chat.scrollTop = chat.scrollHeight;
+    }
+
+    function updateClock() {
+        const d = new Date();
+        document.getElementById('clock').innerText = d.getHours().toString().padStart(2,'0') + ":" + d.getMinutes().toString().padStart(2,'0');
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function switchBde(panelId, btn) {
+        document.getElementById('bde-now').style.display = 'none';
+        document.getElementById('bde-prev').style.display = 'none';
+        document.getElementById(panelId).style.display = 'block';
+        document.querySelectorAll('.bde-tab').forEach(b => b.classList.remove('active-bde-tab'));
+        btn.classList.add('active-bde-tab');
+    }
+
+    // --- PAINT ONGLETS ---
+    const paintTabMeta = {
+        cosplay: { label: '🎭 Cosplay — Création de costumes', count: 3, insta: true },
+        dessin:  { label: '🖌️ Dessin & Illustration',          count: 3, insta: true },
+        mode:    { label: '👗 Mode & Style',                    count: 3, insta: false },
+        photo:   { label: '📷 Photographie',                    count: 3, insta: false }
+    };
+    const carouselState = { cosplay:0, dessin:0, mode:0, photo:0 };
+    let currentPaintTab = 'dessin';
+    let instaProcessed = false;
+
+    function switchPaintTab(id) {
+        ['cosplay','dessin','mode','photo'].forEach(t => {
+            document.getElementById('carousel-' + t).style.display = t === id ? 'block' : 'none';
+            document.getElementById('ptab-' + t).classList.toggle('active-paint-tab', t === id);
+            document.getElementById('paint-text-' + t).style.display = t === id ? 'block' : 'none';
+        });
+        currentPaintTab = id;
+        updatePaintStatus(id);
+        // Seulement buildDots pour les onglets image
+        if (!paintTabMeta[id].insta) buildDots(id);
+        // Activer les embeds Instagram si premier affichage
+        if (paintTabMeta[id].insta && !instaProcessed) {
+            instaProcessed = true;
+            if (window.instgrm) window.instgrm.Embeds.process();
+        }
+    }
+
+    function updatePaintStatus(id) {
+        const meta = paintTabMeta[id];
+        const idx  = carouselState[id];
+        document.getElementById('paint-status-label').textContent = meta.label;
+        document.getElementById('paint-counter').textContent = (idx + 1) + ' / ' + meta.count;
+    }
+
+    // Navigation Instagram (affichage/masquage des slides)
+    function instaNav(id, dir) {
+        const count = paintTabMeta[id].count;
+        let idx = carouselState[id];
+        idx = (idx + dir + count) % count;
+        carouselState[id] = idx;
+        // Cacher tous les slides, afficher le bon
+        for (let i = 0; i < count; i++) {
+            const s = document.getElementById('insta-' + id + '-' + i);
+            if (s) s.classList.toggle('active', i === idx);
+        }
+        // Scroll en haut du carousel
+        const carousel = document.getElementById('carousel-' + id);
+        if (carousel) carousel.scrollTop = 0;
+        document.getElementById('insta-' + id + '-counter').textContent = (idx + 1) + ' / ' + count;
+        updatePaintStatus(id);
+        // Reprocesser les embeds si besoin
+        if (window.instgrm) window.instgrm.Embeds.process();
+    }
+
+    function goSlide(id, idx) {
+        const count = paintTabMeta[id].count;
+        idx = (idx + count) % count;
+        carouselState[id] = idx;
+        const track = document.getElementById('track-' + id);
+        if (track) track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+        const dots = document.querySelectorAll('#dots-' + id + ' .carousel-dot');
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        updatePaintStatus(id);
+    }
+
+    function nextSlide(id) { goSlide(id, carouselState[id] + 1); }
+    function prevSlide(id) { goSlide(id, carouselState[id] - 1); }
+
+    function buildDots(id) {
+        const container = document.getElementById('dots-' + id);
+        if (!container || container.children.length) return;
+        const count = paintTabMeta[id].count;
+        for (let i = 0; i < count; i++) {
+            const d = document.createElement('div');
+            d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            d.onclick = () => goSlide(id, i);
+            container.appendChild(d);
+        }
+    }
+
+    // Init dots au chargement (seulement mode et photo)
+    document.addEventListener('DOMContentLoaded', () => {
+        ['mode','photo'].forEach(buildDots);
+        // Charger le script Instagram de façon asynchrone
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.instagram.com/embed.js';
+        document.body.appendChild(s);
+    });
+
+    // --- WINDOWS MEDIA PLAYER ---
+    const wmpTracks = [
+        {
+            id: 'japon',
+            title: '⛩️ Culture Japonaise',
+            cover: 'ressources/passions/japon.jpg',
+            lyrics: `Mangas, animés, esthétique japonaise…\nCette culture m'inspire profondément dans\nmon travail créatif.\n\nLes directions artistiques, le character design,\nle soin apporté aux moindres détails…\n\nUne source d'inspiration inépuisable\nqui nourrit ma vision créative au quotidien.`
+        },
+        {
+            id: 'musique',
+            title: '🎵 Musique',
+            cover: 'ressources/passions/musique.jpg',
+            lyrics: `La musique accompagne toutes mes créations.\n\nJ'aime autant la consommer qu'analyser\ncomment elle construit une ambiance,\nune émotion, une identité.\n\nCette sensibilité se retrouve directement\ndans ma façon d'aborder le montage vidéo\net la narration visuelle.`
+        },
+        {
+            id: 'video',
+            title: '🎬 Cinéma & Vidéo',
+            cover: 'ressources/passions/video.jpg',
+            lyrics: `J'analyse les films autant que je les regarde.\n\nCadrage, rythme de montage,\ndirection artistique, storytelling…\n\nMonter des vidéos est une passion\ntransformée en compétence concrète :\ndes vlogs YouTube aux Reels,\nen passant par les formats événementiels.`
+        },
+        {
+            id: 'gaming',
+            title: '🎮 Gaming Narratif',
+            cover: 'ressources/passions/gaming.jpg',
+            lyrics: `Ce qui me passionne dans les jeux,\nc'est surtout les univers narratifs et visuellement forts.\n\nComment construire un univers cohérent,\nun character design mémorable,\nune ambiance sonore et visuelle immersive…\n\nUn vrai cours de storytelling interactif.`
+        }
+    ];
+
+    let wmpCurrent = 0;
+    let wmpPlaying = false;
+    let wmpTimer   = null;
+    let wmpSeconds = 0;
+    const WMP_DURATION = 30;
+
+    function wmpLoadTrack(idx) {
+        wmpStop();
+        wmpCurrent = idx;
+        const t = wmpTracks[idx];
+        document.getElementById('wmp-cover').src        = t.cover;
+        document.getElementById('wmp-track-title').textContent = t.title;
+        document.getElementById('wmp-lyrics').textContent      = 'Appuie sur ▶ Play pour découvrir...';
+        document.getElementById('wmp-progress').style.width    = '0%';
+        document.getElementById('wmp-time').textContent        = '0:00';
+        document.getElementById('wmp-status').textContent      = t.title;
+        document.querySelectorAll('.wmp-track').forEach((el, i) =>
+            el.classList.toggle('playing', i === idx));
+        document.getElementById('wmp-playbtn').textContent = '▶';
+        document.getElementById('wmp-visualizer').classList.remove('wmp-playing');
+    }
+
+    function wmpPlay() {
+        if (wmpPlaying) { wmpStop(); return; }
+        wmpPlaying = true;
+        document.getElementById('wmp-playbtn').textContent = '⏸';
+        document.getElementById('wmp-lyrics').textContent  = wmpTracks[wmpCurrent].lyrics;
+        document.getElementById('wmp-status').textContent  = '▶ Lecture en cours';
+        document.getElementById('wmp-visualizer').classList.add('wmp-playing');
+        wmpTimer = setInterval(() => {
+            wmpSeconds++;
+            const pct = Math.min((wmpSeconds / WMP_DURATION) * 100, 100);
+            document.getElementById('wmp-progress').style.width = pct + '%';
+            const s = wmpSeconds % 60;
+            const m = Math.floor(wmpSeconds / 60);
+            document.getElementById('wmp-time').textContent = m + ':' + String(s).padStart(2,'0');
+            if (wmpSeconds >= WMP_DURATION) { wmpNext(); }
+        }, 1000);
+    }
+
+    function wmpStop() {
+        wmpPlaying = false;
+        wmpSeconds = 0;
+        clearInterval(wmpTimer);
+        document.getElementById('wmp-playbtn').textContent = '▶';
+        document.getElementById('wmp-visualizer').classList.remove('wmp-playing');
+        document.getElementById('wmp-status').textContent  = 'Arrêté';
+    }
+
+    function wmpNext() {
+        wmpLoadTrack((wmpCurrent + 1) % wmpTracks.length);
+        wmpPlay();
+    }
+
+    function wmpPrev() {
+        wmpLoadTrack((wmpCurrent - 1 + wmpTracks.length) % wmpTracks.length);
+        wmpPlay();
+    }
+
+    
+    const iePages = ['stage1', 'stage2', 'xp-skills'];
+    const ieUrls = {
+        'stage2':     'http://mathilde.mmi/experiences/stage-perle.htm',
+        'stage1':     'http://mathilde.mmi/experiences/stage-2eme-annee.htm',
+        'xp-skills':  'http://mathilde.mmi/experiences/competences.htm'
+    };
+    let ieHistory = ['stage2'];
+    let ieIndex   = 0;
+
+    function switchTab(pageId) {
+        // Cacher toutes les pages
+        iePages.forEach(p => {
+            const el = document.getElementById('page-' + p);
+            if (el) el.style.display = 'none';
+            const tab = document.getElementById('tab-' + p);
+            if (tab) tab.classList.remove('active-tab');
+        });
+        // Afficher la bonne
+        const target = document.getElementById('page-' + pageId);
+        if (target) target.style.display = 'block';
+        const tab = document.getElementById('tab-' + pageId);
+        if (tab) tab.classList.add('active-tab');
+        // URL bar
+        const urlEl = document.getElementById('ie-url');
+        if (urlEl) urlEl.textContent = ieUrls[pageId] || '';
+        // Statut
+        const status = document.getElementById('ie-status');
+        if (status) status.textContent = '✅ Page chargée';
+        // Historique navigation
+        if (ieHistory[ieIndex] !== pageId) {
+            ieHistory = ieHistory.slice(0, ieIndex + 1);
+            ieHistory.push(pageId);
+            ieIndex = ieHistory.length - 1;
+        }
+    }
+
+    function ieBack() {
+        if (ieIndex > 0) { ieIndex--; switchTab(ieHistory[ieIndex]); }
+    }
+    function ieForward() {
+        if (ieIndex < ieHistory.length - 1) { ieIndex++; switchTab(ieHistory[ieIndex]); }
+    }
+
+    
+    document.querySelectorAll('.soft-icon-wrap').forEach(wrap => {
+        wrap.style.position = 'relative';
+        wrap.style.cursor = 'default';
+
+        wrap.addEventListener('mouseenter', (e) => {
+            const tooltip = document.getElementById('skill-tooltip');
+            document.getElementById('tooltip-name').innerText = wrap.dataset.name;
+            document.getElementById('tooltip-level').innerText = wrap.dataset.level;
+            document.getElementById('tooltip-desc').innerText = wrap.dataset.desc;
+            tooltip.style.display = 'block';
+            positionTooltip(e);
+        });
+
+        wrap.addEventListener('mousemove', positionTooltip);
+
+        wrap.addEventListener('mouseleave', () => {
+            document.getElementById('skill-tooltip').style.display = 'none';
+        });
+    });
+
+    function positionTooltip(e) {
+        const tooltip = document.getElementById('skill-tooltip');
+        const offset = 14;
+        let x = e.clientX + offset;
+        let y = e.clientY + offset;
+        if (x + 190 > window.innerWidth) x = e.clientX - 190;
+        if (y + 80 > window.innerHeight) y = e.clientY - 80;
+        tooltip.style.left = x + 'px';
+        tooltip.style.top  = y + 'px';
+    }
+
+</script>
+</body>
+</html>
