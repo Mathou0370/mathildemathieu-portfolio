@@ -50,7 +50,7 @@
             border-right: 2px solid #000;
             position: fixed;
             height: 100vh;
-            padding: 20px;
+            padding: 20px 20px 90px 20px; /* padding-bottom pour dépasser la taskbar */
             z-index: 5000;
             overflow-y: auto;
             transition: transform 0.3s ease;
@@ -139,6 +139,7 @@
         .desktop-icon:hover span { background: var(--win-blue); }
 
         /* --- TASKBAR --- */
+        .taskbar-pins { display: flex; }
         .taskbar { position: fixed; bottom: 0; left: 0; right: 0; height: 40px; background: var(--win-gray); border-top: 2px solid #fff; display: flex; align-items: center; padding: 0 10px; z-index: 8000; }
         .taskbar-time { border: 2px inset #fff; padding: 4px 12px; font-size: 13px; font-weight: bold; }
         .pin { width: 30px; height: 30px; border: 2px solid; border-color: #fff #808080 #808080 #fff; display: flex; align-items: center; justify-content: center; background: var(--win-gray); cursor: pointer; margin-left: 5px;}
@@ -217,11 +218,28 @@
 
             /* Paint et WMP empilés, pas besoin de règle grid ici */
 
-            /* Paint toolbar gauche cachée sur mobile */
-            .paint-toolbar-left { display: none; }
+            /* Paint toolbar gauche : 1 colonne sur mobile */
+            .paint-toolbar-left {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                width: 32px !important;
+                padding: 2px !important;
+            }
+            .pt-tool { width: 24px !important; height: 24px !important; font-size: 11px !important; }
+            .pt-color-preview { grid-column: 1 !important; }
+            /* Palette couleurs : wrap sur 2 lignes */
+            .paint-palette { flex-wrap: wrap; padding: 4px; }
+            .paint-palette-colors { flex-wrap: wrap !important; max-width: 150px; }
+            .pal-cell { width: 13px !important; height: 13px !important; }
 
-            /* WMP cover plus petit */
-            #wmp-cover { width: 90px !important; height: 90px !important; }
+            /* WMP : image au-dessus du texte sur mobile */
+            .wmp-top { flex-direction: column !important; }
+            /* Image : pleine largeur, hauteur fixe, objet entier visible */
+            #wmp-cover { width: 100% !important; height: auto !important; max-height: 260px; object-fit: contain !important; background: #1a1a2e; }
+            /* Bloc image : pleine largeur, pas de flex vertical qui pousse le visualizer */
+            .wmp-top > div:first-child { width: 100% !important; flex-direction: column; flex-shrink: 0; }
+            /* Visualizer : hauteur fixe pour ne pas pousser le texte */
+            #wmp-visualizer { flex: none !important; height: 24px !important; min-height: 24px !important; }
 
             /* IE missions 1 colonne */
             .ie-missions-grid { grid-template-columns: 1fr !important; }
@@ -240,8 +258,10 @@
             #project-modal { width: 96%; max-width: 100%; }
 
             /* Footer icônes desktop plus serré */
-            .desktop-footer { gap: 20px; padding: 25px 0; }
-            .desktop-icon { width: 65px; }
+            .desktop-footer { gap: 15px; padding: 20px 0 70px 0; }
+            .desktop-icon { width: 60px; }
+            .desktop-icon img { width: 36px; height: 36px; }
+            .desktop-icon span { font-size: 10px; }
 
             h2 { font-size: 22px; }
         }
@@ -252,8 +272,14 @@
             .file-display { grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 10px; }
             .soft-icon-wrap img.app-icon-skill { width: 40px; height: 40px; }
             .taskbar { padding: 0 6px; }
-            .start-button span { display: none; } /* Cacher le texte sur très petit écran */
+            .start-button span { display: none; }
             h2 { font-size: 18px; }
+
+            /* Footer encore plus compact */
+            .desktop-footer { gap: 10px; padding: 15px 5px 75px 5px; }
+            .desktop-icon { width: 52px; }
+            .desktop-icon img { width: 30px; height: 30px; }
+            .desktop-icon span { font-size: 9px; }
 
             /* Modales plein écran sur très petit écran */
             #mail-modal, #livret-modal, #legals-modal {
@@ -524,10 +550,19 @@
         .msp-footer { background: #003399; color: #99ccff; font-size:11px; padding: 4px 12px; display: flex; align-items: center; }
 
         @media (max-width: 700px) {
-            .msp-layout { grid-template-columns: 1fr; }
-            .msp-left { border-right: none; border-bottom: 2px solid #b0c4de; flex-direction: row; flex-wrap: wrap; }
-            .msp-photo-block { flex: 0 0 auto; }
+            .msp-layout { grid-template-columns: 1fr; min-height: unset; overflow: hidden; max-width: 100%; }
+            .msp-left { border-right: none; border-bottom: 2px solid #b0c4de; flex-direction: column; padding: 10px; }
+            .msp-photo-block { width: 100%; max-width: 100%; box-sizing: border-box; overflow: hidden; padding: 10px; }
+            .msp-photo { width: 90px; height: 90px; }
+            .msp-name { font-size: 13px; }
+            .msp-tagline { font-size: 11px; word-break: break-word; overflow-wrap: break-word; white-space: normal; }
+            .msp-infobox { max-width: 100%; }
+            .msp-inforow { font-size: 11px; word-break: break-word; }
+            .msp-interest { font-size: 10px; padding: 2px 4px; }
             .msp-nav { display: none; }
+            .msp-right { padding: 10px; max-width: 100%; overflow: hidden; }
+            .msp-section-body { font-size: 11px; word-break: break-word; }
+            .msp-comment-bar { font-size: 11px; word-break: break-word; white-space: normal; }
         }
 
         body::after {
@@ -559,7 +594,7 @@
             <img src="ressources/iconemathilde.png" alt="Portfolio de Mathilde Mathieu" style="width:18px; margin-right:8px;">
             Mathilde MATHIEU
         </div>
-        <div class="taskbar-pins" style="display: flex; margin-left: 10px; padding-left: 10px; border-left: 1px solid #808080;">
+        <div class="taskbar-pins" style="margin-left: 10px; padding-left: 10px; border-left: 1px solid #808080;">
             <div class="pin" title="Photoshop"><img src="ressources/app/ps.png" alt="Photoshop" width="22"></div>
             <div class="pin" title="Illustrator"><img src="ressources/app/ai.png" alt="Illustrator" width="22"></div>
             <div class="pin" title="Premiere Pro"><img src="ressources/app/pr.png" alt="Premiere Pro" width="22"></div>
@@ -589,7 +624,7 @@
         <div class="profile-card">
             <img src="ressources/iconemathilde.png" alt="Photo de profil de Mathilde Mathieu">
             <h3 style="margin-top:15px; font-size: 18px;">Mathilde Mathieu</h3>
-            <p style="font-size:12px; color: #444; margin-top: 5px;">Création Numérique & Stratégie</p>
+            <p style="font-size:12px; color: #444; margin-top: 5px; line-height:1.5;">Designer graphique Junior<br>Création de contenus audiovisuels</p>
         </div>
         <!-- FIX 2 : closeMenuMobile() définie dans le JS -->
         <nav>
@@ -599,7 +634,7 @@
             <a href="#skills" onclick="closeMenuMobile()" data-i18n="sidebar-skills">🛠️ Compétences</a>
             <a href="#engagement" onclick="closeMenuMobile()" data-i18n="sidebar-engagement">🤝 Engagement</a>
             <a href="#passions" onclick="closeMenuMobile()" data-i18n="sidebar-passions1">🎨 Créations visuelles</a>
-            <a href="#passions-wmp" onclick="closeMenuMobile()" data-i18n="sidebar-passions2">🎵 Passions</a>
+            <a href="#passions-wmp" onclick="closeMenuMobile()" data-i18n="sidebar-passions2">🎵 Passions & Univers</a>
             <a href="#contact" onclick="closeMenuMobile()" data-i18n="sidebar-contact">📩 Contact</a>
         </nav>
     </aside>
@@ -717,8 +752,8 @@
                                             <li id="tree-mmi2" class="tree-item" onclick="renderExplorer('mmi2')">📁 MMI 2</li>
                                             <li id="tree-mmi3" class="tree-item" onclick="renderExplorer('mmi3')">📁 MMI 3</li>
                                         </ul>
-                                        <li id="tree-cosplay" class="tree-item" onclick="renderExplorer('cosplay')">📁 Alternance</li>
-                                        <li id="tree-perso" class="tree-item" onclick="renderExplorer('perso')">📁 Associatif</li>
+                                        <li id="tree-cosplay" class="tree-item" onclick="renderExplorer('cosplay')">📁 Stage</li>
+                                        <li id="tree-perso" class="tree-item" onclick="renderExplorer('perso')">📁 Projets Perso</li>
                                     </ul>
                                 </ul>
                                 <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid #aaa;">
@@ -991,7 +1026,7 @@
                                         ── Mathilde a rejoint la conversation ──
                                     </div>
                                     <div class="msn-bubble msn-bubble-them">
-                                        <span class="msn-name-them">Recruteur :</span> Salut Mathilde ! Pour mieux te connaître, clique sur une de tes qualités 👇
+                                        <span class="msn-name-them">Recruteur :</span> Bonjour Mathilde ! Je suis curieux d'en savoir plus sur toi. Clique sur une de tes qualités pour qu'on en parle 👇
                                     </div>
                                 </div>
 
@@ -999,12 +1034,12 @@
                                 <div style="background:#f0f4ff; border-bottom:1px solid #aaa; padding:8px 10px;">
                                     <div style="font-size:11px; color:#555; margin-bottom:5px;">Clique sur une qualité pour en savoir plus :</div>
                                     <div style="display:flex; flex-wrap:wrap; gap:4px;">
-                                        <button class="msn-btn" onclick="sendSkill('Créativité', '✏️ Je cherche toujours l\'angle inattendu, que ce soit en design, en code ou en communication.')">✏️ Créativité</button>
-                                        <button class="msn-btn" onclick="sendSkill('Curiosité', '🔍 Je suis constamment en veille sur les nouveaux outils, tendances UX et cultures visuelles.')">🔍 Curiosité</button>
-                                        <button class="msn-btn" onclick="sendSkill('Empathie', '💬 Je me mets facilement à la place des utilisateurs pour concevoir des expériences qui leur parlent vraiment.')">💬 Empathie</button>
-                                        <button class="msn-btn" onclick="sendSkill('Intelligence émotionnelle', '🧠 Je sais lire les dynamiques de groupe et adapter ma communication pour que tout le monde se sente entendu.')">🧠 Intel. émotionnelle</button>
-                                        <button class="msn-btn" onclick="sendSkill('Travail d\'équipe', '🤝 J\'adore co-créer ! Les meilleures idées naissent de l\'échange et de la confiance mutuelle.')">🤝 Équipe</button>
-                                        <button class="msn-btn" onclick="sendSkill('Adaptabilité', '🔄 Nouveaux outils, nouveaux contextes, nouvelles contraintes — je m\'ajuste vite et sans stress.')">🔄 Adaptabilité</button>
+                                        <button class="msn-btn" onclick="sendSkill('Créativité', '✏️ Donner vie à l\'imaginaire. Pour moi, la créativité est un équilibre entre intuition et technique. Ce n\'est pas juste &quot;faire du beau&quot;, c\'est raconter une histoire là où on ne l\'attend pas, en transformant un concept abstrait en une expérience visuelle qui marque l\'esprit.')">✏️ Créativité</button>
+                                        <button class="msn-btn" onclick="sendSkill('Curiosité', '🔍 Explorer pour évoluer. Le multimédia change tous les jours, et c\'est ce qui me passionne. Je ne me contente jamais de ce que je maîtrise déjà. Je cherche toujours le nouvel outil, la nouvelle tendance ou le nouveau langage qui fera la différence dans mes futurs projets.')">🔍 Curiosité</button>
+                                        <button class="msn-btn" onclick="sendSkill('Empathie', '💬 Ressentir avant de concevoir. Je ne crée pas pour des écrans, mais pour des humains. Mon empathie me permet de me mettre à la place de l\'utilisateur pour comprendre ce qu\'il ressent et m\'assurer que le message n\'est pas seulement transmis, mais réellement vécu.')">💬 Empathie</button>
+                                        <button class="msn-btn" onclick="sendSkill('Intelligence émotionnelle', '🧠 Le moteur de mes créations. Mon but ultime est de faire sourire et de procurer des émotions. Je sais canaliser ma propre sensibilité pour en faire une force de communication, permettant de créer des univers qui résonnent avec la psychologie du public.')">🧠 Intel. émotionnelle</button>
+                                        <button class="msn-btn" onclick="sendSkill('Esprit d\'équipe', '🤝 Co-créer pour sublimer. J\'aime l\'énergie qui se dégage d\'un groupe. Je sais écouter, échanger et confronter mes idées avec bienveillance pour que le projet collectif dépasse les attentes initiales et devienne une œuvre commune cohérente.')">🤝 Esprit d'équipe</button>
+                                        <button class="msn-btn" onclick="sendSkill('Adaptabilité', '🔄 Transformer les contraintes en opportunités. Qu\'il s\'agisse d\'un imprévu technique ou d\'un changement de direction artistique, je sais pivoter rapidement. J\'aime le défi de l\'ajustement permanent, car c\'est souvent dans l\'imprévu que naissent les meilleures solutions créatives.')">🔄 Adaptabilité</button>
                                     </div>
                                 </div>
 
@@ -1133,9 +1168,7 @@
                         <!-- Onglets -->
                         <div style="display:flex; background:#d0d0d0; border-bottom:1px solid #808080; padding:4px 6px 0; flex-wrap:wrap;">
                             <button class="paint-tab active-paint-tab" id="ptab-dessin"  onclick="switchPaintTab('dessin')">🖌️ Dessin</button>
-                            <button class="paint-tab" id="ptab-photo"   onclick="switchPaintTab('photo')">📷 Photo</button>
                             <button class="paint-tab" id="ptab-cosplay" onclick="switchPaintTab('cosplay')">🎭 Cosplay</button>
-                            <button class="paint-tab" id="ptab-mode"    onclick="switchPaintTab('mode')">👗 Mode</button>
                         </div>
 
                         <!-- Canvas blanc avec carousel -->
@@ -1204,35 +1237,14 @@
                                         </blockquote>
                                     </div>
                                 </div>
-                                <div class="paint-carousel" id="carousel-mode" style="display:none;">
-                                    <div class="carousel-track" style="touch-action:pan-y;" id="track-mode">
-                                        <img src="ressources/passions/mode_1.jpg" alt="Mode 1" class="carousel-slide">
-                                        <img src="ressources/passions/mode_2.jpg" alt="Mode 2" class="carousel-slide">
-                                        <img src="ressources/passions/mode_3.jpg" alt="Mode 3" class="carousel-slide">
-                                    </div>
-                                    <button class="carousel-btn carousel-prev" onclick="prevSlide('mode')">&#9664;</button>
-                                    <button class="carousel-btn carousel-next" onclick="nextSlide('mode')">&#9654;</button>
-                                    <div class="carousel-dots" id="dots-mode"></div>
-                                </div>
-                                <div class="paint-carousel" id="carousel-photo" style="display:none;">
-                                    <div class="carousel-track" style="touch-action:pan-y;" id="track-photo">
-                                        <img src="ressources/passions/photo_1.jpg" alt="Photo 1" class="carousel-slide">
-                                        <img src="ressources/passions/photo_2.jpg" alt="Photo 2" class="carousel-slide">
-                                        <img src="ressources/passions/photo_3.jpg" alt="Photo 3" class="carousel-slide">
-                                    </div>
-                                    <button class="carousel-btn carousel-prev" onclick="prevSlide('photo')">&#9664;</button>
-                                    <button class="carousel-btn carousel-next" onclick="nextSlide('photo')">&#9654;</button>
-                                    <div class="carousel-dots" id="dots-photo"></div>
-                                </div>
+
 
                             </div>
                         </div>
 
                         <!-- Texte par onglet -->
-                        <div id="paint-text-cosplay" class="paint-tab-text" style="display:none;">🎭 <strong>Cosplay</strong> — Confectionner un costume de A à Z, c'est à la fois du design, de la couture, de la sculpture et de la scénographie. J'adore le défi technique autant que l'aspect créatif.</div>
-                        <div id="paint-text-dessin"  class="paint-tab-text">🖌️ <strong>Dessin & Illustration</strong> — Le dessin est mon outil de réflexion visuelle. Esquisser une idée, créer un personnage… une pratique quotidienne qui nourrit mon sens du design.</div>
-                        <div id="paint-text-mode"    class="paint-tab-text" style="display:none;">👗 <strong>Mode & Style</strong> — La mode, c'est de la communication non-verbale. J'aime décoder les codes vestimentaires et comprendre comment une tenue raconte une histoire.</div>
-                        <div id="paint-text-photo"   class="paint-tab-text" style="display:none;">📷 <strong>Photographie</strong> — Capturer un instant, choisir son cadrage, jouer avec la lumière — la photo m'a appris à voir avant de créer.</div>
+                        <div id="paint-text-cosplay" class="paint-tab-text" style="display:none;">🎭 <strong>Cosplay</strong> — Halloween, le carnaval, les conventions… depuis toujours j'adore me déguiser et me maquiller. J'ai commencé par improviser avec ce que j'avais sous la main, puis j'ai appris à coudre, à crafter, à construire. Ce qui me fait vibrer ? Voir un personnage que j'aime prendre vie — et pouvoir l'incarner.</div>
+                        <div id="paint-text-dessin"  class="paint-tab-text">🖌️ <strong>Dessin & Illustration</strong> — Depuis toute petite, je n'ai jamais arrêté de dessiner. C'est mon outil de réflexion visuelle : tester de nouvelles choses, créer des personnages, développer des univers. Une pratique quotidienne qui nourrit directement mon sens du design.</div>
 
                     </div>
                 </div>
@@ -1273,11 +1285,11 @@
                 <div class="window-body" style="padding:0 !important; flex:1; display:flex; flex-direction:column;">
 
                     <!-- Pochette + paroles -->
-                    <div style="display:flex; gap:0; background:#1a1a2e; flex:1;">
+                    <div class="wmp-top" style="display:flex; gap:0; background:#1a1a2e; flex:1;">
                         <!-- Pochette + visualiseur -->
-                        <div style="width:160px; flex-shrink:0; display:flex; flex-direction:column;">
-                            <img id="wmp-cover" src="ressources/passions/japon.jpg" alt="Pochette"
-                                 style="width:160px; height:160px; object-fit:cover; display:block;"
+                        <div style="width:220px; flex-shrink:0; display:flex; flex-direction:column;">
+                            <img id="wmp-cover" src="ressources/passions/japon.png" alt="Pochette"
+                                 style="width:220px; height:220px; object-fit:cover; display:block;"
                                  onerror="this.style.background='#333'">
                             <div id="wmp-visualizer" style="flex:1; min-height:30px; background:#0d0d1a; display:flex; align-items:flex-end; justify-content:center; gap:2px; padding:4px;">
                                 <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
@@ -1309,7 +1321,7 @@ Appuie sur ▶ Play pour découvrir...
                         </div>
                         <div class="wmp-track" id="wtrack-2" onclick="wmpLoadTrack(2)">
                             <span class="wmp-tracknum">03</span>
-                            <span class="wmp-trackname">🎬 Cinéma & Vidéo</span>
+                            <span class="wmp-trackname">🎬 Cinéma</span>
                             <span class="wmp-trackdur">0:30</span>
                         </div>
                         <div class="wmp-track" id="wtrack-3" onclick="wmpLoadTrack(3)">
@@ -1317,6 +1329,17 @@ Appuie sur ▶ Play pour découvrir...
                             <span class="wmp-trackname">🎮 Gaming Narratif</span>
                             <span class="wmp-trackdur">0:30</span>
                         </div>
+                        <div class="wmp-track" id="wtrack-4" onclick="wmpLoadTrack(4)">
+                            <span class="wmp-tracknum">05</span>
+                            <span class="wmp-trackname">👗 Mode & Style</span>
+                            <span class="wmp-trackdur">0:30</span>
+                        </div>
+                        <div class="wmp-track" id="wtrack-5" onclick="wmpLoadTrack(5)">
+                            <span class="wmp-tracknum">06</span>
+                            <span class="wmp-trackname">📷 Photo & Vidéo</span>
+                            <span class="wmp-trackdur">0:30</span>
+                        </div>
+
                     </div>
 
                     <!-- Barre progression -->
@@ -1361,7 +1384,7 @@ Appuie sur ▶ Play pour découvrir...
                     <span>Me contacter</span>
                 </a>
                 <a href="#" class="desktop-icon" onclick="openLivret(); return false;">
-                    <img src="https://win98icons.alexmeub.com/icons/png/book_main-0.png" alt="Livret d'or">
+                    <img src="ressources/logos/livretdor.png" alt="Livret d'or" onerror="this.src='https://win98icons.alexmeub.com/icons/png/bookshelf-0.png'">
                     <span>Livret d'or</span>
                 </a>
                 <a href="#" class="desktop-icon" onclick="openLegals()">
@@ -1419,7 +1442,7 @@ Appuie sur ▶ Play pour découvrir...
                     Ce site est un portfolio personnel édité par :<br>
                     <strong>Mathilde Mathieu</strong>, particulière majeure<br>
                     Étudiante en BUT Métiers du Multimédia et de l'Internet (MMI)<br>
-                    Email : <a href="mailto:mathilde.mathieu24@gmail.com">mathilde.mathieu24@gmail.com</a>
+                    Email : <a href="/cdn-cgi/l/email-protection#fc919d889495909899d2919d8894959989cec8bc9b919d9590d29f9391"><span class="__cf_email__" data-cfemail="f994988d9190959d9cd794988d91909c8ccbcdb99e94989095d79a9694">[email&#160;protected]</span></a>
                 </p>
                 <p style="margin-top:6px; color:#555; font-size:11px;">
                     Conformément à l'art. 6-III-2 de la loi LCEN du 21 juin 2004, l'éditrice étant une personne physique, 
@@ -1499,7 +1522,7 @@ Appuie sur ▶ Play pour découvrir...
         <div class="oe-headers">
             <div class="oe-field">
                 <span class="oe-label">À :</span>
-                <span class="oe-value" style="color:#000080; font-weight:bold;"><a href="mailto:mathilde.mathieu24@gmail.com">mathilde.mathieu24@gmail.com</a></span>
+                <span class="oe-value" style="color:#000080; font-weight:bold;"><a href="/cdn-cgi/l/email-protection#315c504559585d55541f5c504559585444030571565c50585d1f525e5c"><span class="__cf_email__" data-cfemail="6a070b1e0203060e0f44070b1e02030f1f585e2a0d070b030644090507">[email&#160;protected]</span></a></span>
             </div>
             <div class="oe-field">
                 <span class="oe-label">Votre e-mail :</span>
@@ -1630,11 +1653,12 @@ Appuie sur ▶ Play pour découvrir...
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const projects = {
         root: [
             { id: 'but', name: 'Projets BUT', isFolder: true },
-            { id: 'cosplay', name: 'Alternance', isFolder: true }
+            { id: 'cosplay', name: 'Stage', isFolder: true },
+            { id: 'perso', name: 'Projets Perso', isFolder: true }
         ],
         but: [
             { id: 'mmi1', name: 'MMI 1', isFolder: true },
@@ -1708,7 +1732,7 @@ Appuie sur ▶ Play pour découvrir...
                 name: 'JeanHonore_Parallax3D.blend',
                 date: '2025-03',
                 img: 'ressources/projets/jeanhonore.webp',
-                outils: ['bl'],
+                outils: ['bl','ps'],
                 link: 'https://drive.google.com/file/d/1UgaxSM1HFjbSRzSJuvNap2fwVkKqphZr/view?usp=sharing',
                 desc: "Animation narrative en 3D sur Blender utilisant la technique du parallax pour donner vie à l'univers de Jean Honoré.",
                 quoi: "Modélisation d'une scène sur Blender où j'ai décomposé les plans pour créer une profondeur immersive (parallax) avec des légers mouvements sur chaque élément décrit.",
@@ -1723,7 +1747,7 @@ Appuie sur ▶ Play pour découvrir...
                 name: 'Weatherie_AppMeteo.fig',
                 date: '2025-01',
                 img: 'ressources/projets/weatherie.png',
-                outils: ['figma','js'],
+                outils: ['figma'],
                 link: 'https://drive.google.com/file/d/1TOxy4EBU79dnWejISlkxEwmoq6UirCzx/view?usp=sharing',
                 desc: "Application mobile météo immersive alliant art post-impressionniste et visualisation de données.",
                 quoi: "Dashboard interactif et tableau comparatif de statistiques historiques pour Toulon. Chaque icône est conçue comme une petite peinture pour maintenir une cohérence totale avec la DA.",
@@ -1743,7 +1767,7 @@ Appuie sur ▶ Play pour découvrir...
                     'ressources/projets/mmilan2.png',
                     'ressources/projets/mmilan3.png'
                 ],
-                outils: ['in','ps','ai'],
+                outils: ['figma','ps','ai','c'],
                 desc: "Pilotage logistique d'un événement e-sport à l'IUT et création de l'identité visuelle promotionnelle complète.",
                 quoi: "Pilotage logistique de l'événement e-sport de l'IUT et création de l'identité visuelle promotionnelle (affiches, réseaux sociaux, signalétique).",
                 pourquoi: "Le défi était de gérer un événement complexe tout en lui donnant une image de marque forte. J'ai résolu la partie logistique en modélisant des plans de salle optimisant les flux et la sécurité. Côté création, j'ai conçu une affiche dynamique basée sur une hiérarchie visuelle stricte pour que l'excitation de l'événement n'efface pas la clarté des informations pratiques.",
@@ -1751,15 +1775,62 @@ Appuie sur ▶ Play pour découvrir...
                 qui: "Binôme logistique avec Zahia / Solo sur la direction artistique.",
                 ac: "AC25.01 – Piloter un projet | AC25.04 – Collaborer en équipe | AC23.03 – Créer une identité visuelle.",
                 evaluation: "J'ai découvert que la création s'étend au-delà du graphisme : organiser l'espace d'une salle est un exercice de design d'expérience (UX) en soi. Ma couverture média (vlog) a prouvé l'efficacité de cette organisation sur le terrain."
+            },
+            {
+                id: 'cours-photo-mmi2',
+                name: 'Cours_Photo_MMI2.pdf',
+                date: '2024-11',
+                img: 'ressources/projets/photos1.png',
+                screenshots: [
+                    'ressources/projets/photos1.png',
+                    'ressources/projets/photos2.png',
+                    'ressources/projets/photos3.png',
+                    'ressources/projets/photos4.png'
+                ],
+                desc: "Travaux pratiques de photographie en culture artistique — apprentissage de la composition et de la gestion d'un appareil photo.",
+                quoi: "Réalisation de plusieurs types de photos avec consignes précises (cadrage, profondeur de champ, lumière, règle des tiers...). Chaque photo est accompagnée d'une explication des choix techniques et artistiques dans un document PDF.",
+                pourquoi: "L'objectif était d'apprendre à maîtriser les réglages d'un appareil photo et les règles de composition vues en cours pour produire des images volontaires et construites.",
+                ou: "BUT MMI — Semestre 3, cours de culture artistique.",
+                qui: "Travail individuel.",
+                ac: "AC23.04 | Maîtriser la prise de vue et la composition photographique.",
+                evaluation: "Ces exercices m'ont donné des bases solides en photographie que j'applique maintenant naturellement dans mes projets personnels et associatifs."
             }
         ],
         mmi3: [
+            {
+                id: 'affiche-opera',
+                name: 'Affiche_Opera_Perso.psd',
+                date: '2026-02',
+                img: 'ressources/projets/affiche-opera.png',
+                outils: ['ps'],
+                desc: "Interprétation personnelle de l'affiche du spectacle 'Vers un monde plus humain'.",
+                quoi: "Création d'un visuel de communication basé sur des photos réelles de l'Opéra de Toulon. L'affiche joue sur le contraste entre l'humain (la danse) et le numérique (la trame visuelle).",
+                pourquoi: "Pour retransmettre le thème du passage d'un monde déshumanisé à une renaissance, j'ai intégré une trame graphique sur les danseurs en arrière-plan. Cela symbolise la fusion entre la technologie des décors projetés et l'émotion pure de la danse classique.",
+                ou: "SAÉ 5.Crea.01a — Volet communication visuelle.",
+                qui: "Travail individuel (Photomontage et typographie).",
+                ac: "AC33.03 | Créer une identité visuelle | AC33.05 | Direction artistique.",
+                evaluation: "Ce travail sur la texture et la trame m'a permis d'explorer un style plus graphique et urbain, tout en respectant les codes prestigieux de l'Opéra."
+            },
+            {
+                id: 'melanie-martinez',
+                name: 'Melanie_Martinez_ChefOeuvre.psd',
+                date: '2025-11',
+                img: 'ressources/projets/affiche-melanie.png',
+                outils: ['a'],
+                desc: "Preview graphique du Chef-d'œuvre individuel : Hommage à Melanie Martinez.",
+                quoi: "Livret d'intention sous forme d'affiche présentant la DA (couleurs, typo, esthétisme) du futur projet immersif 'The Crybaby Journey'. Un hommage à la cohérence narrative de l'artiste.",
+                pourquoi: "L'objectif était de faire comprendre en un seul visuel l'ambition du projet final (Web-design, 3D, Storytelling). J'ai choisi une esthétique surréaliste et pastel, fidèle à l'univers de Portals, pour servir de guide visuel à toute la production à venir.",
+                ou: "SAÉ 5.Crea.01b — Chef-d'œuvre individuel (Phase de conception).",
+                qui: "Travail individuel (Auteur-créateur).",
+                ac: "AC33.01 | Démarche originale | AC33.02 | Design System | AC35.03 | Projet innovant.",
+                evaluation: "C'est la première pierre de mon projet de fin d'études. Cette affiche a validé ma direction artistique auprès du comité pédagogique et pose les bases de mon identité professionnelle."
+            },
             {
                 id: 'danse-opera',
                 name: 'DanseOpera_FaceAuMur.blend',
                 date: '2026-03',
                 img: 'ressources/projets/dansealopera.png',
-                outils: ['bl','ae'],
+                outils: ['bl'],
                 desc: "Création d'un décor numérique immersif et évolutif pour un spectacle de danse classique à l'Opéra de Toulon.",
                 quoi: "Conception d'un tableau visuel intitulé \"Face au mur\" : un environnement 3D réactif composé de cubes bleu électrique qui se construisent et s'empilent en fonction de la tension chorégraphique. Le projet inclut une affiche générale et un Explainer vidéo d'une minute.",
                 pourquoi: "La problématique était de représenter le mur non pas comme un décor fixe, mais comme un obstacle abstrait qui naît des actions des danseurs. J'ai choisi une esthétique minimaliste (cubes vides, arêtes lumineuses) pour ne pas étouffer le mouvement. L'idée forte est la progression : d'abord des éléments rares et fluides (frame 0-500), puis une accélération et un empilement oppressant (frame 700+). J'ai résolu le besoin de vie du décor en créant un effet de vague permanent (frame 1200), donnant au mur une allure organique et instable.",
@@ -1767,22 +1838,91 @@ Appuie sur ▶ Play pour découvrir...
                 qui: "Travail de groupe (binôme sur le tableau), évaluation individuelle sur la production et le pilotage.",
                 ac: "AC33.04 | Produire les éléments pour une expérience sophistiquée et immersive | AC33.05 | Appréhender les enjeux liés à la direction artistique | AC35.01 | Piloter un produit, un service ou une équipe.",
                 evaluation: "Ce projet m'a appris à faire du décor un \"partenaire de jeu\". La difficulté a été de synchroniser l'évolution visuelle (l'empilement des cubes) avec le rythme de la musique et la montée en tension des danseurs pour que l'explosion finale soit réellement libératrice."
+            },
+            {
+                id: 'cours-da-mmi3',
+                name: 'Cours_DA_MMI3.pdf',
+                date: '2025-10',
+                img: 'ressources/projets/daphoto1.png',
+                screenshots: [
+                    'ressources/projets/daphoto1.png',
+                    'ressources/projets/daphoto2.png',
+                    'ressources/projets/daphoto3.png'
+                ],
+                desc: "Cours de direction artistique — retravail photographique avec techniques graphiques sur des photos personnelles.",
+                quoi: "À partir de deux photos choisies, j'ai produit plusieurs déclinaisons : détourage sans fond, dessin par-dessus l'image, photomontage avec une autre photo, et application de techniques graphiques. Le tout accompagné d'un document PDF d'analyse.",
+                pourquoi: "Le but était d'explorer comment la direction artistique transforme une photo brute en visuel graphique fort, en jouant sur les techniques de retouche et de composition.",
+                ou: "BUT MMI — Semestre 5, cours de direction artistique.",
+                qui: "Travail individuel.",
+                ac: "AC33.05 | Direction artistique | AC33.03 | Retouche et composition.",
+                evaluation: "Ce cours m'a ouvert les yeux sur la richesse des possibilités graphiques à partir d'une seule photo. C'est directement lié à mon style dans les projets créatifs personnels."
             }
         ],
         cosplay: [
             {
-                id: 'seo',
-                name: 'Shopify_Audit.doc',
+                id: 'stage-cosplaysmart',
+                name: 'Stage_CosplaySmart.psd',
                 date: '2024-09',
-                img: 'https://win98icons.alexmeub.com/icons/png/file_text-0.png',
-                outils: ['sh'],
-                desc: "Audit SEO & UX pour la boutique e-commerce Cosplay Smart.",
-                quoi: "Analyse complète du référencement naturel et de l'expérience utilisateur de la boutique Shopify Cosplay Smart. Production de recommandations concrètes et mise en œuvre des optimisations.",
-                pourquoi: "Approfondir les techniques SEO on-page et comprendre les leviers de visibilité d'un e-commerce spécialisé dans un marché de niche.",
-                ou: "Cosplay Smart, Six-Fours-les-Plages — Stage perlé.",
-                qui: "Mission individuelle.",
-                ac: "AC25.01 – Piloter et optimiser un projet web.",
-                evaluation: "Bonne montée en compétences SEO. J'ai appris à lier les enjeux techniques (structure du site, balises) aux enjeux éditoriaux (rédaction optimisée) pour un impact réel sur la visibilité."
+                img: 'ressources/projets/cosplaysmart/cosplaysmart1.png',
+                screenshots: [
+                    'ressources/projets/cosplaysmart/cosplaysmart1.png',
+                    'ressources/projets/cosplaysmart/cosplaysmart2.png',
+                    'ressources/projets/cosplaysmart/cosplaysmart3.png',
+                    'ressources/projets/cosplaysmart/cosplaysmart4.jpg',
+                    'ressources/projets/cosplaysmart/cosplaysmart5.png',
+                    'ressources/projets/cosplaysmart/cosplaysmart6.png'
+                ],
+                outils: ['ps','ai','pr','cc','c','figma'],
+                desc: "Stage perlé chez Cosplay Smart — production graphique et audiovisuelle complète pour une boutique e-commerce spécialisée cosplay.",
+                quoi: "Durant ce stage, j'ai pris en charge l'ensemble de la production créative de la marque : posts Instagram, Reels, bâche publicitaire, kakemono, affiches, nappes, personnages chibi de l'équipe, fonds d'écran promotionnels, design d'éco-cup et vlogs.",
+                pourquoi: "L'objectif était de renforcer la présence visuelle et digitale de Cosplay Smart sur tous les supports, du print à l'audiovisuel. Chaque livrable devait respecter l'univers de la marque tout en apportant une touche créative personnelle.",
+                ou: "Cosplay Smart, Six-Fours-les-Plages — Stage perlé BUT MMI.",
+                qui: "Mission individuelle. Production et direction artistique en autonomie.",
+                ac: "AC23.03 | Identité visuelle | AC23.05 | Contenus réseaux | AC25.01 | Pilotage de projet.",
+                evaluation: "Ce stage m'a permis de travailler en conditions réelles avec des délais et des attentes client. Gérer seule toute la chaîne créative, du brief à la livraison, a vraiment consolidé ma polyvalence et ma capacité à m'adapter à un univers de niche."
+            }
+        ],
+        perso: [
+            {
+                id: 'nuit-du-code',
+                name: 'NuitDuCode_BDE_Staff.mp4',
+                date: '2024-12',
+                img: 'ressources/projets/nuitducode1.jpg',
+                desc: "Staff bénévole à la Nuit du Code organisée par l'ISEN — photos, vidéos, animation du live et gestion événementielle.",
+                quoi: "En tant que bénévole avec le BDE MM'In, j'ai assuré la couverture photo et vidéo de l'événement, aidé à la gestion logistique et animé le live pendant la soirée.",
+                pourquoi: "Mettre mes compétences en communication et en création au service d'un événement réel, avec toutes les contraintes que ça implique : réactivité, coordination et prise de décision rapide.",
+                ou: "Nuit du Code — ISEN Engineering, Toulon. Mission bénévole.",
+                qui: "Staff bénévole BDE MM'In.",
+                ac: "AC25.04 | Collaborer en équipe | AC23.05 | Production audiovisuelle en conditions réelles.",
+                evaluation: "Gérer à la fois la technique (caméra, live) et l'humain (coordination, contact public) en même temps, c'est un exercice qui m'a vraiment appris à rester calme et organisée sous pression."
+            },
+            {
+                id: 'all-game-long',
+                name: 'AllGameLong_Communication.psd',
+                date: '2026-03',
+                img: 'ressources/projets/allgamelong1.png',
+                outils: ['figma'],
+                desc: "Bénévole communication pour All Game Long — événement gaming organisé par l'ISEN Engineering.",
+                quoi: "En charge de la communication et de la gestion de l'événement. Première production réalisée : un post Save the Date pour annoncer l'événement sur les réseaux.",
+                pourquoi: "Continuer à m'impliquer dans des événements réels pour développer mes compétences en gestion de projet et en communication visuelle, tout en contribuant à la vie étudiante.",
+                ou: "All Game Long — ISEN Engineering, Toulon. Mission bénévole (en cours).",
+                qui: "Bénévole communication — travail en autonomie.",
+                ac: "AC25.01 | Piloter un projet | AC23.03 | Communication visuelle.",
+                evaluation: "Projet en cours — c'est la première fois que je suis seule responsable de la communication d'un événement. Un vrai défi qui me prépare à des responsabilités professionnelles."
+            },
+            {
+                id: 'postinsta',
+                name: 'PostInsta_Win98.psd',
+                date: '2024-11',
+                img: 'ressources/projets/postinsta.png',
+                outils: ['ps'],
+                desc: "Création d'un post Instagram personnel jouant avec l'esthétique Windows 98 pour exprimer mon univers créatif.",
+                quoi: "Montage Photoshop conçu pour mon compte Instagram personnel. J'ai recréé l'interface Windows 98 pour encadrer mes photos, ongles et maquillage, en y glissant des easter eggs (fenêtre Error, dialog dinosaure, CD Player avec Melanie Martinez). Un projet 100% personnel, fait pour le fun.",
+                pourquoi: "Aucune contrainte, aucun brief. Juste l'envie de m'amuser avec une esthétique qui me représente et de poster quelque chose qui me ressemble vraiment. C'est aussi ce projet qui m'a donné l'idée du thème de ce portfolio.",
+                ou: "Projet personnel, réalisé chez moi.",
+                qui: "Travail entièrement personnel.",
+                ac: "Projet libre — aucune SAÉ associée.",
+                evaluation: "Ce post m'a permis de réaliser que mon univers créatif personnel et mes compétences techniques parlent d'eux-mêmes. L'accueil positif qu'il a reçu m'a confortée dans l'idée de porter cette esthétique jusqu'à mon portfolio."
             }
         ]
     };
@@ -1821,7 +1961,8 @@ Appuie sur ▶ Play pour découvrir...
                         <button class="filter-btn active-filter" id="fbtn-all"    onclick="setFilter('all')">Tous</button>
                         <button class="filter-btn" id="fbtn-design"  onclick="setFilter('design')">Design</button>
                         <button class="filter-btn" id="fbtn-dev"     onclick="setFilter('dev')">Dév</button>
-                        <button class="filter-btn" id="fbtn-alternance" onclick="setFilter('alternance')">Alternance</button>
+                        <button class="filter-btn" id="fbtn-alternance" onclick="setFilter('alternance')">Stage</button>
+                        <button class="filter-btn" id="fbtn-perso" onclick="setFilter('perso')">Perso</button>
                     </div>
                     <div style="display:flex; align-items:center; gap:4px; border-left:1px solid #aaa; padding-left:8px;">
                         <span style="font-size:11px; font-weight:bold;">Tri :</span>
@@ -1897,7 +2038,7 @@ Appuie sur ▶ Play pour découvrir...
         grid.innerHTML = '';
 
         const query = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
-        let items = [...projects.mmi1, ...projects.mmi2, ...projects.cosplay];
+        let items = [...projects.mmi1, ...projects.mmi2, ...projects.mmi3, ...projects.cosplay, ...projects.perso];
 
         // Filtre catégorie
         items = items.filter(item => {
@@ -1905,6 +2046,7 @@ Appuie sur ▶ Play pour découvrir...
             if (currentFilter === 'dev')       return item.outils?.includes('vsc');
             if (currentFilter === 'design')    return item.outils?.some(o => ['ai','ps','figma','in'].includes(o));
             if (currentFilter === 'alternance') return projects.cosplay.some(p => p.id === item.id);
+            if (currentFilter === 'perso') return projects.perso.some(p => p.id === item.id);
             return true;
         });
 
@@ -2265,7 +2407,7 @@ Appuie sur ▶ Play pour découvrir...
         if (!el) return;
         const entries = getLivretEntries();
         if (entries.length === 0) {
-            el.innerHTML = '💬 <strong>Recruteur_Pro</strong> t\'a laissé un commentaire · <a href="#contact" style="color:#003399;" onclick="openLivret()">Voir le livret d\'or</a>';
+            el.innerHTML = '✨ <strong>Bonne visite !</strong> N\'hésite pas à laisser un mot · <a href="#contact" style="color:#003399;" onclick="openLivret()">Voir le livre d\'or</a>';
         } else {
             const last = entries[entries.length - 1];
             el.innerHTML = `💬 <strong>${escHtml(last.name)}</strong>${last.role ? ' <span style="color:#666;">· ${escHtml(last.role)}</span>' : ''} : "${escHtml(last.msg.slice(0, 60))}${last.msg.length > 60 ? '…' : ''}" · <a href="#contact" style="color:#003399;" onclick="openLivret()">Livret d'or (${entries.length})</a>`;
@@ -2281,12 +2423,12 @@ Appuie sur ▶ Play pour découvrir...
 
     // Soft skills : questions du recruteur pour chaque skill
     const skillQuestions = {
-        'Créativité': 'Tu te décris comme créative, c\'est-à-dire ?',
-        'Curiosité': 'Et la curiosité, ça se manifeste comment chez toi ?',
-        'Empathie': 'L\'empathie dans un contexte pro, c\'est quoi pour toi ?',
-        'Intelligence émotionnelle': 'Intelligence émotionnelle, c\'est un grand mot ! Tu peux développer ?',
-        'Travail d\'équipe': 'Tu es une bosseuse en équipe alors ?',
-        'Adaptabilité': 'Et l\'adaptabilité, tu l\'as déjà mise à l\'épreuve ?'
+        'Créativité': 'La créativité, c\'est quelque chose que tu mettrais vraiment en avant chez toi ?',
+        'Curiosité': 'La curiosité, ça se manifeste comment dans ton quotidien ?',
+        'Empathie': 'L\'empathie dans un contexte professionnel, ça veut dire quoi concrètement pour toi ?',
+        'Intelligence émotionnelle': 'Tu parles d\'intelligence émotionnelle, tu peux m\'expliquer comment ça se traduit dans ton travail ?',
+        'Esprit d\'équipe': 'Tu te sens plus à l\'aise en solo ou en équipe ?',
+        'Adaptabilité': 'L\'adaptabilité, tu l\'as déjà mise à l\'épreuve dans un projet ?'
     };
 
     function sendSkill(name, message) {
@@ -2343,16 +2485,14 @@ Appuie sur ▶ Play pour découvrir...
     // --- PAINT ONGLETS ---
     const paintTabMeta = {
         cosplay: { label: '🎭 Cosplay — Création de costumes', count: 3, insta: true },
-        dessin:  { label: '🖌️ Dessin & Illustration',          count: 3, insta: true },
-        mode:    { label: '👗 Mode & Style',                    count: 3, insta: false },
-        photo:   { label: '📷 Photographie',                    count: 3, insta: false }
+        dessin:  { label: '🖌️ Dessin & Illustration',          count: 3, insta: true }
     };
-    const carouselState = { cosplay:0, dessin:0, mode:0, photo:0 };
+    const carouselState = { cosplay:0, dessin:0 };
     let currentPaintTab = 'dessin';
     let instaProcessed = false;
 
     function switchPaintTab(id) {
-        ['cosplay','dessin','mode','photo'].forEach(t => {
+        ['cosplay','dessin'].forEach(t => {
             document.getElementById('carousel-' + t).style.display = t === id ? 'block' : 'none';
             document.getElementById('ptab-' + t).classList.toggle('active-paint-tab', t === id);
             document.getElementById('paint-text-' + t).style.display = t === id ? 'block' : 'none';
@@ -2423,7 +2563,7 @@ Appuie sur ▶ Play pour découvrir...
 
     // Init dots au chargement (seulement mode et photo)
     document.addEventListener('DOMContentLoaded', () => {
-        ['mode','photo'].forEach(buildDots);
+        // Plus d'onglets image dans Paint (mode/photo déplacés dans WMP)
         // Charger le script Instagram de façon asynchrone
         const s = document.createElement('script');
         s.async = true;
@@ -2436,26 +2576,62 @@ Appuie sur ▶ Play pour découvrir...
         {
             id: 'japon',
             title: '⛩️ Culture Japonaise',
-            cover: 'ressources/passions/japon.jpg',
-            lyrics: `Mangas, animés, esthétique japonaise…\nCette culture m'inspire profondément dans\nmon travail créatif.\n\nLes directions artistiques, le character design,\nle soin apporté aux moindres détails…\n\nUne source d'inspiration inépuisable\nqui nourrit ma vision créative au quotidien.`
+            cover: 'ressources/passions/japon.png',
+            lyrics: `Mon amour pour le Japon est né en même temps que ma passion pour le cosplay. C'est cette culture qui m'a donné envie de créer mes premiers costumes.
+
+J'adore les animes, les mangas, les films d'animation, mais aussi les paysages, les petits villages, les cerisiers, la gastronomie et les traditions. Ce mélange entre modernité et héritage ancestral me fascine vraiment.
+
+C'est mon voyage de rêve absolu. Pas uniquement pour la culture, mais aussi pour ses forêts, ses chemins perdus et ses ciels étoilés. J'adore me balader dans la nature et la capturer en photo, et le Japon réunit tout ce que j'aime dans un seul endroit.`
         },
         {
             id: 'musique',
             title: '🎵 Musique',
-            cover: 'ressources/passions/musique.jpg',
-            lyrics: `La musique accompagne toutes mes créations.\n\nJ'aime autant la consommer qu'analyser\ncomment elle construit une ambiance,\nune émotion, une identité.\n\nCette sensibilité se retrouve directement\ndans ma façon d'aborder le montage vidéo\net la narration visuelle.`
+            cover: 'ressources/passions/musique.png',
+            lyrics: `La musique tourne en continu chez moi. Dans chaque création, chaque trajet, chaque moment.
+
+Ce qui me touche vraiment, c'est découvrir de petits artistes et plonger dans leur univers. Des artistes qui construisent quelque chose de personnel et d'unique, loin de ce qui se fait partout.
+
+Cette façon d'écouter se retrouve dans mon travail. Je cherche toujours la musique qui va donner la bonne émotion au bon moment, surtout quand je monte une vidéo.`
         },
         {
-            id: 'video',
-            title: '🎬 Cinéma & Vidéo',
-            cover: 'ressources/passions/video.jpg',
-            lyrics: `J'analyse les films autant que je les regarde.\n\nCadrage, rythme de montage,\ndirection artistique, storytelling…\n\nMonter des vidéos est une passion\ntransformée en compétence concrète :\ndes vlogs YouTube aux Reels,\nen passant par les formats événementiels.`
+            id: 'cinema',
+            title: '🎬 Cinéma',
+            cover: 'ressources/passions/cinema.png',
+            lyrics: `Tim Burton est mon réalisateur préféré. J'adore son univers sombre et poétique, et plus largement les films d'horreur. Retrouver les codes du genre et découvrir de nouvelles œuvres, c'est quelque chose que j'aime vraiment.
+
+Ce qui me fascine au cinéma, c'est aussi la technique. Comment un plan est construit, comment une scène est montée, comment les effets spéciaux donnent vie à l'impossible.
+
+Tout ça nourrit directement ma façon de filmer et de penser l'image.`
         },
         {
             id: 'gaming',
-            title: '🎮 Gaming Narratif',
-            cover: 'ressources/passions/gaming.jpg',
-            lyrics: `Ce qui me passionne dans les jeux,\nc'est surtout les univers narratifs et visuellement forts.\n\nComment construire un univers cohérent,\nun character design mémorable,\nune ambiance sonore et visuelle immersive…\n\nUn vrai cours de storytelling interactif.`
+            title: '🎮 Jeux vidéo',
+            cover: 'ressources/passions/jeux.png',
+            lyrics: `Ce qui m'attire dans les jeux vidéo, ce sont avant tout les jeux à histoire où chaque choix change le déroulé. Et les univers visuels soignés qui te font oublier que tu es dans un jeu.
+
+Dans mes rêves les plus fous, je ferais partie d'une équipe qui crée ce type de jeu. La façon dont on construit un monde cohérent et immersif m'inspire vraiment dans ma propre façon de créer.
+
+J'aime aussi Just Dance, et la technique de capture vidéo utilisée pour les chorégraphies m'intéresse beaucoup.`
+        },
+        {
+            id: 'mode',
+            title: '👗 Mode & Style',
+            cover: 'ressources/passions/mode.png',
+            lyrics: `Je ne suis pas les tendances. Je m'habille pour me raconter.
+
+J'ai toujours été maximaliste et je revendique ça totalement. Cravates, couleurs vives, pièces chinées en friperie, accessoires récupérés... Pour moi, une tenue c'est un message, une humeur, une façon d'exprimer qui je suis ce jour là.
+
+Je suis aussi contre le consumérisme de masse. Je récupère, je détourne, je crée avec ce que j'ai. Les friperies et les vide-greniers sont mes endroits préférés pour trouver des pièces uniques. Acheter moins, choisir mieux et donner une nouvelle vie à ce qui existe déjà, c'est ma façon de faire, pour le style comme pour la création.`
+        },
+        {
+            id: 'photovideo',
+            title: '📷 Photo & Vidéo',
+            cover: 'ressources/passions/photovideo.png',
+            lyrics: `Tout a commencé avec un Kidizoom. Je filmais et photographiais absolument tout, et ma mère me prêtait son appareil photo. Cette curiosité ne m'a jamais quittée.
+
+Ce que j'aime en photo, c'est capturer un moment de vie tel qu'il se déroule. Ces instants spontanés qui, une fois figés, prennent une toute autre dimension.
+
+En vidéo, j'adore créer des résumés que les gens peuvent revivre. Des souvenirs partagés qui font sourire et qui gardent une trace de ce qui compte vraiment.`
         }
     ];
 
@@ -2586,6 +2762,7 @@ Appuie sur ▶ Play pour découvrir...
         }
     });
 
+
     function positionTooltip(e) {
         const tooltip = document.getElementById('skill-tooltip');
         const offset = 14;
@@ -2600,4 +2777,3 @@ Appuie sur ▶ Play pour découvrir...
 </script>
 </body>
 </html>
-
