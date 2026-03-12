@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
-    <title>Mathilde Mathieu | Portfolio MMI</title>
+    <title>Mathilde Mathieu | Portfolio Créatif</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio de Mathilde Mathieu, étudiante en BUT MMI — Création numérique, design et développement web." />
+    <meta name="description" content="Portfolio de Mathilde Mathieu — Design graphique, création numérique, UX/UI et développement web." />
     <meta name="author" content="Mathilde Mathieu" />
     <meta name="robots" content="index, follow" />
     <link rel="icon" type="image/png" href="ressources/iconemathilde.png">
@@ -75,7 +75,7 @@
         }
         main { width: 100%; max-width: 950px; display: flex; flex-direction: column; gap: 50px; }
         .window { width: 100%; box-shadow: 6px 6px 0 rgba(0,0,0,0.5); margin-bottom: 20px;}
-        section { scroll-margin-top: 60px; }
+        section { scroll-margin-top: 60px; } /* valeur unique, taskbar = 40px + marge */
 
         /* --- EXPLORER --- */
         .explorer-wrapper { display: flex; flex-direction: column; border: 2px inset #808080; background: #fff; }
@@ -170,8 +170,7 @@
             justify-content: center;
         }
 
-        /* Scroll margin : sections ne se cachent pas sous la taskbar */
-        section { scroll-margin-top: 20px; }
+        /* Scroll margin géré globalement — pas besoin de surcharger ici */
 
         /* Overlay panneau détail */
         #panel-overlay {
@@ -255,6 +254,16 @@
             .taskbar { padding: 0 6px; }
             .start-button span { display: none; } /* Cacher le texte sur très petit écran */
             h2 { font-size: 18px; }
+
+            /* Modales plein écran sur très petit écran */
+            #mail-modal, #livret-modal, #legals-modal {
+                width: 98% !important;
+                max-width: 98% !important;
+                left: 1% !important;
+                transform: translateY(-50%) !important;
+            }
+            /* Panneau détail plein écran */
+            #details-panel { width: 100% !important; }
         }
 
         .tree-item {
@@ -547,7 +556,7 @@
 
     <div class="taskbar">
         <div class="start-button" style="padding: 4px 10px; border: 2px solid; border-color: #fff #808080 #808080 #fff; font-weight: bold; cursor: pointer; display: flex; align-items: center;" onclick="toggleMenu()">
-            <img src="ressources/iconemathilde.png" alt="Logo Mathilde" style="width:18px; margin-right:8px;">
+            <img src="ressources/iconemathilde.png" alt="Portfolio de Mathilde Mathieu" style="width:18px; margin-right:8px;">
             Mathilde MATHIEU
         </div>
         <div class="taskbar-pins" style="display: flex; margin-left: 10px; padding-left: 10px; border-left: 1px solid #808080;">
@@ -578,7 +587,7 @@
 
     <aside class="sidebar" id="sidebar">
         <div class="profile-card">
-            <img src="ressources/iconemathilde.png" alt="Mathilde">
+            <img src="ressources/iconemathilde.png" alt="Photo de profil de Mathilde Mathieu">
             <h3 style="margin-top:15px; font-size: 18px;">Mathilde Mathieu</h3>
             <p style="font-size:12px; color: #444; margin-top: 5px;">Création Numérique & Stratégie</p>
         </div>
@@ -772,8 +781,7 @@
                         <div class="ie-header">
                             <div style="display:flex; align-items:center; gap:15px; flex-wrap:wrap;">
                                 <div class="ie-logo-box" style="background:#fff; overflow:hidden; padding:2px;">
-                                    <img src="ressources/logos/cosplaysmart.png" alt="Logo cosplaysmart"
-                                         alt="Logo Cosplay Smart"
+                                    <img src="ressources/logos/cosplaysmart.png" alt="Logo de l\'entreprise Cosplay Smart"
                                          style="width:44px; height:44px; object-fit:contain;"
                                          onerror="this.parentElement.innerHTML='🎭'">
                                 </div>
@@ -831,8 +839,7 @@
                     <div id="page-stage1" class="ie-page" style="display:none;">
                         <div class="ie-header">
                             <div style="display:flex; align-items:center; gap:15px; flex-wrap:wrap;">
-                                <img src="ressources/logos/cosplaysmart.png" alt="Logo cosplaysmart"
-                                         alt="Logo Cosplay Smart"
+                                <img src="ressources/logos/cosplaysmart.png" alt="Logo de l\'entreprise Cosplay Smart"
                                          style="width:44px; height:44px; object-fit:contain;"
                                          onerror="this.parentElement.innerHTML='🎭'">
                                 <div>
@@ -1025,7 +1032,7 @@
 
                         <div class="engage-card">
                             <div class="engage-header" style="background: linear-gradient(90deg, #c45e9e, #e8934a);">
-                                <div class="engage-logo-wrap"><img src="ressources/logos/bde.png" alt="BDE" class="engage-logo"></div>
+                                <div class="engage-logo-wrap"><img src="ressources/logos/bde.png" alt="Logo du BDE" class="engage-logo"></div>
                                 <div>
                                     <div class="engage-title">BDE MM'In</div>
                                     <div class="engage-role">VP Pôle Audiovisuel <span style="opacity:0.7; font-size:11px;">· 2025–2026</span></div>
@@ -1061,7 +1068,7 @@
 
                         <div class="engage-card">
                             <div class="engage-header" style="background: linear-gradient(90deg, #1a3a6b, #2e6aad);">
-                                <div class="engage-logo-wrap"><img src="ressources/logos/fedet.webp" alt="FEDET" class="engage-logo"></div>
+                                <div class="engage-logo-wrap"><img src="ressources/logos/fedet.webp" alt="Logo de la FEDET" class="engage-logo"></div>
                                 <div>
                                     <div class="engage-title">FEDET</div>
                                     <div class="engage-role">Membre active & bénévole</div>
@@ -1341,19 +1348,19 @@ Appuie sur ▶ Play pour découvrir...
 
             <section id="contact" class="desktop-footer">
                 <a href="https://www.linkedin.com/in/mathilde-mathieu/" target="_blank" class="desktop-icon">
-                    <img src="https://win98icons.alexmeub.com/icons/png/network_normal_two_pcs-2.png" alt="Linkedin">
+                    <img src="https://win98icons.alexmeub.com/icons/png/network_normal_two_pcs-2.png" alt="LinkedIn de Mathilde Mathieu">
                     <span>Mon LinkedIn</span>
                 </a>
                 <a href="https://www.instagram.com/mathou.crea" target="_blank" class="desktop-icon">
-                    <img src="https://win98icons.alexmeub.com/icons/png/camera-0.png" alt="Insta">
+                    <img src="https://win98icons.alexmeub.com/icons/png/camera-0.png" alt="Instagram de Mathilde Mathieu">
                     <span>Insta Créatif</span>
                 </a>
-                <a href="ressources/CV_Mathilde_Mathieu.pdf" target="_blank" class="desktop-icon">
-                    <img src="https://win98icons.alexmeub.com/icons/png/write_wordpad-1.png" alt="CV">
+                <a href="ressources/CV_Mathilde_Mathieu.pdf" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+                    <img src="https://win98icons.alexmeub.com/icons/png/write_wordpad-1.png" alt="CV de Mathilde Mathieu (PDF)">
                     <span>Mon CV (PDF)</span>
                 </a>
                 <a href="#" class="desktop-icon" onclick="openMail(); return false;">
-                    <img src="https://win98icons.alexmeub.com/icons/png/outlook_express-2.png" alt="Mail" onerror="this.src='https://win98icons.alexmeub.com/icons/png/envelope_closed-0.png'">
+                    <img src="https://win98icons.alexmeub.com/icons/png/outlook_express-2.png" alt="Contacter Mathilde" onerror="this.src='https://win98icons.alexmeub.com/icons/png/envelope_closed-0.png'">
                     <span>Me contacter</span>
                 </a>
                 <a href="#" class="desktop-icon" onclick="openLivret(); return false;">
@@ -1361,7 +1368,7 @@ Appuie sur ▶ Play pour découvrir...
                     <span>Livret d'or</span>
                 </a>
                 <a href="#" class="desktop-icon" onclick="openLegals()">
-                    <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="Legals">
+                    <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="Mentions légales">
                     <span>Mentions_Legales.txt</span>
                 </a>
             </section>
@@ -1426,11 +1433,8 @@ Appuie sur ▶ Play pour découvrir...
 
                 <h4 style="margin-bottom:6px; text-decoration:underline; font-size:12px;">2. HÉBERGEMENT</h4>
                 <p id="legal-host">
-                    Hébergeur : <em>à renseigner avant mise en ligne</em><br>
-                    <span style="color:#888; font-size:11px;">
-                        → Netlify : Netlify Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA<br>
-                        → GitHub Pages : GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA
-                    </span>
+                    Hébergeur : <strong>Netlify, Inc.</strong> — 512 2nd Street, Suite 200, San Francisco, CA 94107, USA<br>
+                    <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" style="font-size:11px; color:#000080;">Politique de confidentialité Netlify</a>
                 </p>
                 <br>
 
@@ -1448,7 +1452,7 @@ Appuie sur ▶ Play pour découvrir...
                 <p>
                     Ce site ne collecte aucune donnée personnelle via cookies de tracking ou analytique.<br>
                     Le formulaire de contact transmet les messages via <strong>Formspree</strong> 
-                    (<a href="https://formspree.io" target="_blank">formspree.io</a>) — leur politique de 
+                    (<a href="https://formspree.io" target="_blank" rel="noopener noreferrer">formspree.io</a>) — leur politique de 
                     confidentialité s'applique aux données transmises.<br>
                     Le livret d'or est stocké localement dans votre navigateur (localStorage) 
                     et n'est pas envoyé à un serveur.
@@ -1457,8 +1461,8 @@ Appuie sur ▶ Play pour découvrir...
 
                 <h4 style="margin-bottom:6px; text-decoration:underline; font-size:12px;">5. CRÉDITS & RESSOURCES TIERCES</h4>
                 <ul style="margin-left:18px; line-height:1.9;">
-                    <li>Interface rétro : <a href="https://jdan.github.io/98.css/" target="_blank">98.css</a> — Jordan Scales (MIT License)</li>
-                    <li>Icônes Windows 98 : <a href="https://win98icons.alexmeub.com/" target="_blank">win98icons.alexmeub.com</a> — Alex Meub</li>
+                    <li>Interface rétro : <a href="https://jdan.github.io/98.css/" target="_blank" rel="noopener noreferrer">98.css</a> — Jordan Scales (MIT License)</li>
+                    <li>Icônes Windows 98 : <a href="https://win98icons.alexmeub.com/" target="_blank" rel="noopener noreferrer">win98icons.alexmeub.com</a> — Alex Meub</li>
                     <li>Police : Fixedsys 500c — C. Katelaar (freeware)</li>
                     <li>Envoi formulaire : <a href="https://formspree.io" target="_blank">Formspree</a></li>
                     <li>Modèle d'IA générative (génération d'icônes) : ChatGPT / DALL·E — OpenAI</li>
@@ -1582,26 +1586,49 @@ Appuie sur ▶ Play pour découvrir...
         </div>
     </div>
 
-    <!-- LIGHTBOX IMAGE -->
+    <!-- LIGHTBOX CAROUSEL -->
     <div id="lightbox" onclick="closeLightbox()" style="
         display:none; position:fixed; inset:0; z-index:9500;
-        background:rgba(0,0,0,0.85); cursor:zoom-out;
+        background:rgba(0,0,0,0.88); cursor:zoom-out;
         align-items:center; justify-content:center; padding:20px;
     ">
-        <div class="window" style="max-width:90vw; max-height:90vh; display:flex; flex-direction:column;" onclick="event.stopPropagation()">
+        <div class="window" style="max-width:92vw; max-height:92vh; display:flex; flex-direction:column; cursor:default;" onclick="event.stopPropagation()">
             <div class="title-bar">
                 <div class="title-bar-text" id="lightbox-title">Aperçu</div>
                 <div class="title-bar-controls">
                     <button aria-label="Close" onclick="closeLightbox()"></button>
                 </div>
             </div>
-            <div style="overflow:auto; background:#1a1a1a; display:flex; align-items:center; justify-content:center; padding:10px;">
+
+            <!-- Zone image avec flèches -->
+            <div style="position:relative; background:#1a1a1a; display:flex; align-items:center; justify-content:center; flex:1; min-height:0; overflow:hidden; padding:10px;">
                 <img id="lightbox-img" src="" alt="Aperçu agrandi"
-                     style="max-width:85vw; max-height:78vh; object-fit:contain; display:block;">
+                     style="max-width:85vw; max-height:75vh; object-fit:contain; display:block; transition:opacity 0.15s;">
+
+                <!-- Flèche gauche -->
+                <button id="lb-prev" onclick="lbNav(-1)" aria-label="Image précédente" style="
+                    display:none; position:absolute; left:8px; top:50%; transform:translateY(-50%);
+                    background:rgba(0,0,0,0.55); color:#fff; border:2px solid rgba(255,255,255,0.3);
+                    font-size:20px; width:38px; height:38px; cursor:pointer; z-index:2;
+                    font-family:'MS Sans Serif',Tahoma,sans-serif; line-height:1;
+                    align-items:center; justify-content:center;
+                ">◀</button>
+
+                <!-- Flèche droite -->
+                <button id="lb-next" onclick="lbNav(1)" aria-label="Image suivante" style="
+                    display:none; position:absolute; right:8px; top:50%; transform:translateY(-50%);
+                    background:rgba(0,0,0,0.55); color:#fff; border:2px solid rgba(255,255,255,0.3);
+                    font-size:20px; width:38px; height:38px; cursor:pointer; z-index:2;
+                    font-family:'MS Sans Serif',Tahoma,sans-serif; line-height:1;
+                    align-items:center; justify-content:center;
+                ">▶</button>
             </div>
-            <div style="background:var(--win-gray); border-top:1px solid #808080; padding:4px 10px; font-size:11px; color:#555; display:flex; justify-content:space-between; align-items:center;">
-                <span>🔍 Cliquer en dehors pour fermer</span>
-                <button onclick="closeLightbox()" style="font-size:11px;">Fermer</button>
+
+            <!-- Barre bas : compteur + instructions + fermer -->
+            <div style="background:var(--win-gray); border-top:1px solid #808080; padding:4px 10px; font-size:11px; color:#555; display:flex; justify-content:space-between; align-items:center; gap:8px; flex-shrink:0;">
+                <span id="lb-counter" style="font-weight:bold; color:#000080; min-width:40px;"></span>
+                <span id="lb-hint" style="color:#777; flex:1; text-align:center;">🔍 Cliquer en dehors pour fermer</span>
+                <button onclick="closeLightbox()" style="font-size:11px; flex-shrink:0;">Fermer</button>
             </div>
         </div>
     </div>
@@ -1647,7 +1674,11 @@ Appuie sur ▶ Play pour découvrir...
                 screenshots: [
                     'ressources/projets/deckcartesBurton.jpg',
                     'ressources/projets/deckcartesBurton2.jpg',
-                    'ressources/projets/deckcartesBurton3.jpg'
+                    'ressources/projets/deckcartesBurton3.jpg',
+                    'ressources/projets/deckcartesBurton4.jpg',
+                    'ressources/projets/deckcartesBurton5.jpg',
+                    'ressources/projets/deckcartesBurton6.jpg',
+                    'ressources/projets/deckcartesBurton7.jpg'
                 ],
                 outils: ['ai','ps'],
                 link: 'https://www.behance.net/gallery/198196667/Cartes-Bicycle-Les-Noces-Funebres',
@@ -1746,7 +1777,7 @@ Appuie sur ▶ Play pour découvrir...
                 id: 'seo',
                 name: 'Shopify_Audit.doc',
                 date: '2024-09',
-                img: 'ressources/projets/design.jpg',
+                img: 'https://win98icons.alexmeub.com/icons/png/file_text-0.png',
                 outils: ['sh'],
                 desc: "Audit SEO & UX pour la boutique e-commerce Cosplay Smart.",
                 quoi: "Analyse complète du référencement naturel et de l'expérience utilisateur de la boutique Shopify Cosplay Smart. Production de recommandations concrètes et mise en œuvre des optimisations.",
@@ -1948,17 +1979,18 @@ Appuie sur ▶ Play pour découvrir...
             outilsHtml += '</div>';
         }
 
-        // Image(s) — cliquable pour agrandir
+        // Image(s) — cliquable pour agrandir avec carousel lightbox
         let imgHtml = '';
         const shots = p.screenshots && p.screenshots.length ? p.screenshots : [p.img];
+        const shotsJson = JSON.stringify(shots).replace(/"/g, '&quot;');
         const clickStyle = 'cursor:zoom-in; transition:opacity 0.15s;';
         if (shots.length === 1) {
-            imgHtml = `<img src="${shots[0]}" alt="${p.name}" onclick="openLightbox('${shots[0]}')" style="width:100%; max-height:220px; object-fit:contain; border:2px inset #fff; margin-bottom:14px; display:block; background:#f0f0f0; ${clickStyle}" onerror="this.src='https://win98icons.alexmeub.com/icons/png/image_old-0.png'" title="Cliquer pour agrandir">`;
+            imgHtml = `<img src="${shots[0]}" alt="Aperçu de ${p.name}" onclick="openLightbox('${shots[0]}', ['${shots[0]}'], 0)" style="width:100%; max-height:220px; object-fit:contain; border:2px inset #fff; margin-bottom:14px; display:block; background:#f0f0f0; ${clickStyle}" onerror="this.src='https://win98icons.alexmeub.com/icons/png/image_old-0.png'" title="Cliquer pour agrandir">`;
         } else {
-            const thumbs = shots.map((s, i) => `<img src="${s}" data-full="${s}" onclick="panelShowFull(this)" style="width:60px; height:45px; object-fit:cover; border:2px solid ${i===0?'#000080':'#808080'}; cursor:pointer;" onerror="this.style.display='none'">`).join('');
+            const thumbs = shots.map((s, i) => `<img src="${s}" data-full="${s}" data-index="${i}" onclick="panelShowFull(this)" style="width:60px; height:45px; object-fit:cover; border:2px solid ${i===0?'#000080':'#808080'}; cursor:pointer;" alt="Aperçu ${i+1} de ${p.name}" onerror="this.style.display='none'">`).join('');
             imgHtml = `
-                <div style="margin-bottom:14px;">
-                    <img id="panel-main-img" src="${shots[0]}" alt="${p.name}" onclick="openLightbox(this.src)" style="width:100%; max-height:220px; object-fit:contain; border:2px inset #fff; background:#f0f0f0; display:block; margin-bottom:6px; ${clickStyle}" onerror="this.src='https://win98icons.alexmeub.com/icons/png/image_old-0.png'" title="Cliquer pour agrandir">
+                <div style="margin-bottom:14px;" data-shots="${shotsJson}">
+                    <img id="panel-main-img" src="${shots[0]}" alt="Aperçu 1/${shots.length} de ${p.name}" data-index="0" onclick="openLightboxFromPanel(this)" style="width:100%; max-height:220px; object-fit:contain; border:2px inset #fff; background:#f0f0f0; display:block; margin-bottom:6px; ${clickStyle}" onerror="this.src='https://win98icons.alexmeub.com/icons/png/image_old-0.png'" title="Cliquer pour agrandir en plein écran">
                     <div style="display:flex; gap:4px; flex-wrap:wrap;">${thumbs}</div>
                 </div>`;
         }
@@ -1971,7 +2003,7 @@ Appuie sur ▶ Play pour découvrir...
         }
         const linkHtml = p.link
             ? `<div style="text-align:center; margin-bottom:14px;">
-                <a href="${p.link}" target="_blank" style="color:#000080; font-weight:bold; font-size:12px;">${linkLabel}</a>
+                <a href="${p.link}" target="_blank" rel="noopener noreferrer" style="color:#000080; font-weight:bold; font-size:12px;">${linkLabel}</a>
                </div>` : '';
 
         // Contenu textuel
@@ -2002,10 +2034,23 @@ Appuie sur ▶ Play pour découvrir...
     }
 
     function panelShowFull(thumb) {
-        document.getElementById('panel-main-img').src = thumb.dataset.full;
+        const mainImg = document.getElementById('panel-main-img');
+        const idx = parseInt(thumb.dataset.index);
+        mainImg.src = thumb.dataset.full;
+        mainImg.dataset.index = idx;
+        mainImg.alt = thumb.alt;
         // Bordure active sur la miniature cliquée
         thumb.closest('div').querySelectorAll('img').forEach(t => t.style.borderColor = '#808080');
         thumb.style.borderColor = '#000080';
+    }
+
+    function openLightboxFromPanel(mainImg) {
+        // Récupérer le tableau de shots depuis le parent
+        const container = mainImg.closest('[data-shots]');
+        let shots = [];
+        try { shots = JSON.parse(container.dataset.shots); } catch(e) { shots = [mainImg.src]; }
+        const idx = parseInt(mainImg.dataset.index) || 0;
+        openLightbox(mainImg.src, shots, idx);
     }
 
     function closePanel() {
@@ -2013,26 +2058,68 @@ Appuie sur ▶ Play pour découvrir...
         document.getElementById('panel-overlay').classList.remove('active');
     }
 
-    function openLightbox(src) {
-        const lb = document.getElementById('lightbox');
-        const img = document.getElementById('lightbox-img');
-        const title = document.getElementById('lightbox-title');
+    // --- LIGHTBOX CAROUSEL ---
+    let _lbShots = [];
+    let _lbIndex = 0;
+
+    function openLightbox(src, shots, startIndex) {
+        _lbShots = (shots && shots.length > 1) ? shots : [src];
+        _lbIndex = (startIndex !== undefined) ? startIndex : Math.max(0, _lbShots.indexOf(src));
+        _lbRender();
+        document.getElementById('lightbox').style.display = 'flex';
+        document.addEventListener('keydown', _lbKey);
+    }
+
+    function _lbRender() {
+        const img     = document.getElementById('lightbox-img');
+        const title   = document.getElementById('lightbox-title');
+        const counter = document.getElementById('lb-counter');
+        const hint    = document.getElementById('lb-hint');
+        const prev    = document.getElementById('lb-prev');
+        const next    = document.getElementById('lb-next');
+        const total   = _lbShots.length;
+        const src     = _lbShots[_lbIndex];
+
+        img.style.opacity = '0';
         img.src = src;
-        // Extraire le nom de fichier pour le titre
-        const filename = src.split('/').pop();
-        title.textContent = '🔍 ' + filename;
-        lb.style.display = 'flex';
-        // Fermer avec Échap
-        document.addEventListener('keydown', _lbEsc);
+        img.alt = 'Aperçu ' + (_lbIndex + 1) + ' / ' + total;
+        img.onload = () => { img.style.opacity = '1'; };
+
+        title.textContent = '🔍 ' + src.split('/').pop();
+
+        if (total > 1) {
+            counter.textContent = (_lbIndex + 1) + ' / ' + total;
+            hint.textContent = '← → pour naviguer · Échap pour fermer';
+            prev.style.display = 'flex';
+            next.style.display = 'flex';
+            prev.style.opacity = _lbIndex === 0 ? '0.35' : '1';
+            next.style.opacity = _lbIndex === total - 1 ? '0.35' : '1';
+        } else {
+            counter.textContent = '';
+            hint.textContent = '🔍 Cliquer en dehors pour fermer';
+            prev.style.display = 'none';
+            next.style.display = 'none';
+        }
+    }
+
+    function lbNav(dir) {
+        _lbIndex = (_lbIndex + dir + _lbShots.length) % _lbShots.length;
+        _lbRender();
     }
 
     function closeLightbox() {
         document.getElementById('lightbox').style.display = 'none';
         document.getElementById('lightbox-img').src = '';
-        document.removeEventListener('keydown', _lbEsc);
+        document.removeEventListener('keydown', _lbKey);
+        _lbShots = [];
+        _lbIndex = 0;
     }
 
-    function _lbEsc(e) { if (e.key === 'Escape') closeLightbox(); }
+    function _lbKey(e) {
+        if (e.key === 'Escape')                             { closeLightbox(); return; }
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') lbNav(1);
+        if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   lbNav(-1);
+    }
 
     // FIX 2 : closeMenuMobile définie
     function closeMenuMobile() {
@@ -2483,20 +2570,23 @@ Appuie sur ▶ Play pour découvrir...
         wrap.style.position = 'relative';
         wrap.style.cursor = 'default';
 
-        wrap.addEventListener('mouseenter', (e) => {
-            const tooltip = document.getElementById('skill-tooltip');
-            document.getElementById('tooltip-name').innerText = wrap.dataset.name;
-            document.getElementById('tooltip-level').innerText = wrap.dataset.level;
-            document.getElementById('tooltip-desc').innerText = wrap.dataset.desc;
-            tooltip.style.display = 'block';
-            positionTooltip(e);
-        });
+        // Tooltip uniquement sur appareils avec souris (pas tactile)
+        if (window.matchMedia('(hover: hover)').matches) {
+            wrap.addEventListener('mouseenter', (e) => {
+                const tooltip = document.getElementById('skill-tooltip');
+                document.getElementById('tooltip-name').innerText = wrap.dataset.name;
+                document.getElementById('tooltip-level').innerText = wrap.dataset.level;
+                document.getElementById('tooltip-desc').innerText = wrap.dataset.desc;
+                tooltip.style.display = 'block';
+                positionTooltip(e);
+            });
 
-        wrap.addEventListener('mousemove', positionTooltip);
+            wrap.addEventListener('mousemove', positionTooltip);
 
-        wrap.addEventListener('mouseleave', () => {
-            document.getElementById('skill-tooltip').style.display = 'none';
-        });
+            wrap.addEventListener('mouseleave', () => {
+                document.getElementById('skill-tooltip').style.display = 'none';
+            });
+        }
     });
 
     function positionTooltip(e) {
