@@ -7,7 +7,7 @@
     <meta name="description" content="Portfolio de Mathilde Mathieu — Design graphique, création numérique, UX/UI et développement web." />
     <meta name="author" content="Mathilde Mathieu" />
     <meta name="robots" content="index, follow" />
-    <link rel="icon" type="image/png" href="ressources/iconemathilde.png">
+    <link rel="icon" type="image/png" href="ressources/icone_mathilde.png">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <style>
         @font-face {
@@ -50,7 +50,7 @@
             border-right: 2px solid #000;
             position: fixed;
             height: 100vh;
-            padding: 20px 20px 90px 20px; /* padding-bottom pour dépasser la taskbar */
+            padding: 20px 20px 90px 20px;
             z-index: 5000;
             overflow-y: auto;
             transition: transform 0.3s ease;
@@ -63,6 +63,7 @@
             font-size: 15px;
         }
         .sidebar nav a:hover { background: var(--win-blue); color: white; border: 2px solid; border-color: #fff #808080 #808080 #fff; }
+        .sidebar nav a:active { background: #000060; color: white; }
 
         /* --- CONTENT --- */
         .content-wrapper {
@@ -75,7 +76,7 @@
         }
         main { width: 100%; max-width: 950px; display: flex; flex-direction: column; gap: 50px; }
         .window { width: 100%; box-shadow: 6px 6px 0 rgba(0,0,0,0.5); margin-bottom: 20px;}
-        section { scroll-margin-top: 60px; } /* valeur unique, taskbar = 40px + marge */
+        section { scroll-margin-top: 60px; }
 
         /* --- EXPLORER --- */
         .explorer-wrapper { display: flex; flex-direction: column; border: 2px inset #808080; background: #fff; }
@@ -107,13 +108,14 @@
         .item { cursor: pointer; text-align: center; padding: 10px; border: 1px solid transparent; }
         .item-label { font-size:11px; font-weight:bold; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:break-all; line-height:1.3; max-height:2.6em; }
         .item:hover { background: var(--win-blue); color: white; }
+        .item:active { background: #000060; color: white; }
         .item:hover .item-label { color: white; }
+        .item:active .item-label { color: white; }
         .item img.thumb { width: 80px; height: 80px; object-fit: cover; border: 1px solid #808080; background: #fff; margin-bottom: 5px; }
         .icon-folder-large { width: 60px; height: 60px; margin: 10px auto; background-image: url('https://win98icons.alexmeub.com/icons/png/directory_closed-4.png'); background-size: contain; background-repeat: no-repeat;}
 
         .apps-bar { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; padding: 10px; background: #eee; border: 1px inset #fff; }
         .app-icon-skill { width: 32px; height: 32px; filter: drop-shadow(1px 1px 0 #fff); }
-        /* Taille dans la section skills uniquement - surchargée inline */
         .soft-icon-wrap img.app-icon-skill {
             width: 64px;
             height: 64px;
@@ -137,6 +139,7 @@
         .desktop-icon img { width: 48px; height: 48px; margin-bottom: 8px; display: block; margin-left: auto; margin-right: auto; }
         .desktop-icon span { display: block; font-size: 11px; line-height: 1.2; padding: 2px; }
         .desktop-icon:hover span { background: var(--win-blue); }
+        .desktop-icon:active span { background: #000060; }
 
         /* --- TASKBAR --- */
         .taskbar-pins { display: flex; }
@@ -152,8 +155,6 @@
         #menu-overlay.active { display: block; }
 
         /* --- RESPONSIVE --- */
-
-        /* Burger button visible uniquement mobile */
         .burger-btn {
             display: none;
             position: fixed;
@@ -171,9 +172,6 @@
             justify-content: center;
         }
 
-        /* Scroll margin géré globalement — pas besoin de surcharger ici */
-
-        /* Overlay panneau détail */
         #panel-overlay {
             display: none;
             position: fixed;
@@ -188,37 +186,18 @@
         }
 
         @media (max-width: 900px) {
-            /* Sidebar cachée par défaut, glisse depuis la gauche */
             .sidebar { transform: translateX(-100%); width: 260px; }
             .sidebar.active { transform: translateX(0); box-shadow: 5px 0 20px rgba(0,0,0,0.6); }
-
-            /* Content prend toute la largeur */
             .content-wrapper { margin-left: 0; width: 100%; padding: 15px 10px; }
-
-            /* Burger visible */
             .burger-btn { display: flex; }
-
-            /* Taskbar : cacher les pins, garder start + horloge */
             .taskbar-pins { display: none; }
-
-            /* Explorer vertical */
             .explorer-container { flex-direction: column; height: auto; min-height: 400px; }
             .tree-sidebar { width: 100%; border-right: none; border-bottom: 2px solid #808080; height: auto; max-height: 160px; overflow-y: auto; }
             .file-display { grid-template-columns: repeat(2, 1fr); min-height: 250px; }
-
-            /* Toolbar TOUT_VOIR en colonne sur mobile */
             .explorer-toolbar { flex-direction: column; align-items: flex-start; gap: 6px; }
             .explorer-toolbar > div { flex-wrap: wrap; }
-
-            /* Panneau détail plein écran */
             #details-panel { width: 100%; right: -100%; }
-
-            /* Skills grid 1 colonne */
             .skills-grid { grid-template-columns: 1fr !important; }
-
-            /* Paint et WMP empilés, pas besoin de règle grid ici */
-
-            /* Paint toolbar gauche : 1 colonne sur mobile */
             .paint-toolbar-left {
                 display: grid !important;
                 grid-template-columns: 1fr !important;
@@ -227,42 +206,23 @@
             }
             .pt-tool { width: 24px !important; height: 24px !important; font-size: 11px !important; }
             .pt-color-preview { grid-column: 1 !important; }
-            /* Palette couleurs : wrap sur 2 lignes */
             .paint-palette { flex-wrap: wrap; padding: 4px; }
             .paint-palette-colors { flex-wrap: wrap !important; max-width: 150px; }
             .pal-cell { width: 13px !important; height: 13px !important; }
-
-            /* WMP : image au-dessus du texte sur mobile */
             .wmp-top { flex-direction: column !important; }
-            /* Image : pleine largeur, hauteur fixe, objet entier visible */
             #wmp-cover { width: 100% !important; height: auto !important; max-height: 260px; object-fit: contain !important; background: #1a1a2e; }
-            /* Bloc image : pleine largeur, pas de flex vertical qui pousse le visualizer */
             .wmp-top > div:first-child { width: 100% !important; flex-direction: column; flex-shrink: 0; }
-            /* Visualizer : hauteur fixe pour ne pas pousser le texte */
             #wmp-visualizer { flex: none !important; height: 24px !important; min-height: 24px !important; }
-
-            /* IE missions 1 colonne */
             .ie-missions-grid { grid-template-columns: 1fr !important; }
-
-            /* Engagement cards 1 colonne */
             .engage-card { width: 100%; }
-
-            /* MSP layout 1 colonne */
             .msp-layout { grid-template-columns: 1fr !important; }
             .msp-left { border-right: none; border-bottom: 2px solid #b0c4de; }
-
-            /* Icônes logiciels un peu plus petites */
             .soft-icon-wrap img.app-icon-skill { width: 48px; height: 48px; }
-
-            /* Modale projet plein écran */
             #project-modal { width: 96%; max-width: 100%; }
-
-            /* Footer icônes desktop plus serré */
             .desktop-footer { gap: 15px; padding: 20px 0 70px 0; }
             .desktop-icon { width: 60px; }
             .desktop-icon img { width: 36px; height: 36px; }
             .desktop-icon span { font-size: 10px; }
-
             h2 { font-size: 22px; }
         }
 
@@ -274,22 +234,28 @@
             .taskbar { padding: 0 6px; }
             .start-button span { display: none; }
             h2 { font-size: 18px; }
-
-            /* Footer encore plus compact */
             .desktop-footer { gap: 10px; padding: 15px 5px 75px 5px; }
-            .desktop-icon { width: 52px; }
-            .desktop-icon img { width: 30px; height: 30px; }
+            .desktop-icon { width: 56px; }
+            .desktop-icon img { width: 32px; height: 32px; }
             .desktop-icon span { font-size: 9px; }
-
-            /* Modales plein écran sur très petit écran */
-            #mail-modal, #livret-modal, #legals-modal {
-                width: 98% !important;
-                max-width: 98% !important;
-                left: 1% !important;
-                transform: translateY(-50%) !important;
+            #mail-modal, #legals-modal {
+                width: 96% !important;
+                max-width: 96% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
             }
-            /* Panneau détail plein écran */
+            #project-modal {
+                width: 96% !important;
+                max-width: 96% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
             #details-panel { width: 100% !important; }
+            .passions-wrapper { gap: 12px; }
+            .ie-body { padding: 10px !important; }
+            .ie-header { padding: 10px !important; }
+            .msp-section-body { font-size: 11px; }
+            .window-body { padding: 12px !important; }
         }
 
         .tree-item {
@@ -299,6 +265,7 @@
             user-select: none;
         }
         .tree-item:hover { background: #c0c0ff; }
+        .tree-item:active { background: var(--win-blue); color: white; }
         .tree-item.active {
             background: var(--win-blue);
             color: white;
@@ -338,7 +305,7 @@
             transition: background 0.1s;
         }
         .msn-btn:hover { background: #c5d8f8; }
-        .msn-btn:active { border-color: #808080 #fff #fff #808080; }
+        .msn-btn:active { border-color: #808080 #fff #fff #808080; background: #a8c8f0; }
 
         .msn-bubble { margin-bottom: 10px; padding: 6px 10px; max-width: 92%; display: block; }
         .msn-bubble-them { background: #e8f0fb; border-left: 3px solid #316ac5; }
@@ -363,6 +330,7 @@
             margin-right: 3px; position: relative; top: 2px;
         }
         .ie-tab:hover { background: #c8c8c8; }
+        .ie-tab:active { background: #a8a8a8; border-color: #808080 #fff #fff #808080; }
         .active-tab { background: #fff !important; font-weight: bold; border-bottom: 2px solid #fff !important; z-index: 1; }
         .ie-page { animation: ieFadeIn 0.15s ease; }
         @keyframes ieFadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -455,9 +423,9 @@
         .pal-cell:hover { outline:1px solid #000; }
         .paint-tab { font-size:11px; padding:3px 10px; background:#d0d0d0; border:1px solid #808080; border-bottom:none; cursor:pointer; font-family:'MS Sans Serif',Tahoma,sans-serif; margin-right:2px; }
         .paint-tab:hover { background:#e8e8e8; }
+        .paint-tab:active { background:#b8b8b8; border-color: #808080 #fff #fff #808080; }
         .active-paint-tab { background:#c0c0c0 !important; font-weight:bold; position:relative; top:1px; border-bottom:1px solid #c0c0c0; }
         .paint-carousel { position:relative; height:220px; background:#fff; overflow:hidden; }
-        /* Carousel Instagram : hauteur augmentée + navigation manuelle */
         .paint-carousel.insta-mode { height:500px; overflow-y:auto; overflow-x:hidden; background:#fafafa; }
         .insta-slide { display:none; width:100%; padding:10px; box-sizing:border-box; }
         .insta-slide.active { display:block; }
@@ -481,6 +449,7 @@
         .wmp-play { background:#003366; color:#fff; font-size:16px; padding:4px 14px; }
         .wmp-track { display:flex; align-items:center; gap:8px; padding:5px 10px; cursor:pointer; border-bottom:1px solid #1a1a2e; color:#aaa; font-size:11px; }
         .wmp-track:hover { background:#1a1a3a; color:#fff; }
+        .wmp-track:active { background:#003066; color:#7ec8e3; }
         .wmp-track.playing { background:#003366; color:#7ec8e3; font-weight:bold; }
         .wmp-tracknum { color:#555; width:18px; flex-shrink:0; }
         .wmp-trackname { flex:1; }
@@ -521,7 +490,6 @@
             min-height: 400px;
         }
 
-        /* Colonne gauche */
         .msp-left { background: #dce6f5; border-right: 2px solid #b0c4de; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
         .msp-photo-block { background: #fff; border: 2px inset #aaa; padding: 10px; text-align: center; }
         .msp-photo { width: 130px; height: 130px; object-fit: cover; border: 3px solid #003399; display: block; margin: 0 auto 8px; }
@@ -536,7 +504,6 @@
         .msp-label { color: #003399; font-weight: bold; }
         .msp-interest { background: #e8f0fb; border: 1px solid #b0c4de; font-size:11px; padding: 2px 6px; color: #003399; }
 
-        /* Colonne droite */
         .msp-right { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
         .msp-comment-bar { background: #fff3cd; border: 1px solid #f0c040; padding: 5px 10px; font-size: 11px; }
         .msp-section { background: #fff; border: 1px solid #b0c4de; }
@@ -546,6 +513,7 @@
         .msp-section-body p:last-child { margin-bottom: 0; }
         .msp-cta { background: #003399; color: #fff !important; font-size: 11px; padding: 3px 8px; text-decoration: none; border: 2px solid; border-color: #fff #808080 #808080 #fff; display: inline-block; }
         .msp-cta:hover { background: #0055cc; }
+        .msp-cta:active { background: #003399; border-color: #808080 #fff #fff #808080; }
 
         .msp-footer { background: #003399; color: #99ccff; font-size:11px; padding: 4px 12px; display: flex; align-items: center; }
 
@@ -565,6 +533,40 @@
             .msp-comment-bar { font-size: 11px; word-break: break-word; white-space: normal; }
         }
 
+        /* IE address bar responsive */
+        @media (max-width: 480px) {
+            .ie-addr-label { display: none !important; }
+            .ie-ok-btn { display: none !important; }
+        }
+
+        /* --- TOUCH / MOBILE ENHANCEMENTS --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+            to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* Taille minimale tap 44px sur mobile */
+        @media (hover: none) {
+            .msn-btn { padding: 8px 12px !important; min-height: 36px; }
+            .filter-btn { min-height: 34px; height: auto !important; padding: 4px 8px; }
+            .insta-nav-btn { padding: 6px 14px; min-height: 36px; }
+            .paint-tab { padding: 6px 12px; }
+            .bde-tab { padding: 6px 12px; }
+            .ie-tab { padding: 6px 10px; }
+            .wmp-track { padding: 10px; min-height: 40px; }
+            .wmp-btn { padding: 8px 14px; }
+            .toutvoir-btn { padding: 10px 8px; }
+            .tree-item { padding: 6px 4px; min-height: 32px; display: flex; align-items: center; }
+            .desktop-icon { width: 70px; }
+            .desktop-icon img { width: 42px; height: 42px; }
+            .item { padding: 12px 8px; }
+            .item img.thumb { width: 72px; height: 72px; }
+            .soft-icon-wrap img.app-icon-skill { cursor: pointer; }
+            .soft-icon-wrap img.app-icon-skill:active { transform: scale(0.92); }
+            .msp-cta { padding: 6px 12px; }
+            .engage-body .bde-tab { min-height: 34px; }
+        }
+
         body::after {
             content: " ";
             display: block;
@@ -582,7 +584,6 @@
 </head>
 <body>
 
-    <!-- FIX 1 : handleGlobalClick supprimé du body, menu-overlay gère son propre clic -->
     <div id="menu-overlay" onclick="toggleMenu()"></div>
     <div id="panel-overlay" onclick="closePanel()"></div>
 
@@ -591,7 +592,7 @@
 
     <div class="taskbar">
         <div class="start-button" style="padding: 4px 10px; border: 2px solid; border-color: #fff #808080 #808080 #fff; font-weight: bold; cursor: pointer; display: flex; align-items: center;" onclick="toggleMenu()">
-            <img src="ressources/iconemathilde.png" alt="Portfolio de Mathilde Mathieu" style="width:18px; margin-right:8px;">
+            <img src="ressources/icone_mathilde.png" alt="Portfolio de Mathilde Mathieu" style="width:18px; margin-right:8px;">
             Mathilde MATHIEU
         </div>
         <div class="taskbar-pins" style="margin-left: 10px; padding-left: 10px; border-left: 1px solid #808080;">
@@ -607,6 +608,7 @@
             <div class="pin" title="InDesign"><img src="ressources/app/in.png" alt="InDesign" width="22"></div>
             <div class="pin" title="VS Code"><img src="ressources/app/vsc.png" alt="VS Code" width="22"></div>
             <div class="pin" title="WordPress"><img src="ressources/app/wp.png" alt="WordPress" width="22"></div>
+            <div class="pin" title="DaVinci Resolve"><img src="ressources/app/da.png" alt="DaVinci Resolve" width="22"></div>
         </div>
         <div style="display:flex; align-items:center; margin-left:auto; border-left:1px solid #808080; padding-left:6px; gap:4px;">
             <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png"
@@ -622,11 +624,10 @@
 
     <aside class="sidebar" id="sidebar">
         <div class="profile-card">
-            <img src="ressources/iconemathilde.png" alt="Photo de profil de Mathilde Mathieu">
+            <img src="ressources/icone_mathilde.png" alt="Photo de profil de Mathilde Mathieu">
             <h3 style="margin-top:15px; font-size: 18px;">Mathilde Mathieu</h3>
             <p style="font-size:12px; color: #444; margin-top: 5px; line-height:1.5;">Designer graphique Junior<br>Création de contenus audiovisuels</p>
         </div>
-        <!-- FIX 2 : closeMenuMobile() définie dans le JS -->
         <nav>
             <a href="#intro" onclick="closeMenuMobile()" data-i18n="sidebar-intro">👤 Profil</a>
             <a href="#projets" onclick="closeMenuMobile()" data-i18n="sidebar-projets">📁 Projets</a>
@@ -693,7 +694,7 @@
                     <div class="msp-right">
 
                         <div class="msp-comment-bar" id="msp-comment-text">
-                            ✨ <strong>Bonne visite !</strong> N'hésite pas à laisser un mot · <a href="#contact" style="color:#003399;" onclick="openLivret()">Voir le livre d'or</a>
+                            ✨ <strong>Bonne visite !</strong> Une idée de projet ou une opportunité ? <a href="#contact" style="color:#003399;" onclick="openMail()">Contactez-moi !</a>
                         </div>
                     
                         <div class="msp-section">
@@ -738,7 +739,6 @@
             <section id="projets" class="window">
                 <div class="title-bar"><div class="title-bar-text" id="path-display" data-i18n="title-projets">📁 Mes Projets — Explorateur</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div>
                 <div class="window-body" style="padding: 0 !important;">
-                    <!-- FIX 7 : toolbar sortie de la grille, dans un wrapper dédié -->
                     <div class="explorer-wrapper">
                         <div id="explorer-toolbar-container"></div>
                         <div class="explorer-container">
@@ -779,20 +779,20 @@
                 </div>
 
                 <!-- Barre d'adresse IE -->
-                <div style="background: var(--win-gray); border-bottom: 2px solid #808080; padding: 4px 8px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                <div style="background: var(--win-gray); border-bottom: 2px solid #808080; padding: 4px 8px; display: flex; align-items: center; gap: 4px; flex-wrap: nowrap; overflow: hidden;">
                     <button class="ie-nav-btn" onclick="ieBack()" title="Précédent">◀</button>
                     <button class="ie-nav-btn" onclick="ieForward()" title="Suivant">▶</button>
                     <button class="ie-nav-btn" title="Actualiser">🔄</button>
-                    <div style="flex:1; min-width: 150px; display:flex; align-items:center; gap:4px;">
-                        <span style="font-size:11px; white-space:nowrap;">Adresse :</span>
-                        <div id="ie-url" style="flex:1; background:#fff; border:2px inset #808080; padding:2px 6px; font-size:11px; font-family:'MS Sans Serif',Tahoma,sans-serif;">
+                    <div style="flex:1; min-width:0; display:flex; align-items:center; gap:4px; overflow:hidden;">
+                        <span class="ie-addr-label" style="font-size:11px; white-space:nowrap; flex-shrink:0;">Adresse :</span>
+                        <div id="ie-url" style="flex:1; min-width:0; background:#fff; border:2px inset #808080; padding:2px 6px; font-size:11px; font-family:'MS Sans Serif',Tahoma,sans-serif; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
                             http://mathilde.mmi/experiences/stage-perle.htm
                         </div>
                     </div>
-                    <button class="ie-nav-btn" style="font-size:11px; padding:2px 10px; min-width:40px;">OK</button>
+                    <button class="ie-nav-btn ie-ok-btn" style="font-size:11px; padding:2px 10px; min-width:40px; flex-shrink:0;">OK</button>
                 </div>
 
-                <!-- Onglets — stage perlé en premier car en cours -->
+                <!-- Onglets -->
                 <div style="background: #d0d0d0; border-bottom: 2px solid #808080; display: flex; gap: 0; padding: 4px 8px 0;">
                     <button class="ie-tab active-tab" id="tab-stage2" onclick="switchTab('stage2')">
                         📄 Stage perlé (en cours)
@@ -808,12 +808,12 @@
                 <!-- Contenu IE -->
                 <div style="background:#fff; padding: 0; min-height: 340px;">
 
-                    <!-- PAGE STAGE PERLÉ (affiché en premier) -->
+                    <!-- PAGE STAGE PERLÉ -->
                     <div id="page-stage2" class="ie-page">
                         <div class="ie-header">
                             <div style="display:flex; align-items:center; gap:15px; flex-wrap:wrap;">
                                 <div class="ie-logo-box" style="background:#fff; overflow:hidden; padding:2px;">
-                                    <img src="ressources/logos/cosplaysmart.png" alt="Logo de l\'entreprise Cosplay Smart"
+                                    <img src="ressources/logos/cosplaysmart.png" alt="Logo de l'entreprise Cosplay Smart"
                                          style="width:44px; height:44px; object-fit:contain;"
                                          onerror="this.parentElement.innerHTML='🎭'">
                                 </div>
@@ -871,7 +871,7 @@
                     <div id="page-stage1" class="ie-page" style="display:none;">
                         <div class="ie-header">
                             <div style="display:flex; align-items:center; gap:15px; flex-wrap:wrap;">
-                                <img src="ressources/logos/cosplaysmart.png" alt="Logo de l\'entreprise Cosplay Smart"
+                                <img src="ressources/logos/cosplaysmart.png" alt="Logo de l'entreprise Cosplay Smart"
                                          style="width:44px; height:44px; object-fit:contain;"
                                          onerror="this.parentElement.innerHTML='🎭'">
                                 <div>
@@ -968,6 +968,7 @@
                                 <div class="soft-icon-wrap" data-name="InDesign" data-level="⭐⭐⭐" data-desc="Mise en page, print, édition"><img src="ressources/app/in.png" alt="InDesign" class="app-icon-skill"></div>
                                 <div class="soft-icon-wrap" data-name="VS Code" data-level="⭐⭐⭐" data-desc="HTML, CSS, JS, PHP"><img src="ressources/app/vsc.png" alt="VS Code" class="app-icon-skill"></div>
                                 <div class="soft-icon-wrap" data-name="WordPress" data-level="⭐⭐⭐⭐" data-desc="Sites vitrines, blog, plugins"><img src="ressources/app/wp.png" alt="WordPress" class="app-icon-skill"></div>
+                                <div class="soft-icon-wrap" data-name="DaVinci Resolve" data-level="⭐⭐⭐" data-desc="Montage vidéo, étalonnage couleur"><img src="ressources/app/da.png" alt="DaVinci Resolve" class="app-icon-skill"></div>
                             </div>
                         </div>
 
@@ -995,58 +996,65 @@
                         <div>
                             <h4 style="margin-bottom: 16px; font-size: 16px; color: var(--win-blue); border-bottom: 2px solid var(--win-blue); padding-bottom: 6px;">🤝 Soft Skills</h4>
 
-                            <!-- Fenêtre MSN -->
-                            <div style="border: 2px solid; border-color: #fff #808080 #808080 #fff; box-shadow: 2px 2px 0 #000;">
+                            <div id="msn-window" style="border: 2px solid; border-color: #fff #808080 #808080 #fff; box-shadow: 2px 2px 0 #000; transition: all 0.2s ease;">
 
-                                <!-- Barre de titre MSN bleue dégradée -->
-                                <div style="background: linear-gradient(90deg, #1e5799, #316ac5, #72aade); padding: 4px 8px; display: flex; align-items: center; justify-content: space-between;">
+                                <!-- Title bar avec vrais boutons -->
+                                <div style="background: linear-gradient(90deg, #1e5799, #316ac5, #72aade); padding: 4px 8px; display: flex; align-items: center; justify-content: space-between; user-select:none;">
                                     <div style="display: flex; align-items: center; gap: 6px;">
-                                        <img src="https://win98icons.alexmeub.com/icons/png/msn2-0.png" alt="MSN Messenger" style="width:16px; height:16px;" onerror="this.style.display='none'">
+                                        <img src="ressources/icone_mathilde.png" alt="Mathilde" style="width:16px; height:16px; border-radius:2px; object-fit:cover;" onerror="this.src='https://win98icons.alexmeub.com/icons/png/msn2-0.png'">
                                         <span style="color:white; font-size:11px; font-weight:bold; font-family:'MS Sans Serif',Tahoma,sans-serif;">MSN Messenger — Mathilde (En ligne) 🟢</span>
                                     </div>
                                     <div style="display:flex; gap:2px;">
-                                        <button style="width:16px;height:14px;font-size:11px;padding:0;line-height:1;">_</button>
-                                        <button style="width:16px;height:14px;font-size:11px;padding:0;line-height:1;">□</button>
-                                        <button style="width:16px;height:14px;font-size:11px;padding:0;line-height:1;">✕</button>
+                                        <button onclick="msnMinimize()" title="Réduire" style="width:18px;height:16px;font-size:10px;padding:0;line-height:1;background:var(--win-gray);border:1px solid;border-color:#fff #808080 #808080 #fff;cursor:pointer;display:flex;align-items:center;justify-content:center;">_</button>
+                                        <button onclick="msnToggleSize(this)" title="Agrandir / Restaurer" style="width:18px;height:16px;font-size:10px;padding:0;line-height:1;background:var(--win-gray);border:1px solid;border-color:#fff #808080 #808080 #fff;cursor:pointer;display:flex;align-items:center;justify-content:center;">□</button>
+                                        <button onclick="msnClose()" title="Fermer" style="width:18px;height:16px;font-size:10px;padding:0;line-height:1;background:var(--win-gray);border:1px solid;border-color:#fff #808080 #808080 #fff;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
                                     </div>
                                 </div>
 
-                                <!-- Barre de contact -->
-                                <div style="background: #e8f0fb; border-bottom: 1px solid #aac; padding: 6px 10px; display:flex; align-items:center; gap:8px;">
-                                    <div style="width:32px;height:32px;background:#c0c0c0;border:1px solid #808080;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👩‍🎨</div>
-                                    <div>
-                                        <div style="font-size:11px;font-weight:bold;">Mathilde Mathieu</div>
-                                        <div style="font-size:11px;color:#555;">« Créativité, curiosité et pixel-perfect ✨ »</div>
+                                <!-- Corps (masquable) -->
+                                <div id="msn-body">
+                                    <!-- Barre de contact -->
+                                    <div style="background: #e8f0fb; border-bottom: 1px solid #aac; padding: 6px 10px; display:flex; align-items:center; gap:8px;">
+                                        <img src="ressources/photomathilde.jpg" alt="Mathilde" style="width:32px;height:32px;border:1px solid #808080;object-fit:cover;flex-shrink:0;" onerror="this.style.background='#c0c0c0'">
+                                        <div>
+                                            <div style="font-size:11px;font-weight:bold;">Mathilde Mathieu</div>
+                                            <div style="font-size:11px;color:#555;">« Passionée par l'art sous toutes ses formes 🎨 »</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Zone de chat -->
+                                    <div id="msn-chat" style="height:200px; overflow-y:auto; background:#fff; padding:10px; font-size:11px; border-bottom:1px solid #aaa; line-height:1.6;">
+                                        <div style="color:#808080; font-style:italic; text-align:center; margin-bottom:12px; font-size:11px;">
+                                            ── Mathilde a rejoint la conversation ──
+                                        </div>
+                                        <div class="msn-bubble msn-bubble-them">
+                                            <span class="msn-name-them">Recruteur :</span> Bonjour Mathilde ! Je suis curieux d'en savoir plus sur toi. Clique sur une de tes qualités pour qu'on en parle 👇
+                                        </div>
+                                    </div>
+
+                                    <!-- Boutons soft skills -->
+                                    <div style="background:#f0f4ff; border-bottom:1px solid #aaa; padding:8px 10px;">
+                                        <div style="font-size:11px; color:#555; margin-bottom:5px;">Clique sur une qualité pour en savoir plus :</div>
+                                        <div style="display:flex; flex-wrap:wrap; gap:4px;">
+                                            <button class="msn-btn" onclick="sendSkill('Créativité', '✏️ Donner vie à l\'imaginaire. Pour moi, la créativité est un équilibre entre intuition et technique. Ce n\'est pas juste &quot;faire du beau&quot;, c\'est raconter une histoire là où on ne l\'attend pas, en transformant un concept abstrait en une expérience visuelle qui marque l\'esprit.')">✏️ Créativité</button>
+                                            <button class="msn-btn" onclick="sendSkill('Curiosité', '🔍 Explorer pour évoluer. Le multimédia change tous les jours, et c\'est ce qui me passionne. Je ne me contente jamais de ce que je maîtrise déjà. Je cherche toujours le nouvel outil, la nouvelle tendance ou le nouveau langage qui fera la différence dans mes futurs projets.')">🔍 Curiosité</button>
+                                            <button class="msn-btn" onclick="sendSkill('Empathie', '💬 Ressentir avant de concevoir. Je ne crée pas pour des écrans, mais pour des humains. Mon empathie me permet de me mettre à la place de l\'utilisateur pour comprendre ce qu\'il ressent et m\'assurer que le message n\'est pas seulement transmis, mais réellement vécu.')">💬 Empathie</button>
+                                            <button class="msn-btn" onclick="sendSkill('Intelligence émotionnelle', '🧠 Le moteur de mes créations. Mon but ultime est de faire sourire et de procurer des émotions. Je sais canaliser ma propre sensibilité pour en faire une force de communication, permettant de créer des univers qui résonnent avec la psychologie du public.')">🧠 Intel. émotionnelle</button>
+                                            <button class="msn-btn" onclick="sendSkill('Esprit d\'équipe', '🤝 Co-créer pour sublimer. J\'aime l\'énergie qui se dégage d\'un groupe. Je sais écouter, échanger et confronter mes idées avec bienveillance pour que le projet collectif dépasse les attentes initiales et devienne une œuvre commune cohérente.')">🤝 Esprit d'équipe</button>
+                                            <button class="msn-btn" onclick="sendSkill('Adaptabilité', '🔄 Transformer les contraintes en opportunités. Qu\'il s\'agisse d\'un imprévu technique ou d\'un changement de direction artistique, je sais pivoter rapidement. J\'aime le défi de l\'ajustement permanent, car c\'est souvent dans l\'imprévu que naissent les meilleures solutions créatives.')">🔄 Adaptabilité</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Zone de saisie factice -->
+                                    <div style="background:#f9f9f9; padding:6px 10px; display:flex; gap:6px; align-items:center;">
+                                        <div style="flex:1; border:1px inset #808080; background:#fff; height:26px; padding:4px 6px; font-size:11px; color:#aaa; overflow:hidden;">Écris un message...</div>
+                                        <button style="font-size:11px; padding:2px 8px;">Envoyer</button>
                                     </div>
                                 </div>
 
-                                <!-- Zone de chat -->
-                                <div id="msn-chat" style="height:200px; overflow-y:auto; background:#fff; padding:10px; font-size:11px; border-bottom:1px solid #aaa; line-height:1.6;">
-                                    <div style="color:#808080; font-style:italic; text-align:center; margin-bottom:12px; font-size:11px;">
-                                        ── Mathilde a rejoint la conversation ──
-                                    </div>
-                                    <div class="msn-bubble msn-bubble-them">
-                                        <span class="msn-name-them">Recruteur :</span> Bonjour Mathilde ! Je suis curieux d'en savoir plus sur toi. Clique sur une de tes qualités pour qu'on en parle 👇
-                                    </div>
-                                </div>
-
-                                <!-- Boutons soft skills -->
-                                <div style="background:#f0f4ff; border-bottom:1px solid #aaa; padding:8px 10px;">
-                                    <div style="font-size:11px; color:#555; margin-bottom:5px;">Clique sur une qualité pour en savoir plus :</div>
-                                    <div style="display:flex; flex-wrap:wrap; gap:4px;">
-                                        <button class="msn-btn" onclick="sendSkill('Créativité', '✏️ Donner vie à l\'imaginaire. Pour moi, la créativité est un équilibre entre intuition et technique. Ce n\'est pas juste &quot;faire du beau&quot;, c\'est raconter une histoire là où on ne l\'attend pas, en transformant un concept abstrait en une expérience visuelle qui marque l\'esprit.')">✏️ Créativité</button>
-                                        <button class="msn-btn" onclick="sendSkill('Curiosité', '🔍 Explorer pour évoluer. Le multimédia change tous les jours, et c\'est ce qui me passionne. Je ne me contente jamais de ce que je maîtrise déjà. Je cherche toujours le nouvel outil, la nouvelle tendance ou le nouveau langage qui fera la différence dans mes futurs projets.')">🔍 Curiosité</button>
-                                        <button class="msn-btn" onclick="sendSkill('Empathie', '💬 Ressentir avant de concevoir. Je ne crée pas pour des écrans, mais pour des humains. Mon empathie me permet de me mettre à la place de l\'utilisateur pour comprendre ce qu\'il ressent et m\'assurer que le message n\'est pas seulement transmis, mais réellement vécu.')">💬 Empathie</button>
-                                        <button class="msn-btn" onclick="sendSkill('Intelligence émotionnelle', '🧠 Le moteur de mes créations. Mon but ultime est de faire sourire et de procurer des émotions. Je sais canaliser ma propre sensibilité pour en faire une force de communication, permettant de créer des univers qui résonnent avec la psychologie du public.')">🧠 Intel. émotionnelle</button>
-                                        <button class="msn-btn" onclick="sendSkill('Esprit d\'équipe', '🤝 Co-créer pour sublimer. J\'aime l\'énergie qui se dégage d\'un groupe. Je sais écouter, échanger et confronter mes idées avec bienveillance pour que le projet collectif dépasse les attentes initiales et devienne une œuvre commune cohérente.')">🤝 Esprit d'équipe</button>
-                                        <button class="msn-btn" onclick="sendSkill('Adaptabilité', '🔄 Transformer les contraintes en opportunités. Qu\'il s\'agisse d\'un imprévu technique ou d\'un changement de direction artistique, je sais pivoter rapidement. J\'aime le défi de l\'ajustement permanent, car c\'est souvent dans l\'imprévu que naissent les meilleures solutions créatives.')">🔄 Adaptabilité</button>
-                                    </div>
-                                </div>
-
-                                <!-- Zone de saisie factice -->
-                                <div style="background:#f9f9f9; padding:6px 10px; display:flex; gap:6px; align-items:center;">
-                                    <div style="flex:1; border:1px inset #808080; background:#fff; height:26px; padding:4px 6px; font-size:11px; color:#aaa; overflow:hidden;">Écris un message...</div>
-                                    <button style="font-size:11px; padding:2px 8px;">Envoyer</button>
+                                <!-- Message fenêtre fermée -->
+                                <div id="msn-closed-msg" style="display:none; background:#e8f0fb; padding:10px; font-size:11px; color:#555; text-align:center; border-top:1px solid #aac;">
+                                    💬 Fenêtre réduite — <a href="#" onclick="msnRestore(); return false;" style="color:var(--win-blue);">Cliquer pour rouvrir</a>
                                 </div>
 
                             </div>
@@ -1072,17 +1080,18 @@
                                 <div class="engage-badge">ACTIVE</div>
                             </div>
                             <div class="engage-body">
-                                <!-- Onglets internes BDE -->
                                 <div style="display:flex; gap:0; margin-bottom:10px; border-bottom:2px solid #c0c0c0;">
                                     <button class="bde-tab active-bde-tab" onclick="switchBde('bde-now', this)">2025–26</button>
                                     <button class="bde-tab" onclick="switchBde('bde-prev', this)">2024–25</button>
                                 </div>
                                 <div id="bde-now">
-                                    <p>Je dirige le pôle audiovisuel avec mon Chargé de Mission : couverture photo & vidéo des événements, vlogs mensuels, coordination avec le pôle communication pour tous les aspects visuels du BDE.</p>
-                                    <p style="margin-top:6px;">Je missionne et encadre mon CM, et je maintiens une cohésion forte avec l'ensemble du bureau.</p>
+                                    <p>Je dirige le pôle audiovisuel avec mon Chargé de Mission : couverture photo & vidéo des événements, réalisation des <a href="https://www.instagram.com/bde_mm_in/" target="_blank" rel="noopener noreferrer" style="color:var(--win-blue); font-weight:bold;">vlogs mensuels</a> sur Premiere Pro, couvertures graphiques sur Photoshop, et coordination avec le pôle communication pour tous les aspects visuels du BDE.</p>
+                                    <p style="margin-top:6px;">Je distribue les tâches à mon CM, assure le suivi de la production et maintiens une cohésion forte avec l'ensemble du bureau.</p>
                                     <div class="engage-tags">
                                         <span class="etag">Direction audiovisuelle</span>
                                         <span class="etag">Management</span>
+                                        <span class="etag">Premiere Pro</span>
+                                        <span class="etag">Photoshop</span>
                                         <span class="etag">Photo & Vidéo</span>
                                         <span class="etag">Coordination</span>
                                     </div>
@@ -1131,15 +1140,12 @@
             <section id="passions" class="window" style="min-width:0;">
                 <div class="title-bar"><div class="title-bar-text">🎨 untitled — Paint</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div>
 
-                <!-- Menubar Paint -->
                 <div class="paint-menubar">
                     <span>File</span><span>Edit</span><span>View</span><span>Image</span><span>Options</span><span>Help</span>
                 </div>
 
-                <!-- Corps Paint : toolbar gauche + canvas -->
                 <div style="display:flex; background:#c0c0c0; border-top:1px solid #808080;">
 
-                    <!-- Barre d'outils gauche -->
                     <div class="paint-toolbar-left">
                         <div class="pt-tool selected">⬚</div>
                         <div class="pt-tool">⬜</div>
@@ -1155,23 +1161,19 @@
                         <div class="pt-tool">⬡</div>
                         <div class="pt-tool">◯</div>
                         <div class="pt-tool">◔</div>
-                        <!-- Sélecteur couleur actif -->
                         <div class="pt-color-preview">
                             <div style="width:18px;height:18px;background:#000;border:1px solid #808080;"></div>
                             <div style="width:14px;height:14px;background:#fff;border:1px solid #808080;margin-top:-8px;margin-left:6px;"></div>
                         </div>
                     </div>
 
-                    <!-- Zone centrale : onglets + canvas -->
                     <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
 
-                        <!-- Onglets -->
                         <div style="display:flex; background:#d0d0d0; border-bottom:1px solid #808080; padding:4px 6px 0; flex-wrap:wrap;">
                             <button class="paint-tab active-paint-tab" id="ptab-dessin"  onclick="switchPaintTab('dessin')">🖌️ Dessin</button>
                             <button class="paint-tab" id="ptab-cosplay" onclick="switchPaintTab('cosplay')">🎭 Cosplay</button>
                         </div>
 
-                        <!-- Canvas blanc avec carousel -->
                         <div style="background:#808080; padding:6px; flex:1;">
                             <div style="background:#fff; border:2px inset #808080; position:relative; overflow:hidden;">
 
@@ -1181,7 +1183,6 @@
                                         <span class="insta-counter" id="insta-cosplay-counter">1 / 3</span>
                                         <button class="insta-nav-btn" onclick="instaNav('cosplay',1)">Suiv. ▶</button>
                                     </div>
-                                    <!-- Slide 1 -->
                                     <div class="insta-slide active" id="insta-cosplay-0">
                                         <blockquote class="instagram-media"
                                             data-instgrm-permalink="https://www.instagram.com/p/CsbniRxrJcy/"
@@ -1189,7 +1190,6 @@
                                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:320px; width:100%;">
                                         </blockquote>
                                     </div>
-                                    <!-- Slide 2 -->
                                     <div class="insta-slide" id="insta-cosplay-1">
                                         <blockquote class="instagram-media"
                                             data-instgrm-permalink="https://www.instagram.com/p/CiffdK3rwKr/"
@@ -1197,7 +1197,6 @@
                                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:320px; width:100%;">
                                         </blockquote>
                                     </div>
-                                    <!-- Slide 3 -->
                                     <div class="insta-slide" id="insta-cosplay-2">
                                         <blockquote class="instagram-media"
                                             data-instgrm-permalink="https://www.instagram.com/p/CMhjskMrN3H/"
@@ -1212,7 +1211,6 @@
                                         <span class="insta-counter" id="insta-dessin-counter">1 / 3</span>
                                         <button class="insta-nav-btn" onclick="instaNav('dessin',1)">Suiv. ▶</button>
                                     </div>
-                                    <!-- Slide 1 -->
                                     <div class="insta-slide active" id="insta-dessin-0">
                                         <blockquote class="instagram-media"
                                             data-instgrm-permalink="https://www.instagram.com/p/CjQuyriIwHJ/"
@@ -1220,7 +1218,6 @@
                                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:320px; width:100%;">
                                         </blockquote>
                                     </div>
-                                    <!-- Slide 2 -->
                                     <div class="insta-slide" id="insta-dessin-1">
                                         <blockquote class="instagram-media"
                                             data-instgrm-permalink="https://www.instagram.com/p/CAaKoYEnoP0/"
@@ -1228,7 +1225,6 @@
                                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0 auto; max-width:320px; width:100%;">
                                         </blockquote>
                                     </div>
-                                    <!-- Slide 3 -->
                                     <div class="insta-slide" id="insta-dessin-2">
                                         <blockquote class="instagram-media"
                                             data-instgrm-permalink="https://www.instagram.com/p/CyY-zaxI129/"
@@ -1238,18 +1234,15 @@
                                     </div>
                                 </div>
 
-
                             </div>
                         </div>
 
-                        <!-- Texte par onglet -->
                         <div id="paint-text-cosplay" class="paint-tab-text" style="display:none;">🎭 <strong>Cosplay</strong> — Halloween, le carnaval, les conventions… depuis toujours j'adore me déguiser et me maquiller. J'ai commencé par improviser avec ce que j'avais sous la main, puis j'ai appris à coudre, à crafter, à construire. Ce qui me fait vibrer ? Voir un personnage que j'aime prendre vie — et pouvoir l'incarner.</div>
                         <div id="paint-text-dessin"  class="paint-tab-text">🖌️ <strong>Dessin & Illustration</strong> — Depuis toute petite, je n'ai jamais arrêté de dessiner. C'est mon outil de réflexion visuelle : tester de nouvelles choses, créer des personnages, développer des univers. Une pratique quotidienne qui nourrit directement mon sens du design.</div>
 
                     </div>
                 </div>
 
-                <!-- Palette couleurs bas -->
                 <div class="paint-palette">
                     <div class="paint-palette-colors">
                         <div class="pal-cell" style="background:#000"></div>
@@ -1279,14 +1272,11 @@
 
             </section>
 
-            <!-- WMP adapté à la hauteur de Paint -->
             <section id="passions-wmp" class="window" style="min-width:0; display:flex; flex-direction:column;">
                 <div class="title-bar"><div class="title-bar-text">🎵 Windows Media Player — Mes Passions</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div>
                 <div class="window-body" style="padding:0 !important; flex:1; display:flex; flex-direction:column;">
 
-                    <!-- Pochette + paroles -->
                     <div class="wmp-top" style="display:flex; gap:0; background:#1a1a2e; flex:1;">
-                        <!-- Pochette + visualiseur -->
                         <div style="width:220px; flex-shrink:0; display:flex; flex-direction:column;">
                             <img id="wmp-cover" src="ressources/passions/japon.png" alt="Pochette"
                                  style="width:220px; height:220px; object-fit:cover; display:block;"
@@ -1297,7 +1287,6 @@
                                 <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
                             </div>
                         </div>
-                        <!-- Paroles -->
                         <div style="flex:1; padding:12px 14px; overflow-y:auto;">
                             <div id="wmp-track-title" style="color:#7ec8e3; font-size:13px; font-weight:bold; margin-bottom:8px;">⛩️ Culture Japonaise</div>
                             <div id="wmp-lyrics" style="color:#ccc; font-size:11px; line-height:1.9; font-style:italic; white-space:pre-line;">
@@ -1306,7 +1295,22 @@ Appuie sur ▶ Play pour découvrir...
                         </div>
                     </div>
 
-                    <!-- Playlist -->
+                    <!-- Contrôles + progression AU-DESSUS de la playlist -->
+                    <div style="background:#1a1a2e; padding:6px 10px; display:flex; align-items:center; gap:6px; border-top:1px solid #333; border-bottom:1px solid #333;">
+                        <button class="wmp-btn" onclick="wmpPrev()">⏮</button>
+                        <button class="wmp-btn wmp-play" id="wmp-playbtn" onclick="wmpPlay()">▶</button>
+                        <button class="wmp-btn" onclick="wmpNext()">⏭</button>
+                        <div style="flex:1; margin-left:4px;">
+                            <div style="background:#333; height:4px; border-radius:2px; margin-bottom:3px;">
+                                <div id="wmp-progress" style="background:#7ec8e3; height:4px; border-radius:2px; width:0%; transition:width 0.3s;"></div>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; color:#555; font-size:10px;">
+                                <span id="wmp-time">0:00</span><span id="wmp-status" style="color:#7ec8e3; font-size:10px;">Prêt</span><span id="wmp-duration">0:30</span>
+                            </div>
+                        </div>
+                        <span style="color:#444; font-size:13px;">🔊</span>
+                    </div>
+
                     <div style="background:#0f0f1f; border-top:1px solid #333; flex:1; overflow-y:auto; min-height:0;">
                         <div style="color:#555; font-size:10px; padding:4px 10px; border-bottom:1px solid #1a1a2e; letter-spacing:2px;">— PLAYLIST —</div>
                         <div class="wmp-track" id="wtrack-0" onclick="wmpLoadTrack(0)">
@@ -1339,26 +1343,6 @@ Appuie sur ▶ Play pour découvrir...
                             <span class="wmp-trackname">📷 Photo & Vidéo</span>
                             <span class="wmp-trackdur">0:30</span>
                         </div>
-
-                    </div>
-
-                    <!-- Barre progression -->
-                    <div style="background:#0d0d1a; padding:6px 10px;">
-                        <div style="background:#333; height:4px; border-radius:2px;">
-                            <div id="wmp-progress" style="background:#7ec8e3; height:4px; border-radius:2px; width:0%; transition:width 0.3s;"></div>
-                        </div>
-                        <div style="display:flex; justify-content:space-between; color:#555; font-size:11px; margin-top:2px;">
-                            <span id="wmp-time">0:00</span><span id="wmp-duration">0:30</span>
-                        </div>
-                    </div>
-
-                    <!-- Contrôles -->
-                    <div style="background:#1a1a2e; padding:6px 10px; display:flex; align-items:center; gap:6px; border-top:1px solid #333;">
-                        <button class="wmp-btn" onclick="wmpPrev()">⏮</button>
-                        <button class="wmp-btn wmp-play" id="wmp-playbtn" onclick="wmpPlay()">▶</button>
-                        <button class="wmp-btn" onclick="wmpNext()">⏭</button>
-                        <div style="flex:1; margin-left:8px; color:#7ec8e3; font-size:11px;" id="wmp-status">Prêt</div>
-                        <span style="color:#444; font-size:13px;">🔊</span>
                     </div>
 
                 </div>
@@ -1375,7 +1359,7 @@ Appuie sur ▶ Play pour découvrir...
                     <img src="https://win98icons.alexmeub.com/icons/png/camera-0.png" alt="Instagram de Mathilde Mathieu">
                     <span>Insta Créatif</span>
                 </a>
-                <a href="ressources/CV_Mathilde_Mathieu.pdf" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+                <a href="ressources/CV_Mathilde-Mathieu.pdf" target="_blank" rel="noopener noreferrer" class="desktop-icon">
                     <img src="https://win98icons.alexmeub.com/icons/png/write_wordpad-1.png" alt="CV de Mathilde Mathieu (PDF)">
                     <span>Mon CV (PDF)</span>
                 </a>
@@ -1383,9 +1367,9 @@ Appuie sur ▶ Play pour découvrir...
                     <img src="https://win98icons.alexmeub.com/icons/png/outlook_express-2.png" alt="Contacter Mathilde" onerror="this.src='https://win98icons.alexmeub.com/icons/png/envelope_closed-0.png'">
                     <span>Me contacter</span>
                 </a>
-                <a href="#" class="desktop-icon" onclick="openLivret(); return false;">
-                    <img src="ressources/logos/livretdor.png" alt="Livret d'or" onerror="this.src='https://win98icons.alexmeub.com/icons/png/bookshelf-0.png'">
-                    <span>Livret d'or</span>
+                <a href="ressources/Lettre_recommandation.pdf" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+                    <img src="https://win98icons.alexmeub.com/icons/png/certificate-0.png" alt="Lettre de recommandation" onerror="this.src='https://win98icons.alexmeub.com/icons/png/write_wordpad-1.png'">
+                    <span>Lettre_Reco.pdf</span>
                 </a>
                 <a href="#" class="desktop-icon" onclick="openLegals()">
                     <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="Mentions légales">
@@ -1442,7 +1426,7 @@ Appuie sur ▶ Play pour découvrir...
                     Ce site est un portfolio personnel édité par :<br>
                     <strong>Mathilde Mathieu</strong>, particulière majeure<br>
                     Étudiante en BUT Métiers du Multimédia et de l'Internet (MMI)<br>
-                    Email : <a href="/cdn-cgi/l/email-protection#fc919d889495909899d2919d8894959989cec8bc9b919d9590d29f9391"><span class="__cf_email__" data-cfemail="f994988d9190959d9cd794988d91909c8ccbcdb99e94989095d79a9694">[email&#160;protected]</span></a>
+                    Email : <a href="/cdn-cgi/l/email-protection#751814011d1c1911105b1814011d1c10004741351218141c195b161a18"><span class="__cf_email__" data-cfemail="0f626e7b6766636b6a21626e7b67666a7a3d3b4f68626e6663216c6062">[email&#160;protected]</span></a>
                 </p>
                 <p style="margin-top:6px; color:#555; font-size:11px;">
                     Conformément à l'art. 6-III-2 de la loi LCEN du 21 juin 2004, l'éditrice étant une personne physique, 
@@ -1473,9 +1457,7 @@ Appuie sur ▶ Play pour découvrir...
                     Ce site ne collecte aucune donnée personnelle via cookies de tracking ou analytique.<br>
                     Le formulaire de contact transmet les messages via <strong>Formspree</strong> 
                     (<a href="https://formspree.io" target="_blank" rel="noopener noreferrer">formspree.io</a>) — leur politique de 
-                    confidentialité s'applique aux données transmises.<br>
-                    Le livret d'or est stocké localement dans votre navigateur (localStorage) 
-                    et n'est pas envoyé à un serveur.
+                    confidentialité s'applique aux données transmises.
                 </p>
                 <br>
 
@@ -1518,11 +1500,10 @@ Appuie sur ▶ Play pour découvrir...
             </div>
         </div>
 
-        <!-- Champs en-tête -->
         <div class="oe-headers">
             <div class="oe-field">
                 <span class="oe-label">À :</span>
-                <span class="oe-value" style="color:#000080; font-weight:bold;"><a href="/cdn-cgi/l/email-protection#315c504559585d55541f5c504559585444030571565c50585d1f525e5c"><span class="__cf_email__" data-cfemail="6a070b1e0203060e0f44070b1e02030f1f585e2a0d070b030644090507">[email&#160;protected]</span></a></span>
+                <span class="oe-value" style="color:#000080; font-weight:bold;"><a href="/cdn-cgi/l/email-protection#e28f83968a8b8e8687cc8f83968a8b8797d0d6a2858f838b8ecc818d8f"><span class="__cf_email__" data-cfemail="771a16031f1e1b1312591a16031f1e1202454337101a161e1b5914181a">[email&#160;protected]</span></a></span>
             </div>
             <div class="oe-field">
                 <span class="oe-label">Votre e-mail :</span>
@@ -1546,14 +1527,12 @@ Appuie sur ▶ Play pour découvrir...
             </div>
             <div class="oe-field">
                 <span class="oe-label">Objet :</span>
-                <input id="mail-subject" type="text" placeholder="Objet du message..." data-i18n="mail-placeholder-subject" class="oe-input">
+                <input id="mail-subject" type="text" placeholder="Objet du message..." class="oe-input">
             </div>
         </div>
 
-        <!-- Zone de texte -->
-        <textarea id="mail-body" placeholder="Votre message..." data-i18n="mail-placeholder-body" class="oe-body"></textarea>
+        <textarea id="mail-body" placeholder="Votre message..." class="oe-body"></textarea>
 
-        <!-- Bas de fenêtre : statut + boutons -->
         <div class="oe-statusbar">
             <span id="mail-status">✏️ Prêt</span>
             <div style="margin-left:auto; display:flex; gap:6px;">
@@ -1562,46 +1541,6 @@ Appuie sur ▶ Play pour découvrir...
                     <img src="https://win98icons.alexmeub.com/icons/png/mail_send-0.png" width="16" alt="" onerror="this.style.display='none'">
                     Envoyer
                 </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODALE LIVRET D'OR -->
-    <div id="livret-modal" class="window" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:92%; max-width:520px; z-index:9100; display:none;">
-        <div class="title-bar">
-            <div class="title-bar-text">📖 Livret d'or — Laissez un message !</div>
-            <div class="title-bar-controls">
-                <button aria-label="Minimize"></button>
-                <button aria-label="Maximize"></button>
-                <button aria-label="Close" onclick="closeLivret()"></button>
-            </div>
-        </div>
-        <!-- Formulaire -->
-        <div class="window-body" style="display:flex; flex-direction:column; gap:10px;">
-            <div style="display:flex; gap:8px;">
-                <div style="flex:1;">
-                    <label style="font-size:11px; display:block; margin-bottom:3px;">Votre prénom *</label>
-                    <input id="livret-name" type="text" placeholder="Ex : Sophie" style="width:100%; box-sizing:border-box; border:2px inset #aaa; padding:3px 6px; font-size:12px; font-family:'MS Sans Serif',Tahoma,sans-serif;">
-                </div>
-                <div style="flex:1;">
-                    <label style="font-size:11px; display:block; margin-bottom:3px;">Votre rôle / contexte</label>
-                    <input id="livret-role" type="text" placeholder="Ex : Recruteur chez Studio X" style="width:100%; box-sizing:border-box; border:2px inset #aaa; padding:3px 6px; font-size:12px; font-family:'MS Sans Serif',Tahoma,sans-serif;">
-                </div>
-            </div>
-            <div>
-                <label style="font-size:11px; display:block; margin-bottom:3px;">Votre message *</label>
-                <textarea id="livret-msg" rows="4" placeholder="Laissez un commentaire..." style="width:100%; box-sizing:border-box; border:2px inset #aaa; padding:6px; font-size:12px; font-family:'MS Sans Serif',Tahoma,sans-serif; resize:vertical;"></textarea>
-            </div>
-            <div style="display:flex; justify-content:flex-end; gap:8px; align-items:center;">
-                <span id="livret-status" style="font-size:11px; color:#006600; flex:1;"></span>
-                <button onclick="submitLivret()">✉️ Signer le livret</button>
-                <button onclick="closeLivret()">Fermer</button>
-            </div>
-
-            <!-- Affichage des messages -->
-            <div style="border-top:1px solid #c0c0c0; padding-top:10px;">
-                <div style="font-size:11px; font-weight:bold; margin-bottom:6px; color:#555;">— Messages précédents —</div>
-                <div id="livret-entries" style="max-height:180px; overflow-y:auto; display:flex; flex-direction:column; gap:6px;"></div>
             </div>
         </div>
     </div>
@@ -1620,12 +1559,10 @@ Appuie sur ▶ Play pour découvrir...
                 </div>
             </div>
 
-            <!-- Zone image avec flèches -->
             <div style="position:relative; background:#1a1a1a; display:flex; align-items:center; justify-content:center; flex:1; min-height:0; overflow:hidden; padding:10px;">
                 <img id="lightbox-img" src="" alt="Aperçu agrandi"
                      style="max-width:85vw; max-height:75vh; object-fit:contain; display:block; transition:opacity 0.15s;">
 
-                <!-- Flèche gauche -->
                 <button id="lb-prev" onclick="lbNav(-1)" aria-label="Image précédente" style="
                     display:none; position:absolute; left:8px; top:50%; transform:translateY(-50%);
                     background:rgba(0,0,0,0.55); color:#fff; border:2px solid rgba(255,255,255,0.3);
@@ -1634,7 +1571,6 @@ Appuie sur ▶ Play pour découvrir...
                     align-items:center; justify-content:center;
                 ">◀</button>
 
-                <!-- Flèche droite -->
                 <button id="lb-next" onclick="lbNav(1)" aria-label="Image suivante" style="
                     display:none; position:absolute; right:8px; top:50%; transform:translateY(-50%);
                     background:rgba(0,0,0,0.55); color:#fff; border:2px solid rgba(255,255,255,0.3);
@@ -1644,7 +1580,6 @@ Appuie sur ▶ Play pour découvrir...
                 ">▶</button>
             </div>
 
-            <!-- Barre bas : compteur + instructions + fermer -->
             <div style="background:var(--win-gray); border-top:1px solid #808080; padding:4px 10px; font-size:11px; color:#555; display:flex; justify-content:space-between; align-items:center; gap:8px; flex-shrink:0;">
                 <span id="lb-counter" style="font-weight:bold; color:#000080; min-width:40px;"></span>
                 <span id="lb-hint" style="color:#777; flex:1; text-align:center;">🔍 Cliquer en dehors pour fermer</span>
@@ -1783,10 +1718,11 @@ Appuie sur ▶ Play pour découvrir...
                 img: 'ressources/projets/photos1.png',
                 screenshots: [
                     'ressources/projets/photos1.png',
-                    'ressources/projets/photos2.png',
-                    'ressources/projets/photos3.png',
-                    'ressources/projets/photos4.png'
+                    'ressources/projets/photos2.jpg',
+                    'ressources/projets/photos3.jpg',
+                    'ressources/projets/photos4.jpg'
                 ],
+                link: 'https://drive.google.com/file/d/1a-V1DCycqLf1c536E9LjNSk3_-vDbdZa/view?usp=sharing',
                 desc: "Travaux pratiques de photographie en culture artistique — apprentissage de la composition et de la gestion d'un appareil photo.",
                 quoi: "Réalisation de plusieurs types de photos avec consignes précises (cadrage, profondeur de champ, lumière, règle des tiers...). Chaque photo est accompagnée d'une explication des choix techniques et artistiques dans un document PDF.",
                 pourquoi: "L'objectif était d'apprendre à maîtriser les réglages d'un appareil photo et les règles de composition vues en cours pour produire des images volontaires et construites.",
@@ -1839,6 +1775,36 @@ Appuie sur ▶ Play pour découvrir...
                 ac: "AC33.04 | Produire les éléments pour une expérience sophistiquée et immersive | AC33.05 | Appréhender les enjeux liés à la direction artistique | AC35.01 | Piloter un produit, un service ou une équipe.",
                 evaluation: "Ce projet m'a appris à faire du décor un \"partenaire de jeu\". La difficulté a été de synchroniser l'évolution visuelle (l'empilement des cubes) avec le rythme de la musique et la montée en tension des danseurs pour que l'explosion finale soit réellement libératrice."
             },
+           {
+                id: 'business-plan-mmi3',
+                name: 'Snoozly_BusinessPlan.pdf',
+                date: '2026-02',
+                img: 'ressources/projets/businessplan.png',
+                outils: ['c'],
+                link: 'https://drive.google.com/file/d/1OMAoD6A4Q8AF1w02xmGYsCEWbJEVj7jn/view?usp=sharing',
+                desc: "Business plan de Snoozly — startup de capsules de repos connectées pour entreprises et campus, conçue en groupe de 3.",
+                quoi: "Rédaction complète d'un business plan pour Snoozly, une startup proposant des capsules de micro-sieste modulaires en location (modèle SaaS). Le dossier couvre l'analyse de marché QVT, l'offre produit, la stratégie de déploiement sur 3 ans et le prévisionnel financier (CA an 3 : 470 400 €, point mort en an 2).",
+                pourquoi: "Comment structurer une idée créative en projet viable économiquement ? En prenant le rôle de CRO (Chief Revenue Officer), j'ai travaillé la stratégie commerciale et l'analyse de marché, en m'appuyant sur la directive CSRD et les besoins des mutuelles santé comme levier de financement.",
+                ou: "BUT MMI — Semestre 5, février 2026. Projet de groupe (3 personnes).",
+                qui: "Groupe : Rahnya Lanyeri (CTO), Mathilde Mathieu (CRO), Luis Miguel Meira Ribeiro (CFO).",
+                ac: "AC35.01 | Piloter un projet | AC35.03 | Concevoir un projet innovant | AC35.04 | Stratégie de déploiement et financement.",
+                evaluation: "Ce projet m'a forcée à sortir du pur créatif pour penser rentabilité, modèle économique et argumentation stratégique. Endosser le rôle de CRO m'a appris à relier une vision produit à des objectifs commerciaux concrets — une compétence directement transférable en agence ou en startup."
+            },
+            {
+                id: 'ecriture-multimedia-mmi3',
+                name: 'TD_GameWriting_NarrativeDesign.pdf',
+                date: '2026-01',
+                img: 'ressources/projets/ecriture-multimedia.png',
+                outils: [],
+                link:"https://drive.google.com/file/d/1d7hg7PvvvpZNOHNkE3bYp1mGedYR6H7r/view?usp=sharing",
+                desc: "TD de Narrative Design & Game Writing — analyse comparative de The Last of Us et The Witcher 3 sous l'angle de l'écriture et de l'expérience joueur.",
+                quoi: "Travail en binôme (avec Romain Tomaszewski) sur deux parties : analyse du narrative design de The Last of Us (intrigue, personnages, lore, synopsis, arcs narratifs) et analyse du game writing de The Witcher 3 (séquences, boucles de jeu, choix moraux, expérience joueur). Rendu en PDF illustré de 40 pages.",
+                pourquoi: "L'objectif était de distinguer narrative design (construction macro d'un univers émotionnel) et game writing (écriture séquentielle et boucles de jeu). J'ai compris que dans The Last of Us, le gameplay sert l'émotion, tandis que dans The Witcher 3, chaque dialogue est un vecteur de conséquences narratives concrètes.",
+                ou: "BUT MMI — Semestre 5, janvier 2026. TD encadré par M. Bullinge.",
+                qui: "Binôme : Romain Tomaszewski & Mathilde Mathieu.",
+                ac: "AC33.01 | Démarche narrative originale | AC33.04 | Expérience immersive et émotionnelle | AC33.05 | Direction artistique et univers.",
+                evaluation: "Ce TD a directement nourri ma réflexion sur mon chef-d'œuvre (The Crybaby Journey) : penser la narration non-linéaire, le rôle du joueur-lecteur, et comment une DA cohérente renforce l'immersion émotionnelle."
+            },
             {
                 id: 'cours-da-mmi3',
                 name: 'Cours_DA_MMI3.pdf',
@@ -1849,6 +1815,7 @@ Appuie sur ▶ Play pour découvrir...
                     'ressources/projets/daphoto2.png',
                     'ressources/projets/daphoto3.png'
                 ],
+                link: 'https://drive.google.com/file/d/1B0QahfgqdUDbaU_NW-BEoRWxgSoli0A_/view?usp=sharing',
                 desc: "Cours de direction artistique — retravail photographique avec techniques graphiques sur des photos personnelles.",
                 quoi: "À partir de deux photos choisies, j'ai produit plusieurs déclinaisons : détourage sans fond, dessin par-dessus l'image, photomontage avec une autre photo, et application de techniques graphiques. Le tout accompagné d'un document PDF d'analyse.",
                 pourquoi: "Le but était d'explorer comment la direction artistique transforme une photo brute en visuel graphique fort, en jouant sur les techniques de retouche et de composition.",
@@ -1931,10 +1898,8 @@ Appuie sur ▶ Play pour découvrir...
     let currentActiveProject = null;
 
     function setActiveTree(fid) {
-        // Retirer tous les actifs
         document.querySelectorAll('.tree-item').forEach(el => el.classList.remove('active'));
         document.getElementById('btn-tout-voir').classList.remove('active');
-
         if (fid === 'all') {
             document.getElementById('btn-tout-voir').classList.add('active');
         } else {
@@ -1943,7 +1908,6 @@ Appuie sur ▶ Play pour découvrir...
         }
     }
 
-    // --- EXPLORATEUR ---
     function renderExplorer(fid) {
         const grid = document.getElementById('explorer-grid');
         const pathDisplay = document.getElementById('path-display');
@@ -1954,7 +1918,6 @@ Appuie sur ▶ Play pour découvrir...
 
         if (fid === 'all') {
             pathDisplay.innerText = `C:\\Projets\\TOUT_VOIR.EXE`;
-
             toolbarContainer.innerHTML = `
                 <div class="explorer-toolbar" style="flex-wrap: wrap; gap: 8px;">
                     <div style="display:flex; align-items:center; gap:4px;">
@@ -1983,17 +1946,14 @@ Appuie sur ▶ Play pour découvrir...
                     </div>
                 </div>
             `;
-
             applyAll();
         } else {
             pathDisplay.innerText = `C:\\Projets\\${fid.toUpperCase()}`;
             const items = projects[fid] || [];
-
             if (items.length === 0) {
                 grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:20px; color:#808080;">Dossier vide.</p>';
                 return;
             }
-
             items.forEach(item => {
                 const d = document.createElement('div');
                 d.className = 'item';
@@ -2009,7 +1969,6 @@ Appuie sur ▶ Play pour découvrir...
         }
     }
 
-    // --- ÉTAT TOUT_VOIR ---
     let currentFilter = 'all';
     let currentSort   = 'recent';
 
@@ -2037,11 +1996,8 @@ Appuie sur ▶ Play pour découvrir...
     function applyAll() {
         const grid = document.getElementById('explorer-grid');
         grid.innerHTML = '';
-
         const query = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
         let items = [...projects.mmi1, ...projects.mmi2, ...projects.mmi3, ...projects.cosplay, ...projects.perso];
-
-        // Filtre catégorie
         items = items.filter(item => {
             if (currentFilter === 'all') return true;
             if (currentFilter === 'dev')       return item.outils?.includes('vsc');
@@ -2050,8 +2006,6 @@ Appuie sur ▶ Play pour découvrir...
             if (currentFilter === 'perso') return projects.perso.some(p => p.id === item.id);
             return true;
         });
-
-        // Recherche texte (nom, desc, outils, ac)
         if (query) {
             items = items.filter(item =>
                 item.name.toLowerCase().includes(query) ||
@@ -2061,19 +2015,15 @@ Appuie sur ▶ Play pour découvrir...
                 (item.outils || []).join(' ').toLowerCase().includes(query)
             );
         }
-
-        // Tri par date
         items.sort((a, b) => {
             const da = a.date || '0000-00';
             const db = b.date || '0000-00';
             return currentSort === 'recent' ? db.localeCompare(da) : da.localeCompare(db);
         });
-
         if (items.length === 0) {
             grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:30px; color:#808080; font-style:italic;">Aucun fichier trouvé.</p>';
             return;
         }
-
         items.forEach(item => {
             const d = document.createElement('div');
             d.className = 'item';
@@ -2091,8 +2041,6 @@ Appuie sur ▶ Play pour découvrir...
         return `${months[parseInt(m)-1]} ${y}`;
     }
 
-
-    // --- FENÊTRES ---
     function openModal(p) {
         currentActiveProject = p;
         document.getElementById('m-title').innerText = p.name;
@@ -2108,7 +2056,6 @@ Appuie sur ▶ Play pour découvrir...
         const p = currentActiveProject;
         if (!p) return;
 
-        // Outils
         let outilsHtml = '';
         if (p.outils && p.outils.length) {
             outilsHtml = '<div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; background:#f1f1f1; padding:8px; border:1px inset #fff; align-items:center;">';
@@ -2119,7 +2066,6 @@ Appuie sur ▶ Play pour découvrir...
             outilsHtml += '</div>';
         }
 
-        // Image(s) — cliquable pour agrandir avec carousel lightbox
         let imgHtml = '';
         const shots = p.screenshots && p.screenshots.length ? p.screenshots : [p.img];
         const shotsJson = JSON.stringify(shots).replace(/"/g, '&quot;');
@@ -2135,7 +2081,6 @@ Appuie sur ▶ Play pour découvrir...
                 </div>`;
         }
 
-        // Lien externe
         let linkLabel = '🔗 Voir le projet';
         if (p.link) {
             if (p.link.includes('behance')) linkLabel = '🔗 Voir sur Behance';
@@ -2146,7 +2091,6 @@ Appuie sur ▶ Play pour découvrir...
                 <a href="${p.link}" target="_blank" rel="noopener noreferrer" style="color:#000080; font-weight:bold; font-size:12px;">${linkLabel}</a>
                </div>` : '';
 
-        // Contenu textuel
         const rows = [
             { label: 'QUOI', val: p.quoi },
             { label: 'POURQUOI', val: p.pourquoi },
@@ -2179,13 +2123,11 @@ Appuie sur ▶ Play pour découvrir...
         mainImg.src = thumb.dataset.full;
         mainImg.dataset.index = idx;
         mainImg.alt = thumb.alt;
-        // Bordure active sur la miniature cliquée
         thumb.closest('div').querySelectorAll('img').forEach(t => t.style.borderColor = '#808080');
         thumb.style.borderColor = '#000080';
     }
 
     function openLightboxFromPanel(mainImg) {
-        // Récupérer le tableau de shots depuis le parent
         const container = mainImg.closest('[data-shots]');
         let shots = [];
         try { shots = JSON.parse(container.dataset.shots); } catch(e) { shots = [mainImg.src]; }
@@ -2219,14 +2161,11 @@ Appuie sur ▶ Play pour découvrir...
         const next    = document.getElementById('lb-next');
         const total   = _lbShots.length;
         const src     = _lbShots[_lbIndex];
-
         img.style.opacity = '0';
         img.src = src;
         img.alt = 'Aperçu ' + (_lbIndex + 1) + ' / ' + total;
         img.onload = () => { img.style.opacity = '1'; };
-
         title.textContent = '🔍 ' + src.split('/').pop();
-
         if (total > 1) {
             counter.textContent = (_lbIndex + 1) + ' / ' + total;
             hint.textContent = '← → pour naviguer · Échap pour fermer';
@@ -2261,7 +2200,6 @@ Appuie sur ▶ Play pour découvrir...
         if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   lbNav(-1);
     }
 
-    // FIX 2 : closeMenuMobile définie
     function closeMenuMobile() {
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('menu-overlay');
@@ -2278,7 +2216,6 @@ Appuie sur ▶ Play pour découvrir...
         overlay.classList.toggle('active');
     }
 
-    // FIX 3 : openLegals / closeLegals définies
     function openLegals() { document.getElementById('legals-modal').style.display = 'block'; }
     function closeLegals() { document.getElementById('legals-modal').style.display = 'none'; }
 
@@ -2304,7 +2241,6 @@ Appuie sur ▶ Play pour découvrir...
         const subject = document.getElementById('mail-subject').value.trim();
         const body    = document.getElementById('mail-body').value.trim();
         const status  = document.getElementById('mail-status');
-
         if (!from || !subject || !body) {
             status.style.color = '#aa0000';
             status.textContent = '⚠ Veuillez remplir au moins : e-mail, objet et message.';
@@ -2315,10 +2251,8 @@ Appuie sur ▶ Play pour découvrir...
             status.textContent = '⚠ Adresse e-mail invalide.';
             return;
         }
-
         status.style.color = '#333';
         status.textContent = '📤 Envoi en cours...';
-
         try {
             const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
                 method: 'POST',
@@ -2338,91 +2272,12 @@ Appuie sur ▶ Play pour découvrir...
         }
     }
 
-    // --- LIVRET D'OR ---
-    const LIVRET_KEY = 'livret_entries';
-
-    function getLivretEntries() {
-        try { return JSON.parse(localStorage.getItem(LIVRET_KEY)) || []; }
-        catch { return []; }
-    }
-    function saveLivretEntries(arr) {
-        localStorage.setItem(LIVRET_KEY, JSON.stringify(arr));
-    }
-
-    function renderLivretEntries() {
-        const entries = getLivretEntries();
-        const container = document.getElementById('livret-entries');
-        if (!container) return;
-        if (entries.length === 0) {
-            container.innerHTML = '<p style="font-size:11px; color:#888; font-style:italic;">Soyez le premier à signer ✨</p>';
-        } else {
-            container.innerHTML = entries.slice().reverse().map(e => `
-                <div style="background:#f8f8f8; border:1px solid #d0d0d0; padding:7px 10px; border-left:3px solid var(--win-blue);">
-                    <div style="font-size:11px; font-weight:bold; color:var(--win-blue);">${escHtml(e.name)}${e.role ? ' <span style="color:#777;font-weight:normal;">· '+escHtml(e.role)+'</span>' : ''}</div>
-                    <div style="font-size:12px; margin-top:4px; color:#333;">${escHtml(e.msg)}</div>
-                    <div style="font-size:11px; color:#999; margin-top:4px;">${e.date}</div>
-                </div>`).join('');
-        }
-        updateMySpaceComment();
-    }
-
-    function escHtml(s) {
-        return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
-
-    function submitLivret() {
-        const name = document.getElementById('livret-name').value.trim();
-        const role = document.getElementById('livret-role').value.trim();
-        const msg  = document.getElementById('livret-msg').value.trim();
-        const status = document.getElementById('livret-status');
-        if (!name || !msg) {
-            status.style.color = '#aa0000';
-            status.textContent = '⚠ Prénom et message requis.';
-            return;
-        }
-        const entries = getLivretEntries();
-        const now = new Date();
-        entries.push({
-            name, role, msg,
-            date: now.toLocaleDateString('fr-FR', { day:'2-digit', month:'long', year:'numeric' })
-        });
-        saveLivretEntries(entries);
-        document.getElementById('livret-name').value = '';
-        document.getElementById('livret-role').value = '';
-        document.getElementById('livret-msg').value  = '';
-        status.style.color = '#006600';
-        status.textContent = '✅ Message ajouté, merci !';
-        setTimeout(() => { status.textContent = ''; }, 3000);
-        renderLivretEntries();
-    }
-
-    function openLivret() {
-        renderLivretEntries();
-        document.getElementById('livret-modal').style.display = 'block';
-    }
-    function closeLivret() { document.getElementById('livret-modal').style.display = 'none'; }
-
-    // --- MYSPACE : message dynamique depuis le livret ---
-    function updateMySpaceComment() {
-        const el = document.getElementById('msp-comment-text');
-        if (!el) return;
-        const entries = getLivretEntries();
-        if (entries.length === 0) {
-            el.innerHTML = '✨ <strong>Bonne visite !</strong> N\'hésite pas à laisser un mot · <a href="#contact" style="color:#003399;" onclick="openLivret()">Voir le livre d\'or</a>';
-        } else {
-            const last = entries[entries.length - 1];
-            el.innerHTML = `💬 <strong>${escHtml(last.name)}</strong>${last.role ? ' <span style="color:#666;">· ${escHtml(last.role)}</span>' : ''} : "${escHtml(last.msg.slice(0, 60))}${last.msg.length > 60 ? '…' : ''}" · <a href="#contact" style="color:#003399;" onclick="openLivret()">Livret d'or (${entries.length})</a>`;
-        }
-    }
-
-    // Init livret au chargement
+    // --- INIT ---
     document.addEventListener('DOMContentLoaded', () => {
-        // Ouvrir l'explorateur directement sur les dossiers Projets BUT
         renderExplorer('but');
-        updateMySpaceComment();
     });
 
-    // Soft skills : questions du recruteur pour chaque skill
+    // Soft skills
     const skillQuestions = {
         'Créativité': 'La créativité, c\'est quelque chose que tu mettrais vraiment en avant chez toi ?',
         'Curiosité': 'La curiosité, ça se manifeste comment dans ton quotidien ?',
@@ -2434,15 +2289,11 @@ Appuie sur ▶ Play pour découvrir...
 
     function sendSkill(name, message) {
         const chat = document.getElementById('msn-chat');
-
-        // Message du recruteur (question)
         const question = skillQuestions[name] || `Parle-moi de ta ${name}.`;
         const bubbleThem = document.createElement('div');
         bubbleThem.className = 'msn-bubble msn-bubble-them';
         bubbleThem.innerHTML = `<span class="msn-name-them">Recruteur :</span>${question}`;
         chat.appendChild(bubbleThem);
-
-        // Petit délai avant la réponse de Mathilde (effet naturel)
         setTimeout(() => {
             const typing = document.createElement('div');
             typing.style = "color:#aaa; font-size:11px; font-style:italic; margin-bottom:6px;";
@@ -2450,28 +2301,96 @@ Appuie sur ▶ Play pour découvrir...
             typing.innerText = 'Mathilde est en train d\'écrire...';
             chat.appendChild(typing);
             chat.scrollTop = chat.scrollHeight;
-
             setTimeout(() => {
                 const t = document.getElementById('msn-typing');
                 if (t) t.remove();
-
                 const bubbleMe = document.createElement('div');
                 bubbleMe.className = 'msn-bubble msn-bubble-me';
                 bubbleMe.innerHTML = `<span class="msn-name-me">Mathilde :</span>${message}`;
                 chat.appendChild(bubbleMe);
                 chat.scrollTop = chat.scrollHeight;
             }, 900);
-
         }, 300);
-
         chat.scrollTop = chat.scrollHeight;
+    }
+
+    // --- MSN WINDOW CONTROLS ---
+    let msnExpanded = false;
+
+    function msnMinimize() {
+        const body = document.getElementById('msn-body');
+        const closedMsg = document.getElementById('msn-closed-msg');
+        if (body) body.style.display = 'none';
+        if (closedMsg) closedMsg.style.display = 'block';
+        msnExpanded = false;
+    }
+
+    function msnRestore() {
+        const body = document.getElementById('msn-body');
+        const closedMsg = document.getElementById('msn-closed-msg');
+        if (body) body.style.display = 'block';
+        if (closedMsg) closedMsg.style.display = 'none';
+    }
+
+    function msnToggleSize(btn) {
+        const win = document.getElementById('msn-window');
+        const chat = document.getElementById('msn-chat');
+        if (!win || !chat) return;
+
+        msnExpanded = !msnExpanded;
+
+        // S'assurer que le body est visible
+        msnRestore();
+
+        if (msnExpanded) {
+            // Agrandi : hauteur chat augmentée
+            chat.style.height = '380px';
+            win.style.boxShadow = '4px 4px 0 #000';
+            btn.textContent = '❐'; // icône restaurer
+            btn.title = 'Restaurer';
+        } else {
+            chat.style.height = '200px';
+            win.style.boxShadow = '2px 2px 0 #000';
+            btn.textContent = '□';
+            btn.title = 'Agrandir';
+        }
+    }
+
+    function msnClose() {
+        const win = document.getElementById('msn-window');
+        const h4 = win ? win.closest('div') : null;
+        if (win) {
+            win.style.opacity = '0';
+            win.style.transform = 'scale(0.95)';
+            win.style.transition = 'opacity 0.2s, transform 0.2s';
+            setTimeout(() => {
+                win.style.display = 'none';
+                // Afficher bouton pour rouvrir
+                const reopenDiv = document.createElement('div');
+                reopenDiv.id = 'msn-reopen';
+                reopenDiv.style.cssText = 'background:#e8f0fb; border:2px solid; border-color:#fff #808080 #808080 #fff; padding:8px 12px; font-size:11px; color:#316ac5; cursor:pointer; text-align:center; display:flex; align-items:center; gap:8px;';
+                reopenDiv.innerHTML = '<img src="ressources/icone_mathilde.png" style="width:16px;height:16px;object-fit:cover;border-radius:2px;" onerror="this.style.display=\'none\'"> 💬 <strong>Mathilde Mathieu</strong> — <a href="#" onclick="msnReopen(); return false;" style="color:var(--win-blue);">Rouvrir la conversation</a>';
+                win.parentNode.appendChild(reopenDiv);
+            }, 200);
+        }
+    }
+
+    function msnReopen() {
+        const win = document.getElementById('msn-window');
+        const reopen = document.getElementById('msn-reopen');
+        if (win) {
+            win.style.display = 'block';
+            win.style.opacity = '1';
+            win.style.transform = 'scale(1)';
+            msnRestore();
+        }
+        if (reopen) reopen.remove();
     }
 
     function updateClock() {
         const d = new Date();
         document.getElementById('clock').innerText = d.getHours().toString().padStart(2,'0') + ":" + d.getMinutes().toString().padStart(2,'0');
     }
-
     setInterval(updateClock, 1000);
     updateClock();
 
@@ -2500,9 +2419,7 @@ Appuie sur ▶ Play pour découvrir...
         });
         currentPaintTab = id;
         updatePaintStatus(id);
-        // Seulement buildDots pour les onglets image
         if (!paintTabMeta[id].insta) buildDots(id);
-        // Activer les embeds Instagram si premier affichage
         if (paintTabMeta[id].insta && !instaProcessed) {
             instaProcessed = true;
             if (window.instgrm) window.instgrm.Embeds.process();
@@ -2516,23 +2433,19 @@ Appuie sur ▶ Play pour découvrir...
         document.getElementById('paint-counter').textContent = (idx + 1) + ' / ' + meta.count;
     }
 
-    // Navigation Instagram (affichage/masquage des slides)
     function instaNav(id, dir) {
         const count = paintTabMeta[id].count;
         let idx = carouselState[id];
         idx = (idx + dir + count) % count;
         carouselState[id] = idx;
-        // Cacher tous les slides, afficher le bon
         for (let i = 0; i < count; i++) {
             const s = document.getElementById('insta-' + id + '-' + i);
             if (s) s.classList.toggle('active', i === idx);
         }
-        // Scroll en haut du carousel
         const carousel = document.getElementById('carousel-' + id);
         if (carousel) carousel.scrollTop = 0;
         document.getElementById('insta-' + id + '-counter').textContent = (idx + 1) + ' / ' + count;
         updatePaintStatus(id);
-        // Reprocesser les embeds si besoin
         if (window.instgrm) window.instgrm.Embeds.process();
     }
 
@@ -2562,10 +2475,7 @@ Appuie sur ▶ Play pour découvrir...
         }
     }
 
-    // Init dots au chargement (seulement mode et photo)
     document.addEventListener('DOMContentLoaded', () => {
-        // Plus d'onglets image dans Paint (mode/photo déplacés dans WMP)
-        // Charger le script Instagram de façon asynchrone
         const s = document.createElement('script');
         s.async = true;
         s.src = 'https://www.instagram.com/embed.js';
@@ -2695,7 +2605,6 @@ En vidéo, j'adore créer des résumés que les gens peuvent revivre. Des souven
         wmpPlay();
     }
 
-    
     const iePages = ['stage1', 'stage2', 'xp-skills'];
     const ieUrls = {
         'stage2':     'http://mathilde.mmi/experiences/stage-perle.htm',
@@ -2706,25 +2615,20 @@ En vidéo, j'adore créer des résumés que les gens peuvent revivre. Des souven
     let ieIndex   = 0;
 
     function switchTab(pageId) {
-        // Cacher toutes les pages
         iePages.forEach(p => {
             const el = document.getElementById('page-' + p);
             if (el) el.style.display = 'none';
             const tab = document.getElementById('tab-' + p);
             if (tab) tab.classList.remove('active-tab');
         });
-        // Afficher la bonne
         const target = document.getElementById('page-' + pageId);
         if (target) target.style.display = 'block';
         const tab = document.getElementById('tab-' + pageId);
         if (tab) tab.classList.add('active-tab');
-        // URL bar
         const urlEl = document.getElementById('ie-url');
         if (urlEl) urlEl.textContent = ieUrls[pageId] || '';
-        // Statut
         const status = document.getElementById('ie-status');
         if (status) status.textContent = '✅ Page chargée';
-        // Historique navigation
         if (ieHistory[ieIndex] !== pageId) {
             ieHistory = ieHistory.slice(0, ieIndex + 1);
             ieHistory.push(pageId);
@@ -2739,13 +2643,14 @@ En vidéo, j'adore créer des résumés que les gens peuvent revivre. Des souven
         if (ieIndex < ieHistory.length - 1) { ieIndex++; switchTab(ieHistory[ieIndex]); }
     }
 
-    
     document.querySelectorAll('.soft-icon-wrap').forEach(wrap => {
         wrap.style.position = 'relative';
         wrap.style.cursor = 'default';
 
-        // Tooltip uniquement sur appareils avec souris (pas tactile)
-        if (window.matchMedia('(hover: hover)').matches) {
+        const isTouchDevice = window.matchMedia('(hover: none)').matches;
+
+        if (!isTouchDevice) {
+            // Souris : tooltip au survol
             wrap.addEventListener('mouseenter', (e) => {
                 const tooltip = document.getElementById('skill-tooltip');
                 document.getElementById('tooltip-name').innerText = wrap.dataset.name;
@@ -2754,15 +2659,48 @@ En vidéo, j'adore créer des résumés que les gens peuvent revivre. Des souven
                 tooltip.style.display = 'block';
                 positionTooltip(e);
             });
-
             wrap.addEventListener('mousemove', positionTooltip);
-
             wrap.addEventListener('mouseleave', () => {
                 document.getElementById('skill-tooltip').style.display = 'none';
             });
+        } else {
+            // Tactile : mini-modale au tap
+            wrap.addEventListener('click', () => {
+                // Fermer si déjà ouvert sur ce wrap
+                const existing = document.getElementById('skill-tap-modal');
+                if (existing) {
+                    existing.remove();
+                    if (existing.dataset.target === wrap.dataset.name) return;
+                }
+                const modal = document.createElement('div');
+                modal.id = 'skill-tap-modal';
+                modal.dataset.target = wrap.dataset.name;
+                modal.style.cssText = `
+                    position: fixed; bottom: 56px; left: 50%; transform: translateX(-50%);
+                    background: #ffffcc; border: 2px solid #000;
+                    padding: 10px 14px; font-size: 12px;
+                    font-family: 'MS Sans Serif', Tahoma, sans-serif;
+                    box-shadow: 3px 3px 0 #808080; z-index: 9999;
+                    max-width: 260px; width: 90%; text-align: center;
+                    animation: fadeInUp 0.15s ease;
+                `;
+                modal.innerHTML = `
+                    <div style="font-weight:bold; font-size:13px; margin-bottom:4px;">${wrap.dataset.name}</div>
+                    <div style="margin-bottom:4px;">${wrap.dataset.level}</div>
+                    <div style="color:#444; font-size:11px;">${wrap.dataset.desc}</div>
+                `;
+                document.body.appendChild(modal);
+                setTimeout(() => {
+                    document.addEventListener('click', function dismiss(e) {
+                        if (!modal.contains(e.target) && e.target !== wrap) {
+                            modal.remove();
+                            document.removeEventListener('click', dismiss);
+                        }
+                    });
+                }, 100);
+            });
         }
     });
-
 
     function positionTooltip(e) {
         const tooltip = document.getElementById('skill-tooltip');
@@ -2778,4 +2716,3 @@ En vidéo, j'adore créer des résumés que les gens peuvent revivre. Des souven
 </script>
 </body>
 </html>
-
