@@ -292,7 +292,106 @@
             background-size: 100% 2px, 3px 100%;
         }
 
-        /* RESPONSIVE */
+        /* ── ACCORDÉON ANNÉE ── */
+        .year-block { margin-bottom: 20px; }
+        .year-header {
+            cursor: pointer; user-select: none;
+            justify-content: space-between;
+        }
+        .year-header:hover { opacity: 0.92; }
+        .year-toggle { font-size: 12px; opacity: 0.8; transition: transform 0.25s; flex-shrink:0; }
+        .year-block.collapsed .year-toggle { transform: rotate(-90deg); }
+        .year-block.collapsed .projects-grid { display: none; }
+
+        /* ── TABLEAU AC RÉDUCTIBLE ── */
+        .ac-collapse-btn {
+            font-size: 11px; padding: 2px 10px; cursor: pointer;
+            border: 2px solid; border-color: #fff #808080 #808080 #fff;
+            background: var(--win-gray); margin-left: 8px;
+        }
+        #ac-body-wrap { overflow: hidden; transition: max-height 0.3s ease; }
+        #ac-body-wrap.minimized { max-height: 0 !important; }
+
+        /* ── PLEIN ÉCRAN ── */
+        .fullscreen-btn {
+            font-size: 11px; padding: 2px 8px; cursor: pointer;
+            border: 2px solid; border-color: #fff #808080 #808080 #fff;
+            background: var(--win-gray); margin-left: auto;
+        }
+        .project-card.fullscreen-mode {
+            position: fixed; inset: 20px; z-index: 7000; max-width: none;
+            overflow-y: auto; border: 4px solid var(--win-blue);
+            box-shadow: 0 0 60px rgba(0,0,128,0.4);
+        }
+        #proj-modal.is-fullscreen {
+            width: 98% !important; max-width: 98% !important;
+            height: 95vh; top: 50%; left: 50%; transform: translate(-50%,-50%);
+        }
+        #proj-modal.is-fullscreen .modal-page { max-height: calc(95vh - 120px); }
+
+        /* ── LIGHTBOX ── */
+        #lightbox-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.92); z-index: 9500;
+            align-items: center; justify-content: center;
+            flex-direction: column;
+        }
+        #lightbox-overlay.open { display: flex; }
+        #lightbox-img {
+            max-width: 90vw; max-height: 85vh;
+            object-fit: contain;
+            border: 2px solid #fff;
+            box-shadow: 0 0 40px rgba(255,255,255,0.15);
+            cursor: zoom-out;
+        }
+        #lightbox-nav {
+            display: flex; gap: 16px; margin-top: 14px; align-items: center;
+        }
+        .lb-btn {
+            background: var(--win-gray); border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            padding: 4px 16px; font-size: 18px; cursor: pointer;
+        }
+        #lightbox-counter { color: #fff; font-size: 12px; min-width: 60px; text-align: center; }
+        #lightbox-close {
+            position: absolute; top: 16px; right: 24px;
+            color: #fff; font-size: 28px; cursor: pointer;
+            background: none; border: none; font-family: inherit;
+        }
+
+        /* ── CAROUSEL DANS MODALE ── */
+        .modal-carousel { position: relative; }
+        .carousel-imgs { display: flex; gap: 8px; flex-wrap: wrap; }
+        .proof-img {
+            width: calc(50% - 4px); max-height: 180px; object-fit: contain;
+            border: 2px inset #fff; background: #f0f0f0;
+            display: block; cursor: zoom-in;
+            transition: box-shadow 0.1s;
+        }
+        .proof-img:hover { box-shadow: 0 0 0 2px var(--win-blue); }
+        .proof-img.solo { width: 100%; max-height: 260px; }
+
+        /* ── OUTILS ICÔNES BENTO ── */
+        .tools-bento {
+            display: flex; flex-wrap: wrap; gap: 8px;
+            padding: 8px 0;
+        }
+        .tool-chip {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 4px 10px; border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            background: var(--win-gray);
+            font-size: 11px; cursor: default;
+            transition: all 0.15s;
+        }
+        .tool-chip:hover {
+            background: var(--win-blue); color: #fff;
+            border-color: #6666cc #00006a #00006a #6666cc;
+            transform: translateY(-2px); box-shadow: 2px 2px 0 #000;
+        }
+        .tool-chip img { width: 16px; height: 16px; object-fit: contain; }
+
+        /* ── RESPONSIVE */
         @media (max-width: 900px) {
             .sidebar { transform: translateX(-100%); width: 250px; }
             .sidebar.active { transform: translateX(0); box-shadow: 5px 0 20px rgba(0,0,0,0.6); }
@@ -376,10 +475,10 @@
                 <h2 style="font-size:18px; margin-bottom:10px;">Mathilde Mathieu</h2>
                 <p style="font-size:12px; color:#333; margin-bottom:10px; line-height:1.7;">
                     Étudiante en <strong>3ème année de BUT Métiers du Multimédia et de l'Internet</strong> à l'IUT de Toulon.<br>
-                    Ce portfolio académique retrace mon parcours de formation à travers les <strong>Apprentissages Critiques (AC)</strong> du programme national.
+                    En trois ans, je suis passée du premier photomontage Photoshop maladroit à la direction artistique d'un décor numérique pour l'Opéra de Toulon. Ce portfolio ne cache pas les tâtonnements : il les assume comme partie intégrante de l'apprentissage.
                 </p>
                 <p style="font-size:11px; color:#555; border-left:3px solid var(--win-blue); padding-left:10px; font-style:italic;">
-                    "Chaque projet présenté ici est une trace de ma progression. J'ai choisi de montrer non seulement les réussites, mais aussi les axes d'amélioration — c'est ça, la vraie progression."
+                    "Je suis passée d'exécutante à conceptrice. Chaque projet a ajouté une couche — une compétence technique, une décision créative, une vraie responsabilité. C'est ça, mon parcours MMI."
                 </p>
                 <div class="stat-row">
                     <div class="stat-box"><span class="stat-num">15</span><span class="stat-label">Projets tracés</span></div>
@@ -453,10 +552,12 @@
 
 <!-- ═══════════════════════════════════════ TABLEAU AC ═══ -->
 <section id="ac-tableau" class="window">
-    <div class="title-bar">
+    <div class="title-bar" style="display:flex; align-items:center;">
         <div class="title-bar-text">✅ Tableau des Apprentissages Critiques validés</div>
+        <button class="ac-collapse-btn" onclick="toggleACTable()" id="ac-toggle-btn" title="Réduire/Afficher le tableau">▲ Réduire</button>
         <div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button></div>
     </div>
+    <div id="ac-body-wrap" style="max-height:2000px;">
     <div class="window-body" style="padding:16px !important;">
         <p style="font-size:11px; color:#555; margin-bottom:14px; font-style:italic;">
             Vue d'ensemble des AC validées par mes projets sur les 3 années de BUT MMI.
@@ -466,6 +567,7 @@
         <div class="ac-table-wrap">
             <table class="ac-table" id="ac-table"></table>
         </div>
+    </div>
     </div>
 </section>
 
@@ -492,10 +594,22 @@
 </main>
 </div>
 
+<!-- LIGHTBOX -->
+<div id="lightbox-overlay" onclick="closeLightbox()">
+    <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-img" src="" alt="Zoom" onclick="event.stopPropagation()">
+    <div id="lightbox-nav" onclick="event.stopPropagation()">
+        <button class="lb-btn" onclick="lightboxPrev()">◀</button>
+        <span id="lightbox-counter">1 / 1</span>
+        <button class="lb-btn" onclick="lightboxNext()">▶</button>
+    </div>
+</div>
+
 <!-- MODALE PROJET -->
 <div id="proj-modal" class="window">
-    <div class="title-bar">
-        <div class="title-bar-text" id="modal-title" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:calc(100% - 50px);">Projet</div>
+    <div class="title-bar" style="display:flex; align-items:center; gap:6px;">
+        <div class="title-bar-text" id="modal-title" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1;">Projet</div>
+        <button class="fullscreen-btn" onclick="toggleModalFullscreen()" title="Plein écran">⛶</button>
         <div class="title-bar-controls"><button aria-label="Close" onclick="closeModal()"></button></div>
     </div>
     <div class="modal-tabs">
@@ -518,7 +632,7 @@
         <div class="title-bar-controls"><button aria-label="Close" onclick="closeMail()"></button></div>
     </div>
     <div style="background:#fff; border-bottom:2px solid #808080;">
-        <div class="oe-field"><span class="oe-label">À :</span><span style="padding:5px 10px; font-size:12px; color:#000080; font-weight:bold;">mathilde.mathieu24@gmail.com</span></div>
+        <div class="oe-field"><span class="oe-label">À :</span><span style="padding:5px 10px; font-size:12px; color:#000080; font-weight:bold;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d0bdb1a4b8b9bcb4b5febdb1a4b8b9b5a5e2e490b7bdb1b9bcfeb3bfbd">[email&#160;protected]</a></span></div>
         <div class="oe-field"><span class="oe-label">Votre e-mail :</span><input id="mail-from" type="email" placeholder="votre@email.com" class="oe-input"></div>
         <div class="oe-field"><span class="oe-label">Objet :</span><input id="mail-subject" type="text" placeholder="Objet..." class="oe-input"></div>
     </div>
@@ -532,7 +646,7 @@
     </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ══════════════════════════════════════════════════════════
 // DONNÉES PROJETS
 // ══════════════════════════════════════════════════════════
@@ -764,11 +878,7 @@ const projects = [
     {
         id: 'affiche-opera',
         name: 'Affiche Opéra — "Vers un monde plus humain"',
-        year: 'mmi3', yearLabel: 'MMI 3 — S5, Fév. 2026',
-        competence: 'exprimer',
-        compLabel: '🎨 Exprimer',
-        date: '2026-02',
-        cover: 'ressources/projets/affiche-opera.png',
+        year: 'mmi3', yearLabel: 'MMI 3 — S5. Février. 2026',
         proof: 'ressources/projets/affiche-opera.png',
         context: 'Interprétation personnelle de l\'affiche du spectacle "Vers un monde plus humain" — SAÉ 5.Crea.01a, volet communication visuelle.',
         quoi: 'Création d\'un visuel basé sur des photos réelles de l\'Opéra de Toulon. L\'affiche joue sur le contraste entre l\'humain (danse) et le numérique (trame visuelle).',
@@ -784,7 +894,7 @@ const projects = [
     {
         id: 'melanie-martinez',
         name: 'Mélanie Martinez — Chef-d\'Œuvre (Conception)',
-        year: 'mmi3', yearLabel: 'MMI 3 — S5, Nov. 2025',
+        year: 'mmi3', yearLabel: 'MMI 3 — S5. Novembre. 2025',
         competence: 'exprimer',
         compLabel: '🎨 Exprimer',
         date: '2025-11',
@@ -805,7 +915,7 @@ const projects = [
     {
         id: 'danse-opera',
         name: 'Face au Mur — Décor 3D Opéra de Toulon',
-        year: 'mmi3', yearLabel: 'MMI 3 — S5, Mars 2026',
+        year: 'mmi3', yearLabel: 'MMI 3 — S5. Mars. 2026',
         competence: 'exprimer',
         compLabel: '🎨 Exprimer',
         date: '2026-03',
@@ -826,7 +936,7 @@ const projects = [
     {
         id: 'business-plan',
         name: 'Snoozly — Business Plan Startup',
-        year: 'mmi3', yearLabel: 'MMI 3 — S5, Fév. 2026',
+        year: 'mmi3', yearLabel: 'MMI 3 — S5. Février. 2026',
         competence: 'entreprendre',
         compLabel: '🚀 Entreprendre',
         date: '2026-02',
@@ -849,7 +959,7 @@ const projects = [
     {
         id: 'game-writing',
         name: 'TD Game Writing — The Last of Us / Witcher 3',
-        year: 'mmi3', yearLabel: 'MMI 3 — S5, Jan. 2026',
+        year: 'mmi3', yearLabel: 'MMI 3 — S5. Janvier. 2026',
         competence: 'exprimer',
         compLabel: '🎨 Exprimer',
         date: '2026-01',
@@ -944,7 +1054,8 @@ function renderByYear() {
         const header = document.createElement('div');
         header.className = 'year-header';
         header.style.background = `linear-gradient(90deg, ${yearInfo[yr].color}, #1a1a4a)`;
-        header.innerHTML = `${yearInfo[yr].label} <span class="year-sub">${yearInfo[yr].sub}</span> <span style="margin-left:auto; font-size:11px; opacity:0.7;">${items.length} projet${items.length>1?'s':''}</span>`;
+        header.innerHTML = `${yearInfo[yr].label} <span class="year-sub">${yearInfo[yr].sub}</span> <span style="margin-left:auto; font-size:11px; opacity:0.7;">${items.length} projet${items.length>1?'s':''}</span> <span class="year-toggle">▼</span>`;
+        header.addEventListener('click', () => block.classList.toggle('collapsed'));
         const grid = document.createElement('div');
         grid.className = 'projects-grid';
         items.forEach(p => grid.appendChild(renderCard(p)));
@@ -977,7 +1088,8 @@ function renderByComp() {
         const header = document.createElement('div');
         header.className = 'year-header';
         header.style.background = `linear-gradient(90deg, ${compColors[comp]}, #1a1a2e)`;
-        header.innerHTML = `${compInfo[comp].label} <span class="year-sub">${compInfo[comp].sub}</span> <span style="margin-left:auto; font-size:11px; opacity:0.7;">${items.length} projet${items.length>1?'s':''}</span>`;
+        header.innerHTML = `${compInfo[comp].label} <span class="year-sub">${compInfo[comp].sub}</span> <span style="margin-left:auto; font-size:11px; opacity:0.7;">${items.length} projet${items.length>1?'s':''}</span> <span class="year-toggle">▼</span>`;
+        header.addEventListener('click', () => block.classList.toggle('collapsed'));
         const grid = document.createElement('div');
         grid.className = 'projects-grid';
         items.forEach(p => grid.appendChild(renderCard(p)));
@@ -1021,30 +1133,133 @@ function filterByComp(comp) {
 // ══════════════════════════════════════════════════════════
 // MODALE PROJET
 // ══════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════
+// LIGHTBOX
+// ══════════════════════════════════════════════════════════
+let lbImages = [];
+let lbIndex = 0;
+
+function openLightbox(imgs, startIndex) {
+    lbImages = imgs;
+    lbIndex = startIndex || 0;
+    renderLightbox();
+    document.getElementById('lightbox-overlay').classList.add('open');
+    document.addEventListener('keydown', lbKeyHandler);
+}
+
+function renderLightbox() {
+    document.getElementById('lightbox-img').src = lbImages[lbIndex];
+    document.getElementById('lightbox-counter').textContent = `${lbIndex + 1} / ${lbImages.length}`;
+    const nav = document.getElementById('lightbox-nav');
+    nav.style.display = lbImages.length > 1 ? 'flex' : 'none';
+}
+
+function lightboxNext() { lbIndex = (lbIndex + 1) % lbImages.length; renderLightbox(); }
+function lightboxPrev() { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; renderLightbox(); }
+
+function closeLightbox() {
+    document.getElementById('lightbox-overlay').classList.remove('open');
+    document.removeEventListener('keydown', lbKeyHandler);
+}
+
+function lbKeyHandler(e) {
+    if (e.key === 'ArrowRight') lightboxNext();
+    else if (e.key === 'ArrowLeft') lightboxPrev();
+    else if (e.key === 'Escape') closeLightbox();
+}
+
+// ══════════════════════════════════════════════════════════
+// OUTILS → ICÔNES
+// ══════════════════════════════════════════════════════════
+const toolIcons = {
+    'Adobe Photoshop':    '🖼️',
+    'Adobe Illustrator':  '✒️',
+    'Affinity Designer':  '🔷',
+    'Blender':            '🧊',
+    'Figma':              '🎨',
+    'WordPress':          '🌐',
+    'PHP':                '🐘',
+    'MySQL':              '🗄️',
+    'HTML5':              '📄',
+    'CSS3':               '🎨',
+    'CSS personnalisé':   '🎨',
+    'JavaScript':         '⚡',
+    'VS Code':            '💻',
+    'Canva':              '🖌️',
+    'PowerPoint':         '📊',
+    'Excel':              '📈',
+    'Discord':            '💬',
+    'Hostinger':          '☁️',
+    'WAMP/MAMP':          '🖥️',
+    'Maquettage UI':      '📐',
+    'Document PDF illustré': '📋',
+    'Tableur financier':  '📈',
+    'Blocs Gutenberg':    '🧩',
+    'Recherche documentaire': '🔍',
+    'Plans de salle':     '🗺️',
+    'Système de gamification (points buvette)': '🎮',
+    'Stand Just Dance':   '💃',
+};
+
+function renderToolChips(outils) {
+    if (!outils?.length) return '';
+    const chips = outils.map(o => {
+        const icon = toolIcons[o] || '🔧';
+        return `<span class="tool-chip" title="${o}">${icon} ${o}</span>`;
+    }).join('');
+    return `<div class="info-row">
+        <div class="info-label">Outils</div>
+        <div class="info-val"><div class="tools-bento">${chips}</div></div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════
+// PLEIN ÉCRAN MODALE
+// ══════════════════════════════════════════════════════════
+function toggleModalFullscreen() {
+    const modal = document.getElementById('proj-modal');
+    modal.classList.toggle('is-fullscreen');
+    const btn = modal.querySelector('.fullscreen-btn');
+    btn.textContent = modal.classList.contains('is-fullscreen') ? '⊡' : '⛶';
+}
+
 function openModal(p) {
     currentProject = p;
+    document.getElementById('proj-modal').classList.remove('is-fullscreen');
+    document.querySelector('.fullscreen-btn').textContent = '⛶';
     document.getElementById('modal-title').textContent = p.name;
 
     // Onglet Fiche
     const color = compColors[p.competence];
+    const imgs = [];
+    if (p.cover) imgs.push(p.cover);
+    if (p.proof && p.proof !== p.cover) imgs.push(p.proof);
+
     let infoHtml = `
         <div style="border-left:4px solid ${color}; padding-left:12px; margin-bottom:14px;">
             <div style="font-weight:bold; font-size:14px; margin-bottom:4px;">${p.name}</div>
             <div style="font-size:11px; color:#555;">${p.yearLabel} &nbsp;·&nbsp; <span style="color:${color}; font-weight:bold;">${p.compLabel}</span></div>
         </div>
-        <img src="${p.cover}" alt="Couverture" class="proof-img" onclick="openProofImg('${p.cover}')"
-             onerror="this.style.display='none'" title="Cliquer pour agrandir">
     `;
-    if (p.proof && p.proof !== p.cover) {
-        infoHtml += `<img src="${p.proof}" alt="Preuve" class="proof-img" onclick="openProofImg('${p.proof}')"
-             onerror="this.style.display='none'" title="Image preuve — cliquer pour agrandir">`;
+
+    // Carousel d'images
+    if (imgs.length) {
+        const soloClass = imgs.length === 1 ? ' solo' : '';
+        infoHtml += `<div class="modal-carousel"><div class="carousel-imgs">`;
+        imgs.forEach((src, i) => {
+            infoHtml += `<img src="${src}" alt="Visuel ${i+1}" class="proof-img${soloClass}"
+                onclick="openLightbox(${JSON.stringify(imgs)}, ${i})"
+                onerror="this.style.display='none'" title="Cliquer pour agrandir">`;
+        });
+        infoHtml += `</div></div>`;
     }
+
     [['Contexte', p.context],['Quoi / Objectifs', p.quoi],['Qui', p.qui]].forEach(([label, val]) => {
         if (!val) return;
         infoHtml += `<div class="info-row"><div class="info-label">${label}</div><div class="info-val">${val}</div></div>`;
     });
     if (p.outils?.length) {
-        infoHtml += `<div class="info-row"><div class="info-label">Outils</div><div class="info-val">${p.outils.join(', ')}</div></div>`;
+        infoHtml += renderToolChips(p.outils);
     }
     if (p.link) {
         infoHtml += `<div style="text-align:center; margin-top:12px;"><a href="${p.link}" target="_blank" style="color:${color}; font-weight:bold; font-size:12px;">${p.linkLabel}</a></div>`;
@@ -1099,8 +1314,17 @@ function switchModalTab(tab) {
     });
 }
 
-function openProofImg(src) {
-    window.open(src, '_blank');
+// kept for backward compat — images now use lightbox
+function openProofImg(src) { openLightbox([src], 0); }
+
+// ══════════════════════════════════════════════════════════
+// TABLEAU AC — TOGGLE
+// ══════════════════════════════════════════════════════════
+function toggleACTable() {
+    const wrap = document.getElementById('ac-body-wrap');
+    const btn = document.getElementById('ac-toggle-btn');
+    const isMin = wrap.classList.toggle('minimized');
+    btn.textContent = isMin ? '▼ Afficher' : '▲ Réduire';
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1284,11 +1508,13 @@ setInterval(updateClock, 1000);
 updateClock();
 
 // ══════════════════════════════════════════════════════════
+
+// ══════════════════════════════
 // INIT
-// ══════════════════════════════════════════════════════════
+// ══════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
-    renderProjects();
     buildACTable();
+    renderProjects();
 });
 </script>
 </body>
