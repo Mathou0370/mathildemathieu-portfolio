@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio Académique - Mathilde Mathieu</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HERO IMAGE -->
+
+<section class="hero">
+    <img src="../ressources/fond.jpg" class="hero-img">
+
+```
+<div class="hero-overlay"></div>
+
+<div class="hero-text">
+    <h1>PORTFOLIO ACADÉMIQUE</h1>
+    <p>Mathilde Mathieu — MMI</p>
+</div>
+```
+
+</section>
+
+<div class="desktop">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+    <img src="../ressources/photomathilde.jpg" class="profile">
+
+```
+<h2>Mathilde Mathieu</h2>
+<p>Étudiante MMI</p>
+
+<nav>
+    <button onclick="showSection('about')">📁 À propos</button>
+    <button onclick="showSection('projects')">📁 Projets</button>
+</nav>
+```
+
+</aside>
+
+<!-- CONTENU -->
+
+<main>
+
+<section id="about" class="window active">
+    <h2>À propos</h2>
+    <p>
+        Étudiante en BUT MMI passionnée par le design, l’UX et le développement.
+        Ce portfolio académique présente mes projets et compétences acquises.
+    </p>
+
+```
+<div class="stats">
+    <div>15 projets réalisés</div>
+    <div>+30 AC validés</div>
+</div>
+```
+
+</section>
+
+<section id="projects" class="window">
+    <h2>Mes projets</h2>
+
+```
+<div class="filters">
+    <button onclick="filterProjects('all')">Tous</button>
+    <button onclick="filterProjects('MMI1')">MMI1</button>
+    <button onclick="filterProjects('MMI2')">MMI2</button>
+    <button onclick="filterProjects('MMI3')">MMI3</button>
+</div>
+
+<div id="projects-container"></div>
+```
+
+</section>
+
+</main>
+
+</div>
+
+<!-- TASKBAR -->
+
+<footer class="taskbar">
+    <button>Démarrer</button>
+    <div id="clock"></div>
+</footer>
+
+<!-- MODAL PROJET -->
+
+<div id="modal" class="modal hidden">
+    <div class="window modal-content">
+        <button onclick="closeModal()">X</button>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<!-- SCRIPTS -->
+
+<script src="data/projects.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
 
