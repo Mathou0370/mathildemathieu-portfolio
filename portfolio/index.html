@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio académique — Mathilde Mathieu</title>
+  <meta name="description" content="Portfolio académique de Mathilde Mathieu — BUT MMI" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <!-- ÉCRAN DE CONNEXION -->
+  <div class="boot-screen" id="boot-screen">
+    <div class="boot-window">
+      <div class="title-bar">
+        <span>Mathilde_Account.exe</span>
+        <div class="title-actions" aria-hidden="true">
+          <span>—</span>
+          <span>□</span>
+          <span>×</span>
+        </div>
+      </div>
+
+      <div class="window-body boot-body">
+        <div class="boot-status">
+          <p class="bootline">Initialisation de l’environnement MMI...</p>
+          <div class="boot-progress">
+            <span class="boot-progress__bar" id="boot-progress-bar"></span>
+          </div>
+        </div>
+
+        <div class="login-card">
+          <img
+            src="../ressources/photomathilde.jpg"
+            alt="Photo de Mathilde Mathieu"
+            class="login-avatar"
+          />
+
+          <div class="login-content">
+            <p class="login-label">Session détectée</p>
+            <h1>Mathilde Mathieu</h1>
+            <p class="boot-subtitle">
+              Portfolio académique — BUT MMI
+            </p>
+
+            <label class="fake-input-label" for="fake-password">Mot de passe</label>
+            <input
+              id="fake-password"
+              class="fake-input"
+              type="password"
+              placeholder="••••••••"
+              value="portfolio"
+              readonly
+            />
+
+            <div class="login-actions">
+              <button class="hero-link" id="enter-site-btn" type="button">
+                Se connecter
+              </button>
+              <a class="ghost-link" href="../index.html">Retour portfolio principal</a>
+            </div>
+
+            <p class="login-tip">
+              Accès aux projets, apprentissages critiques et évolution sur les 3 années du BUT MMI.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE -->
+  <div class="site-shell hidden" id="site-shell">
+    <header class="hero">
+      <div class="hero-content">
+        <div class="hero-window">
+          <div class="title-bar">
+            <span>Portfolio Académique — Mathilde Mathieu</span>
+            <div class="title-actions" aria-hidden="true">
+              <span>—</span>
+              <span>□</span>
+              <span>×</span>
+            </div>
+          </div>
+
+          <div class="window-body hero-inner">
+            <p class="bootline">C:\MMI\Mathilde&gt; ouvrir portfolio_academique.exe</p>
+
+            <div class="hero-grid">
+              <div class="hero-copy">
+                <p class="hero-eyebrow">Dossier académique interactif</p>
+                <h1>Explorer mon évolution<br>de MMI 1 à MMI 3</h1>
+                <p class="hero-subtitle">
+                  Projets, preuves, apprentissages critiques et posture réflexive dans une interface rétro plus claire, plus vivante et plus accessible.
+                </p>
+
+                <div class="hero-actions">
+                  <a class="hero-link" href="#portfolio-app">Explorer</a>
+                  <button class="secondary-link" id="hero-projects-btn" type="button">Voir les projets</button>
+                </div>
+              </div>
+
+              <div class="hero-panels">
+                <div class="hero-panel">
+                  <span class="hero-panel__number" id="stat-projects">0</span>
+                  <span class="hero-panel__label">Projets intégrés</span>
+                </div>
+                <div class="hero-panel">
+                  <span class="hero-panel__number" id="stat-ac">0</span>
+                  <span class="hero-panel__label">AC mobilisées</span>
+                </div>
+                <div class="hero-panel">
+                  <span class="hero-panel__number">MMI 1 → 2 → 3</span>
+                  <span class="hero-panel__label">Progression</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="desktop" id="portfolio-app">
+      <aside class="sidebar window">
+        <div class="title-bar">
+          <span>Profil</span>
+          <div class="title-actions" aria-hidden="true">
+            <span>—</span>
+            <span>□</span>
+            <span>×</span>
+          </div>
+        </div>
+
+        <div class="window-body">
+          <div class="profile-card">
+            <img
+              src="../ressources/photomathilde.jpg"
+              alt="Photo de Mathilde Mathieu"
+              class="profile-image"
+            />
+            <h2>Mathilde Mathieu</h2>
+            <p class="profile-role">
+              Étudiante en 3ème année de BUT Métiers du Multimédia et de l'Internet à l'IUT de Toulon, passionnée de création numérique.
+            </p>
+            <p class="profile-text">
+              Ce portfolio retrace mon évolution à travers des projets mêlant design, vidéo, web, stratégie et réflexion critique.
+            </p>
+          </div>
+
+          <nav class="sidebar-nav">
+            <button class="nav-btn is-active" data-section="about">Accueil</button>
+            <button class="nav-btn" data-section="projects">Projets</button>
+            <button class="nav-btn" data-section="ac">Tableau des AC</button>
+          </nav>
+
+          <div class="skill-shortcuts">
+            <button class="skill-tag skill-comprendre" data-filter-category="comprendre">Comprendre</button>
+            <button class="skill-tag skill-concevoir" data-filter-category="concevoir">Concevoir</button>
+            <button class="skill-tag skill-exprimer" data-filter-category="exprimer">Exprimer</button>
+            <button class="skill-tag skill-developper" data-filter-category="developper">Développer</button>
+            <button class="skill-tag skill-entreprendre" data-filter-category="entreprendre">Entreprendre</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <section id="about" class="content-window window is-visible">
+          <div class="title-bar">
+            <span>Accueil</span>
+            <div class="title-actions" aria-hidden="true">
+              <span>—</span>
+              <span>□</span>
+              <span>×</span>
+            </div>
+          </div>
+
+          <div class="window-body">
+            <div class="about-grid">
+              <div class="about-block">
+                <h3>Présentation</h3>
+                <p>
+                  Étudiante en 3ème année de BUT Métiers du Multimédia et de l'Internet à l'IUT de Toulon, je développe un profil polyvalent entre création visuelle, vidéo, UX et développement.
+                </p>
+                <p>
+                  Ce portfolio académique met en relation mes réalisations, les apprentissages critiques mobilisés et ma capacité à prendre du recul sur mes productions.
+                </p>
+                <p>
+                  L’objectif est de montrer non seulement ce que j’ai fait, mais aussi comment j’ai progressé, ce que j’ai appris, et ce que chaque projet révèle de ma posture professionnelle.
+                </p>
+              </div>
+
+              <div class="about-side">
+                <div class="highlight-box">
+                  <h4>Ce que tu peux explorer ici</h4>
+                  <ul>
+                    <li>Des projets classés par année et compétence</li>
+                    <li>Les AC associées à chaque réalisation</li>
+                    <li>Une lecture plus claire de mon évolution</li>
+                  </ul>
+                </div>
+
+                <div class="highlight-box">
+                  <h4>Navigation rapide</h4>
+                  <p>
+                    Utilise les raccourcis de compétence à gauche ou les filtres dans la section projets pour naviguer plus vite.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" class="content-window window">
+          <div class="title-bar">
+            <span>Mes projets</span>
+            <div class="title-actions" aria-hidden="true">
+              <span>—</span>
+              <span>□</span>
+              <span>×</span>
+            </div>
+          </div>
+
+          <div class="window-body">
+            <div class="toolbar">
+              <div class="toolbar-group">
+                <span class="toolbar-label">Années</span>
+                <button class="filter-btn is-active" data-filter-year="all">Toutes</button>
+                <button class="filter-btn" data-filter-year="mmi1">MMI 1</button>
+                <button class="filter-btn" data-filter-year="mmi2">MMI 2</button>
+                <button class="filter-btn" data-filter-year="mmi3">MMI 3</button>
+              </div>
+
+              <div class="toolbar-group">
+                <span class="toolbar-label">Compétences</span>
+                <button class="filter-btn is-active toolbar__button" data-filter-category="all">Toutes</button>
+                <button class="filter-btn toolbar__button" data-filter-category="comprendre">Comprendre</button>
+                <button class="filter-btn toolbar__button" data-filter-category="concevoir">Concevoir</button>
+                <button class="filter-btn toolbar__button" data-filter-category="exprimer">Exprimer</button>
+                <button class="filter-btn toolbar__button" data-filter-category="developper">Développer</button>
+                <button class="filter-btn toolbar__button" data-filter-category="entreprendre">Entreprendre</button>
+              </div>
+            </div>
+
+            <div id="projects-grid" class="projects-grid"></div>
+          </div>
+        </section>
+
+        <section id="ac" class="content-window window">
+          <div class="title-bar">
+            <span>Tableau des Apprentissages Critiques validés</span>
+            <div class="title-actions" aria-hidden="true">
+              <span>—</span>
+              <span>□</span>
+              <span>×</span>
+            </div>
+          </div>
+
+          <div class="window-body">
+            <p class="ac-intro">
+              Vue d’ensemble des AC validées par mes projets sur les 3 années du BUT MMI. Chaque catégorie est repliée par défaut.
+            </p>
+            <div class="table-wrap">
+              <div id="ac-table-container"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <section class="desktop-footer">
+      <a href="https://www.linkedin.com/in/mathilde-mathieu/" target="_blank" rel="noopener noreferrer" class="desktop-icon">
+        <img src="https://win98icons.alexmeub.com/icons/png/network_normal_two_pcs-2.png" alt="LinkedIn">
+        <span>LinkedIn</span>
+      </a>
+
+      <a href="mailto:mathilde.mathieu.pro@gmail.com" class="desktop-icon">
+        <img src="https://win98icons.alexmeub.com/icons/png/outlook_express-2.png" alt="Me contacter">
+        <span>Formulaire / Mail</span>
+      </a>
+
+      <a href="../index.html" class="desktop-icon">
+        <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png" alt="Portfolio principal">
+        <span>Portfolio principal</span>
+      </a>
+    </section>
+
+    <footer class="taskbar">
+      <button class="start-btn" type="button" id="taskbar-home-btn">Portfolio BUT MMI</button>
+      <div class="taskbar-window">portfolio académique</div>
+      <div class="clock" id="clock">00:00:00</div>
+    </footer>
+  </div>
+
+  <!-- MODAL PROJET -->
+  <div class="modal hidden" id="project-modal" aria-hidden="true">
+    <div class="modal-window window">
+      <div class="title-bar">
+        <span id="modal-project-title">Projet</span>
+        <button class="close-btn" id="close-modal" type="button">×</button>
+      </div>
+
+      <div class="window-body modal-body">
+        <div id="modal-project-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox hidden" id="lightbox" aria-hidden="true">
+    <button class="lightbox__nav lightbox__nav--prev hidden" id="lightbox-prev" type="button">‹</button>
+    <img id="lightbox-image" src="" alt="">
+    <button class="lightbox__nav lightbox__nav--next hidden" id="lightbox-next" type="button">›</button>
+    <button class="lightbox__close" id="lightbox-close" type="button">×</button>
+    <div class="lightbox__counter hidden" id="lightbox-counter"></div>
+  </div>
+
+  <script src="projects.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
