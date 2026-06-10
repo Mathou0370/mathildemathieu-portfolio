@@ -216,7 +216,7 @@ function renderProjects() {
     const acBadges = (project.ac || []).slice(0, 6).map(code => `<span>${escapeHtml(code)}</span>`).join("");
     const domains = getProjectDomains(project);
     const year = getYearInfo(project);
-    return `<article class="project-card project-card--${normalizeYear(project.year)}"><button class="project-card__button" type="button" data-project-id="${project.id}"><div class="project-card__media"><img src="${projectImage(project)}" alt="${escapeHtml(project.title)}" loading="lazy" onerror="this.onerror=null;this.src='../ressources/fond.jpg';"></div><div class="project-card__body"><div class="project-card__meta-row"><span>${escapeHtml(year.label)}</span><span>${escapeHtml(inferDate(project))}</span></div><h3 class="project-card__title">${escapeHtml(project.title)}</h3><div class="project-card__domains">${renderDomainChips(domains)}</div><p class="project-card__description">${escapeHtml(project.shortDescription || "")}</p><div class="project-card__ac">${acBadges}</div></div></button></article>`;
+    return `<article class="project-card project-card--${normalizeYear(project.year)} ${project.featured ? "project-card--featured" : ""}"><button class="project-card__button" type="button" data-project-id="${project.id}"><div class="project-card__media">${project.featured ? '<span class="featured-ribbon">Projet phare</span>' : ''}<img src="${projectImage(project)}" alt="${escapeHtml(project.title)}" loading="lazy" onerror="this.onerror=null;this.src='../ressources/fond.jpg';"></div><div class="project-card__body"><div class="project-card__meta-row"><span>${escapeHtml(year.label)}</span><span>${escapeHtml(inferDate(project))}</span></div><h3 class="project-card__title">${escapeHtml(project.title)}</h3><div class="project-card__domains">${renderDomainChips(domains)}</div><p class="project-card__description">${escapeHtml(project.shortDescription || "")}</p><div class="project-card__ac">${acBadges}</div></div></button></article>`;
   }).join("");
   elements.projectsGrid.querySelectorAll("[data-project-id]").forEach(button => button.addEventListener("click", () => {
     const project = projects.find(item => String(item.id) === String(button.dataset.projectId));
@@ -226,9 +226,37 @@ function renderProjects() {
 function renderCompetenceOverview() {
   if (!elements.competenceOverview) return;
   const domains = ["comprendre", "concevoir", "exprimer", "developper", "entreprendre"];
+  const oralPicks = {
+    comprendre: { academic: 15, stage: 22 },
+    concevoir: { academic: 1, stage: 26 },
+    exprimer: { academic: 28, stage: 24 },
+    developper: { academic: 4, stage: 26 },
+    entreprendre: { academic: 14, stage: 22 }
+  };
+
   elements.competenceOverview.innerHTML = domains.map(domain => {
-    const linked = sortedProjects(projects.filter(project => getProjectDomains(project).includes(domain))).slice(0, 5);
-    return `<article class="competence-card competence-card--${domain}"><h3>${getDomainLabel(domain)}</h3><p>${competenceTexts[domain]}</p><div class="competence-card__projects">${linked.map(project => `<button type="button" data-project-id="${project.id}">${escapeHtml(project.title)}</button>`).join("")}</div><button class="mini-link" type="button" data-competence-jump="${domain}">Voir toutes les traces</button></article>`;
+    const allLinked = sortedProjects(projects.filter(project => getProjectDomains(project).includes(domain)));
+    const picks = oralPicks[domain] || {};
+    const academicPick = projects.find(project => Number(project.id) === Number(picks.academic));
+    const stagePick = projects.find(project => Number(project.id) === Number(picks.stage));
+    const pickedIds = new Set([picks.academic, picks.stage].filter(Boolean).map(Number));
+    const linked = allLinked.filter(project => !pickedIds.has(Number(project.id))).slice(0, 3);
+
+    const pickButton = (project, label) => project ? `<button type="button" class="oral-pick-btn" data-project-id="${project.id}"><span>${label}</span>${escapeHtml(project.title)}</button>` : "";
+
+    return `<article class="competence-card competence-card--${domain}">
+      <h3>${getDomainLabel(domain)}</h3>
+      <p>${competenceTexts[domain]}</p>
+      <div class="competence-card__oral">
+        <p class="competence-card__label">À ouvrir pendant la présentation</p>
+        ${pickButton(academicPick, "Trace MMI")}
+        ${pickButton(stagePick, "Trace stage")}
+      </div>
+      <div class="competence-card__projects">
+        ${linked.map(project => `<button type="button" data-project-id="${project.id}">${escapeHtml(project.title)}</button>`).join("")}
+      </div>
+      <button class="mini-link" type="button" data-competence-jump="${domain}">Voir toutes les traces</button>
+    </article>`;
   }).join("");
   elements.competenceOverview.querySelectorAll("[data-project-id]").forEach(button => button.addEventListener("click", () => { const project = projects.find(item => String(item.id) === String(button.dataset.projectId)); if (project) openProject(project); }));
   elements.competenceOverview.querySelectorAll("[data-competence-jump]").forEach(button => button.addEventListener("click", () => { state.currentCategory = button.dataset.competenceJump; state.currentYear = "all"; syncFilterButtons(); renderProjects(); showSection("projects"); }));
