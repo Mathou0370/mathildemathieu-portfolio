@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio académique — Mathilde Mathieu</title>
+  <meta name="description" content="Portfolio académique de Mathilde Mathieu — BUT MMI" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <div class="boot-screen" id="boot-screen">
+    <div class="boot-window">
+      <div class="title-bar"><span>Mathilde_Account.exe</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+      <div class="window-body boot-body">
+        <div class="boot-status"><p class="bootline">Initialisation de l’environnement MMI...</p><div class="boot-progress"><span class="boot-progress__bar" id="boot-progress-bar"></span></div></div>
+        <div class="login-card">
+          <img src="../ressources/photomathilde.jpg" alt="Photo de Mathilde Mathieu" class="login-avatar" />
+          <div class="login-content">
+            <p class="login-label">Session détectée</p>
+            <h1>Mathilde Mathieu</h1>
+            <p class="boot-subtitle">Portfolio académique — BUT MMI</p>
+            <label class="fake-input-label" for="fake-password">Mot de passe</label>
+            <input id="fake-password" class="fake-input" type="password" placeholder="••••••••" value="portfolio" readonly />
+            <div class="login-actions"><button class="hero-link" id="enter-site-btn" type="button">Se connecter</button><a class="ghost-link" href="../index.html">Retour portfolio principal</a></div>
+            <p class="login-tip">Parcours, projets, expériences professionnelles, AC et évolution sur les 3 années du BUT MMI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-shell hidden" id="site-shell">
+    <header class="hero">
+      <div class="hero-content">
+        <div class="hero-window">
+          <div class="title-bar"><span>Portfolio Académique — Mathilde Mathieu</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="window-body hero-inner">
+            <p class="bootline">C:\MMI\Mathilde&gt; ouvrir parcours_3_ans.exe</p>
+            <div class="hero-grid">
+              <div class="hero-copy">
+                <p class="hero-eyebrow">Portfolio académique vivant</p>
+                <h1>Trois ans pour apprendre,<br>créer et construire mon identité.</h1>
+                <p class="hero-subtitle">Ce site retrace mon parcours en BUT MMI : mes projets, mes stages, mon engagement, mes compétences et ce que chaque expérience m’a appris.</p>
+                <div class="hero-actions"><a class="hero-link" href="#portfolio-app">Commencer</a><button class="secondary-link" id="hero-projects-btn" type="button">Ouvrir les traces</button></div>
+              </div>
+              <div class="hero-panels">
+                <div class="hero-panel"><span class="hero-panel__number" id="stat-projects">0</span><span class="hero-panel__label">traces intégrées</span></div>
+                <div class="hero-panel"><span class="hero-panel__number" id="stat-ac">0</span><span class="hero-panel__label">AC mobilisées</span></div>
+                <div class="hero-panel"><span class="hero-panel__number">3e + prix</span><span class="hero-panel__label">Festival MMI</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="desktop" id="portfolio-app">
+      <aside class="sidebar window">
+        <div class="title-bar"><span>Menu</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+        <div class="window-body">
+          <div class="profile-card">
+            <img src="../ressources/photomathilde.jpg" alt="Photo de Mathilde Mathieu" class="profile-image" />
+            <h2>Mathilde Mathieu</h2>
+            <p class="profile-role">Étudiante en 3e année de BUT MMI à l'IUT de Toulon.</p>
+            <p class="profile-text">Créer · Sortir · Dormir : créer pour transmettre, sortir pour nourrir ma curiosité, dormir pour rêver et recommencer.</p>
+          </div>
+
+          <nav class="sidebar-nav">
+            <button class="nav-btn is-active" data-section="about">Accueil</button>
+            <button class="nav-btn" data-section="evolution">Mon évolution</button>
+            <button class="nav-btn" data-section="competences">5 compétences</button>
+            <button class="nav-btn" data-section="projects">Traces & projets</button>
+            <button class="nav-btn" data-section="stages">Stages Cosplay Smart</button>
+            <button class="nav-btn" data-section="distinctions">Distinctions</button>
+            <button class="nav-btn" data-section="perspectives">Et après ?</button>
+            <button class="nav-btn" data-section="ac">Tableau des AC</button>
+          </nav>
+
+          <div class="skill-shortcuts">
+            <button class="skill-tag skill-comprendre" data-filter-category="comprendre">Comprendre</button>
+            <button class="skill-tag skill-concevoir" data-filter-category="concevoir">Concevoir</button>
+            <button class="skill-tag skill-exprimer" data-filter-category="exprimer">Exprimer</button>
+            <button class="skill-tag skill-developper" data-filter-category="developper">Développer</button>
+            <button class="skill-tag skill-entreprendre" data-filter-category="entreprendre">Entreprendre</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <section id="about" class="content-window window is-visible">
+          <div class="title-bar"><span>Accueil — Qui suis-je ?</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="window-body">
+            <div class="about-grid">
+              <div class="about-block">
+                <h3>Bonjour, moi c’est Mathilde 👋</h3>
+                <p>Passionnée de création depuis toujours, j’aime explorer différents univers et donner vie à des idées à travers l’image, la vidéo, le web ou la narration. Dessin, photographie, danse, cosplay ou création numérique : je suis une touche-à-tout curieuse qui aime expérimenter et apprendre en permanence.</p>
+                <p>Au fil de mes trois années en BUT Métiers du Multimédia et de l’Internet à l’IUT de Toulon, j’ai développé un profil polyvalent entre design graphique, audiovisuel, développement web et communication digitale.</p>
+                <p>Ce portfolio retrace cette évolution : il ne montre pas seulement mes réalisations finales, mais aussi les choix, les apprentissages, les difficultés et les expériences qui ont construit mon identité professionnelle.</p>
+              </div>
+              <div class="about-side">
+                <div class="highlight-box"><h4>À retenir</h4><ul><li>3 années de BUT MMI</li><li>2 stages chez Cosplay Smart</li><li>Un chef-d’œuvre interactif récompensé</li><li>Des traces académiques, professionnelles, associatives et personnelles</li></ul></div>
+                <div class="highlight-box"><h4>Mon mantra</h4><p><strong>Créer</strong> pour transformer une idée en objet concret. <strong>Sortir</strong> pour découvrir, rencontrer et nourrir ma culture. <strong>Dormir</strong> pour rêver, me ressourcer et continuer à créer.</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="evolution" class="content-window window">
+          <div class="title-bar"><span>Mon évolution — MMI1 → MMI3</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="window-body">
+            <p class="section-intro">Cette frise résume mon parcours : de la découverte des outils à une démarche plus autonome, créative et professionnelle.</p>
+            <div class="timeline">
+              <article class="timeline-card"><span class="timeline-year">2023-2024</span><h3>BUT 1 — Découvrir</h3><p>Premières expérimentations graphiques et web : photomontage, deck de cartes, pitch d’objet innovant, site avec base de données.</p><button class="mini-link" data-jump-year="mmi1">Voir les traces BUT1</button></article>
+              <article class="timeline-card"><span class="timeline-year">2024-2025</span><h3>BUT 2 — Approfondir</h3><p>Projets plus ambitieux, travail de l’UX, de la vidéo, de la 3D, de l’événementiel et première immersion professionnelle chez Cosplay Smart.</p><button class="mini-link" data-jump-year="mmi2">Voir les traces BUT2</button></article>
+              <article class="timeline-card"><span class="timeline-year">2025-2026</span><h3>BUT 3 — Affirmer</h3><p>Direction artistique, projets immersifs, stage perlé, Opéra de Toulon, Snoozly et chef-d’œuvre The Crybaby Journey.</p><button class="mini-link" data-jump-year="mmi3">Voir les traces BUT3</button></article>
+            </div>
+          </div>
+        </section>
+
+        <section id="competences" class="content-window window">
+          <div class="title-bar"><span>Les 5 compétences du BUT MMI</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="window-body">
+            <p class="section-intro">Chaque compétence est reliée à des traces concrètes. L’objectif est de comprendre comment les projets académiques, professionnels et personnels se répondent.</p>
+            <div id="competence-overview" class="competence-overview"></div>
+          </div>
+        </section>
+
+        <section id="projects" class="content-window window">
+          <div class="title-bar"><span>Traces & projets</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="window-body">
+            <div class="toolbar">
+              <div class="toolbar-group"><span class="toolbar-label">Période</span><button class="filter-btn is-active" data-filter-year="all">Toutes</button><button class="filter-btn" data-filter-year="mmi1">BUT 1</button><button class="filter-btn" data-filter-year="mmi2">BUT 2</button><button class="filter-btn" data-filter-year="stagemmi2">Stage BUT2</button><button class="filter-btn" data-filter-year="mmi3">BUT 3</button><button class="filter-btn" data-filter-year="stagemmi3">Stage BUT3</button><button class="filter-btn" data-filter-year="associatif">Associatif</button><button class="filter-btn" data-filter-year="personnel">Personnel</button></div>
+              <div class="toolbar-group"><span class="toolbar-label">Compétence</span><button class="filter-btn is-active toolbar__button" data-filter-category="all">Toutes</button><button class="filter-btn toolbar__button" data-filter-category="comprendre">Comprendre</button><button class="filter-btn toolbar__button" data-filter-category="concevoir">Concevoir</button><button class="filter-btn toolbar__button" data-filter-category="exprimer">Exprimer</button><button class="filter-btn toolbar__button" data-filter-category="developper">Développer</button><button class="filter-btn toolbar__button" data-filter-category="entreprendre">Entreprendre</button></div>
+            </div>
+            <div id="projects-grid" class="projects-grid"></div>
+          </div>
+        </section>
+
+        <section id="stages" class="content-window window">
+          <div class="title-bar"><span>Expériences professionnelles — Cosplay Smart</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="window-body">
+            <div class="stage-layout">
+              <div class="stage-intro"><h3>Deux stages, une progression</h3><p>Mes deux stages chez Cosplay Smart restent des stages de communication, mais le second m’a permis d’aller plus loin grâce à sa durée et au format perlé. Ils montrent une progression logique : d’une première immersion vers une participation plus autonome à la communication de la marque.</p></div>
+              <div class="stage-columns"><article><h4>Stage BUT2 — 8 semaines</h4><ul><li>Veille et plan de communication</li><li>Posts, stories, Reels</li><li>PAO print : affiches, bâches, nappes, kakemonos</li><li>Captation, montage, vlog</li><li>Découverte du fonctionnement d’une entreprise</li></ul></article><article><h4>Stage BUT3 — format perlé</h4><ul><li>Création graphique et identité visuelle</li><li>Chibis, fonds d’écran, calendrier de l’Avent</li><li>Tutoriels, Reels, vlogs YouTube</li><li>SEO : articles et fiches produits</li><li>Événementiel, vente, logistique, commandes</li></ul></article></div>
+              <div class="highlight-box"><h4>Comment lire cette partie ?</h4><p>Les stages sont visibles ici comme expériences, mais aussi dans les traces : certaines missions sont traitées comme de vrais projets professionnels avec contexte, outils, AC et regard critique.</p></div>
+              <div class="stage-actions"><button class="hero-link" data-jump-year="stagemmi2">Traces Stage BUT2</button><button class="hero-link" data-jump-year="stagemmi3">Traces Stage BUT3</button></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="distinctions" class="content-window window">
+          <div class="title-bar"><span>Distinctions — Festival MMI</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="window-body">
+            <div class="awards-card"><img src="../ressources/projets/crybaby.png" alt="The Crybaby Journey" onerror="this.onerror=null;this.src='../ressources/fond.jpg';"><div><p class="hero-eyebrow">The Crybaby Journey</p><h3>Un chef-d’œuvre interactif récompensé</h3><p>Ce projet représente l’aboutissement de mon parcours à l’IUT : une expérience narrative interactive inspirée de Melanie Martinez, mais aussi une œuvre personnelle dans laquelle j’ai voulu laisser une trace de moi.</p><ul class="award-list"><li>3e dans la catégorie Projet multimédia interactif</li><li>Prix Coup de Cœur</li><li>Prix du Public</li></ul><button class="hero-link" data-open-project-title="The Crybaby Journey">Ouvrir la fiche projet</button></div></div>
+          </div>
+        </section>
+
+        <section id="perspectives" class="content-window window">
+          <div class="title-bar"><span>Et après ?</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="window-body"><div class="about-grid"><div class="about-block"><h3>Perspectives</h3><p>Ces trois années m’ont confirmé mon intérêt pour la création visuelle, la direction artistique, la communication digitale, la vidéo, l’UX et les expériences interactives.</p><p>Je souhaite continuer à développer un profil capable de relier univers créatif, narration, outils numériques et objectifs de communication.</p></div><div class="about-side"><div class="highlight-box"><h4>Domaines qui m’attirent</h4><ul><li>Direction artistique</li><li>Narration interactive</li><li>Création de contenu</li><li>Communication digitale</li><li>UX / expériences immersives</li></ul></div><div class="highlight-box"><h4>Ce que je garde du BUT</h4><p>Une méthode : tester, créer, analyser, améliorer. Une posture : rester curieuse, autonome et capable de faire le lien entre la technique, la création et les besoins réels d’un projet.</p></div></div></div></div>
+        </section>
+
+        <section id="ac" class="content-window window">
+          <div class="title-bar"><span>Tableau des Apprentissages Critiques</span><div class="title-actions" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="window-body"><p class="ac-intro">Vue d’ensemble des AC mobilisées par mes traces. Les catégories sont repliées par défaut pour rester lisibles.</p><div class="table-wrap"><div id="ac-table-container"></div></div></div>
+        </section>
+      </main>
+    </div>
+
+    <section class="desktop-footer">
+      <a href="https://www.linkedin.com/in/mathilde-mathieu/" target="_blank" rel="noopener noreferrer" class="desktop-icon"><img src="https://win98icons.alexmeub.com/icons/png/network_normal_two_pcs-2.png" alt="LinkedIn"><span>LinkedIn</span></a>
+      <a href="mailto:mathilde.mathieu.pro@gmail.com" class="desktop-icon"><img src="https://win98icons.alexmeub.com/icons/png/outlook_express-2.png" alt="Me contacter"><span>Mail</span></a>
+      <a href="../index.html" class="desktop-icon"><img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png" alt="Portfolio principal"><span>Portfolio principal</span></a>
+    </section>
+
+    <footer class="taskbar"><button class="start-btn" type="button" id="taskbar-home-btn">Portfolio BUT MMI</button><div class="taskbar-window">portfolio académique</div><div class="clock" id="clock">00:00:00</div></footer>
+  </div>
+
+  <div class="modal hidden" id="project-modal" aria-hidden="true"><div class="modal-window window"><div class="title-bar"><span id="modal-project-title">Projet</span><button class="close-btn" id="close-modal" type="button">×</button></div><div class="window-body modal-body"><div id="modal-project-content"></div></div></div></div>
+  <div class="lightbox hidden" id="lightbox" aria-hidden="true"><button class="lightbox__nav lightbox__nav--prev hidden" id="lightbox-prev" type="button">‹</button><img id="lightbox-image" src="" alt=""><button class="lightbox__nav lightbox__nav--next hidden" id="lightbox-next" type="button">›</button><button class="lightbox__close" id="lightbox-close" type="button">×</button><div class="lightbox__counter hidden" id="lightbox-counter"></div></div>
+  <script src="projects.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
