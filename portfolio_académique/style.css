@@ -1115,3 +1115,238 @@ a {
 .project-thumb:hover { outline:2px solid #2f68db; }
 @media (max-width: 980px) { .timeline, .stage-columns, .awards-card, .project-detail-grid, .project-gallery--clean { grid-template-columns:1fr; } }
 @media (max-width: 720px) { .toolbar-label { min-width: 100%; } .project-gallery__thumbs { grid-template-columns:repeat(3, 1fr); } .project-thumb img { height:80px; } }
+
+
+/* === Ajustements version orale / portfolio académique clair === */
+.big-read {
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0.35rem 0 1rem;
+}
+
+.oral-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.8fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.oral-hero h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.95;
+  margin: 0.2rem 0 1rem;
+  color: #0f2f82;
+  letter-spacing: -0.06em;
+}
+
+.oral-points {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.oral-points > div,
+.trace-kpi-grid > div {
+  background: linear-gradient(180deg, #fff, #f1f5ff);
+  border: 2px solid var(--win-border-mid);
+  border-top-color: #fff;
+  border-left-color: #fff;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.22);
+  padding: 0.9rem;
+}
+
+.oral-points strong,
+.trace-kpi-grid strong {
+  display: block;
+  font-size: 1.35rem;
+  color: #0f2f82;
+  line-height: 1;
+}
+
+.oral-points span,
+.trace-kpi-grid span {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.quick-map {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.quick-map article,
+.stage-card {
+  background: var(--win-panel);
+  border: 2px solid var(--win-border-mid);
+  border-top-color: #fff;
+  border-left-color: #fff;
+  box-shadow: 4px 4px 0 rgba(0,0,0,.22);
+  padding: 1rem;
+}
+
+.quick-map h3,
+.stage-card h4 {
+  margin: 0 0 .5rem;
+  font-size: 1.2rem;
+}
+
+.timeline--oral .timeline-card p {
+  font-size: 1.02rem;
+}
+
+.timeline-card ul {
+  margin: .75rem 0 1rem 1.1rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.stage-duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.stage-card--focus {
+  outline: 3px solid rgba(47,104,219,.25);
+}
+
+.stage-pillars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin: .85rem 0 1rem;
+}
+
+.stage-pillars span {
+  display: inline-flex;
+  align-items: center;
+  padding: .32rem .55rem;
+  background: #e9efff;
+  border: 1px solid #9fb4f2;
+  border-radius: 999px;
+  font-size: .86rem;
+  font-weight: 700;
+  color: #0f2f82;
+}
+
+.trace-intro {
+  background: linear-gradient(135deg, #f8fbff, #e8efff);
+  border-left: 6px solid #2f68db;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.trace-intro--major {
+  border-left-color: #d777a2;
+  background: linear-gradient(135deg, #fff7fb, #e6fbff);
+}
+
+.trace-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .75rem;
+  margin: 1rem 0;
+}
+
+.mission-list {
+  display: grid;
+  gap: .55rem;
+  margin: .75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mission-list li {
+  padding: .65rem .75rem;
+  border-left: 4px solid #2f68db;
+  background: rgba(255,255,255,.78);
+  line-height: 1.45;
+}
+
+.quote-block {
+  font-size: 1.15rem;
+  font-weight: 800;
+  background: #111;
+  color: #f7e9ff;
+  border: 2px solid #40335a;
+  padding: 1rem;
+  box-shadow: 4px 4px 0 rgba(0,0,0,.28);
+}
+
+.project-detail {
+  font-size: 1rem;
+}
+
+.project-detail-grid {
+  align-items: start;
+}
+
+.project-rich-block h2,
+.project-rich-block h3 {
+  color: #0f2f82;
+}
+
+.project-rich-block h4 {
+  font-size: 1.05rem;
+  margin-top: 1.1rem;
+  padding: .35rem .55rem;
+  background: #000080;
+  color: #fff;
+  display: inline-block;
+}
+
+.project-gallery__featured {
+  background: #10142e;
+}
+
+.project-gallery__featured img {
+  object-fit: contain;
+  max-height: min(58vh, 640px);
+  background: #111;
+}
+
+.project-gallery__featured figcaption {
+  color: #fff;
+  font-weight: 700;
+}
+
+.awards-card--clean {
+  grid-template-columns: minmax(320px, .95fr) minmax(0, 1.05fr);
+}
+
+.awards-card--clean img {
+  object-fit: contain;
+  background: #111;
+}
+
+.award-list li {
+  font-size: 1.05rem;
+  margin-bottom: .5rem;
+}
+
+@media (max-width: 980px) {
+  .oral-hero,
+  .quick-map,
+  .stage-duo,
+  .awards-card--clean {
+    grid-template-columns: 1fr;
+  }
+  .trace-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .trace-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+  .oral-hero h2 {
+    font-size: 2.2rem;
+  }
+}
