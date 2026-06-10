@@ -525,46 +525,6 @@ const projects = [
     `
   },
 {
-    id: 12,
-    title: "\"The Crybaby Journey\" — Chef-d’œuvre Individuel",
-    year: "MMI3",
-    category: "Exprimer",
-   image: "../ressources/projets/affiche-melanie.png",
-    cover: "../ressources/projets/affiche-melanie.png",
-    images: [
-      { src: "../ressources/projets/affiche-melanie.png", alt: "Crybaby 1" },
-      { src: "../ressources/projets/affiche-melanie2.png", alt: "Crybaby 2" }
-    ],
-    shortDescription: "Livret d'intention et Design System pour un projet immersif transmédia.",
-    ac: ["AC33.01", "AC33.02", "AC35.03"],
-    infoHtml: `
-      <h2>🎨🚀 TRACE 2 : EXPRIMER & ENTREPRENDRE (Niveau 3)</h2>
-      <h3>Nom du projet : "The Crybaby Journey" — Chef-d’œuvre Individuel</h3>
-
-      <h4>1. CONTEXTE GLOBAL</h4>
-      <p>Quoi : Livret d'intention et Design System pour un projet immersif transmédia (Hommage à Melanie Martinez).</p>
-      <p>Où : SAÉ 5.Crea.01b (Phase de conception).</p>
-      <p>Quand : Octobre 2025</p>
-      <p>Qui : Auteur-créateur (Travail individuel).</p>
-
-      <h4>2. OBJECTIFS DU PROJET</h4>
-      <p>Définir l'ambition d'un projet de fin d'études mêlant Web, 3D et Storytelling.</p>
-      <p>Valider une identité professionnelle forte auprès d'un comité pédagogique.</p>
-    `,
-    acHtml: `
-      <h4>3. COMPÉTENCES CIBLÉES (AC)</h4>
-      <p>AC33.01 | Démarche originale et personnelle : Appropriation de l'univers de Melanie Martinez pour créer une œuvre dérivée unique, basée sur une esthétique surréaliste et narrative.</p>
-      <p>AC33.02 | Concevoir un design system : Première utilisation de la Suite Affinity pour produire les fondations visuelles (couleurs, typos, composants) destinées à être déclinées sur tous les supports futurs du projet.</p>
-      <p>AC35.03 | Concevoir un projet innovant : Définition de l'identité, du ton de marque et de la vision artistique globale d'un service numérique immersif inédit.</p>
-    `,
-    evaluationHtml: `
-      <h4>4. REGARD CRITIQUE (POSTURE RÉFLEXIVE)</h4>
-      <p>Évolution : "Ce projet marque mon passage de l'exécution à l'auteur-créateur. En utilisant Affinity pour la première fois, j'ai gagné en autonomie technique et prouvé ma capacité à structurer un projet d'envergure dès sa genèse."</p>
-
-      <p>L'ÉVOLUTION (MMI 1 ➔ MMI 3) : "Sur le projet Noces Funèbres (MMI 1), je suivais scrupuleusement l'univers de Tim Burton. Pour mon Chef-d'œuvre, j'affirme une posture d'auteur : je m'approprie une influence (Melanie Martinez) pour créer mon propre système visuel complet. L'évolution est aussi technique : j'ai choisi de sortir de l'écosystème Adobe pour maîtriser la Suite Affinity en autonomie, prouvant ma capacité d'adaptation aux outils professionnels alternatifs."</p>
-    `
-  },
-{
     id: 13,
     title: "\"Face au mur\" — Scénographie numérique (Opéra de Toulon)",
     year: "MMI3",
@@ -685,101 +645,6 @@ const projects = [
       <p>Réussite : "Ce travail de veille stratégique a directement nourri la conception de The Crybaby Journey. J'ai appris que l'immersion ne dépend pas que de la technique, mais de la cohérence absolue entre la direction artistique et les actions du joueur."</p>
 
       <p>L'ÉVOLUTION (MMI 2 ➔ MMI 3) : "En deuxième année, avec Crossy Road Power, j'imaginais des mécaniques de jeu simples. Cette analyse de MMI 3 témoigne d'une montée en compétence théorique : je suis désormais capable de décortiquer des systèmes narratifs complexes pour en extraire des méthodes de travail. C'est le passage de la pratique intuitive à l'expertise métier, indispensable pour concevoir des expériences utilisateurs sophistiquées."</p>
-    `
-  },
-{
-    id: 16,
-    title: "Stage BUT2 — Première immersion chez Cosplay Smart",
-    year: "stagemmi2",
-    category: "Entreprendre",
-    type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
-    images: [
-      { src: "../ressources/fond.jpg", alt: "Stage BUT2 chez Cosplay Smart" }
-    ],
-    shortDescription: "8 semaines pour découvrir la communication en entreprise : réseaux sociaux, print, vidéo, rédaction et événementiel.",
-    ac: ["AC21.01", "AC22.05", "AC23.05", "AC25.04", "AC25.05"],
-    infoHtml: `
-      <div class="trace-intro">
-        <h2>💼 Stage BUT2 — Première immersion professionnelle</h2>
-        <p class="big-read">Cosplay Smart — février à mars 2025 — 8 semaines.</p>
-      </div>
-      <div class="trace-kpi-grid">
-        <div><strong>Cadre</strong><span>Stage de communication et graphisme</span></div>
-        <div><strong>Entreprise</strong><span>Boutique cosplay & pop culture</span></div>
-        <div><strong>Posture</strong><span>Découverte, production, adaptation</span></div>
-        <div><strong>Trace clé</strong><span>Premiers contenus réellement utilisés par une marque</span></div>
-      </div>
-      <h4>Les 5 missions principales</h4>
-      <ul class="mission-list">
-        <li><strong>Communication digitale :</strong> posts, stories, Reels, TikTok, miniatures et contenus de réseaux sociaux.</li>
-        <li><strong>Veille & stratégie :</strong> analyse du marché cosplay, des concurrents et réflexion sur un planning de communication.</li>
-        <li><strong>Création print :</strong> affiches, bâches, nappe, kakemono et supports de stand pour convention.</li>
-        <li><strong>Rédaction web :</strong> articles de blog, annonces Discord, textes Instagram et mise en ligne via Shopify.</li>
-        <li><strong>Audiovisuel :</strong> captation photo/vidéo, formats courts et vlog de la Clermont Geek Convention.</li>
-      </ul>
-    `,
-    acHtml: `
-      <h4>Compétences principalement mobilisées</h4>
-      <p><strong>Comprendre :</strong> analyser une marque, son secteur, ses cibles et ses codes de communication.</p>
-      <p><strong>Concevoir :</strong> proposer des contenus adaptés aux plateformes et aux besoins de la boutique.</p>
-      <p><strong>Exprimer :</strong> produire des visuels, textes et vidéos cohérents avec l'identité de Cosplay Smart.</p>
-      <p><strong>Entreprendre :</strong> collaborer en entreprise, respecter des contraintes et produire dans un cadre professionnel.</p>
-    `,
-    evaluationHtml: `
-      <h4>Ce que ce stage m’a apporté</h4>
-      <p>Ce stage m’a fait passer des projets scolaires à des productions réellement diffusées. J’ai compris l’importance de la cohérence de marque, des formats, des délais et de la rigueur technique.</p>
-      <h4>Regard critique</h4>
-      <p>C’était une première phase d’apprentissage. Certaines productions pourraient aujourd’hui être plus abouties, mais elles marquent le début de ma professionnalisation et de ma confiance en entreprise.</p>
-    `
-  },
-  {
-    id: 17,
-    title: "Stage BUT3 — Stage perlé chez Cosplay Smart",
-    year: "stagemmi3",
-    category: "Entreprendre",
-    type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
-    images: [
-      { src: "../ressources/fond.jpg", alt: "Stage BUT3 chez Cosplay Smart" }
-    ],
-    shortDescription: "18 semaines en format perlé : plus d'autonomie, plus de missions, et une implication plus forte dans la communication de marque.",
-    ac: ["AC21.01", "AC22.04", "AC22.05", "AC23.03", "AC23.05", "AC25.01", "AC25.04"],
-    infoHtml: `
-      <div class="trace-intro">
-        <h2>💼 Stage BUT3 — Montée en autonomie</h2>
-        <p class="big-read">Cosplay Smart — septembre 2025 à mai 2026 — 18 semaines en format perlé.</p>
-      </div>
-      <div class="trace-kpi-grid">
-        <div><strong>Cadre</strong><span>Stage long en communication digitale</span></div>
-        <div><strong>Rythme</strong><span>Alternance cours / entreprise</span></div>
-        <div><strong>Posture</strong><span>Proposer, concevoir, produire, ajuster</span></div>
-        <div><strong>Évolution</strong><span>D'une posture exécutante à une posture plus autonome</span></div>
-      </div>
-      <h4>Les 5 axes du stage</h4>
-      <ul class="mission-list">
-        <li><strong>Communication digitale :</strong> contenus Instagram, TikTok, Pinterest, YouTube, newsletter et animation de communauté.</li>
-        <li><strong>SEO & rédaction :</strong> articles de blog, fiches produits Shopify, newsletters et contenus liés aux Costips.</li>
-        <li><strong>Audiovisuel :</strong> tutoriels, Reels, TikTok, vlogs, captations en convention.</li>
-        <li><strong>Image de marque :</strong> chibis, ecocup, fonds d'écran, calendrier de l'Avent, dossier de sponsoring.</li>
-        <li><strong>Web :</strong> réflexion, arborescence, wireframes et début d'intégration d'un site vitrine sous WordPress / Divi.</li>
-      </ul>
-    `,
-    acHtml: `
-      <h4>Compétences principalement mobilisées</h4>
-      <p><strong>Comprendre :</strong> analyser les attentes d'une communauté et les tendances des réseaux.</p>
-      <p><strong>Concevoir :</strong> structurer une présence en ligne, un contenu SEO, une arborescence ou un support de marque.</p>
-      <p><strong>Exprimer :</strong> produire des contenus plurimédias : visuels, vidéos, textes, tutoriels, identité graphique.</p>
-      <p><strong>Développer :</strong> participer à l'intégration et à l'architecture d'un site vitrine professionnel.</p>
-      <p><strong>Entreprendre :</strong> travailler sur le long terme, collaborer, gérer la continuité et agir dans un cadre professionnel réel.</p>
-    `,
-    evaluationHtml: `
-      <h4>Ce que ce stage m’a apporté</h4>
-      <p>Ce second stage confirme ma progression : je ne faisais plus seulement des tâches isolées, je participais davantage à la réflexion, à la stratégie de contenu et à la cohérence globale de la communication.</p>
-      <h4>Regard critique</h4>
-      <p>Le format perlé demande beaucoup d'organisation. J'ai appris à reprendre un projet après des périodes de cours, à documenter mes avancées et à maintenir une continuité dans la production.</p>
     `
   },
   {
@@ -1151,6 +1016,8 @@ const projects = [
     year: "mmi3",
     category: "Exprimer",
     type: "chef-d’œuvre",
+    featured: true,
+    oralFocus: true,
     image: "../ressources/projets/TheCrybabyJourney.jpeg",
     cover: "../ressources/projets/TheCrybabyJourney.jpeg",
     images: [
@@ -1158,7 +1025,7 @@ const projects = [
       { src: "../ressources/projets/crybaby.png", alt: "The Crybaby Journey — ancien visuel" },
       { src: "../ressources/fond.jpg", alt: "Ambiance projet" }
     ],
-    shortDescription: "Expérience web immersive inspirée de Melanie Martinez : narration, DA, son, UX, développement React/Vite et projet personnel récompensé.",
+    shortDescription: "Projet phare de fin de BUT : une expérience web immersive inspirée de Melanie Martinez, réunissant narration, direction artistique, son, UX et développement.",
     ac: ["AC21.05", "AC22.01", "AC23.04", "AC23.05", "AC24.01", "AC24.03", "AC33.01", "AC33.02", "AC33.03", "AC33.04", "AC33.05", "AC35.04"],
     infoHtml: `
       <div class="trace-intro trace-intro--major">
