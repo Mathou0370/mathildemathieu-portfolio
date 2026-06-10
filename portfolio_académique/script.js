@@ -18,6 +18,7 @@ const elements = {
   categoryButtons: document.querySelectorAll(".toolbar__button[data-filter-category]"),
   shortcutButtons: document.querySelectorAll(".skill-tag[data-filter-category]"),
   jumpYearButtons: document.querySelectorAll("[data-jump-year]"),
+  sectionTargetButtons: document.querySelectorAll("[data-section-target]"),
   projectsGrid: document.getElementById("projects-grid"),
   acTableContainer: document.getElementById("ac-table-container"),
   competenceOverview: document.getElementById("competence-overview"),
@@ -144,9 +145,9 @@ const acReference = {
 const yearMeta = {
   mmi1: { label: "📚 BUT 1", date: "2023 - 2024", order: 10 },
   mmi2: { label: "📚 BUT 2", date: "2024 - 2025", order: 20 },
-  stagemmi2: { label: "💼 Stage BUT2", date: "Fév. - Mars 2025", order: 25 },
+  stagemmi2: { label: "💼 Stage BUT2", date: "Fév. - Mars 2025 · 8 sem.", order: 25 },
   mmi3: { label: "📚 BUT 3", date: "2025 - 2026", order: 30 },
-  stagemmi3: { label: "💼 Stage BUT3", date: "Sept. 2025 - Mai 2026", order: 35 },
+  stagemmi3: { label: "💼 Stage BUT3", date: "Sept. 2025 - Mai 2026 · 18 sem.", order: 35 },
   associatif: { label: "🤝 Associatif", date: "2024 - 2026", order: 28 },
   personnel: { label: "🌸 Personnel", date: "Pratique libre", order: 5 },
 };
@@ -280,6 +281,7 @@ function initFilters() {
   elements.yearButtons.forEach(button => button.addEventListener("click", () => { state.currentYear = button.dataset.filterYear; syncFilterButtons(); renderProjects(); showSection("projects"); }));
   [...elements.categoryButtons, ...elements.shortcutButtons].forEach(button => button.addEventListener("click", () => { state.currentCategory = button.dataset.filterCategory; syncFilterButtons(); renderProjects(); showSection("projects"); document.getElementById("projects")?.scrollIntoView({ behavior:"smooth", block:"start" }); }));
   elements.jumpYearButtons.forEach(button => button.addEventListener("click", () => jumpToYear(button.dataset.jumpYear)));
+  elements.sectionTargetButtons.forEach(button => button.addEventListener("click", () => showSection(button.dataset.sectionTarget)));
   document.querySelectorAll("[data-open-project-title]").forEach(button => button.addEventListener("click", () => { const target = projects.find(p => (p.title || "").toLowerCase().includes(button.dataset.openProjectTitle.toLowerCase())); if (target) openProject(target); }));
 }
 function initModal() { elements.closeModal.addEventListener("click", closeProject); elements.modal.addEventListener("click", event => { if (event.target === elements.modal) closeProject(); }); }
