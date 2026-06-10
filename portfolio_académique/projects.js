@@ -1,5 +1,5 @@
 const projects = [
-  {
+{
     id: 1,
     title: "Virtual Voyager Chair (VV Chair)",
     year: "MMI1",
@@ -54,7 +54,7 @@ const projects = [
       <p>"L'IA a été utilisée pour simuler des scénarios de vente et m'aider à structurer les calculs complexes de ROI, me permettant de tester plusieurs stratégies de prix de vente."</p>
     `
   },
-  {
+{
     id: 2,
     title: "Deck \"Les Noces Funèbres\" – Collection Bicycle",
     year: "MMI1",
@@ -109,7 +109,7 @@ const projects = [
       <p>Axe d'amélioration : "Je prévois de poursuivre ce projet pour finaliser l'intégralité du paquet (54 cartes) et passer plus de temps sur le design du verso, afin d'offrir une expérience de collectionneur complète."</p>
     `
   },
-  {
+{
     id: 3,
     title: "BatBee — Création d'une créature hybride surréaliste",
     year: "MMI1",
@@ -158,7 +158,7 @@ const projects = [
       <p>Difficultés rencontrées : "J'ai rencontré des difficultés sur le détourage fin et la gestion de la transparence des ailes de l'abeille. C'est un point sur lequel il aurait fallu passer plus de temps pour parfaire le réalisme. Ce projet a marqué le début de ma détermination à mieux maîtriser les outils de sélection avancés pour produire des œuvres plus abouties."</p>
     `
   },
-  {
+{
     id: 4,
     title: "SAÉ 203 — Système de Gestion d'Agence Web (Back-office & BDD)",
     year: "MMI1",
@@ -219,7 +219,7 @@ const projects = [
       <p>"J'ai utilisé l'IA comme support au débogage, notamment pour comprendre les erreurs de syntaxe dans les requêtes SQL et pour optimiser la structure de mes conditions en PHP."</p>
     `
   },
-  {
+{
     id: 5,
     title: "Site Vitrine Brigitte Bee — Intégration CMS",
     year: "MMI1",
@@ -260,7 +260,7 @@ const projects = [
       <p>Axe d'amélioration : "À ce stade, le site n'était pas encore parfaitement responsive sur tous les supports, un point que j'ai largement corrigé en deuxième année sur le projet Home Key."</p>
     `
   },
-  {
+{
     id: 6,
     title: "Design d'expérience visiteur et Ingénierie des flux – MMI LAN",
     year: "MMI2",
@@ -306,7 +306,7 @@ const projects = [
       <p>AUTO-ÉVALUATION : "Ma réussite majeure a été de concilier les contraintes techniques rigides (électricité, sécurité) avec le plaisir des visiteurs. J'ai compris que le 'système de récompense' est le levier le plus puissant pour transformer un simple spectateur en acteur de l'événement."</p>
     `
   },
-  {
+{
     id: 7,
     title: "Crossy Road Power – Extension de Gameplay (SAÉ UX Gaming)",
     year: "MMI2",
@@ -349,7 +349,7 @@ const projects = [
       <p>Axe d'amélioration : "Avec le recul, je considère que la direction artistique des sprites et des effets mériterait d'être approfondie pour mieux s'intégrer au style 'voxel' original. Je souhaiterais retravailler l'identité visuelle globale des pouvoirs pour les rendre plus impactants et professionnels. Ce projet m'a appris que la recherche d'idées est une étape solide, mais que le 'polish' graphique est essentiel pour la crédibilité d'une interface de jeu."</p>
     `
   },
-  {
+{
     id: 8,
     title: "Animation Narrative 3D — L'Escarpolette (Jean Honoré Fragonard)",
     year: "MMI2",
@@ -390,7 +390,7 @@ const projects = [
       <p>Axe d'amélioration : "Pour rendre le projet plus professionnel, je devrais retravailler le rigging ou les clés d'animation du balancement de la femme sur la balançoire. Actuellement, le mouvement manque un peu de naturel dans son inertie (physique de balancement). C’est un point que je souhaite approfondir pour mes futures animations."</p>
     `
   },
-  {
+{
     id: 9,
     title: "Home Key — Intégration haute fidélité en temps limité",
     year: "MMI2",
@@ -434,7 +434,7 @@ const projects = [
       <p>Auto-analyse : "Bien que je maîtrise désormais la construction et la personnalisation sous WordPress, l'étape de déploiement et d'hébergement n'était pas l'objet de ce TP. C'est une compétence que je possède (vue en MMI 1), mais qui reste à consolider sur des projets de production réelle pour valider l'intégralité de la chaîne de développement."</p>
     `
   },
-  {
+{
     id: 10,
     title: "Organisation de la LAN MMI — Responsable Logistique et Évènementiel",
     year: "MMI2",
@@ -485,7 +485,7 @@ const projects = [
       <p>Axe d'amélioration : "La gestion du stress lors des imprévus du direct (adaptabilité des répétitions du spectacle). J'ai compris que la clé d'un événement réussi réside dans la qualité de la préparation en amont pour mieux gérer l'imprévisible le jour J."</p>
     `
   },
-  {
+{
     id: 11,
     title: "Affiche \"Vers un monde plus humain\" — Opéra de Toulon",
     year: "MMI3",
@@ -524,7 +524,7 @@ const projects = [
       <p>L'ÉVOLUTION (MMI 1 ➔ MMI 3) : "En première année, avec le projet BatBee, je découvrais les masques de fusion pour créer une image surréaliste. Ici, la technique est au service d'un message institutionnel. Je ne cherche plus seulement le réalisme visuel, mais la cohérence sémantique : chaque trame numérique ajoutée sur les danseurs sert à raconter le récit du spectacle. Je suis passée de l'exercice technique à la véritable Direction Artistique."</p>
     `
   },
-  {
+{
     id: 12,
     title: "\"The Crybaby Journey\" — Chef-d’œuvre Individuel",
     year: "MMI3",
@@ -564,7 +564,7 @@ const projects = [
       <p>L'ÉVOLUTION (MMI 1 ➔ MMI 3) : "Sur le projet Noces Funèbres (MMI 1), je suivais scrupuleusement l'univers de Tim Burton. Pour mon Chef-d'œuvre, j'affirme une posture d'auteur : je m'approprie une influence (Melanie Martinez) pour créer mon propre système visuel complet. L'évolution est aussi technique : j'ai choisi de sortir de l'écosystème Adobe pour maîtriser la Suite Affinity en autonomie, prouvant ma capacité d'adaptation aux outils professionnels alternatifs."</p>
     `
   },
-  {
+{
     id: 13,
     title: "\"Face au mur\" — Scénographie numérique (Opéra de Toulon)",
     year: "MMI3",
@@ -604,7 +604,7 @@ const projects = [
       <p>Réussite : "La difficulté majeure a été l'agilité : s'adapter aux danseurs en modifiant les courbes d'animation en temps réel. Cette collaboration directe avec des commanditaires réels a validé ma capacité à transformer une idée abstraite en un service scénique fonctionnel."</p>
     `
   },
-  {
+{
     id: 14,
     title: "Snoozly — Startup de capsules de repos connectées",
     year: "MMI3",
@@ -646,7 +646,7 @@ const projects = [
       <p>L'ÉVOLUTION (MMI 1 ➔ MMI 3) : "Au semestre 1 (VV Chair), j'abordais le marketing de manière scolaire. Pour Snoozly, j'ai adopté une posture de consultante. L'évolution majeure réside dans la capacité à synthétiser des enjeux complexes (marché, juridique, financier) dans un document de référence. Je ne décris plus un objet, je développe une stratégie de marque capable de s'insérer dans un milieu professionnel exigeant."</p>
     `
   },
-  {
+{
     id: 15,
     title: "Analyse Narrative & Game Writing (TLOU / Witcher 3)",
     year: "MMI3",
@@ -686,136 +686,437 @@ const projects = [
 
       <p>L'ÉVOLUTION (MMI 2 ➔ MMI 3) : "En deuxième année, avec Crossy Road Power, j'imaginais des mécaniques de jeu simples. Cette analyse de MMI 3 témoigne d'une montée en compétence théorique : je suis désormais capable de décortiquer des systèmes narratifs complexes pour en extraire des méthodes de travail. C'est le passage de la pratique intuitive à l'expertise métier, indispensable pour concevoir des expériences utilisateurs sophistiquées."</p>
     `
-  }
-
-,
-  {
+  },
+{
     id: 16,
-    title: "Stage BUT2 — Communication & création multimédia chez Cosplay Smart",
+    title: "Stage BUT2 — Première immersion chez Cosplay Smart",
     year: "stagemmi2",
     category: "Entreprendre",
     type: "professionnel",
     image: "../ressources/fond.jpg",
     cover: "../ressources/fond.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Trace professionnelle Cosplay Smart — BUT2" }
+      { src: "../ressources/fond.jpg", alt: "Stage BUT2 chez Cosplay Smart" }
     ],
-    shortDescription: "Première immersion professionnelle de 8 semaines : communication digitale, graphisme, vidéo, print et événementiel.",
+    shortDescription: "8 semaines pour découvrir la communication en entreprise : réseaux sociaux, print, vidéo, rédaction et événementiel.",
     ac: ["AC21.01", "AC22.05", "AC23.05", "AC25.04", "AC25.05"],
     infoHtml: `
-      <h2>💼 TRACE PROFESSIONNELLE — Stage BUT2</h2>
-      <h3>Communication & création multimédia chez Cosplay Smart</h3>
-      <h4>1. CONTEXTE</h4>
-      <p><strong>Quoi :</strong> première expérience professionnelle dans une entreprise spécialisée dans les produits et accessoires pour cosplayers.</p>
-      <p><strong>Où :</strong> Cosplay Smart, Six-Fours-les-Plages.</p>
-      <p><strong>Quand :</strong> du 3 février au 28 mars 2025 — 8 semaines.</p>
-      <p><strong>Qui :</strong> travail en entreprise, sous la supervision de Yolaine Déplace.</p>
-      <h4>2. MISSIONS RÉALISÉES</h4>
-      <p>J'ai participé à la communication digitale de l'entreprise : création de visuels pour les réseaux sociaux, réalisation de posts, stories, Reels et contenus courts.</p>
-      <p>J'ai également travaillé sur des supports print pour l'événementiel : affiches, bâches, nappes et kakemonos destinés aux conventions.</p>
-      <p>Une partie du stage a aussi été consacrée à la vidéo : captation, montage de formats courts, préparation d'un vlog et création de visuels associés.</p>
-      <h4>3. OUTILS</h4>
-      <p>Photoshop, Illustrator, Premiere Pro, Shopify, Discord, Instagram, Facebook.</p>
+      <div class="trace-intro">
+        <h2>💼 Stage BUT2 — Première immersion professionnelle</h2>
+        <p class="big-read">Cosplay Smart — février à mars 2025 — 8 semaines.</p>
+      </div>
+      <div class="trace-kpi-grid">
+        <div><strong>Cadre</strong><span>Stage de communication et graphisme</span></div>
+        <div><strong>Entreprise</strong><span>Boutique cosplay & pop culture</span></div>
+        <div><strong>Posture</strong><span>Découverte, production, adaptation</span></div>
+        <div><strong>Trace clé</strong><span>Premiers contenus réellement utilisés par une marque</span></div>
+      </div>
+      <h4>Les 5 missions principales</h4>
+      <ul class="mission-list">
+        <li><strong>Communication digitale :</strong> posts, stories, Reels, TikTok, miniatures et contenus de réseaux sociaux.</li>
+        <li><strong>Veille & stratégie :</strong> analyse du marché cosplay, des concurrents et réflexion sur un planning de communication.</li>
+        <li><strong>Création print :</strong> affiches, bâches, nappe, kakemono et supports de stand pour convention.</li>
+        <li><strong>Rédaction web :</strong> articles de blog, annonces Discord, textes Instagram et mise en ligne via Shopify.</li>
+        <li><strong>Audiovisuel :</strong> captation photo/vidéo, formats courts et vlog de la Clermont Geek Convention.</li>
+      </ul>
     `,
     acHtml: `
-      <h4>COMPÉTENCES ET AC MOBILISÉS</h4>
-      <p><strong>AC21.01</strong> — Analyse de la communication d'une marque dans son secteur.</p>
-      <p><strong>AC22.05</strong> — Mise en place et animation d'une présence sur les réseaux sociaux.</p>
-      <p><strong>AC23.05</strong> — Production de contenus plurimédias pour la communication.</p>
-      <p><strong>AC25.04</strong> — Collaboration au sein d'une organisation professionnelle.</p>
-      <p><strong>AC25.05</strong> — Production de contenus écrits, visuels et oraux dans un cadre professionnel.</p>
+      <h4>Compétences principalement mobilisées</h4>
+      <p><strong>Comprendre :</strong> analyser une marque, son secteur, ses cibles et ses codes de communication.</p>
+      <p><strong>Concevoir :</strong> proposer des contenus adaptés aux plateformes et aux besoins de la boutique.</p>
+      <p><strong>Exprimer :</strong> produire des visuels, textes et vidéos cohérents avec l'identité de Cosplay Smart.</p>
+      <p><strong>Entreprendre :</strong> collaborer en entreprise, respecter des contraintes et produire dans un cadre professionnel.</p>
     `,
     evaluationHtml: `
-      <h4>CE QUE J'AI APPRIS</h4>
-      <p>Ce stage m'a permis de découvrir le rythme réel d'une petite entreprise créative : produire vite, s'adapter aux besoins, respecter une identité de marque et penser les contenus selon leur support de diffusion.</p>
-      <h4>REGARD CRITIQUE</h4>
-      <p>Cette première expérience a surtout été une phase d'apprentissage. J'ai gagné en autonomie, mais j'ai aussi compris que la création professionnelle demande autant de rigueur que de créativité : fichiers propres, formats adaptés, anticipation de l'impression et cohérence de marque.</p>
+      <h4>Ce que ce stage m’a apporté</h4>
+      <p>Ce stage m’a fait passer des projets scolaires à des productions réellement diffusées. J’ai compris l’importance de la cohérence de marque, des formats, des délais et de la rigueur technique.</p>
+      <h4>Regard critique</h4>
+      <p>C’était une première phase d’apprentissage. Certaines productions pourraient aujourd’hui être plus abouties, mais elles marquent le début de ma professionnalisation et de ma confiance en entreprise.</p>
     `
   },
   {
     id: 17,
-    title: "Stage BUT3 — Communication digitale en format perlé chez Cosplay Smart",
+    title: "Stage BUT3 — Stage perlé chez Cosplay Smart",
     year: "stagemmi3",
     category: "Entreprendre",
     type: "professionnel",
     image: "../ressources/fond.jpg",
     cover: "../ressources/fond.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Trace professionnelle Cosplay Smart — BUT3" }
+      { src: "../ressources/fond.jpg", alt: "Stage BUT3 chez Cosplay Smart" }
     ],
-    shortDescription: "Stage long en format perlé : création graphique, vidéo, SEO, réseaux sociaux, événementiel et e-commerce.",
+    shortDescription: "18 semaines en format perlé : plus d'autonomie, plus de missions, et une implication plus forte dans la communication de marque.",
     ac: ["AC21.01", "AC22.04", "AC22.05", "AC23.03", "AC23.05", "AC25.01", "AC25.04"],
     infoHtml: `
-      <h2>💼 TRACE PROFESSIONNELLE — Stage BUT3</h2>
-      <h3>Communication digitale en format perlé chez Cosplay Smart</h3>
-      <h4>1. CONTEXTE</h4>
-      <p><strong>Quoi :</strong> poursuite de mes missions de communication et de création multimédia au sein de Cosplay Smart.</p>
-      <p><strong>Quand :</strong> stage de BUT3 au format perlé, de septembre 2025 à mai 2026.</p>
-      <p><strong>Particularité :</strong> le rythme alterné demande une organisation rigoureuse pour assurer la continuité des projets entre les périodes en entreprise et les périodes de cours.</p>
-      <h4>2. MISSIONS RÉALISÉES</h4>
-      <p>J'ai travaillé sur la création graphique pour le web et les réseaux sociaux, notamment avec la création de personnages chibis, de fonds d'écran et de visuels événementiels.</p>
-      <p>J'ai aussi produit des contenus vidéo : tutoriels, Reels, vlogs YouTube et captations lors de salons.</p>
-      <p>Une partie de mes missions portait sur la rédaction web et le SEO : articles de blog et fiches produits optimisées pour améliorer la visibilité du catalogue.</p>
-      <p>J'ai également participé à l'événementiel, à la logistique, à la vente et à la préparation des commandes.</p>
-      <h4>3. OUTILS</h4>
-      <p>Photoshop, Illustrator, Premiere Pro, Shopify, réseaux sociaux, outils de rédaction web et de suivi de contenus.</p>
+      <div class="trace-intro">
+        <h2>💼 Stage BUT3 — Montée en autonomie</h2>
+        <p class="big-read">Cosplay Smart — septembre 2025 à mai 2026 — 18 semaines en format perlé.</p>
+      </div>
+      <div class="trace-kpi-grid">
+        <div><strong>Cadre</strong><span>Stage long en communication digitale</span></div>
+        <div><strong>Rythme</strong><span>Alternance cours / entreprise</span></div>
+        <div><strong>Posture</strong><span>Proposer, concevoir, produire, ajuster</span></div>
+        <div><strong>Évolution</strong><span>D'une posture exécutante à une posture plus autonome</span></div>
+      </div>
+      <h4>Les 5 axes du stage</h4>
+      <ul class="mission-list">
+        <li><strong>Communication digitale :</strong> contenus Instagram, TikTok, Pinterest, YouTube, newsletter et animation de communauté.</li>
+        <li><strong>SEO & rédaction :</strong> articles de blog, fiches produits Shopify, newsletters et contenus liés aux Costips.</li>
+        <li><strong>Audiovisuel :</strong> tutoriels, Reels, TikTok, vlogs, captations en convention.</li>
+        <li><strong>Image de marque :</strong> chibis, ecocup, fonds d'écran, calendrier de l'Avent, dossier de sponsoring.</li>
+        <li><strong>Web :</strong> réflexion, arborescence, wireframes et début d'intégration d'un site vitrine sous WordPress / Divi.</li>
+      </ul>
     `,
     acHtml: `
-      <h4>COMPÉTENCES ET AC MOBILISÉS</h4>
-      <p><strong>AC21.01</strong> — Analyse de la communication et adaptation aux tendances du secteur.</p>
-      <p><strong>AC22.04</strong> — Optimisation de contenus pour le référencement naturel.</p>
-      <p><strong>AC22.05</strong> — Présence et animation sur les réseaux sociaux.</p>
-      <p><strong>AC23.03</strong> — Création et déclinaison d'une identité visuelle.</p>
-      <p><strong>AC23.05</strong> — Production de contenus plurimédias.</p>
-      <p><strong>AC25.01</strong> — Organisation et suivi de projets dans un rythme long.</p>
-      <p><strong>AC25.04</strong> — Collaboration au sein d'une organisation.</p>
+      <h4>Compétences principalement mobilisées</h4>
+      <p><strong>Comprendre :</strong> analyser les attentes d'une communauté et les tendances des réseaux.</p>
+      <p><strong>Concevoir :</strong> structurer une présence en ligne, un contenu SEO, une arborescence ou un support de marque.</p>
+      <p><strong>Exprimer :</strong> produire des contenus plurimédias : visuels, vidéos, textes, tutoriels, identité graphique.</p>
+      <p><strong>Développer :</strong> participer à l'intégration et à l'architecture d'un site vitrine professionnel.</p>
+      <p><strong>Entreprendre :</strong> travailler sur le long terme, collaborer, gérer la continuité et agir dans un cadre professionnel réel.</p>
     `,
     evaluationHtml: `
-      <h4>CE QUE J'AI APPRIS</h4>
-      <p>Ce deuxième stage m'a permis de renforcer mon autonomie et de travailler sur des missions plus longues, plus variées et plus proches des besoins réels de l'entreprise.</p>
-      <h4>ÉVOLUTION ENTRE LES DEUX STAGES</h4>
-      <p>Le premier stage m'a appris les bases de la communication professionnelle. Le second m'a permis de passer à une posture plus autonome : proposer, organiser, produire, ajuster et assurer une continuité sur plusieurs mois.</p>
-      <h4>REGARD CRITIQUE</h4>
-      <p>Cette expérience m'a montré que la communication ne se limite pas à créer des visuels : elle implique de comprendre une marque, une communauté, des contraintes commerciales et des objectifs de visibilité.</p>
+      <h4>Ce que ce stage m’a apporté</h4>
+      <p>Ce second stage confirme ma progression : je ne faisais plus seulement des tâches isolées, je participais davantage à la réflexion, à la stratégie de contenu et à la cohérence globale de la communication.</p>
+      <h4>Regard critique</h4>
+      <p>Le format perlé demande beaucoup d'organisation. J'ai appris à reprendre un projet après des périodes de cours, à documenter mes avancées et à maintenir une continuité dans la production.</p>
     `
   },
   {
     id: 18,
-    title: "Missions professionnelles — Contenus visuels, vidéo et SEO",
+    title: "Stage BUT2 — Réseaux sociaux & contenus courts",
+    year: "stagemmi2",
+    category: "Exprimer",
+    type: "professionnel",
+    image: "../ressources/fond.jpg",
+    cover: "../ressources/fond.jpg",
+    images: [
+      { src: "../ressources/fond.jpg", alt: "Contenus réseaux sociaux Cosplay Smart" }
+    ],
+    shortDescription: "Création de posts, stories, Reels et contenus courts pour animer la communauté de Cosplay Smart.",
+    ac: ["AC21.01", "AC22.05", "AC23.05", "AC25.05"],
+    infoHtml: `
+      <h2>📱 Communication digitale — Stage BUT2</h2>
+      <p class="big-read">Créer des contenus adaptés à une communauté de cosplayeurs, tout en respectant la voix de la marque.</p>
+      <h4>Contexte</h4>
+      <p>Première expérience de création de contenus diffusés dans un cadre professionnel : Instagram, TikTok, stories et annonces.</p>
+      <h4>Objectif</h4>
+      <p>Informer, promouvoir les produits, annoncer les événements et maintenir une présence active auprès de la communauté.</p>
+      <h4>Mon rôle</h4>
+      <p>Création de visuels, adaptation des formats, rédaction courte, montage de contenus simples et mise en cohérence avec l'identité de Cosplay Smart.</p>
+    `,
+    acHtml: `
+      <p><strong>AC22.05 :</strong> mettre en place une présence sur les réseaux sociaux.</p>
+      <p><strong>AC23.05 :</strong> produire des contenus plurimédias adaptés à différents supports.</p>
+      <p><strong>AC25.05 :</strong> produire des messages professionnels clairs et adaptés.</p>
+    `,
+    evaluationHtml: `
+      <h4>Apprentissage</h4>
+      <p>J'ai compris qu'un contenu de réseau social doit être lisible vite, adapté à un format précis et cohérent avec une stratégie plus large.</p>
+      <h4>Amélioration possible</h4>
+      <p>Avec plus d'expérience, je pourrais davantage analyser les statistiques de chaque publication pour ajuster les contenus suivants.</p>
+    `
+  },
+  {
+    id: 19,
+    title: "Stage BUT2 — Supports print & stand de convention",
+    year: "stagemmi2",
+    category: "Exprimer",
+    type: "professionnel",
+    image: "../ressources/fond.jpg",
+    cover: "../ressources/fond.jpg",
+    images: [
+      { src: "../ressources/fond.jpg", alt: "Supports print Cosplay Smart" }
+    ],
+    shortDescription: "Affiches, bâches, nappe et kakemono : premiers supports de communication grand format réalisés pour un usage événementiel.",
+    ac: ["AC13.02", "AC13.03", "AC13.06", "AC23.03"],
+    infoHtml: `
+      <h2>🖨️ Supports print — Stage BUT2</h2>
+      <p class="big-read">Passer du visuel écran à des supports imprimés visibles en convention.</p>
+      <h4>Contexte</h4>
+      <p>Création de supports destinés au stand de Cosplay Smart, notamment pour la Clermont Geek Convention.</p>
+      <h4>Objectif</h4>
+      <p>Rendre le stand plus identifiable, valoriser les produits et transmettre rapidement les informations utiles aux visiteurs.</p>
+      <h4>Mon rôle</h4>
+      <p>Conception de supports visuels, préparation de fichiers adaptés à l'impression et respect de la hiérarchie de l'information.</p>
+    `,
+    acHtml: `
+      <p><strong>AC13.03 :</strong> créer, composer et retoucher des visuels.</p>
+      <p><strong>AC13.06 :</strong> optimiser les médias selon leur support de diffusion.</p>
+      <p><strong>AC23.03 :</strong> décliner une identité visuelle sur plusieurs supports.</p>
+    `,
+    evaluationHtml: `
+      <h4>Apprentissage</h4>
+      <p>Cette mission m'a appris les contraintes du print : résolution, marges, lisibilité à distance, formats et préparation des fichiers.</p>
+      <h4>Regard critique</h4>
+      <p>Je referais aujourd'hui certains fichiers avec une grille plus stricte et une meilleure anticipation de la lisibilité en situation réelle.</p>
+    `
+  },
+  {
+    id: 20,
+    title: "Stage BUT2 — Rédaction web, Shopify & contenus éditoriaux",
+    year: "stagemmi2",
+    category: "Comprendre",
+    type: "professionnel",
+    image: "../ressources/fond.jpg",
+    cover: "../ressources/fond.jpg",
+    images: [
+      { src: "../ressources/fond.jpg", alt: "Rédaction web Cosplay Smart" }
+    ],
+    shortDescription: "Articles de blog, annonces Discord, textes Instagram et mise en ligne de contenus via Shopify.",
+    ac: ["AC13.01", "AC21.01", "AC22.04", "AC23.01", "AC25.05"],
+    infoHtml: `
+      <h2>✍️ Rédaction web — Stage BUT2</h2>
+      <p class="big-read">Adapter un même sujet à plusieurs supports : blog, Discord, Instagram et site e-commerce.</p>
+      <h4>Contexte</h4>
+      <p>Rédaction de contenus pour informer la communauté, présenter des produits, annoncer des événements et enrichir le site.</p>
+      <h4>Exemples</h4>
+      <p>Article annonçant la présence de Cosplay Smart à la Kamo Con, textes explicatifs autour du Worbla, annonces de publication et mise en ligne via Shopify.</p>
+      <h4>Objectif</h4>
+      <p>Produire un contenu clair, utile, cohérent avec le ton de la marque et adapté au support de diffusion.</p>
+    `,
+    acHtml: `
+      <p><strong>AC13.01 :</strong> écrire pour les médias numériques.</p>
+      <p><strong>AC22.04 :</strong> prendre en compte le référencement et la visibilité du contenu.</p>
+      <p><strong>AC25.05 :</strong> maîtriser les codes de la communication professionnelle.</p>
+    `,
+    evaluationHtml: `
+      <h4>Apprentissage</h4>
+      <p>J'ai appris à structurer un article web, à réfléchir aux mots-clés, au ton, à l'accroche et à l'intérêt du contenu pour les visiteurs.</p>
+      <h4>Regard critique</h4>
+      <p>La difficulté était d'écrire vite tout en adaptant le style à chaque plateforme. C'est une compétence que j'ai continué à renforcer en BUT3.</p>
+    `
+  },
+  {
+    id: 21,
+    title: "Stage BUT2 — Vlog Clermont Geek Convention",
+    year: "stagemmi2",
+    category: "Exprimer",
+    type: "professionnel",
+    image: "../ressources/fond.jpg",
+    cover: "../ressources/fond.jpg",
+    images: [
+      { src: "../ressources/fond.jpg", alt: "Vlog Clermont Geek Convention" }
+    ],
+    shortDescription: "Captation et montage d'un vlog racontant un week-end de stagiaire chez Cosplay Smart en convention.",
+    ac: ["AC13.04", "AC23.04", "AC23.05", "AC25.04"],
+    infoHtml: `
+      <h2>🎥 Vlog de convention — Stage BUT2</h2>
+      <p class="big-read">Raconter les coulisses d'une convention à travers mon point de vue de stagiaire.</p>
+      <h4>Contexte</h4>
+      <p>Projet audiovisuel réalisé autour de la Clermont Geek Convention : préparatifs, ambiance, stand et déroulement du week-end.</p>
+      <h4>Objectif</h4>
+      <p>Créer un contenu immersif qui valorise la présence de Cosplay Smart en convention et garde une trace vivante de l'événement.</p>
+      <h4>Mon rôle</h4>
+      <p>Angle narratif, captation photo/vidéo, sélection des plans, montage et adaptation du rythme pour un format YouTube.</p>
+    `,
+    acHtml: `
+      <p><strong>AC13.04 :</strong> tourner et monter une vidéo.</p>
+      <p><strong>AC23.04 :</strong> scénariser une communication multimédia.</p>
+      <p><strong>AC23.05 :</strong> produire un contenu audiovisuel pour une communication plurimédia.</p>
+    `,
+    evaluationHtml: `
+      <h4>Apprentissage</h4>
+      <p>Ce vlog m'a appris à construire une narration à partir d'un événement réel : choisir un angle, créer un rythme et rendre l'expérience compréhensible pour les personnes absentes.</p>
+      <h4>Regard critique</h4>
+      <p>Avec plus de recul, je préparerais davantage de plans en amont pour assurer une meilleure variété visuelle et sonore.</p>
+    `
+  },
+  {
+    id: 22,
+    title: "Stage BUT3 — Communication digitale & communauté",
+    year: "stagemmi3",
+    category: "Comprendre",
+    type: "professionnel",
+    image: "../ressources/fond.jpg",
+    cover: "../ressources/fond.jpg",
+    images: [
+      { src: "../ressources/fond.jpg", alt: "Communication digitale stage BUT3" }
+    ],
+    shortDescription: "Publications, veille, Pinterest, Coupe de France de Cosplay et contenus interactifs pour engager la communauté.",
+    ac: ["AC21.01", "AC21.05", "AC22.05", "AC23.05", "AC25.04"],
+    infoHtml: `
+      <h2>📣 Communication digitale — Stage BUT3</h2>
+      <p class="big-read">Passer d'une production de contenus à une réflexion plus active sur l'engagement et la communauté.</p>
+      <h4>Contexte</h4>
+      <p>Création et diffusion de contenus sur Instagram, TikTok, Pinterest, YouTube et newsletter, avec une participation plus forte aux réflexions de communication.</p>
+      <h4>Exemples concrets</h4>
+      <ul class="mission-list">
+        <li>Mise en avant des sélectionnés de la Coupe de France de Cosplay.</li>
+        <li>Contact des participants via Meta Business Suite pour récupérer les visuels.</li>
+        <li>Proposition de développement de la présence de Cosplay Smart sur Pinterest.</li>
+        <li>Publication d'un challenge cosplay ayant dépassé 500 likes et presque 100 commentaires.</li>
+      </ul>
+    `,
+    acHtml: `
+      <p><strong>AC21.01 :</strong> analyser la communication d'un acteur dans son marché.</p>
+      <p><strong>AC22.05 :</strong> mettre en place une présence sur les réseaux sociaux.</p>
+      <p><strong>AC23.05 :</strong> produire des contenus plurimédias adaptés aux plateformes.</p>
+      <p><strong>AC25.04 :</strong> collaborer avec l'équipe et les membres de la communauté.</p>
+    `,
+    evaluationHtml: `
+      <h4>Apprentissage</h4>
+      <p>J'ai appris à analyser les attentes d'une communauté, à proposer des formats et à équilibrer contenus promotionnels, conseils et divertissement.</p>
+      <h4>Regard critique</h4>
+      <p>Le défi principal était de produire régulièrement des idées originales. Cette difficulté m'a poussée à gagner en efficacité et en confiance créative.</p>
+    `
+  },
+  {
+    id: 23,
+    title: "Stage BUT3 — SEO, rédaction web & Shopify",
+    year: "stagemmi3",
+    category: "Concevoir",
+    type: "professionnel",
+    image: "../ressources/fond.jpg",
+    cover: "../ressources/fond.jpg",
+    images: [
+      { src: "../ressources/fond.jpg", alt: "SEO et rédaction web stage BUT3" }
+    ],
+    shortDescription: "Articles de blog, fiches produits, newsletters et liens entre produits, Costips et contenus SEO.",
+    ac: ["AC21.02", "AC22.04", "AC23.01", "AC24.05", "AC25.05"],
+    infoHtml: `
+      <h2>🔎 SEO & rédaction web — Stage BUT3</h2>
+      <p class="big-read">Créer des contenus utiles aux utilisateurs tout en améliorant la visibilité de la boutique.</p>
+      <h4>Contexte</h4>
+      <p>Travail sur les contenus éditoriaux du site : articles, fiches produits Shopify, newsletters et organisation de contenus autour des perruques de cosplay.</p>
+      <h4>Exemples</h4>
+      <ul class="mission-list">
+        <li>Articles autour du wig cap et du bandeau antidérapant.</li>
+        <li>Liens entre articles, vidéos Costips et produits associés.</li>
+        <li>Création et mise à jour de fiches produits Shopify.</li>
+        <li>Harmonisation de contenus existants du catalogue.</li>
+      </ul>
+    `,
+    acHtml: `
+      <p><strong>AC21.02 :</strong> auditer et améliorer la visibilité d'un site ou service.</p>
+      <p><strong>AC22.04 :</strong> optimiser le référencement d'un site, produit ou service.</p>
+      <p><strong>AC23.01 :</strong> produire un écrit web structuré et documenté.</p>
+      <p><strong>AC24.05 :</strong> contribuer à l'optimisation web et à l'expérience de navigation.</p>
+    `,
+    evaluationHtml: `
+      <h4>Apprentissage</h4>
+      <p>J'ai compris qu'un contenu web ne sert pas seulement à informer : il doit aussi répondre à une intention de recherche, être structuré et créer des liens utiles entre les pages.</p>
+      <h4>Regard critique</h4>
+      <p>Cette mission m'a appris à penser la cohérence d'un catalogue en ligne. Je peux encore progresser sur l'analyse SEO quantitative, mais j'ai acquis une meilleure logique de contenu.</p>
+    `
+  },
+  {
+    id: 24,
+    title: "Stage BUT3 — Costips, Reels & vlogs",
     year: "stagemmi3",
     category: "Exprimer",
     type: "professionnel",
     image: "../ressources/fond.jpg",
     cover: "../ressources/fond.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Créations professionnelles" }
+      { src: "../ressources/fond.jpg", alt: "Costips et production vidéo" }
     ],
-    shortDescription: "Regroupement de créations réalisées en entreprise : visuels, chibis, Reels, tutoriels, articles et fiches produits.",
-    ac: ["AC22.04", "AC22.05", "AC23.03", "AC23.05", "AC23.06"],
+    shortDescription: "Tutoriels courts, Reels, TikTok, vlogs YouTube et captations en convention.",
+    ac: ["AC23.04", "AC23.05", "AC23.06", "AC25.04"],
     infoHtml: `
-      <h2>🎨 TRACE PROFESSIONNELLE — Créations pour Cosplay Smart</h2>
-      <p>Cette trace regroupe plusieurs productions réalisées durant mon stage de BUT3 : créations graphiques, contenus vidéo, visuels réseaux sociaux, articles de blog, fiches produits et éléments liés à l'image de marque.</p>
-      <p>L'objectif était de produire des contenus utiles à la communication réelle de l'entreprise, adaptés à ses supports et à sa communauté.</p>
-      <h4>MON RÔLE</h4>
-      <p>Création visuelle, montage vidéo, veille de tendances, rédaction web et adaptation des contenus aux plateformes.</p>
+      <h2>🎬 Production audiovisuelle — Stage BUT3</h2>
+      <p class="big-read">Transformer des conseils produits en formats courts, utiles et engageants pour la communauté cosplay.</p>
+      <h4>Exemples concrets</h4>
+      <ul class="mission-list">
+        <li>Deux épisodes de Costips autour du wig cap et du bandeau antidérapant.</li>
+        <li>Écriture des scripts, jeu face caméra, montage et adaptation aux plateformes.</li>
+        <li>Vlog Clermont Geek Convention poursuivi et second vlog consacré au Toulouse Game Show.</li>
+        <li>Captations photo et vidéo lors d'événements.</li>
+      </ul>
+      <h4>Résultats</h4>
+      <p>Le Costips Wig Cap a dépassé 17 000 vues sur Instagram et 12 000 sur TikTok. Celui sur le bandeau antidérapant a dépassé 25 000 vues sur Instagram et 16 000 sur TikTok.</p>
     `,
     acHtml: `
-      <h4>COMPÉTENCES ET AC</h4>
-      <p><strong>AC22.04</strong> — Optimisation du référencement à travers articles et fiches produits.</p>
-      <p><strong>AC22.05</strong> — Présence sur les réseaux sociaux.</p>
-      <p><strong>AC23.03</strong> — Création et déclinaison d'éléments visuels cohérents avec l'identité de marque.</p>
-      <p><strong>AC23.05</strong> — Production plurimédia : vidéo, visuel, texte.</p>
-      <p><strong>AC23.06</strong> — Production de contenus animés ou adaptés aux codes vidéo actuels.</p>
+      <p><strong>AC23.04 :</strong> scénariser une communication multimédia.</p>
+      <p><strong>AC23.05 :</strong> produire pour une communication plurimédia.</p>
+      <p><strong>AC23.06 :</strong> produire des contenus vidéo adaptés aux codes actuels.</p>
+      <p><strong>AC25.04 :</strong> collaborer avec l'équipe dans la production et la validation.</p>
     `,
     evaluationHtml: `
-      <h4>CE QUE J'AI APPRIS</h4>
-      <p>J'ai appris à créer dans un cadre professionnel réel : respecter une identité, adapter les formats, penser la lisibilité, suivre les tendances et produire des contenus utiles à une stratégie de communication.</p>
-      <h4>REGARD CRITIQUE</h4>
-      <p>Le principal enjeu est de trouver l'équilibre entre créativité personnelle et cohérence de marque. Certaines créations peuvent toujours être optimisées, mais elles m'ont permis de mieux comprendre la logique d'une communication continue.</p>
+      <h4>Apprentissage</h4>
+      <p>J'ai appris à vulgariser une information produit, à adapter un rythme de montage aux réseaux et à penser la vidéo comme un outil de relation avec une communauté.</p>
+      <h4>Regard critique</h4>
+      <p>Ces formats courts demandent beaucoup de précision : chaque seconde compte. Je pourrais encore améliorer la préparation des prises et l'anticipation des déclinaisons.</p>
     `
   },
   {
-    id: 19,
+    id: 25,
+    title: "Stage BUT3 — Image de marque, chibis & supports graphiques",
+    year: "stagemmi3",
+    category: "Exprimer",
+    type: "professionnel",
+    image: "../ressources/fond.jpg",
+    cover: "../ressources/fond.jpg",
+    images: [
+      { src: "../ressources/fond.jpg", alt: "Image de marque Cosplay Smart" }
+    ],
+    shortDescription: "Chibis, ecocup, dossier de sponsoring, fonds d'écran, calendrier de l'Avent et supports visuels.",
+    ac: ["AC22.01", "AC23.02", "AC23.03", "AC25.05"],
+    infoHtml: `
+      <h2>🎨 Image de marque — Stage BUT3</h2>
+      <p class="big-read">Créer des visuels reconnaissables qui renforcent le lien entre la marque et sa communauté.</p>
+      <h4>Productions</h4>
+      <ul class="mission-list">
+        <li>Personnages chibis représentant l'équipe, les chats, l'alternante et moi-même.</li>
+        <li>Déclinaisons saisonnières, visuels communautaires et contenus de calendrier de l'Avent.</li>
+        <li>Ecocup de convention, dossier de sponsoring, affiches et diplômes de concours.</li>
+      </ul>
+      <h4>Objectif</h4>
+      <p>Développer une image de marque plus proche, cohérente et identifiable pour une communauté cosplay très attachée aux personnages et aux univers visuels.</p>
+    `,
+    acHtml: `
+      <p><strong>AC23.02 :</strong> définir une iconographie cohérente.</p>
+      <p><strong>AC23.03 :</strong> créer et décliner une identité visuelle.</p>
+      <p><strong>AC25.05 :</strong> adapter la communication à un cadre professionnel et communautaire.</p>
+    `,
+    evaluationHtml: `
+      <h4>Apprentissage</h4>
+      <p>J'ai appris à partir d'une page blanche, à proposer une direction graphique et à produire des supports utilisables dans des contextes variés.</p>
+      <h4>Regard critique</h4>
+      <p>Le défi était de trouver l'équilibre entre mon style personnel et l'identité de Cosplay Smart. Cette mission m'a fait progresser en autonomie créative.</p>
+    `
+  },
+  {
+    id: 26,
+    title: "Stage BUT3 — Site vitrine professionnel Cosplay Smart",
+    year: "stagemmi3",
+    category: "Développer",
+    type: "professionnel",
+    image: "../ressources/fond.jpg",
+    cover: "../ressources/fond.jpg",
+    images: [
+      { src: "../ressources/fond.jpg", alt: "Site vitrine professionnel Cosplay Smart" }
+    ],
+    shortDescription: "Réflexion, arborescence, wireframes et début d'intégration d'un site vitrine complémentaire à la boutique.",
+    ac: ["AC21.01", "AC22.01", "AC22.02", "AC24.01", "AC24.06", "AC25.01"],
+    infoHtml: `
+      <h2>🌐 Site vitrine professionnel — Stage BUT3</h2>
+      <p class="big-read">Concevoir un site qui ne remplace pas la boutique, mais présente Cosplay Smart aux partenaires, événements et futurs collaborateurs.</p>
+      <h4>Étapes réalisées</h4>
+      <ul class="mission-list">
+        <li>Réflexion stratégique : objectifs, cibles, informations utiles.</li>
+        <li>Collecte de contenus : témoignages, statistiques, visuels et questions.</li>
+        <li>Construction de l'arborescence et des wireframes.</li>
+        <li>Début d'intégration sous WordPress / Divi : header, footer, accueil et page équipe.</li>
+        <li>Ajout de CSS pour certaines personnalisations.</li>
+      </ul>
+    `,
+    acHtml: `
+      <p><strong>AC21.01 :</strong> comprendre les besoins d'une organisation et de ses publics.</p>
+      <p><strong>AC22.01 :</strong> co-concevoir un service en fonction de ses usages.</p>
+      <p><strong>AC24.01 :</strong> produire des pages web responsives.</p>
+      <p><strong>AC24.06 :</strong> configurer et utiliser une solution d'hébergement / CMS adaptée.</p>
+      <p><strong>AC25.01 :</strong> suivre un projet web sur la durée.</p>
+    `,
+    evaluationHtml: `
+      <h4>Apprentissage</h4>
+      <p>Cette mission a relié stratégie, UX, contenu et développement. J'ai compris qu'un site professionnel commence par une clarification des objectifs avant même la mise en page.</p>
+      <h4>Regard critique</h4>
+      <p>Le projet était encore en cours : il reste à finaliser, tester et enrichir. Mais il m'a permis de mieux comprendre la logique complète d'un projet web professionnel.</p>
+    `
+  },
+  {
+    id: 27,
     title: "Engagement associatif & vie étudiante — BDE / événements MMI",
     year: "associatif",
     category: "Entreprendre",
@@ -828,67 +1129,77 @@ const projects = [
     shortDescription: "Participation à la vie étudiante, aux événements et à la dynamique collective de la formation.",
     ac: ["AC25.01", "AC25.03", "AC25.04", "AC25.05"],
     infoHtml: `
-      <h2>🤝 TRACE — Engagement associatif et vie étudiante</h2>
-      <p>Cette trace représente mon engagement dans la vie étudiante et les événements liés au MMI. Elle permet de montrer une autre facette de mon parcours : organisation, communication, travail d'équipe et participation à une dynamique collective.</p>
-      <h4>OBJECTIF</h4>
-      <p>Participer à des projets collectifs, contribuer à l'ambiance de la formation et développer des compétences transversales hors du cadre strict des cours.</p>
+      <h2>🤝 Engagement associatif et vie étudiante</h2>
+      <p class="big-read">Une autre facette de mon parcours : participer, organiser, communiquer et faire vivre la promotion.</p>
+      <h4>Objectif</h4>
+      <p>Contribuer à des événements et projets collectifs, tout en développant des compétences d'organisation, de communication et de travail en équipe.</p>
     `,
     acHtml: `
-      <h4>COMPÉTENCES ET AC</h4>
-      <p><strong>AC25.01</strong> — Organisation et gestion de projets.</p>
-      <p><strong>AC25.03</strong> — Constitution d'un réseau professionnel et étudiant.</p>
-      <p><strong>AC25.04</strong> — Collaboration au sein d'une organisation.</p>
-      <p><strong>AC25.05</strong> — Communication écrite et orale professionnelle.</p>
+      <p><strong>AC25.01 :</strong> organiser et suivre un projet.</p>
+      <p><strong>AC25.03 :</strong> développer un réseau étudiant et professionnel.</p>
+      <p><strong>AC25.04 :</strong> collaborer au sein d'une organisation.</p>
+      <p><strong>AC25.05 :</strong> communiquer dans un cadre collectif.</p>
     `,
     evaluationHtml: `
-      <h4>CE QUE J'AI APPRIS</h4>
-      <p>L'engagement associatif m'a appris à communiquer, à m'organiser avec d'autres personnes et à participer à des projets qui reposent sur la coopération.</p>
-      <h4>REGARD CRITIQUE</h4>
-      <p>Ces expériences sont parfois moins formelles que les SAE, mais elles sont importantes car elles développent une posture professionnelle : écoute, adaptation, responsabilité et esprit d'équipe.</p>
+      <h4>Ce que j'ai appris</h4>
+      <p>L'engagement associatif m'a appris à gérer la coordination avec d'autres personnes, à communiquer efficacement et à participer à une dynamique collective.</p>
     `
   },
   {
-    id: 20,
-    title: "The Crybaby Journey — Chef-d'œuvre interactif récompensé",
+    id: 28,
+    title: "The Crybaby Journey — Chef-d'œuvre interactif",
     year: "mmi3",
     category: "Exprimer",
-    type: "academique",
-    image: "../ressources/projets/crybaby.png",
-    cover: "../ressources/projets/crybaby.png",
+    type: "chef-d’œuvre",
+    image: "../ressources/projets/TheCrybabyJourney.jpeg",
+    cover: "../ressources/projets/TheCrybabyJourney.jpeg",
     images: [
-      { src: "../ressources/projets/crybaby.png", alt: "The Crybaby Journey" },
+      { src: "../ressources/projets/TheCrybabyJourney.jpeg", alt: "The Crybaby Journey — affiche de présentation" },
+      { src: "../ressources/projets/crybaby.png", alt: "The Crybaby Journey — ancien visuel" },
       { src: "../ressources/fond.jpg", alt: "Ambiance projet" }
     ],
-    shortDescription: "Expérience narrative interactive inspirée de la trilogie musicale de Melanie Martinez, récompensée au Festival MMI.",
-    ac: ["AC33.01", "AC33.02", "AC33.03", "AC33.04", "AC33.05", "AC35.04"],
+    shortDescription: "Expérience web immersive inspirée de Melanie Martinez : narration, DA, son, UX, développement React/Vite et projet personnel récompensé.",
+    ac: ["AC21.05", "AC22.01", "AC23.04", "AC23.05", "AC24.01", "AC24.03", "AC33.01", "AC33.02", "AC33.03", "AC33.04", "AC33.05", "AC35.04"],
     infoHtml: `
-      <h2>🌸 CHEF-D'ŒUVRE — The Crybaby Journey</h2>
-      <p><strong>Pour une immersion totale :</strong> le port du casque est vivement conseillé. Expérience pensée pour ordinateur, à vivre seul·e, à son rythme.</p>
-      <p>The Crybaby Journey est une expérience narrative interactive inspirée de la trilogie musicale de Melanie Martinez : Cry Baby, K-12 et Portals.</p>
-      <p>L'expérience plonge l'utilisateur dans l'univers de Cry Baby : un personnage qui grandit, traverse ses blessures et évolue à travers plusieurs étapes de sa vie.</p>
-      <h4>INTENTION</h4>
-      <p>Ce projet me tenait particulièrement à cœur car l'univers de Melanie Martinez a beaucoup compté dans ma construction personnelle et artistique. Mon objectif était de transmettre son univers, mais aussi une part du mien.</p>
-      <h4>CONCEPTION</h4>
-      <p>Chaque partie possède une identité visuelle, narrative et interactive différente : Cry Baby sous forme de livre interactif, K-12 comme expérience plus narrative et à choix, Portals comme partie plus abstraite et contemplative.</p>
-      <h4>DISTINCTIONS</h4>
-      <p>Projet sélectionné au Festival MMI, 3e dans la catégorie <strong>Projet multimédia interactif</strong>, Prix Coup de Cœur et Prix du Public.</p>
+      <div class="trace-intro trace-intro--major">
+        <h2>🌸 The Crybaby Journey</h2>
+        <p class="big-read">Un chef-d'œuvre interactif pensé comme une conclusion personnelle à mes trois années de MMI.</p>
+      </div>
+      <div class="trace-kpi-grid">
+        <div><strong>Format</strong><span>Expérience web immersive</span></div>
+        <div><strong>Support</strong><span>Ordinateur uniquement</span></div>
+        <div><strong>Conseil</strong><span>Casque vivement recommandé</span></div>
+        <div><strong>Reconnaissance</strong><span>3e catégorie Projet multimédia interactif + Prix Coup de Cœur du Public</span></div>
+      </div>
+      <h4>Pitch d'entrée</h4>
+      <p class="quote-block">Pour une immersion totale, le port du casque est vivement conseillé. Ajuste le volume. Respire. Bienvenue dans la tête de Cry Baby.</p>
+      <h4>Intention</h4>
+      <p>Le projet s'inspire de la trilogie musicale de Melanie Martinez : Cry Baby, K-12 et Portals. Je voulais transmettre son univers, mais aussi une partie du mien, car cette artiste m'a accompagnée, m'a aidée à grandir et à gagner confiance en moi.</p>
+      <h4>Structure</h4>
+      <ul class="mission-list">
+        <li><strong>Cry Baby :</strong> un livre interactif pour représenter l'enfance.</li>
+        <li><strong>K-12 :</strong> une partie plus interactive où les choix prennent de l'importance.</li>
+        <li><strong>Portals :</strong> une partie plus abstraite, contemplative et proche du rêve.</li>
+      </ul>
     `,
     acHtml: `
-      <h4>COMPÉTENCES ET AC</h4>
-      <p><strong>AC33.01</strong> — Démarche originale et personnelle.</p>
-      <p><strong>AC33.02</strong> — Design system et éléments visuels cohérents.</p>
-      <p><strong>AC33.03</strong> — Maîtrise des étapes de production d'un projet multimédia.</p>
-      <p><strong>AC33.04</strong> — Production d'une expérience sophistiquée et immersive.</p>
-      <p><strong>AC33.05</strong> — Direction artistique.</p>
-      <p><strong>AC35.04</strong> — Défense et valorisation d'un projet personnel.</p>
+      <h4>Compétences mises en évidence</h4>
+      <p><strong>Exprimer :</strong> direction artistique, narration, voix off, sound design, visuels, expérience émotionnelle.</p>
+      <p><strong>Développer :</strong> React / Vite, interactions, sauvegarde de progression, intégration et optimisation.</p>
+      <p><strong>Concevoir :</strong> expérience utilisateur, progression narrative, choix des mécaniques et rythme de parcours.</p>
+      <p><strong>Comprendre :</strong> compréhension d'un univers culturel, des fans et d'une expérience immersive à une personne.</p>
+      <p><strong>Entreprendre :</strong> défendre, finaliser et présenter un projet personnel ambitieux.</p>
+      <h4>AC clés</h4>
+      <p>AC33.01, AC33.02, AC33.03, AC33.04, AC33.05 et AC35.04 sont les apprentissages les plus centraux du projet.</p>
     `,
     evaluationHtml: `
-      <h4>PRODUCTION & APPRENTISSAGES</h4>
-      <p>Le projet m'a demandé beaucoup de tests et d'apprentissages techniques. J'ai construit l'expérience progressivement, partie par partie, en apprenant à adapter les interactions et à corriger les erreurs.</p>
-      <p>J'ai utilisé des images générées par IA pour certains décors, puis je les ai retravaillées afin de les adapter à l'ambiance recherchée. J'ai aussi travaillé la voix off, les sons, les ambiances et les effets de parallaxe.</p>
-      <h4>REGARD CRITIQUE</h4>
-      <p>Le plus grand défi a été l'ampleur du projet, réalisé seule. J'avais initialement envisagé d'intégrer davantage de 3D, mais les essais rendaient le site trop lourd. J'ai donc fait des choix plus légers, finalement plus poétiques et mieux adaptés à l'expérience.</p>
-      <p>Ce projet mériterait encore des améliorations, mais il correspond au niveau d'immersion et de narration que je voulais atteindre. Il représente une trace dont je suis fière à la fin de mon parcours à l'IUT.</p>
+      <h4>Production & apprentissages</h4>
+      <p>Ce projet m'a demandé beaucoup de tests. J'ai appris progressivement en construisant l'expérience partie par partie : narration, interactions, voix off, son, parallaxe, visuels et code.</p>
+      <p>J'ai utilisé l'IA pour certains décors et pour m'aider à comprendre des problèmes techniques, mais j'ai retravaillé les images et modifié le code moi-même pour l'adapter à mon intention.</p>
+      <h4>Difficultés et arbitrages</h4>
+      <p>Le plus grand défi a été de réaliser seule un projet de cette ampleur. Je voulais intégrer plus de 3D, mais les essais rendaient le site trop lourd. J'ai choisi une solution plus légère, finalement plus poétique et plus adaptée à l'expérience.</p>
+      <h4>Regard critique</h4>
+      <p>Le projet pourrait encore être amélioré et optimisé, mais il correspond au niveau d'immersion et de narration que je voulais atteindre. C'est une trace dont je suis fière, car elle montre mes capacités pluridisciplinaires et mon identité créative.</p>
     `
   }
 
