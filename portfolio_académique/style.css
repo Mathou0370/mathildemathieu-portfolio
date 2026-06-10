@@ -1350,3 +1350,135 @@ a {
     font-size: 2.2rem;
   }
 }
+
+
+/* === Ajustements V3 : oral, projet phare, compétences === */
+
+.hero-featured-project {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) 1fr;
+  gap: 22px;
+  align-items: center;
+  margin-top: 22px;
+  padding: 18px;
+  border: 2px solid var(--win-border-deep);
+  border-top-color: var(--win-border-light);
+  border-left-color: var(--win-border-light);
+  background:
+    linear-gradient(135deg, rgba(20, 44, 120, 0.12), rgba(255,255,255,0.78)),
+    var(--win-panel);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.22);
+}
+
+.hero-featured-project img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 2px solid var(--win-border-deep);
+  background: #111;
+}
+
+.hero-featured-project h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1.05;
+}
+
+.hero-featured-project p {
+  font-size: 1.05rem;
+  max-width: 760px;
+}
+
+.hero-featured__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 14px;
+}
+
+.hero-featured__badges span,
+.featured-ribbon {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 9px;
+  font-weight: 700;
+  color: white;
+  background: #0f2f82;
+  border: 1px solid #ffffff;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.35);
+}
+
+.featured-ribbon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  font-size: .78rem;
+  text-transform: uppercase;
+}
+
+.project-card__media {
+  position: relative;
+}
+
+.project-card--featured {
+  outline: 3px solid #2f68db;
+  outline-offset: 2px;
+}
+
+.competence-card__oral {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+  padding: 12px;
+  background: rgba(255,255,255,0.75);
+  border: 2px solid var(--win-border-mid);
+}
+
+.competence-card__label {
+  margin: 0 0 2px;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: .04em;
+}
+
+.oral-pick-btn {
+  text-align: left;
+  padding: 10px 12px;
+  color: #111;
+  background: #fff;
+  border: 2px solid var(--win-border-deep);
+  border-top-color: var(--win-border-light);
+  border-left-color: var(--win-border-light);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.oral-pick-btn span {
+  display: block;
+  margin-bottom: 2px;
+  font-size: .74rem;
+  color: #0f2f82;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.oral-pick-btn:hover,
+.oral-pick-btn:focus-visible {
+  background: #0f2f82;
+  color: #fff;
+}
+
+.oral-pick-btn:hover span,
+.oral-pick-btn:focus-visible span {
+  color: #fff;
+}
+
+@media (max-width: 760px) {
+  .hero-featured-project {
+    grid-template-columns: 1fr;
+  }
+}
