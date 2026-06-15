@@ -1018,8 +1018,8 @@ const projects = [
     type: "chef-d’œuvre",
     featured: true,
     oralFocus: true,
-    image: "../ressources/projets/TheCrybabyJourney.jpeg",
-    cover: "../ressources/projets/TheCrybabyJourney.jpeg",
+    image: "../ressources/projets/TheCrybabyJourney.png",
+    cover: "../ressources/projets/TheCrybabyJourney.png",
     images: [
       { src: "../ressources/projets/TheCrybabyJourney.jpeg", alt: "The Crybaby Journey — affiche de présentation" },
       { src: "../ressources/projets/crybaby1.png", alt: "The Crybaby Journey 1" },
