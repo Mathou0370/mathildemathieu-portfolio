@@ -653,10 +653,10 @@ const projects = [
     year: "stagemmi2",
     category: "Exprimer",
     type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
+    image: "../ressources/logocosplaysmart.jpg",
+    cover: "../ressources/logocosplaysmart.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Contenus réseaux sociaux Cosplay Smart" }
+      { src: "../ressources/logocosplaysmart.jpg", alt: "Contenus réseaux sociaux Cosplay Smart" }
     ],
     shortDescription: "Création de posts, stories, Reels et contenus courts pour animer la communauté de Cosplay Smart.",
     ac: ["AC21.01", "AC22.05", "AC23.05", "AC25.05"],
@@ -688,10 +688,10 @@ const projects = [
     year: "stagemmi2",
     category: "Exprimer",
     type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
+    image: "../ressources/logocosplaysmart.jpg",
+    cover: "../ressources/logocosplaysmart.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Supports print Cosplay Smart" }
+      { src: "../ressources/logocosplaysmart.jpg", alt: "Supports print Cosplay Smart" }
     ],
     shortDescription: "Affiches, bâches, nappe et kakemono : premiers supports de communication grand format réalisés pour un usage événementiel.",
     ac: ["AC13.02", "AC13.03", "AC13.06", "AC23.03"],
@@ -723,10 +723,10 @@ const projects = [
     year: "stagemmi2",
     category: "Comprendre",
     type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
+    image: "../ressources/logocosplaysmart.jpg",
+    cover: "../ressources/logocosplaysmart.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Rédaction web Cosplay Smart" }
+      { src: "../ressources/logocosplaysmart.jpg", alt: "Rédaction web Cosplay Smart" }
     ],
     shortDescription: "Articles de blog, annonces Discord, textes Instagram et mise en ligne de contenus via Shopify.",
     ac: ["AC13.01", "AC21.01", "AC22.04", "AC23.01", "AC25.05"],
@@ -758,10 +758,10 @@ const projects = [
     year: "stagemmi2",
     category: "Exprimer",
     type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
+    image: "../ressources/logocosplaysmart.jpg",
+    cover: "../ressources/logocosplaysmart.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Vlog Clermont Geek Convention" }
+      { src: "../ressources/logocosplaysmart.jpg", alt: "Vlog Clermont Geek Convention" }
     ],
     shortDescription: "Captation et montage d'un vlog racontant un week-end de stagiaire chez Cosplay Smart en convention.",
     ac: ["AC13.04", "AC23.04", "AC23.05", "AC25.04"],
@@ -793,10 +793,10 @@ const projects = [
     year: "stagemmi3",
     category: "Comprendre",
     type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
+    image: "../ressources/logocosplaysmart.jpg",
+    cover: "../ressources/logocosplaysmart.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Communication digitale stage BUT3" }
+      { src: "../ressources/logocosplaysmart.jpg", alt: "Communication digitale stage BUT3" }
     ],
     shortDescription: "Publications, veille, Pinterest, Coupe de France de Cosplay et contenus interactifs pour engager la communauté.",
     ac: ["AC21.01", "AC21.05", "AC22.05", "AC23.05", "AC25.04"],
@@ -832,10 +832,10 @@ const projects = [
     year: "stagemmi3",
     category: "Concevoir",
     type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
+    image: "../ressources/logocosplaysmart.jpg",
+    cover: "../ressources/logocosplaysmart.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "SEO et rédaction web stage BUT3" }
+      { src: "../ressources/logocosplaysmart.jpg", alt: "SEO et rédaction web stage BUT3" }
     ],
     shortDescription: "Articles de blog, fiches produits, newsletters et liens entre produits, Costips et contenus SEO.",
     ac: ["AC21.02", "AC22.04", "AC23.01", "AC24.05", "AC25.05"],
@@ -871,10 +871,10 @@ const projects = [
     year: "stagemmi3",
     category: "Exprimer",
     type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
+    image: "../ressources/logocosplaysmart.jpg",
+    cover: "../ressources/logocosplaysmart.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Costips et production vidéo" }
+      { src: "../ressources/logocosplaysmart.jpg", alt: "Costips et production vidéo" }
     ],
     shortDescription: "Tutoriels courts, Reels, TikTok, vlogs YouTube et captations en convention.",
     ac: ["AC23.04", "AC23.05", "AC23.06", "AC25.04"],
@@ -910,10 +910,10 @@ const projects = [
     year: "stagemmi3",
     category: "Exprimer",
     type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
+    image: "../ressources/logocosplaysmart.jpg",
+    cover: "../ressources/logocosplaysmart.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Image de marque Cosplay Smart" }
+      { src: "../ressources/logocosplaysmart.jpg", alt: "Image de marque Cosplay Smart" }
     ],
     shortDescription: "Chibis, ecocup, dossier de sponsoring, fonds d'écran, calendrier de l'Avent et supports visuels.",
     ac: ["AC22.01", "AC23.02", "AC23.03", "AC25.05"],
@@ -947,10 +947,10 @@ const projects = [
     year: "stagemmi3",
     category: "Développer",
     type: "professionnel",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
+    image: "../ressources/logocosplaysmart.jpg",
+    cover: "../ressources/logocosplaysmart.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Site vitrine professionnel Cosplay Smart" }
+      { src: "../ressources/logocosplaysmart.jpg", alt: "Site vitrine professionnel Cosplay Smart" }
     ],
     shortDescription: "Réflexion, arborescence, wireframes et début d'intégration d'un site vitrine complémentaire à la boutique.",
     ac: ["AC21.01", "AC22.01", "AC22.02", "AC24.01", "AC24.06", "AC25.01"],
@@ -986,10 +986,10 @@ const projects = [
     year: "associatif",
     category: "Entreprendre",
     type: "associatif",
-    image: "../ressources/fond.jpg",
-    cover: "../ressources/fond.jpg",
+    image: "../ressources/logocosplaysmart.jpg",
+    cover: "../ressources/logocosplaysmart.jpg",
     images: [
-      { src: "../ressources/fond.jpg", alt: "Engagement associatif" }
+      { src: "../ressources/logocosplaysmart.jpg", alt: "Engagement associatif" }
     ],
     shortDescription: "Participation à la vie étudiante, aux événements et à la dynamique collective de la formation.",
     ac: ["AC25.01", "AC25.03", "AC25.04", "AC25.05"],
