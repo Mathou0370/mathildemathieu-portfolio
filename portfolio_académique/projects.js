@@ -1022,8 +1022,11 @@ const projects = [
     cover: "../ressources/projets/TheCrybabyJourney.jpeg",
     images: [
       { src: "../ressources/projets/TheCrybabyJourney.jpeg", alt: "The Crybaby Journey — affiche de présentation" },
-      { src: "../ressources/projets/crybaby.png", alt: "The Crybaby Journey — ancien visuel" },
-      { src: "../ressources/fond.jpg", alt: "Ambiance projet" }
+      { src: "../ressources/projets/crybaby1.png", alt: "The Crybaby Journey 1" },
+      { src: "../ressources/projets/crybaby2.png", alt: "The Crybaby Journey 2" },
+      { src: "../ressources/projets/crybaby3.png", alt: "The Crybaby Journey 3" },
+      { src: "../ressources/projets/crybaby4.png", alt: "The Crybaby Journey 4" },
+      { src: "../ressources/projets/crybaby5.png", alt: "The Crybaby Journey 5" },
     ],
     shortDescription: "Projet phare de fin de BUT : une expérience web immersive inspirée de Melanie Martinez, réunissant narration, direction artistique, son, UX et développement.",
     ac: ["AC21.05", "AC22.01", "AC23.04", "AC23.05", "AC24.01", "AC24.03", "AC33.01", "AC33.02", "AC33.03", "AC33.04", "AC33.05", "AC35.04"],
